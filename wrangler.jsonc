@@ -1,5 +1,11 @@
 {
-  "name": "meeleraha",
+  "name": "unistused",
   "compatibility_date": "2026-10-12",
-  "assets": { "directory": "./public" }
+  "assets": { "directory": "./public" },
+  "workers_dev": true
+  // Eemalda kommentaarid pärast seda, kui meeleraha.ee on Cloudflare'is aktiivne:
+  // ,"routes": [
+  //   { "pattern": "meeleraha.ee", "custom_domain": true },
+  //   { "pattern": "www.meeleraha.ee", "custom_domain": true }
+  // ]
 }
