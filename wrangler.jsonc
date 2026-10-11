@@ -1,10 +1,11 @@
 {
-  "name": "unistused",
+  "name": "meeleraha",
   "compatibility_date": "2026-10-12",
   "assets": { "directory": "./public" },
-  "workers_dev": true
-  ,"routes": [
-     { "pattern": "meeleraha.ee", "custom_domain": true },
-     { "pattern": "www.meeleraha.ee", "custom_domain": true }
-   ]
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "meeleraha.ee", "custom_domain": true },
+    { "pattern": "www.meeleraha.ee", "custom_domain": true }
+  ]
 }
