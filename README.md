@@ -33,3 +33,14 @@ Brauserites pole sageli eesti häält, seepärast mängib leht eelnevalt generee
     node scripts/make-audio.mjs
 
 Tekstid on failis `scripts/clips.json` (hoia sünkroonis lehel oleva tekstiga). Vaikimisi hääl on `mari`; teise häälega: `SPEAKER=albert node scripts/make-audio.mjs`. Enne avalikku kasutamist teavita TartuNLP-d (ping@tartunlp.ai) ja kontrolli nende kasutustingimusi.
+
+## Testid
+
+Testid on kaustas `tests/` omaenda `package.json`-iga, nii et Cloudflare'i build neid ei paigalda.
+
+    cd tests
+    npm install
+    npx playwright install chromium
+    npm test
+
+Mida kontrollitakse: leht laeb ilma vigadeta ja ilma horisontaalse kerimiseta, kõne tekst, kattuvus, FIRE-aeg võrreldes sõltumatu referendiga, kingi omadused, jagatav kaart, mikrofon (võlts-seadmega) ning heliklippide täielikkus ja tekstide sünkroon. Arvude (sissetulek, tootlus jms) muutmisel uuenda `referee` funktsiooni failis `tests/smoke.test.mjs`. GitHub Actions käivitab testid iga PR-i ja main'i push'i peal.
