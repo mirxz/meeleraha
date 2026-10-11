@@ -20,8 +20,16 @@ Staatiline leht. Ava `public/index.html` brauseris või käivita:
 
     npx wrangler dev
 
-Avaldamine (Cloudflare Workers, staatilised failid): `npx wrangler deploy`.
+Avaldamine: Cloudflare Workers, Worker nimega `unistused`, staatilised failid kaustast `public`. Käsk: `npx wrangler deploy`.
 
 ## Eeldused ja piirid
 
 Kõik numbrid on näited (sissetulek 2 500 €, reaaltootlus 4%, väljavõtmismäär 4%). See on haridus- ja simulatsioonitööriist, mitte finantsnõu.
+
+## Eestikeelne hääl
+
+Brauserites pole sageli eesti häält, seepärast mängib leht eelnevalt genereeritud heliklippe kaustast `public/audio`. Klipid tehakse TartuNLP Neurokõne avalikust API-st:
+
+    node scripts/make-audio.mjs
+
+Tekstid on failis `scripts/clips.json` (hoia sünkroonis lehel oleva tekstiga). Vaikimisi hääl on `mari`; teise häälega: `SPEAKER=albert node scripts/make-audio.mjs`. Enne avalikku kasutamist teavita TartuNLP-d (ping@tartunlp.ai) ja kontrolli nende kasutustingimusi.

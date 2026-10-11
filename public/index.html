@@ -103,7 +103,10 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
     <div class="row">
       <button id="br" class="btn" type="button" style="touch-action:none;user-select:none;-webkit-user-select:none">Hoia ja hinga sisse</button>
       <button id="snd" class="btn" type="button" aria-pressed="false">Kuula oma aastat</button>
+      <button id="mic" class="btn" type="button" aria-pressed="false">Hinga mikrofoniga</button>
     </div>
+    <div id="micMsg" class="small" style="min-height:20px">Mikrofon töötab ainult sinu seadmes. Heli ei salvestata ega saadeta kuhugi.</div>
+    <div id="micM" class="m" hidden><div id="micL" style="width:0%"></div></div>
     <div class="leg"><span><i style="background:var(--base)"></i>Baas</span><span><i style="background:var(--loan)"></i>Laen</span><span><i style="background:var(--fun)"></i>Fun</span><span><i style="background:var(--sav)"></i>Säästud</span><span><i style="background:var(--pro)"></i>Kapital</span></div>
   </div>
 </section>
@@ -165,7 +168,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
   <ul class="rev">
     <li>Kingi raam on nügimine: sama raha, kaks lugu. Uuringutes on raami mõju olnud väike ja kordustes veel väiksem.</li>
     <li>Kattuv kiht on mängulise disaini metafoor, mitte teaduslik mõõt. Tulevase mina järjepidevust ei mõõdeta ühe numbriga.</li>
-    <li>Hingamine ja pilk on mängulised žestid. Leht ei kasuta kaamerat ega mikrofoni ja ei salvesta midagi.</li>
+    <li>Hingamise juhtimine kasutab mikrofoni ainult sinu nõusolekul ja ainult sinu seadmes. Heli ei salvestata ega saadeta kuhugi. Kaamerat leht ei kasuta.</li>
     <li>Kõne tekst on näidis. Lugemine toimub sinu brauseris.</li>
     <li>Numbrid on näide (sissetulek 2 500 €, reaaltootlus 4%, väljavõtmismäär 4%) ja kõik on simulatsioon, mitte prognoos ega nõu.</li>
   </ul>
@@ -201,11 +204,11 @@ window.addEventListener('resize',sky);sky();
 
 /* flow */
 var N=80,X0=20,XW=340,Y0=212,K=0.04,NAMES=['Baaskulud','Laenud','Fun money','Säästud'],COL=['var(--base)','var(--loan)','var(--fun)','var(--sav)'];
-var breath=0,target=0,phase=0,focus=-1,foc=[0,0,0,0],Bd=[],ac=null,gains=[],oscs=[];
+var breath=0,target=0,holdT=0,micT=0,phase=0,focus=-1,foc=[0,0,0,0],Bd=[],ac=null,gains=[],oscs=[];
 var sv=document.getElementById('sv'),cap=document.getElementById('cap');
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function frame(){
-  breath+=(target-breath)*0.05;if(!reduce)phase+=0.02;
+  target=Math.max(holdT,micT);breath+=(target-breath)*0.05;if(!reduce)phase+=0.02;
   var inc=INC+breath*2000,m=monthsFor(inc,0,0,'fut'),fT=m===null?1:Math.min(1,m/12/SPAN),lT=LY/SPAN,i,j;
   for(j=0;j<4;j++)foc[j]+=((focus===j?1:0)-foc[j])*0.15;
   var b=[[],[],[],[],[]];
@@ -235,15 +238,50 @@ function hit(e){var r=sv.getBoundingClientRect(),s=r.width/380,x=(e.clientX-r.le
   cap.textContent=NAMES[focus]+' selles punktis: '+fe(v)+' kuus.';}
 sv.addEventListener('pointermove',hit);sv.addEventListener('pointerdown',hit);sv.addEventListener('pointerleave',function(){focus=-1;});
 var br=document.getElementById('br');
-br.addEventListener('pointerdown',function(e){e.preventDefault();target=1;try{br.setPointerCapture(e.pointerId);}catch(x){}});
-['pointerup','pointercancel'].forEach(function(n){br.addEventListener(n,function(){target=0;});});
-br.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){target=1;e.preventDefault();}});
-br.addEventListener('keyup',function(){target=0;});
+br.addEventListener('pointerdown',function(e){e.preventDefault();holdT=1;try{br.setPointerCapture(e.pointerId);}catch(x){}});
+['pointerup','pointercancel'].forEach(function(n){br.addEventListener(n,function(){holdT=0;});});
+br.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){holdT=1;e.preventDefault();}});
+br.addEventListener('keyup',function(){holdT=0;});
 document.getElementById('snd').onclick=function(){var bt=this;try{
   if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();var f=[110,165,330,440];for(var j=0;j<4;j++){var o=ac.createOscillator(),gg=ac.createGain();o.type=j===3?'sine':'triangle';o.frequency.value=f[j];gg.gain.value=0;o.connect(gg);gg.connect(ac.destination);o.start();oscs.push(o);gains.push(gg);}bt.setAttribute('aria-pressed','true');}
   else{for(var k=0;k<oscs.length;k++){oscs[k].stop();}ac.close();ac=null;gains=[];oscs=[];bt.setAttribute('aria-pressed','false');}
 }catch(err){cap.textContent='Heli ei käivitunud selles brauseris.';}};
 frame();
+
+/* mic breath */
+var mic={on:false,ctx:null,stream:null,an:null,buf:null,sum:0,n:0,floor:0,peak:0.02,lvl:0,t0:0,raf:0};
+var micBtn=document.getElementById('mic'),micMsg=document.getElementById('micMsg'),micM=document.getElementById('micM'),micL=document.getElementById('micL');
+function micStop(msg){mic.on=false;cancelAnimationFrame(mic.raf);if(mic.stream){mic.stream.getTracks().forEach(function(t){t.stop();});}if(mic.ctx){try{mic.ctx.close();}catch(e){}}mic.ctx=null;mic.stream=null;micT=0;mic.lvl=0;micBtn.setAttribute('aria-pressed','false');micBtn.textContent='Hinga mikrofoniga';micM.hidden=true;if(msg)micMsg.textContent=msg;}
+function micLoop(){
+  if(!mic.on)return;
+  mic.an.getByteTimeDomainData(mic.buf);
+  var s=0,i;for(i=0;i<mic.buf.length;i++){var v=(mic.buf[i]-128)/128;s+=v*v;}
+  var rms=Math.sqrt(s/mic.buf.length),now=performance.now();
+  if(now-mic.t0<2000){mic.sum+=rms;mic.n++;mic.floor=(mic.sum/mic.n)*1.4+0.004;}
+  else{
+    if(micMsg.getAttribute('data-cal')!=='1'){micMsg.setAttribute('data-cal','1');micMsg.textContent='Hinga kuuldavalt sisse ja välja. Pott kasvab, kui hingamist kuuleb, ja vajub vaikuses.';}
+    var d=Math.max(0,rms-mic.floor);mic.peak=Math.max(d,mic.peak*0.9985,0.012);
+    var l=Math.min(1,d/(mic.peak*0.7));mic.lvl+=(l-mic.lvl)*(l>mic.lvl?0.35:0.06);micT=mic.lvl;
+    micL.style.width=Math.round(mic.lvl*100)+'%';
+  }
+  mic.raf=requestAnimationFrame(micLoop);
+}
+micBtn.onclick=function(){
+  if(mic.on){micStop('Mikrofon on välja lülitatud.');return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){micMsg.textContent='Sinu brauser ei luba mikrofoni kasutada. Kasuta nuppu „Hoia ja hinga sisse“.';return;}
+  micMsg.textContent='Palun luba mikrofon.';
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(st){
+    var AC=window.AudioContext||window.webkitAudioContext;mic.ctx=new AC();if(mic.ctx.resume)mic.ctx.resume();
+    mic.stream=st;var src=mic.ctx.createMediaStreamSource(st);mic.an=mic.ctx.createAnalyser();mic.an.fftSize=1024;src.connect(mic.an);
+    mic.buf=new Uint8Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.t0=performance.now();mic.on=true;
+    micMsg.removeAttribute('data-cal');micMsg.textContent='Kalibreerin 2 sekundit: ole vaikselt.';micM.hidden=false;
+    micBtn.setAttribute('aria-pressed','true');micBtn.textContent='Lülita mikrofon välja';micLoop();
+  },function(err){
+    var n=err&&err.name;
+    micStop(n==='NotAllowedError'?'Mikrofon on keelatud. Luba see brauseri seadetes või kasuta nuppu „Hoia ja hinga sisse“.':n==='NotFoundError'?'Mikrofoni ei leitud. Kasuta nuppu „Hoia ja hinga sisse“.':'Mikrofon ei käivitunud. Kasuta nuppu „Hoia ja hinga sisse“.');
+  });
+};
+document.addEventListener('visibilitychange',function(){if(document.hidden&&mic.on)micStop('Mikrofon lülitus välja, sest leht läks taustale.');});
 
 /* chips */
 function chips(id,list,multi,onpick){var el=document.getElementById(id);list.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.className='btn';b.setAttribute('aria-pressed','false');b.textContent=it[0];b.onclick=function(){onpick(i);sync();};el.appendChild(b);});}
@@ -316,11 +354,19 @@ document.getElementById('hide').onclick=function(){hideAmt=!hideAmt;this.setAttr
 document.getElementById('copy').onclick=function(){var t=shareText().join('\n'),msg=document.getElementById('copyMsg');try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Tekst kopeeritud.';},function(){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';});}catch(e){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';}};
 
 /* speech */
+var player=null,queue=[];
+function callClips(){var c=chosen();if(c.n===0&&who<0&&where<0)return ['x0'];var ids=['g0'];if(where>=0)ids.push('p'+where);if(who>=0)ids.push('w'+who);for(var i=0;i<4;i++){if(sel[i])ids.push('a'+i);}if(g>0&&mode==='fut')ids.push('kf'+g);if(g>0&&mode==='don')ids.push('kd'+g);return ids;}
+function sayReset(){player=null;queue=[];document.getElementById('say').textContent='Loe ette';}
+function playNext(msg){
+  if(!queue.length){sayReset();return;}
+  var id=queue.shift();player=new Audio('audio/'+id+'.wav');
+  player.onended=function(){playNext(msg);};
+  player.onerror=function(){sayReset();msg.textContent='Heli ei laadinud. Tekst on ekraanil.';};
+  var pr=player.play();if(pr&&pr.catch)pr.catch(function(e){sayReset();msg.textContent=(e&&e.name==='NotAllowedError')?'Brauser ei lubanud heli esitada. Puuduta nuppu uuesti.':'Heli ei laadinud. Tekst on ekraanil.';});
+}
 document.getElementById('say').onclick=function(){var msg=document.getElementById('sayMsg');msg.textContent='';
-  if(!('speechSynthesis' in window)){msg.textContent='Sinu brauser ei oska ette lugeda. Tekst on ekraanil.';return;}
-  var vs=window.speechSynthesis.getVoices(),has=false;for(var i=0;i<vs.length;i++){if(vs[i].lang&&vs[i].lang.toLowerCase().indexOf('et')===0)has=true;}
-  if(!has){msg.textContent='Sinu brauseris pole eesti häält. Tekst on ekraanil.';return;}
-  window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(callLines().join(' '));u.lang='et-EE';u.rate=0.9;window.speechSynthesis.speak(u);};
+  if(player){if(player.pause)player.pause();sayReset();return;}
+  queue=callClips();this.textContent='Peata';playNext(msg);};
 
 function sync(){
   setPress('gA',function(i){return sel[i];});setPress('gW',function(i){return who===i;});setPress('gP',function(i){return where===i;});
