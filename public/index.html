@@ -110,7 +110,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
 
 <section id="hinga">
   <h2>Hinga</h2>
-  <p class="sub">Sinu raha on vool. Hoia nuppu all ja hinga sisse: pott kasvab. Puuduta riba, et sellele keskenduda. Lülita heli sisse, et oma aastat kuulda.</p>
+  <p class="sub">Sinu raha on vool. Hinga mikrofoni juures kuuldavalt: pott kasvab. Või vali „Hääl“ ja hummi: kõrgem toon on suurem palk. Ilma mikrofonita hoia nuppu „Hoia ja hinga sisse“ all. Puuduta riba, et sellele keskenduda, ja lülita heli sisse, et oma aastat kuulda.</p>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px">
       <div id="inc" class="big" style="font-size:26px"></div>
@@ -119,12 +119,14 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
     <svg id="sv" width="100%" viewBox="0 0 380 250" role="img" aria-label="Rahavool ajas: baaskulud, laenud, fun money ja säästud tänasest FIRE-ni" style="touch-action:none;display:block"></svg>
     <div id="cap" class="small" style="min-height:22px;margin:4px 0 8px">Puuduta või liiguta riba peal: sellele keskendumine kasvatab seda.</div>
     <div class="row">
+      <button id="mic" class="btn" type="button" aria-pressed="false">Hinga mikrofoniga</button>
       <button id="br" class="btn" type="button" style="touch-action:none;user-select:none;-webkit-user-select:none">Hoia ja hinga sisse</button>
       <button id="snd" class="btn" type="button" aria-pressed="false">Kuula oma aastat</button>
-      <button id="mic" class="btn" type="button" aria-pressed="false">Hinga mikrofoniga</button>
     </div>
+    <div class="row" role="group" aria-label="Mikrofoni režiim" style="margin:0 0 6px"><button id="micModeB" class="btn" type="button" aria-pressed="true">Hingamine</button><button id="micModeV" class="btn" type="button" aria-pressed="false">Hääl</button></div>
     <div id="micMsg" class="small" style="min-height:20px">Mikrofon töötab ainult sinu seadmes. Heli ei salvestata ega saadeta kuhugi.</div>
     <div id="micM" class="m" hidden><div id="micL" style="width:0%"></div></div>
+    <div id="micHz" class="small" style="min-height:20px"></div>
     <div class="leg"><span><i style="background:var(--base)"></i>Baas</span><span><i style="background:var(--loan)"></i>Laen</span><span><i style="background:var(--fun)"></i>Fun</span><span><i style="background:var(--sav)"></i>Säästud</span><span><i style="background:var(--pro)"></i>Kapital</span></div>
   </div>
 </section>
@@ -271,32 +273,58 @@ document.getElementById('snd').onclick=function(){var bt=this;try{
 }catch(err){cap.textContent='Heli ei käivitunud selles brauseris.';}};
 frame();
 
-/* mic breath */
-var mic={on:false,ctx:null,stream:null,an:null,buf:null,sum:0,n:0,floor:0,peak:0.02,lvl:0,t0:0,raf:0};
-var micBtn=document.getElementById('mic'),micMsg=document.getElementById('micMsg'),micM=document.getElementById('micM'),micL=document.getElementById('micL');
-function micStop(msg){mic.on=false;cancelAnimationFrame(mic.raf);if(mic.stream){mic.stream.getTracks().forEach(function(t){t.stop();});}if(mic.ctx){try{mic.ctx.close();}catch(e){}}mic.ctx=null;mic.stream=null;micT=0;mic.lvl=0;micBtn.setAttribute('aria-pressed','false');micBtn.textContent='Hinga mikrofoniga';micM.hidden=true;if(msg)micMsg.textContent=msg;}
+/* mic */
+var mic={on:false,mode:'breath',ctx:null,stream:null,an:null,buf:null,fb:null,sum:0,n:0,floor:0,peak:0.02,lvl:0,t0:0,raf:0,sr:48000,hz:0,vo:0,fr:0,shown:''};
+var micBtn=document.getElementById('mic'),micMsg=document.getElementById('micMsg'),micM=document.getElementById('micM'),micL=document.getElementById('micL'),micHz=document.getElementById('micHz'),mB=document.getElementById('micModeB'),mV=document.getElementById('micModeV');
+var MODEMSG={breath:'Hinga kuuldavalt sisse ja välja. Pott kasvab, kui hingamist kuuleb, ja vajub vaikuses.',voice:'Hummi või räägi ühtlase tooniga. Kõrgem hääl on suurem palk, madalam väiksem.'};
+function micStop(msg){mic.on=false;cancelAnimationFrame(mic.raf);if(mic.stream){mic.stream.getTracks().forEach(function(t){t.stop();});}if(mic.ctx){try{mic.ctx.close();}catch(e){}}mic.ctx=null;mic.stream=null;micT=0;mic.lvl=0;mic.hz=0;mic.vo=0;micHz.textContent='';micBtn.setAttribute('aria-pressed','false');micBtn.textContent='Hinga mikrofoniga';micM.hidden=true;if(msg)micMsg.textContent=msg;}
+function pitch(){
+  var N=1024,sr=mic.sr,minL=Math.floor(sr/500),maxL=Math.floor(sr/70),x=mic.fb,e0=0,i,l;
+  for(i=0;i<N;i++)e0+=x[i]*x[i];
+  if(e0<1e-6)return 0;
+  var best=0,bl=0,nac=[];
+  for(l=minL;l<=maxL;l++){var r=0,en=0;for(i=0;i<N;i++){var y=x[i+l];r+=x[i]*y;en+=y*y;}var c=en>0?r/Math.sqrt(e0*en):0;nac[l]=c;if(c>best){best=c;bl=l;}}
+  if(best<0.6)return 0;
+  for(l=minL+1;l<maxL;l++){if(nac[l]>=0.88*best&&nac[l]>nac[l-1]&&nac[l]>=nac[l+1]){bl=l;break;}}
+  return sr/bl;
+}
 function micLoop(){
   if(!mic.on)return;
   mic.an.getByteTimeDomainData(mic.buf);
-  var s=0,i;for(i=0;i<mic.buf.length;i++){var v=(mic.buf[i]-128)/128;s+=v*v;}
-  var rms=Math.sqrt(s/mic.buf.length),now=performance.now();
+  var s=0,i,n=mic.buf.length;
+  for(i=0;i<n;i++){mic.fb[i]=(mic.buf[i]-128)/128;}
+  for(i=0;i<1024;i++){s+=mic.fb[i]*mic.fb[i];}
+  var rms=Math.sqrt(s/1024),now=performance.now();
   if(now-mic.t0<2000){mic.sum+=rms;mic.n++;mic.floor=(mic.sum/mic.n)*1.4+0.004;}
   else{
-    if(micMsg.getAttribute('data-cal')!=='1'){micMsg.setAttribute('data-cal','1');micMsg.textContent='Hinga kuuldavalt sisse ja välja. Pott kasvab, kui hingamist kuuleb, ja vajub vaikuses.';}
-    var d=Math.max(0,rms-mic.floor);mic.peak=Math.max(d,mic.peak*0.9985,0.012);
-    var l=Math.min(1,d/(mic.peak*0.7));mic.lvl+=(l-mic.lvl)*(l>mic.lvl?0.35:0.06);micT=mic.lvl;
-    micL.style.width=Math.round(mic.lvl*100)+'%';
+    if(micMsg.getAttribute('data-cal')!=='1'){micMsg.setAttribute('data-cal','1');micMsg.textContent=MODEMSG[mic.mode];}
+    var d=Math.max(0,rms-mic.floor);
+    if(mic.mode==='breath'){
+      mic.peak=Math.max(d,mic.peak*0.9985,0.012);
+      var l=Math.min(1,d/(mic.peak*0.7));mic.lvl+=(l-mic.lvl)*(l>mic.lvl?0.35:0.06);
+      if(micHz.textContent)micHz.textContent='';
+    }else{
+      mic.fr++;
+      if(mic.fr%2===0){var f=d>0.006?pitch():0;if(f>0){mic.hz=f;mic.vo=8;}else if(mic.vo>0){mic.vo--;}}
+      var t=(mic.vo>0&&mic.hz>0)?Math.max(0,Math.min(1,Math.log(mic.hz/90)/Math.log(4))):0;
+      mic.lvl+=(t-mic.lvl)*(t>0?0.15:0.04);
+      var txt=mic.vo>0?Math.round(mic.hz)+' Hz':'';
+      if(txt!==mic.shown){mic.shown=txt;micHz.textContent=txt;}
+    }
+    micT=mic.lvl;micL.style.width=Math.round(mic.lvl*100)+'%';
   }
   mic.raf=requestAnimationFrame(micLoop);
 }
+function setMode(m){mic.mode=m;mB.setAttribute('aria-pressed',m==='breath'?'true':'false');mV.setAttribute('aria-pressed',m==='voice'?'true':'false');mic.lvl=0;mic.vo=0;micHz.textContent='';mic.shown='';if(mic.on&&micMsg.getAttribute('data-cal')==='1')micMsg.textContent=MODEMSG[m];}
+mB.onclick=function(){setMode('breath');};mV.onclick=function(){setMode('voice');};
 micBtn.onclick=function(){
   if(mic.on){micStop('Mikrofon on välja lülitatud.');return;}
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){micMsg.textContent='Sinu brauser ei luba mikrofoni kasutada. Kasuta nuppu „Hoia ja hinga sisse“.';return;}
   micMsg.textContent='Palun luba mikrofon.';
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(st){
     var AC=window.AudioContext||window.webkitAudioContext;mic.ctx=new AC();if(mic.ctx.resume)mic.ctx.resume();
-    mic.stream=st;var src=mic.ctx.createMediaStreamSource(st);mic.an=mic.ctx.createAnalyser();mic.an.fftSize=1024;src.connect(mic.an);
-    mic.buf=new Uint8Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.t0=performance.now();mic.on=true;
+    mic.sr=mic.ctx.sampleRate;mic.stream=st;var src=mic.ctx.createMediaStreamSource(st);mic.an=mic.ctx.createAnalyser();mic.an.fftSize=2048;src.connect(mic.an);
+    mic.buf=new Uint8Array(mic.an.fftSize);mic.fb=new Float32Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.hz=0;mic.vo=0;mic.t0=performance.now();mic.on=true;
     micMsg.removeAttribute('data-cal');micMsg.textContent='Kalibreerin 2 sekundit: ole vaikselt.';micM.hidden=false;
     micBtn.setAttribute('aria-pressed','true');micBtn.textContent='Lülita mikrofon välja';micLoop();
   },function(err){
