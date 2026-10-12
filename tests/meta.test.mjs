@@ -25,3 +25,7 @@ test('og:image on absoluutne HTTPS aadress ja fail on olemas ning 1200x630', asy
   assert.equal(png.readUInt32BE(20), 630);
   assert.ok(png.length < 5 * 1024 * 1024, 'pilt on liiga suur');
 });
+
+test('tänusõnad on lehel', () => {
+  for (const nimi of ['Lindat', 'Jüri Ruutu', 'Mai Leed']) assert.ok(html.includes(nimi), `puudub: ${nimi}`);
+});
