@@ -1,0 +1,1748 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haruta lõngakera | Raha Meeled</title>
+<meta name="description" content="Eesti pensionireeglid on sassis lõngakera. Puuduta sõlme või küsi ja vajalik lõng harutub. Iga vastus tuleb seadusest ja lõpeb paragrahviga. Haridus, mitte nõu.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/haruta.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Haruta lõngakera">
+<meta property="og:description" content="Eesti pensionireeglid on sassis lõngakera. Puuduta sõlme või küsi ja vajalik lõng harutub.">
+<meta property="og:url" content="https://meeleraha.ee/haruta.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#241f3a;--ink2:#554f70;--card:rgba(255,255,255,.88);--line:rgba(36,31,58,.18);
+  --sun:#f0a22e;--link:#4a3fc4;--onlink:#ffffff;
+  --good-bg:#d7f1e6;--good-fg:#0f5a3f;--warn-bg:#fbe9c4;--warn-fg:#6b4700;--bad-bg:#fbd9d4;--bad-fg:#7a1f16;--info-bg:#dde6fb;--info-fg:#1f3a8a;
+  --base:#3d62c9;--loan:#c8453f;--fun:#e0a21f;--sav:#2f9a72;--pro:#7a4fd0;
+  --skyDT:#cfd0f2;--skyDH:#ffd1a8;--skyAT:#dce9ff;--skyAH:#ffeab8;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.88);--line:rgba(241,236,255,.2);
+    --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+    --good-bg:#12392c;--good-fg:#9fe8c8;--warn-bg:#4a3708;--warn-fg:#f6d98b;--bad-bg:#4a1a14;--bad-fg:#ffb3a8;--info-bg:#1a2a5a;--info-fg:#b9c9ff;
+    --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+    --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.88);--line:rgba(241,236,255,.2);
+  --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+  --good-bg:#12392c;--good-fg:#9fe8c8;--warn-bg:#4a3708;--warn-fg:#f6d98b;--bad-bg:#4a1a14;--bad-fg:#ffb3a8;--info-bg:#1a2a5a;--info-fg:#b9c9ff;
+  --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+  --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--skyDT);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+#sky{position:fixed;inset:0;z-index:-1;overflow:hidden}
+#sky .l{position:absolute;inset:0}
+#sky .dusk{background:linear-gradient(to bottom,var(--skyDT) 0%,var(--skyDH) 100%)}
+#sky .dawn{background:linear-gradient(to bottom,var(--skyAT) 0%,var(--skyAH) 100%);opacity:0}
+main{width:min(640px,100% - 40px);margin:0 auto;padding:28px 0 64px}
+a{color:var(--link)}
+.back{display:inline-block;margin-bottom:20px;font-size:15px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,9vw,48px);line-height:1.06;margin:0 0 12px;font-variation-settings:"opsz" 144}
+h2{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15;margin:0 0 8px;font-variation-settings:"opsz" 72}
+h3{font-size:15px;font-weight:600;margin:18px 0 6px}
+p{margin:0 0 10px}
+.lead{font-family:var(--serif);font-size:19px;line-height:1.5}
+.sub{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink2);line-height:1.5}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+form{display:flex;gap:8px;margin:18px 0 8px}
+input[type=search]{flex:1;min-width:0;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn{font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer}
+.btn.go{background:var(--link);color:var(--onlink);border-color:var(--link)}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
+a.chip:hover{border-color:var(--ink2)}
+.t-good{background:var(--good-bg);color:var(--good-fg);border-color:transparent}
+.t-warn{background:var(--warn-bg);color:var(--warn-fg);border-color:transparent}
+.t-bad{background:var(--bad-bg);color:var(--bad-fg);border-color:transparent}
+.t-info{background:var(--info-bg);color:var(--info-fg);border-color:transparent}
+.res{display:block;text-decoration:none;color:inherit;padding:12px 0;border-top:1px solid var(--line)}
+.res:first-child{border-top:0}
+.res b{font-family:var(--serif);font-weight:500;font-size:18px}
+.res .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:2px}
+ul.nm{padding-left:18px;margin:6px 0}
+ul.nm li{margin-bottom:4px}
+.verd{font-family:var(--serif);font-size:20px;font-weight:500}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:600}
+svg.g{width:100%;height:auto;display:block;margin:8px 0}
+footer{margin-top:36px}
+#yarnBox{position:relative;margin-top:6px}
+#yarn{width:100%;height:auto;display:block;touch-action:manipulation}
+.knot{cursor:grab;touch-action:none}
+.knot:active{cursor:grabbing}
+.knot:focus{outline:none}
+.knot:focus-visible .hit{stroke:var(--link);stroke-width:2;fill:rgba(120,110,230,.18)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:6px 0 2px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<main>
+<a class="back" href="index.html">← Raha Meeled</a>
+<h1>Haruta lõngakera</h1>
+<p class="lead">Pensionireeglid on sassis lõngakera: iga sõlm on seotud teistega. Tiri sõlme lõnga otsast välja või puuduta seda, ja vajalik lõng harutub.</p>
+<form id="f" role="search">
+  <input id="q" type="search" aria-label="Küsi pensioni kohta või kirjuta kuulujutt" placeholder="Näiteks: kas ootan? või: III sammast saab 55-aastaselt kätte" autocomplete="off">
+  <button class="btn go" type="submit">Küsi</button>
+</form>
+<div class="row" id="ex" aria-label="Näited"></div>
+<div id="yarnBox">
+  <svg id="yarn" viewBox="0 0 400 320" role="group" aria-label="Pensioni sõlmede ja kuulujuttude lõngakera. Iga sõlm on nupp."></svg>
+  <div class="leg" aria-hidden="true"><span><i style="background:var(--base)"></i>Mõiste</span><span><i style="background:var(--fun)"></i>Valik</span><span><i style="background:var(--sav)"></i>Sisend</span><span><i style="background:var(--loan)"></i>Kuulujutt</span><span>Lõng on seos</span></div>
+  <div id="yarnCap" class="small" style="min-height:22px" aria-live="off">Tiri sõlme välja või puuduta seda.</div>
+  <div class="row"><button class="btn" type="button" id="reset" hidden>Sassi tagasi</button></div>
+</div>
+<div id="out" aria-live="polite"></div>
+<div id="lists">
+  <details id="byType"><summary>Kõik sõlmed</summary><div id="typeList"></div></details>
+  <details id="byLaw"><summary>Seaduse järgi</summary><div id="lawList"></div></details>
+</div>
+<footer class="small">
+  <p>Haridus ja simulatsioon, mitte nõu. Vastus näitab, mida seadus ütleb, mitte seda, mida sina peaksid tegema. Seadus muutub: iga sõlm näitab viimast kontrolli ja usaldusmärki. Praegu kontrollitud seadused kehtivad kuni 31.12.2026; uuemaid redaktsioone ei ole loetud.</p>
+  <p>Usaldusmärgid: [verified] seaduse tekst loetud; [secondary] ainult ametkonna või ajakirjanduse leht; [inferred] järeldatud; [kontrollimata] ei õnnestunud kontrollida. Seaduste tekstid: <a href="https://www.riigiteataja.ee/akt/KoPS">KoPS</a>, <a href="https://www.riigiteataja.ee/akt/TuMS">TuMS</a>, <a href="https://www.riigiteataja.ee/akt/RPKS">RPKS</a>. Omanik: Meeleraha.</p>
+  <p>Manifest, kõne tulevaselt minalt ja hingamine: <a href="index.html">Raha Meeled</a>. Hääl on sünteetiline, mitte päris inimese oma.</p>
+</footer>
+</main>
+<script type="application/json" id="nodes">[
+ {
+  "id": "kolm-sammast",
+  "type": "Mõiste",
+  "title": "Kolm sammast",
+  "short": "Eesti pension koosneb riiklikust pensionist (I), kogumispensionist (II) ja vabatahtlikust lisakogumisest (III).",
+  "long": "Riiklikku pensioni arvutab ja maksab riik sinu palga ja staaži alusel. Kogumispension ja lisakogumine on sinu nimel fondides hoitav vara, mille saad pensioniea lähedal kätte.",
+  "law": [
+   [
+    "RPKS",
+    "riikliku pensionikindlustuse seadus"
+   ],
+   [
+    "KoPS",
+    "kogumispensionide seadus"
+   ]
+  ],
+  "trust": "[secondary]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "riiklik-pension-osad",
+    "sisaldab"
+   ],
+   [
+    "ii-samba-oigus",
+    "sisaldab"
+   ],
+   [
+    "iii-samba-vanus",
+    "sisaldab"
+   ]
+  ],
+  "not_modelled": [
+   "See on üldine ülevaade, mitte seaduse täielik kirjeldus.",
+   "Seaduste tekstid kehtivad kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "sammas",
+   "sambad",
+   "I sammas",
+   "II sammas",
+   "III sammas",
+   "pensionisüsteem",
+   "kogumispension",
+   "kolmas sammas"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: kolm sammast. Eesti pension koosneb riiklikust pensionist ehk esimesest sambast, kogumispensionist ehk teisest sambast ja vabatahtlikust lisakogumisest ehk kolmandast sambast.",
+  "label": "Kolm sammast"
+ },
+ {
+  "id": "riiklik-pension-osad",
+  "type": "Mõiste",
+  "title": "Riikliku pensioni osad",
+  "short": "Riiklik pension koosneb baasosast, staažiosast, kindlustusosast ja ühendosast.",
+  "long": "Ühendosa arvutatakse kindlustusosaku ja solidaarosaku keskmisena, korrutatuna aastahinnaga. Pension arvutatakse 1. aprillist ümber eelmise aasta sotsiaalmaksu andmete alusel.",
+  "law": [
+   [
+    "RPKS",
+    "§ 11 lg 1 p 4 ja lg 1²"
+   ],
+   [
+    "RPKS",
+    "§ 11 lg 2"
+   ],
+   [
+    "RPKS",
+    "§ 25 lg 1 p 1"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "riikliku-pensioni-sisendid",
+    "sõltub"
+   ],
+   [
+    "pensioniiga",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Aastahinna täpne väärtus ja iga-aastane kinnitamine pole siin kontrollitud.",
+   "Eripensione ja soodustingimusi see sõlm ei kirjelda."
+  ],
+  "synonyms": [
+   "riiklik pension",
+   "baasosa",
+   "staažiosa",
+   "kindlustusosa",
+   "ühendosa",
+   "aastahind",
+   "pensioni arvutamine"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: riikliku pensioni osad. Riiklik pension koosneb baasosast, staažiosast, kindlustusosast ja ühendosast.",
+  "label": "Riiklik pension"
+ },
+ {
+  "id": "riikliku-pensioni-sisendid",
+  "type": "Sisend",
+  "title": "Palk ja staaž riikliku pensioni sisendina",
+  "short": "Pensioni suurus sõltub sinu palgast, staažist ja sellest, kas oled II sambaga liitunud.",
+  "long": "Kindlustusosak tuleb sinu palga ja keskmise brutokuupalga suhtest. Solidaarosak tuleb palga ja töötasu alammäära suhtest ning on kuni 1,0, II sambaga liitunul 0,8.",
+  "law": [
+   [
+    "RPKS",
+    "§ 12 lg 1"
+   ],
+   [
+    "RPKS",
+    "§ 13¹ lg 2 ja lg 7"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "riiklik-pension-osad",
+    "tuleneb seadusest"
+   ]
+  ],
+  "not_modelled": [
+   "Väide, et kindlustusosak on II sambaga liitunul 80%, on järeldatud ja kontrollimata.",
+   "Keskmise brutokuupalga ja töötasu alammäära praegused väärtused pole siin kontrollitud."
+  ],
+  "synonyms": [
+   "palk",
+   "staaž",
+   "kindlustusosak",
+   "solidaarosak",
+   "brutopalk",
+   "töötasu alammäär",
+   "pensionistaaž"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: palk ja staaž riikliku pensioni sisendina. Pensioni suurus sõltub sinu palgast, staažist ja sellest, kas oled teise sambaga liitunud.",
+  "label": "Palk ja staaž"
+ },
+ {
+  "id": "pensioniiga",
+  "type": "Mõiste",
+  "title": "Pensioniiga",
+  "short": "Pensioniiga on 65 aastat, kuid see võib kasvada ministri määrusega.",
+  "long": "Aastatel 1953–1960 sündinutel tõuseb pensioniiga järk-järgult. Hilisema tõusu arvutab seaduse valem ja minister kehtestab selle määrusega kaks aastat ette, kuni kolm kuud aastas.",
+  "law": [
+   [
+    "RPKS",
+    "§ 7 lg 1 ja lg 1¹"
+   ],
+   [
+    "RPKS",
+    "§ 7¹ lg 1, 4, 6 ja 7"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "paindlik-pension",
+    "muudab tulemust"
+   ],
+   [
+    "edasilykatud-pension",
+    "muudab tulemust"
+   ],
+   [
+    "ii-samba-oigus",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Konkreetsed pensioniea väärtused aastatele 2027–2029 on kontrollimata.",
+   "Ministri määrus võib muutuda; vaata alati kehtivat määrust."
+  ],
+  "synonyms": [
+   "pensionile minek",
+   "vanaduspension",
+   "vanus",
+   "65",
+   "pensioniea tõus",
+   "pensioniealine"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: pensioniiga. Pensioniiga on kuuskümmend viis aastat, kuid see võib kasvada ministri määrusega.",
+  "label": "Pensioniiga"
+ },
+ {
+  "id": "ii-samba-oigus",
+  "type": "Mõiste",
+  "title": "II samba väljavõtu õigus",
+  "short": "II samba raha väljavõtmise õigus tekib viis aastat enne pensioniiga.",
+  "long": "Kui pensioniiga on 65, tekib õigus 60-aastaselt, ja pensioniea tõustes nihkub ka see. Maksureeglid sõltuvad väljamakse viisist, vaata fondipensioni sõlme.",
+  "law": [
+   [
+    "KoPS",
+    "§ 40 lg 1"
+   ],
+   [
+    "TuMS",
+    "§ 20¹ lg 3–4"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "pensioniiga",
+    "sõltub"
+   ],
+   [
+    "fondipension",
+    "muudab tulemust"
+   ],
+   [
+    "ii-samba-varajane",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "KoPS-i 01.01.2027 jõustuv redaktsioon on lugemata.",
+   "Erijuhtumeid ja erandeid see sõlm ei kirjelda."
+  ],
+  "synonyms": [
+   "II sammas väljavõtt",
+   "60 aastat",
+   "väljavõtu õigus",
+   "viis aastat enne pensioniiga",
+   "kätte saama"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: teise samba väljavõtu õigus. Teise samba raha väljavõtmise õigus tekib viis aastat enne pensioniiga.",
+  "label": "II samba õigus"
+ },
+ {
+  "id": "ii-samba-varajane",
+  "type": "Valik",
+  "title": "II samba varajane väljavõtt",
+  "short": "II samba raha võib enne pensioniiga välja võtta kuni kaks korda.",
+  "long": "Väljavõtt lõpetab sissemaksed ja uus kord on võimalik alles kümne aasta pärast. Väljavõetud raha ei kasva enam fondis.",
+  "law": [
+   [
+    "KoPS",
+    "§ 43¹ lg 5–6"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "ii-samba-oigus",
+    "sõltub"
+   ],
+   [
+    "ii-samba-sissemaksed",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Väljavõtu tulumaks ja täpsemad tingimused pole siin kontrollitud.",
+   "KoPS-i 01.01.2027 jõustuv redaktsioon on lugemata."
+  ],
+  "synonyms": [
+   "raha põleb",
+   "väljavõtt",
+   "varajane väljavõtt",
+   "rahavabadus",
+   "võtan välja",
+   "enne pensioniiga välja"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: teise samba varajane väljavõtt. Teise samba raha võib enne pensioniiga välja võtta kuni kaks korda.",
+  "label": "II väljavõtt"
+ },
+ {
+  "id": "ii-samba-sissemaksed",
+  "type": "Sisend",
+  "title": "II samba sissemaksed",
+  "short": "II samba sissemaksed lõpevad 30. aprillil, 31. augustil või 31. detsembril.",
+  "long": "Kumb kuupäev kehtib, sõltub sellest, millal sa väljamaksete avalduse esitasid.",
+  "law": [
+   [
+    "KoPS",
+    "§ 7 lg 3"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "ii-samba-varajane",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Väide, et riigi osa on sotsiaalmaksu pensionikindlustuse osa, tuleneb sotsiaalmaksuseadusest ja on kontrollimata.",
+   "Lihtsustatud mudelites loetakse sissemaksed lõppenuks väljamakse algusega, mis ei ole täpne."
+  ],
+  "synonyms": [
+   "sissemakse",
+   "sissemaksete lõpp",
+   "II sammas sissemakse",
+   "avaldus"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: teise samba sissemaksed. Teise samba sissemaksed lõpevad kolmekümnendal aprillil, kolmekümne esimesel augustil või kolmekümne esimesel detsembril.",
+  "label": "II sissemaksed"
+ },
+ {
+  "id": "iii-samba-vanus",
+  "type": "Mõiste",
+  "title": "III samba väljavõtu vanus ja maks",
+  "short": "III samba raha tuleb tavaliselt kätte viis aastat enne pensioniiga.",
+  "long": "Vanus 55 kehtib neile, kes omandasid esimesed osakud või sõlmisid lepingu enne 2021. Enne seda vanust maksustatakse väljavõtt 22%, vanuse saabudes 10%, kui esimesest osakute omandamisest on viis aastat.",
+  "law": [
+   [
+    "KoPS",
+    "§ 63 lg 3"
+   ],
+   [
+    "KoPS",
+    "§ 72⁷ lg 2–3"
+   ],
+   [
+    "TuMS",
+    "§ 21 lg 3 p 1"
+   ],
+   [
+    "TuMS",
+    "§ 4 lg 1–2"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "pensioniiga",
+    "sõltub"
+   ],
+   [
+    "fondipension",
+    "muudab tulemust"
+   ],
+   [
+    "maksuvaba-tulu",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "III samba tagastuse täpne 12 kuu reegel (EMTA) on kontrollimata.",
+   "KoPS-i 01.01.2027 jõustuv redaktsioon on lugemata."
+  ],
+  "synonyms": [
+   "55",
+   "60",
+   "vabatahtlik pension",
+   "kolmas sammas väljavõtt",
+   "väljavõtu vanus",
+   "10% maks",
+   "viis aastat"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: kolmanda samba väljavõtu vanus ja maks. Kolmanda samba raha tuleb tavaliselt kätte viis aastat enne pensioniiga.",
+  "label": "III samba vanus"
+ },
+ {
+  "id": "iii-samba-mahaarvamine",
+  "type": "Mõiste",
+  "title": "III samba sissemaksete mahaarvamine",
+  "short": "III samba sissemakseid saab tulust maha arvata kuni 6 000 € aastas.",
+  "long": "Piir on 15% tulust, kuid mitte üle 6 000 €. Maha arvatud summa vähendab sinu maksustatavat tulu.",
+  "law": [
+   [
+    "TuMS",
+    "§ 28 lg 1 p 2 ja lg 2"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "iii-samba-vanus",
+    "sõltub"
+   ],
+   [
+    "maksuvaba-tulu",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Tulumaksu tagastuse ajastus ja deklareerimise praktika pole siin kirjeldatud."
+  ],
+  "synonyms": [
+   "mahaarvamine",
+   "tulumaksu tagastus",
+   "III sammas maks",
+   "6000",
+   "15% tulust",
+   "maksusoodustus"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: kolmanda samba sissemaksete mahaarvamine. Kolmanda samba sissemakseid saab tulust maha arvata kuni kuue tuhande euroni aastas.",
+  "label": "III mahaarvamine"
+ },
+ {
+  "id": "fondipension",
+  "type": "Mõiste",
+  "title": "Fondipension",
+  "short": "Fondipension on regulaarne väljamakse, mis järgib sinu fondiosakute väärtust.",
+  "long": "Iga kord võetakse tagasi osa osakuid ja makstakse välja nende puhasväärtus. Kui fondi väärtus tõuseb, kasvab euro makse; kui langeb, väheneb see.",
+  "law": [
+   [
+    "KoPS",
+    "§ 52³ lg 7–8"
+   ],
+   [
+    "KoPS",
+    "§ 60¹ lg 5 ja 8"
+   ],
+   [
+    "RM41",
+    "Rahandusministri määrus nr 41, lisa 1"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipensioni-periood",
+    "sõltub"
+   ],
+   [
+    "maksuvaba-tulu",
+    "muudab tulemust"
+   ],
+   [
+    "kogu-raha-korraga-vs-regulaarselt",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "II samba puhul on osakute arvu leidmise praktika (jäänud väljamaksed) kontrollimata.",
+   "Päris fondi väärtus kõigub; ühtlane tootlus on ainult näide."
+  ],
+  "synonyms": [
+   "väljamakse",
+   "regulaarne väljamakse",
+   "iga kuu",
+   "kuumakse",
+   "osakud",
+   "puhasväärtus",
+   "fondipensioni makse"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: fondipension. Fondipension on regulaarne väljamakse, mis järgib sinu fondiosakute väärtust.",
+  "label": "Fondipension"
+ },
+ {
+  "id": "fondipensioni-periood",
+  "type": "Mõiste",
+  "title": "Fondipensioni periood",
+  "short": "Fondipensioni periood põhineb sinu soo ja vanuse oodataval järelejäänud elul.",
+  "long": "Seadus kasutab meeste ja naiste kohta avaldatud elada jäänud aastate arvu täisaastateks ümardatuna. Lühem või pikem periood on lubatud, kuid lühem periood maksustub 10%.",
+  "law": [
+   [
+    "KoPS",
+    "§ 52³ lg 3–4"
+   ],
+   [
+    "KoPS",
+    "§ 60¹ lg 2–3"
+   ],
+   [
+    "TuMS",
+    "§ 20¹ lg 3 p 3 ja lg 4"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "tuleneb seadusest"
+   ],
+   [
+    "kogu-raha-korraga-vs-regulaarselt",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Seadus nõuab üle-eelmise kalendriaasta elutabelit; kasutatava tabeli aasta kontroll on tegemata.",
+   "Statistikaameti tabelite ümardamine on näide, mitte juriidiline arvutus."
+  ],
+  "synonyms": [
+   "periood",
+   "kestus",
+   "elada jäänud aastad",
+   "elutabel",
+   "kui kauaks",
+   "järelejäänud eluiga"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: fondipensioni periood. Fondipensioni periood põhineb sinu soo ja vanuse oodataval järelejäänud elul.",
+  "label": "Periood"
+ },
+ {
+  "id": "kogu-raha-korraga-vs-regulaarselt",
+  "type": "Valik",
+  "title": "Kõik korraga või regulaarselt",
+  "short": "Maksuvaba fondipension eeldab regulaarseid väljamakseid vähemalt kord kolme kuu jooksul.",
+  "long": "Lühema perioodi korral maksustub väljavõtt 10%. Kogu raha korraga võtmise maksuvalem sõltub sambast ja vanusest ning vajab eraldi kontrolli.",
+  "law": [
+   [
+    "TuMS",
+    "§ 20¹ lg 3 p 3 ja lg 4"
+   ],
+   [
+    "TuMS",
+    "§ 21 lg 4 p 3"
+   ],
+   [
+    "TuMS",
+    "§ 4 lg 2"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "sõltub"
+   ],
+   [
+    "fondipensioni-periood",
+    "sõltub"
+   ],
+   [
+    "maksuvaba-tulu",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Kogu raha korraga võtmise täpne maksumäär on selle sõlme sees kontrollimata.",
+   "Seadus kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "kõik korraga",
+   "ühekordne väljavõtt",
+   "kogu summa",
+   "tulumaks väljavõtul",
+   "regulaarne väljamakse"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: kõik korraga või regulaarselt. Maksuvaba fondipension eeldab regulaarseid väljamakseid vähemalt kord kolme kuu jooksul.",
+  "label": "Korraga või kuus"
+ },
+ {
+  "id": "paindlik-pension",
+  "type": "Valik",
+  "title": "Paindlik pension",
+  "short": "Paindlik pension võimaldab pensionile minna varem või hiljem kui tavaline pensioniiga.",
+  "long": "Varem võid minna 1–5 aastat, olenevalt staažist: 20 aastat annab ühe aasta ja 40 aastat viis aastat. Hiljem saab pensioni küsida igal ajal vähemalt 15 aasta staažiga.",
+  "law": [
+   [
+    "RPKS",
+    "§ 9¹ lg 1–3 ja lg 5"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "soodustingimused",
+    "välistab"
+   ],
+   [
+    "pensioniiga",
+    "sõltub"
+   ],
+   [
+    "edasilykatud-pension",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Pensioni suurus varem või hiljem võtmisel arvutatakse eraldi; seda siin ei kirjeldata.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "varem pensionile",
+   "varajane pension",
+   "kas ootan",
+   "enne pensioniiga",
+   "hiljem pensionile"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: paindlik pension. Paindlik pension võimaldab pensionile minna varem või hiljem kui tavaline pensioniiga.",
+  "label": "Paindlik pension"
+ },
+ {
+  "id": "edasilykatud-pension",
+  "type": "Valik",
+  "title": "Pensioni edasilükkamine",
+  "short": "Kui lükkad pensioni edasi, korrutatakse pension pärast pensioniikka jõudmist kordajaga.",
+  "long": "Kordaja protsendid kehtestab minister määrusega. Seaduse tekstist neid täpseid protsente ei leia.",
+  "law": [
+   [
+    "RPKS",
+    "§ 11¹ lg 1 ja 5"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "pensioniiga",
+    "sõltub"
+   ],
+   [
+    "paindlik-pension",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Kordaja konkreetsed protsendid on ministri määruses ja kontrollimata.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "lükkan edasi",
+   "hilisem pension",
+   "kas ootan",
+   "kordaja",
+   "ootamine",
+   "pensioni suurenemine"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: pensioni edasilükkamine. Kui lükkad pensioni edasi, korrutatakse pension pärast pensioniikka jõudmist kordajaga.",
+  "label": "Edasi lükkamine"
+ },
+ {
+  "id": "soodustingimused",
+  "type": "Valik",
+  "title": "Soodustingimustel pension",
+  "short": "Mitut last kasvatanud vanem võib pensionile minna 1, 3 või 5 aastat varem.",
+  "long": "Kolm last annab ühe aasta, neli last kolm aastat ning viis last või puudega laps viis aastat. Tingimus on, et lapsi on kasvatatud vähemalt kaheksa aastat ja pensionistaaž on olemas.",
+  "law": [
+   [
+    "RPKS",
+    "§ 10 lg 1 p 1–3"
+   ],
+   [
+    "RPKS",
+    "§ 9¹ lg 5"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "paindlik-pension",
+    "välistab"
+   ],
+   [
+    "pensioniiga",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Tervist kahjustava töö soodustingimused on SKA lehel, aga töö nimekirjad on eraldi õigusaktis ja kontrollimata.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "lapsed",
+   "kolm last",
+   "neli last",
+   "soodus",
+   "varem pensionile lastega",
+   "puudega laps"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: soodustingimustel pension. Mitut last kasvatanud vanem võib pensionile minna ühe, kolme või viie aasta võrra varem.",
+  "label": "Soodus pension"
+ },
+ {
+  "id": "maksuvaba-tulu",
+  "type": "Mõiste",
+  "title": "Maksuvaba tulu pensionieas",
+  "short": "Pensioniealisel on maksuvaba tulu 9 312 € aastas ehk 776 € kuus.",
+  "long": "Enne pensioniiga on maksuvaba tulu 8 400 € aastas ehk 700 € kuus. Maksuvaba tulu arvatakse maha aasta maksustatavast tulust.",
+  "law": [
+   [
+    "TuMS",
+    "§ 23⁵ lg 1"
+   ],
+   [
+    "TuMS",
+    "§ 23 lg 1"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "muudab tulemust"
+   ],
+   [
+    "pensioniiga",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Seadus ei ütle, kumb pension saab kinnipidamisel maksuvaba tulu esimesena; see on kontrollimata.",
+   "Maksuvaba tulu kinnipidamise praktika (EMTA) on kontrollimata."
+  ],
+  "synonyms": [
+   "maksuvaba",
+   "maks",
+   "tulumaks pensionil",
+   "776",
+   "9312",
+   "tulumaksuvaba"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: maksuvaba tulu pensionieas. Pensioniealisel on maksuvaba tulu üheksa tuhat kolmsada kaksteist eurot aastas ehk seitsesada seitsekümmend kuus eurot kuus.",
+  "label": "Maksuvaba tulu"
+ },
+ {
+  "id": "parimine",
+  "type": "Mõiste",
+  "title": "Pärimine",
+  "short": "Fondipension lõpeb surmaga ja alles jäänud osakud lähevad pärijale.",
+  "long": "Pärijale tehtav väljamakse on maksustatav. Eluaegse kindlustuspensioni korral makstakse pensioni surmani, garantiiperioodid on eraldi.",
+  "law": [
+   [
+    "KoPS",
+    "§ 52³ lg 10 p 2"
+   ],
+   [
+    "KoPS",
+    "§ 28 lg 1–2"
+   ],
+   [
+    "TuMS",
+    "§ 20¹ lg 1"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "sõltub"
+   ],
+   [
+    "kindlustuspension",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Pärijale tehtava väljamakse maksumäär on kontrollimata.",
+   "Riikliku pensioni käsitlust see sõlm ei kirjelda."
+  ],
+  "synonyms": [
+   "pärand",
+   "pärijad",
+   "surm",
+   "kui ma suren",
+   "pärida",
+   "pärandub"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: pärimine. Fondipension lõpeb surmaga ja alles jäänud osakud lähevad pärijale.",
+  "label": "Pärimine"
+ },
+ {
+  "id": "kindlustuspension",
+  "type": "Valik",
+  "title": "Eluaegne kindlustuspension",
+  "short": "Eluaegne kindlustuspension makstakse kuni surmani, olenemata sellest, kui kaua elad.",
+  "long": "Seadus ütleb, et see pension makstakse surmani. Garantiiperioodid on eraldi küsimus.",
+  "law": [
+   [
+    "KoPS",
+    "§ 63 lg 4"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "muudab tulemust"
+   ],
+   [
+    "parimine",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Garantiiperioodide täpne sisu ja kindlustuspensioni maksutingimused on kontrollimata.",
+   "Kindlustuspensioni suurust siin ei arvutata."
+  ],
+  "synonyms": [
+   "annuiteet",
+   "eluaegne pension",
+   "kindlustus",
+   "surmani",
+   "pensionikindlustus"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: eluaegne kindlustuspension. Eluaegne kindlustuspension makstakse kuni surmani, olenemata sellest, kui kaua elad.",
+  "label": "Eluaegne pension"
+ },
+ {
+  "id": "tootamine-pensionil",
+  "type": "Mõiste",
+  "title": "Töötamine pärast pensioniiga",
+  "short": "Pensioniealisele makstakse pensioni ka siis, kui ta töötab.",
+  "long": "Alates 1. oktoobrist 2026 ei peata töötamine pensioni maksmist. Enne pensioniikka jõudmist ennetähtaegset pensioni töötamise ajal ei maksta.",
+  "law": [
+   [
+    "RPKS",
+    "§ 43 lg 1 ja 1¹"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "pensioniiga",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Ennetähtaegse pensioni täpset määratlust siin ei kirjeldata.",
+   "Töötamise mõju pensioni suurusele pole siin kontrollitud.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "töötan pensionil",
+   "tööl käimine",
+   "pension ja palk",
+   "töö pärast pensioniiga"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: töötamine pärast pensioniiga. Pensioniealisele makstakse pensioni ka siis, kui ta töötab.",
+  "label": "Töötamine"
+ },
+ {
+  "id": "eripension",
+  "type": "Mõiste",
+  "title": "Eripension",
+  "short": "Eripensioni saajale ei määrata paindlikku pensioni; eripensioni algus sõltub eripensioni liigist.",
+  "long": "Eripensioni vanus sõltub liigist: politsei puhul vähemalt 55 aastat, kaitseväe puhul 50 aastat, mõnel juhul väljateenitud aastate järgi sõltumata vanusest. Need andmed on SKA lehelt.",
+  "law": [
+   [
+    "RPKS",
+    "§ 9¹ lg 5"
+   ],
+   [
+    "SKA",
+    "eripensionide leht"
+   ]
+  ],
+  "trust": "[secondary]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "paindlik-pension",
+    "välistab"
+   ],
+   [
+    "pensioniiga",
+    "sõltub"
+   ]
+  ],
+  "not_modelled": [
+   "Eripension on mudelites lihtsustatult kindel summa kuus; osa eripensione ei maksta töötamise ajal ja neid indekseeritakse.",
+   "Eripensioni liikide täielik nimekiri ja vanused on kontrollimata.",
+   "Kumb pension saab maksuvaba tulu esimesena, seadus ei ütle."
+  ],
+  "synonyms": [
+   "politsei pension",
+   "kaitseväe pension",
+   "väljateenitud aastate pension",
+   "kohtuniku pension"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: eripension. Eripensioni saajale ei määrata paindlikku pensioni. Eripensioni algus sõltub eripensioni liigist.",
+  "label": "Eripension"
+ },
+ {
+  "id": "aastahind",
+  "type": "Mõiste",
+  "title": "Aastahind ja iga-aastane ümberarvutus",
+  "short": "Riikliku pensioni ühendosa arvutatakse aastahinna alusel, mis kinnitatakse Vabariigi Valitsuse korraldusega.",
+  "long": "Pension arvutatakse 1. aprillist ümber eelmise aasta sotsiaalmaksu andmete alusel. Aastahinna täpse suuruse kinnitab valitsus.",
+  "law": [
+   [
+    "RPKS",
+    "§ 11 lg 2"
+   ],
+   [
+    "RPKS",
+    "§ 25 lg 1 p 1"
+   ],
+   [
+    "RPKS",
+    "§ 26 lg 5¹"
+   ]
+  ],
+  "trust": "[secondary]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "riiklik-pension-osad",
+    "sõltub"
+   ],
+   [
+    "riikliku-pensioni-sisendid",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Aastahinna 2026. aasta väärtus 10,477 € pärineb SKA ja ERR-i lehtedelt ning on Vabariigi Valitsuse korraldusest kontrollimata.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "aastahind",
+   "indekseerimine",
+   "1. aprill",
+   "ümberarvutus",
+   "pensionitõus",
+   "pensioni tõus"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: aastahind ja iga-aastane ümberarvutus. Riikliku pensioni ühendosa arvutatakse aastahinna alusel, mis kinnitatakse Vabariigi Valitsuse korraldusega.",
+  "label": "Aastahind"
+ },
+ {
+  "id": "taiendav-sissemakse",
+  "type": "Mõiste",
+  "title": "Täiendav sissemakse alla kolmeaastase lapse vanemale",
+  "short": "Täiendav sissemakse kuulub alla kolmeaastast last kasvavale vanemale, mitte kõigile II samba liikmetele.",
+  "long": "See on eraldi sissemakse, mis on KoPS § 10 järgi seotud vanemaga, kes kasvatab alla kolmeaastast last. Tavalise sissemakse kohta vaata sõlme „II samba sissemaksed“.",
+  "law": [
+   [
+    "KoPS",
+    "§ 10"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "ii-samba-sissemaksed",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Täiendava sissemakse suurus ja saamise tingimused ei ole siin kontrollitud.",
+   "Väide, et riigi 4% on sotsiaalmaksu pensionikindlustuse osa, tuleneb sotsiaalmaksuseadusest ja on kontrollimata."
+  ],
+  "synonyms": [
+   "laps alla kolme",
+   "lapsevanem",
+   "lapsehoolduse sissemakse",
+   "riigi 4%",
+   "täiendav sissemakse"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: täiendav sissemakse alla kolmeaastase lapse vanemale. Täiendav sissemakse kuulub alla kolmeaastast last kasvavale vanemale, mitte kõigile teise samba liikmetele.",
+  "label": "Lapsevanema lisa"
+ },
+ {
+  "id": "sisend-synniaasta",
+  "type": "Sisend",
+  "title": "Sünniaasta",
+  "short": "Sinu sünniaasta määrab, mis on sinu pensioniiga ja mitu aastat sa pensionini oled.",
+  "long": "1953–1960 sündinutel tõuseb pensioniiga järk-järgult ja hilisemate põlvkondade pensioniiga arvutatakse valemiga. Sünniaasta ütleb ka, millal II samba väljavõtu õigus tekib: viis aastat enne pensioniiga.",
+  "law": [
+   [
+    "RPKS",
+    "§ 7 lg 1¹"
+   ],
+   [
+    "RPKS",
+    "§ 7¹ lg 1 ja 4"
+   ],
+   [
+    "KoPS",
+    "§ 40 lg 1"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "pensioniiga",
+    "muudab tulemust"
+   ],
+   [
+    "ii-samba-oigus",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Konkreetsed pensioniea väärtused 2027–2029 on kontrollimata.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "aasta sündinud",
+   "põlvkond",
+   "sünnipäev",
+   "sündinud"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: sünniaasta. Sinu sünniaasta määrab, mis on sinu pensioniiga ja mitu aastat sa pensionini oled.",
+  "label": "Sünniaasta"
+ },
+ {
+  "id": "sisend-sugu",
+  "type": "Sisend",
+  "title": "Sugu",
+  "short": "Sugu mõjutab fondipensioni perioodi, sest elada jäänud aastate arv on meestel ja naistel erinev.",
+  "long": "Seadus kasutab meeste ja naiste kohta avaldatud elada jäänud aastate arvu. Pikem periood tähendab väiksemat esimest makset, sest osakud jagatakse pikemale ajale.",
+  "law": [
+   [
+    "KoPS",
+    "§ 52³ lg 3"
+   ],
+   [
+    "KoPS",
+    "§ 60¹ lg 2"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipensioni-periood",
+    "muudab tulemust"
+   ],
+   [
+    "fondipension",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Statistikaameti tabeli aasta nõue (üle-eelmine kalendriaasta) on kontrollimata.",
+   "Soo mõju teistele pensioniosadele on siin kontrollimata."
+  ],
+  "synonyms": [
+   "mees",
+   "naine",
+   "meeste ja naiste",
+   "sooline erinevus"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: sugu. Sugu mõjutab fondipensioni perioodi, sest elada jäänud aastate arv on meestel ja naistel erinev.",
+  "label": "Sugu"
+ },
+ {
+  "id": "sisend-lapsed",
+  "type": "Sisend",
+  "title": "Laste arv",
+  "short": "Laste arv ja kasvatamise aeg määravad, kas sul on õigus soodustingimustel pensionile.",
+  "long": "Kolm last annab ühe aasta varem, neli last kolm aastat ja viis last viis aastat. Lapsi peab olema kasvatatud vähemalt kaheksa aastat.",
+  "law": [
+   [
+    "RPKS",
+    "§ 10 lg 1 p 1–3"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "soodustingimused",
+    "muudab tulemust"
+   ],
+   [
+    "taiendav-sissemakse",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Puudega lapse erijuhtum on soodustingimuste sõlmes.",
+   "RPKS kehtib kuni 31.12.2026; uuemat redaktsiooni pole kontrollitud."
+  ],
+  "synonyms": [
+   "lapsed",
+   "mitu last",
+   "laste arv",
+   "lapse kasvatamine"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: laste arv. Laste arv ja kasvatamise aeg määravad, kas sul on õigus soodustingimustel pensionile.",
+  "label": "Laste arv"
+ },
+ {
+  "id": "sisend-tootlus",
+  "type": "Sisend",
+  "title": "Tootlus",
+  "short": "Fondi tootlus muudab sinu fondipensioni euro makset, sest makse tuleb osakute väärtusest.",
+  "long": "Seadus ei kinnita ühtegi tootlust. Makse on tagasivõetavate osakute arv korrutatud nende puhasväärtusega.",
+  "law": [
+   [
+    "KoPS",
+    "§ 52³ lg 7"
+   ],
+   [
+    "KoPS",
+    "§ 60¹ lg 5"
+   ]
+  ],
+  "trust": "[verified]",
+  "verified_at": "12.10.2026",
+  "related": [
+   [
+    "fondipension",
+    "muudab tulemust"
+   ]
+  ],
+  "not_modelled": [
+   "Tulevast tootlust ei tea keegi; siin ei ole eeldatavat tootlust.",
+   "Tasud ja inflatsioon ei ole siin kirjeldatud."
+  ],
+  "synonyms": [
+   "tootlus",
+   "fondi tootlus",
+   "fondi väärtus",
+   "tulu fondis",
+   "kasv"
+  ],
+  "owner": "Meeleraha",
+  "say": "Sa harutasid lõnga: tootlus. Fondi tootlus muudab sinu fondipensioni euro makset, sest makse tuleb osakute väärtusest.",
+  "label": "Tootlus"
+ }
+]</script>
+<script type="application/json" id="rumors">[
+ {
+  "id": "r-iii-55",
+  "text": "III sammast saab alati 55-aastaselt kätte.",
+  "verdict": "Osaliselt tõsi",
+  "kind": "partly",
+  "answer": "Vanus 55 kehtib ainult neile, kes omandasid esimesed osakud või sõlmisid lepingu enne 2021. Teistele tuleb raha kätte viis aastat enne pensioniiga.",
+  "nodes": [
+   "iii-samba-vanus"
+  ],
+  "say": "Kuulujutt: kolmandat sammast saab alati viiekümne viie aastaselt kätte. Vastus: osaliselt tõsi. Viiekümne viie aastaselt kehtib ainult neile, kes omandasid esimesed osakud või sõlmisid lepingu enne kahe tuhande kahekümne esimest aastat. Teistele tuleb raha kätte viis aastat enne pensioniiga.",
+  "label": "55 aastaselt?"
+ },
+ {
+  "id": "r-ii-valja",
+  "text": "II samba raha saab välja võtta, kui tahan.",
+  "verdict": "Piiranguga",
+  "kind": "partly",
+  "answer": "Enne pensioniiga saab II samba raha välja võtta kuni kaks korda. Pärast väljavõttu lõpevad sissemaksed ja uus kord on võimalik alles kümne aasta pärast.",
+  "nodes": [
+   "ii-samba-varajane",
+   "ii-samba-sissemaksed"
+  ],
+  "say": "Kuulujutt: teise samba raha saab välja võtta, kui tahan. Vastus: piiranguga. Enne pensioniiga saab teise samba raha välja võtta kuni kaks korda. Pärast väljavõttu lõpevad sissemaksed ja uus kord on võimalik alles kümne aasta pärast.",
+  "label": "Raha välja?"
+ },
+ {
+  "id": "r-fond-sama",
+  "text": "Fondipensioni makse on iga kuu täpselt sama suur.",
+  "verdict": "Ei pea tingimata paika",
+  "kind": "no",
+  "answer": "Fondipensioni euro makse tuleb tagasivõetavate osakute arvust korrutatuna nende väärtusega. Kui fondi väärtus muutub, muutub ka makse.",
+  "nodes": [
+   "fondipension",
+   "fondipensioni-periood"
+  ],
+  "say": "Kuulujutt: fondipensioni makse on iga kuu täpselt sama suur. Vastus: ei pea tingimata paika. Fondipensioni euro makse tuleb tagasivõetavate osakute arvust korrutatuna nende väärtusega. Kui fondi väärtus muutub, muutub ka makse.",
+  "label": "Sama makse?"
+ },
+ {
+  "id": "r-pension-65",
+  "text": "Pensioniiga on kõigil 65 aastat.",
+  "verdict": "Osaliselt tõsi",
+  "kind": "partly",
+  "answer": "Üldine pensioniiga on 65, aga 1953–1960 sündinutel tõuseb see järk-järgult. Hilisemat tõusu kehtestab minister määrusega.",
+  "nodes": [
+   "pensioniiga"
+  ],
+  "say": "Kuulujutt: pensioniiga on kõigil kuuskümmend viis aastat. Vastus: osaliselt tõsi. Üldine pensioniiga on kuuskümmend viis, aga aastatel tuhat üheksasada viiskümmend kolm kuni tuhat üheksasada kuuskümmend sündinutel tõuseb see järk-järgult. Hilisemat tõusu kehtestab minister määrusega.",
+  "label": "Kõigil 65?"
+ },
+ {
+  "id": "r-paindlik-sood",
+  "text": "Paindlikku pensioni võib võtta ka soodustingimustel pensioniga.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Kellele on määratud soodustingimustel või eripension, sellele paindlikku pensioni ei määrata.",
+  "nodes": [
+   "paindlik-pension",
+   "soodustingimused"
+  ],
+  "say": "Kuulujutt: paindlikku pensioni võib võtta ka soodustingimustel pensioniga. Vastus: ei. Kellele on määratud soodustingimustel või eripension, sellele paindlikku pensioni ei määrata.",
+  "label": "Paindlik + soodus?"
+ },
+ {
+  "id": "r-riiklik-sama",
+  "text": "Riiklik pension on kõigil sama suur.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Riiklik pension koosneb osadest, mis sõltuvad palgast ja staažist. Seetõttu ei ole see kõigil sama.",
+  "nodes": [
+   "riiklik-pension-osad",
+   "riikliku-pensioni-sisendid"
+  ],
+  "say": "Kuulujutt: riiklik pension on kõigil sama suur. Vastus: ei. Riiklik pension koosneb osadest, mis sõltuvad palgast ja staažist. Seetõttu ei ole see kõigil sama.",
+  "label": "Kõigil sama?"
+ },
+ {
+  "id": "r-maks-pensionil",
+  "text": "Pensionilt ei pea maksu maksma.",
+  "verdict": "Osaliselt tõsi",
+  "kind": "partly",
+  "answer": "Pensioniealisel on maksuvaba tulu 9 312 € aastas. Sellest suuremat tulu maksustatakse.",
+  "nodes": [
+   "maksuvaba-tulu"
+  ],
+  "say": "Kuulujutt: pensionilt ei pea maksu maksma. Vastus: osaliselt tõsi. Pensioniealisel on maksuvaba tulu üheksa tuhat kolmsada kaksteist eurot aastas. Sellest suuremat tulu maksustatakse.",
+  "label": "Maksuta pension?"
+ },
+ {
+  "id": "r-toota-pension",
+  "text": "Töötamine pensioni ajal võtab pensioni ära.",
+  "verdict": "Ei (alates 1.10.2026)",
+  "kind": "no",
+  "answer": "Alates 1. oktoobrist 2026 töötamine pensioni maksmist ei peata. Enne pensioniikka jõudmist ennetähtaegset pensioni töötamise ajal ei maksta.",
+  "nodes": [
+   "tootamine-pensionil"
+  ],
+  "say": "Kuulujutt: töötamine pensioni ajal võtab pensioni ära. Vastus: ei, alates esimesest oktoobrist kaks tuhat kakskümmend kuus. Alates esimesest oktoobrist kaks tuhat kakskümmend kuus ei peata töötamine pensioni maksmist. Enne pensioniikka jõudmist ennetähtaegset pensioni töötamise ajal ei maksta.",
+  "label": "Töötan ja saan?"
+ },
+ {
+  "id": "r-surm-riik",
+  "text": "Surma korral jääb fondipensioni raha riigile.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Fondipension lõpeb surmaga ja alles jäänud osakud lähevad pärijale. Pärijale tehtav väljamakse on maksustatav.",
+  "nodes": [
+   "parimine"
+  ],
+  "say": "Kuulujutt: surma korral jääb fondipensioni raha riigile. Vastus: ei. Fondipension lõpeb surmaga ja alles jäänud osakud lähevad pärijale. Pärijale tehtav väljamakse on maksustatav.",
+  "label": "Riigile jääb?"
+ },
+ {
+  "id": "r-kindlustus-lopeb",
+  "text": "Eluaegne kindlustuspension lõpeb, kui raha otsa saab.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Eluaegne kindlustuspension makstakse surmani. Garantiiperioodid on eraldi ja nende sisu pole siin kontrollitud.",
+  "nodes": [
+   "kindlustuspension"
+  ],
+  "say": "Kuulujutt: eluaegne kindlustuspension lõpeb, kui raha otsa saab. Vastus: ei. Eluaegne kindlustuspension makstakse surmani. Garantiiperioodid on eraldi ja nende sisu pole siin kontrollitud.",
+  "label": "Raha saab otsa?"
+ },
+ {
+  "id": "r-eri-paindlik",
+  "text": "Eripensioni saaja võib võtta ka paindlikku pensioni.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Kellele on määratud eripension või soodustingimustel pension, sellele paindlikku pensioni ei määrata.",
+  "nodes": [
+   "eripension",
+   "paindlik-pension"
+  ],
+  "say": "Kuulujutt: eripensioni saaja võib võtta ka paindlikku pensioni. Vastus: ei. Kellele on määratud eripension või soodustingimustel pension, sellele paindlikku pensioni ei määrata.",
+  "label": "Eri + paindlik?"
+ },
+ {
+  "id": "r-sugu-pensioniiga",
+  "text": "Pensioniiga sõltub sinu soost.",
+  "verdict": "Osaliselt tõsi",
+  "kind": "partly",
+  "answer": "Üldine pensioniiga on seaduses üks arv, 65. Sugu mõjutab aga fondipensioni perioodi, sest elada jäänud aastate arv on meestel ja naistel erinev.",
+  "nodes": [
+   "sisend-sugu",
+   "pensioniiga"
+  ],
+  "say": "Kuulujutt: pensioniiga sõltub sinu soost. Vastus: osaliselt tõsi. Üldine pensioniiga on seaduses üks arv, kuuskümmend viis. Sugu mõjutab aga fondipensioni perioodi, sest elada jäänud aastate arv on meestel ja naistel erinev.",
+  "label": "Soost sõltub?"
+ },
+ {
+  "id": "r-sama-igal-aastal",
+  "text": "Pensioni suurus on igal aastal sama.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Pension arvutatakse 1. aprillist ümber eelmise aasta sotsiaalmaksu andmete alusel. Ühendosa sõltub aastahinnast, mille kinnitab valitsus.",
+  "nodes": [
+   "aastahind",
+   "riiklik-pension-osad"
+  ],
+  "say": "Kuulujutt: pensioni suurus on igal aastal sama. Vastus: ei. Pension arvutatakse esimesest aprillist ümber eelmise aasta sotsiaalmaksu andmete alusel. Ühendosa sõltub aastahinnast, mille kinnitab valitsus.",
+  "label": "Igal aastal sama?"
+ },
+ {
+  "id": "r-luhem-maksuvaba",
+  "text": "Lühema perioodiga fondipension on maksuvaba.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Lühema perioodi korral maksustub väljavõtt 10%. Maksuvaba väljamakse eeldab regulaarseid väljamakseid vähemalt kord kolme kuu jooksul.",
+  "nodes": [
+   "fondipensioni-periood",
+   "kogu-raha-korraga-vs-regulaarselt"
+  ],
+  "say": "Kuulujutt: lühema perioodiga fondipension on maksuvaba. Vastus: ei. Lühema perioodi korral maksustub väljavõtt kümme protsenti. Maksuvaba väljamakse eeldab regulaarseid väljamakseid vähemalt kord kolme kuu jooksul.",
+  "label": "Lühem maksuvaba?"
+ },
+ {
+  "id": "r-kolm-last",
+  "text": "Kui lapsi on kolm, saan pensionile viis aastat varem.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Kolm last annab ühe aasta varem, neli last kolm aastat ja viis last viis aastat. Lapsi peab olema kasvatatud vähemalt kaheksa aastat.",
+  "nodes": [
+   "soodustingimused",
+   "sisend-lapsed"
+  ],
+  "say": "Kuulujutt: kui lapsi on kolm, saan pensionile viis aastat varem. Vastus: ei. Kolm last annab ühe aasta varem, neli last kolm aastat ja viis last viis aastat. Lapsi peab olema kasvatatud vähemalt kaheksa aastat.",
+  "label": "Kolm last?"
+ },
+ {
+  "id": "r-tootlus-kindel",
+  "text": "Fondi tootlus on kindel ja seadus tagab selle.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Seadus ei kinnita ühtegi tootlust. Fondipensioni makse tuleb osakute arvust korrutatuna nende puhasväärtusega ja muutub fondi väärtusega.",
+  "nodes": [
+   "sisend-tootlus",
+   "fondipension"
+  ],
+  "say": "Kuulujutt: fondi tootlus on kindel ja seadus tagab selle. Vastus: ei. Seadus ei kinnita ühtegi tootlust. Fondipensioni makse tuleb osakute arvust korrutatuna nende puhasväärtusega ja muutub fondi väärtusega.",
+  "label": "Kindel tootlus?"
+ },
+ {
+  "id": "r-taiendav-koigile",
+  "text": "Kõik II samba liikmed saavad täiendava sissemakse.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Täiendav sissemakse on seotud alla kolmeaastast last kasvava vanemaga, mitte kõigi II samba liikmetega.",
+  "nodes": [
+   "taiendav-sissemakse"
+  ],
+  "say": "Kuulujutt: kõik teise samba liikmed saavad täiendava sissemakse. Vastus: ei. Täiendav sissemakse on seotud alla kolmeaastast last kasvava vanemaga, mitte kõigi teise samba liikmetega.",
+  "label": "Lisa kõigile?"
+ },
+ {
+  "id": "r-edasi-sama",
+  "text": "Pensioni edasilükkamine ei muuda pensioni suurust.",
+  "verdict": "Ei",
+  "kind": "no",
+  "answer": "Kui lükkad pensioni edasi, korrutatakse pension pärast pensioniikka jõudmist kordajaga. Kordaja protsendid kehtestab minister määrusega ja need on siin kontrollimata.",
+  "nodes": [
+   "edasilykatud-pension"
+  ],
+  "say": "Kuulujutt: pensioni edasilükkamine ei muuda pensioni suurust. Vastus: ei. Kui lükkad pensioni edasi, korrutatakse pension pärast pensioniikka jõudmist kordajaga. Kordaja protsendid kehtestab minister määrusega ja need on siin kontrollimata.",
+  "label": "Edasi = sama?"
+ }
+]</script>
+<script>
+(function(){
+var NODES=JSON.parse(document.getElementById('nodes').textContent),RUMORS=JSON.parse(document.getElementById('rumors').textContent);
+var BYID={};NODES.forEach(function(n){BYID[n.id]=n;});
+var ACT={KoPS:'https://www.riigiteataja.ee/akt/KoPS',TuMS:'https://www.riigiteataja.ee/akt/TuMS',RPKS:'https://www.riigiteataja.ee/akt/RPKS',RM41:'https://www.riigiteataja.ee/aktilisa/0000/1308/6135/13086138.pdf',SKA:'https://www.sotsiaalkindlustusamet.ee'};
+var TCLS={'[verified]':'t-good','[secondary]':'t-warn','[inferred]':'t-info','[kontrollimata]':'t-bad'};
+var KCLS={partly:'t-warn',no:'t-bad',yes:'t-good'};
+var STOP={};'kas ja on mis see et ei või ka mul mulle minu oma kui siis ma olen tahan kuidas miks millal mida kes kus ta nad me te sa sind mind oleks ole kuni nii ainult aga'.split(' ').forEach(function(w){STOP[w]=1;});
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function words(s){var t=String(s).toLowerCase().replace(/[^a-zäöüõšž0-9\s]/g,' ').split(/\s+/);return t.filter(function(w){return w&&!STOP[w]&&(w.length>=3||w==='ii'||/^\d+$/.test(w));});}
+function cp(a,b){var i=0,m=Math.min(a.length,b.length);while(i<m&&a[i]===b[i])i++;return i;}
+function same(a,b){if(a===b)return 2;if(/^\d+$/.test(a)||/^\d+$/.test(b))return 0;var m=Math.min(a.length,b.length);if(m<4)return 0;if(Math.abs(a.length-b.length)>3)return 0;var p=cp(a,b);return(p>=4&&p>=m-2)?1:0;}
+function best(w,list){var r=0;for(var i=0;i<list.length;i++){var v=same(w,list[i]);if(v>r){r=v;if(r===2)break;}}return r;}
+var IDX=NODES.map(function(n){return {n:n,title:words(n.title),syn:words(n.synonyms.join(' ')),short:words(n.short),other:words(n.long+' '+n.law.map(function(l){return l[1];}).join(' ')+' '+n.not_modelled.join(' '))};});
+var WGT={title:[4,10],syn:[3,10],short:[2,6],other:[1,3]};
+function search(q){var qw=words(q);if(!qw.length)return [];var res=[];IDX.forEach(function(x){var sc=0,hit=0;qw.forEach(function(w){var h=0;['title','syn','short','other'].forEach(function(f){var b=best(w,x[f]);if(b){sc+=WGT[f][b-1];h=1;}});hit+=h;});if(hit===qw.length)sc+=3;if(sc>0)res.push([x.n,sc]);});res.sort(function(a,b){return b[1]-a[1];});return res.map(function(r){return r[0];});}
+var RW=RUMORS.map(function(r){return words(r.text);});
+function rumor(q){var qw=words(q),bestR=null,bh=0;RUMORS.forEach(function(r,i){var h=0;qw.forEach(function(w){if(best(w,RW[i]))h++;});if(h>=3&&h/RW[i].length>=0.6&&h>bh){bh=h;bestR=r;}});return bestR;}
+function chipT(n){return '<span class="chip '+(TCLS[n.trust]||'')+'">'+esc(n.trust)+'</span>';}
+function lawChips(n){return n.law.map(function(l){var u=ACT[l[0]];var label=(l[0]==='RM41'?'':l[0]+' ')+l[1];return '<a class="chip" href="'+esc(u)+'">'+esc(label)+'</a>';}).join(' ');}
+function nodeLink(n){return '<a class="chip" href="#'+esc(n.id)+'">'+esc(n.title)+'</a>';}
+
+/* lõngakera */
+var VW=400,VH=320,CX=200,CY=160,NS='http://www.w3.org/2000/svg';
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var ALL=[],AIDX={};
+NODES.forEach(function(n){ALL.push({id:n.id,kind:'n',type:n.type,title:n.title,label:n.label});});
+RUMORS.forEach(function(r){ALL.push({id:r.id,kind:'r',type:'Kuulujutt',title:r.text,label:r.label});});
+ALL.forEach(function(o,i){AIDX[o.id]=i;});
+var COLOR={'Mõiste':'var(--base)','Valik':'var(--fun)','Sisend':'var(--sav)','Kuulujutt':'var(--loan)'};
+var EDGES=[];
+NODES.forEach(function(n){n.related.forEach(function(r){EDGES.push({a:AIDX[n.id],b:AIDX[r[0]],rel:r[1]});});});
+RUMORS.forEach(function(r){r.nodes.forEach(function(id){EDGES.push({a:AIDX[r.id],b:AIDX[id],rel:'kuulujutt'});});});
+function layout(){
+  var R=rng(11),N=ALL.length,p=[],v=[],i,j;
+  for(i=0;i<N;i++){var a=2*Math.PI*i/N+R()*0.6,r=50+R()*70;p.push([Math.cos(a)*r,Math.sin(a)*r*0.8]);v.push([0,0]);}
+  for(var it=0;it<500;it++){
+    var f=[];for(i=0;i<N;i++)f.push([-p[i][0]*0.014,-p[i][1]*0.02]);
+    for(i=0;i<N;i++)for(j=i+1;j<N;j++){var dx=p[i][0]-p[j][0],dy=p[i][1]-p[j][1],d2=dx*dx+dy*dy+0.5,d=Math.sqrt(d2),fr=1500/d2;f[i][0]+=dx/d*fr;f[i][1]+=dy/d*fr;f[j][0]-=dx/d*fr;f[j][1]-=dy/d*fr;}
+    EDGES.forEach(function(e){var dx=p[e.b][0]-p[e.a][0],dy=p[e.b][1]-p[e.a][1],d=Math.sqrt(dx*dx+dy*dy)+0.01,fr=(d-52)*0.03;f[e.a][0]+=dx/d*fr;f[e.a][1]+=dy/d*fr;f[e.b][0]-=dx/d*fr;f[e.b][1]-=dy/d*fr;});
+    for(i=0;i<N;i++){v[i][0]=(v[i][0]+f[i][0])*0.82;v[i][1]=(v[i][1]+f[i][1])*0.82;p[i][0]+=v[i][0];p[i][1]+=v[i][1];}
+  }
+  var mx=1,my=1;p.forEach(function(q){mx=Math.max(mx,Math.abs(q[0]));my=Math.max(my,Math.abs(q[1]));});
+  var sx=150/mx,sy=126/my;
+  return p.map(function(q){return [CX+q[0]*sx,CY+q[1]*sy];});
+}
+var P0=layout(),cur=P0.map(function(q){return q.slice();}),tar=P0.map(function(q){return q.slice();});
+var yarnEl=document.getElementById('yarn');
+EDGES.forEach(function(e,i){var R=rng(100+i*7);e.k=[];for(var s=0;s<3;s++){e.k.push({u1:-0.4+R()*0.9,u2:-0.4+R()*0.9,a1:(R()*2-1),a2:(R()*2-1),sp:0.6+R()*0.8,ph:R()*6.28});}e.wob=0.9;e.wt=0.9;e.op=0.5;e.ot=0.5;e.paths=[];});
+EDGES.forEach(function(e){for(var s=0;s<3;s++){var pe=document.createElementNS(NS,'path');pe.setAttribute('class','th');pe.setAttribute('fill','none');pe.setAttribute('stroke',COLOR[ALL[s===1?e.b:e.a].type]);pe.setAttribute('stroke-linecap','round');pe.setAttribute('pointer-events','none');yarnEl.appendChild(pe);e.paths.push(pe);}});
+function splitLabel(l){if(l.length<=11||l.indexOf(' ')<0)return [l];var best=null,bd=99;for(var i=1;i<l.length-1;i++){if(l[i]!==' ')continue;var a=l.slice(0,i),b=l.slice(i+1),d=Math.abs(a.length-b.length);if(Math.max(a.length,b.length)<=13&&d<bd){bd=d;best=[a,b];}}return best||[l];}
+var THRESH=55;
+function clampN(v,a,b){return Math.max(a,Math.min(b,v));}
+function svgPt(e){var pt=yarnEl.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var m=yarnEl.getScreenCTM();if(!m)return [e.clientX,e.clientY];var q=pt.matrixTransform(m.inverse());return [q.x,q.y];}
+function applyDrag(i,dr,dx,dy){
+  var nbs={};EDGES.forEach(function(e){if(e.a===i)nbs[e.b]=1;if(e.b===i)nbs[e.a]=1;});
+  var px=clampN(dr.ox+dx,10,VW-10),py=clampN(dr.oy+dy,10,VH-10),ddx=px-dr.ox,ddy=py-dr.oy,dd=Math.hypot(ddx,ddy),j;
+  for(j=0;j<ALL.length;j++){
+    if(j===i){tar[j]=[px,py];cur[j]=[px,py];}
+    else{var w=nbs[j]?0.45:0.08;tar[j]=[clampN(dr.rest[j][0]+ddx*w,8,VW-8),clampN(dr.rest[j][1]+ddy*w,8,VH-8)];}
+  }
+  var sT=Math.min(1,dd/THRESH);
+  EDGES.forEach(function(e){if(e.a===i||e.b===i){e.wt=0.9-0.85*sT;e.ot=0.55+0.4*sT;e.hl=sT>0.4;}});
+  KN[i].rt=dd>THRESH?1:0;KN[i].lt=1;
+  var ce=document.getElementById('yarnCap');if(ce){ce.textContent=dd>THRESH?'Lase lahti: lõng harutub.':'Tiri veel, et lõng harutuks.';}
+  if(reduce){for(j=0;j<ALL.length;j++){cur[j]=tar[j].slice();}EDGES.forEach(function(e){e.wob=e.wt;e.op=e.ot;});KN[i].rg=KN[i].rt;KN[i].lo=KN[i].lt;draw(0);}
+}
+var KN=ALL.map(function(o,i){
+  var g=document.createElementNS(NS,'g');g.setAttribute('class','knot');g.setAttribute('data-id',o.id);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',o.type+': '+o.title);
+  var ring=document.createElementNS(NS,'circle');ring.setAttribute('r','12');ring.setAttribute('fill','none');ring.setAttribute('stroke',COLOR[o.type]);ring.setAttribute('stroke-width','2');ring.setAttribute('opacity','0');ring.setAttribute('pointer-events','none');
+  var hit=document.createElementNS(NS,'circle');hit.setAttribute('class','hit');hit.setAttribute('r','13');hit.setAttribute('fill','transparent');hit.setAttribute('stroke','transparent');
+  var k=document.createElementNS(NS,'circle');k.setAttribute('r',o.kind==='r'?'5':'6.5');k.setAttribute('fill',COLOR[o.type]);k.setAttribute('stroke','var(--card)');k.setAttribute('stroke-width','2');
+  var t=document.createElementNS(NS,'text');t.setAttribute('font-size','11');t.setAttribute('font-family','Instrument Sans,sans-serif');t.setAttribute('opacity','0');t.setAttribute('pointer-events','none');t.setAttribute('style','fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3px;stroke-linejoin:round');
+  var lines=splitLabel(o.label);lines.forEach(function(ln){var ts=document.createElementNS(NS,'tspan');ts.textContent=ln;t.appendChild(ts);});
+  g.appendChild(ring);g.appendChild(hit);g.appendChild(k);g.appendChild(t);yarnEl.appendChild(g);
+  var capEl=document.getElementById('yarnCap');
+  function capShow(){capEl.textContent=o.type+': '+(o.kind==='r'?'„'+o.title+'“':o.title);}
+  function capBack(){capEl.textContent=focusId?'Fookuses: '+(ALL[AIDX[focusId]].kind==='r'?'„'+ALL[AIDX[focusId]].title+'“':ALL[AIDX[focusId]].title):'Tiri sõlme välja või puuduta seda.';}
+  g.addEventListener('pointerenter',capShow);g.addEventListener('focus',capShow);g.addEventListener('pointerleave',capBack);g.addEventListener('blur',capBack);
+  function go(){location.hash='#'+o.id;if(decodeURIComponent(location.hash.slice(1))===o.id&&yarnEl.getAttribute('data-focus')!==o.id){show();}}
+  var dr=null;
+  g.addEventListener('pointerdown',function(e){if(e.button>0)return;e.preventDefault();try{g.setPointerCapture(e.pointerId);}catch(x){}var pt=svgPt(e);dr={sx:pt[0],sy:pt[1],ox:tar[i][0],oy:tar[i][1],moved:false,rest:tar.map(function(q){return q.slice();})};});
+  g.addEventListener('pointermove',function(e){if(!dr)return;var pt=svgPt(e),dx=pt[0]-dr.sx,dy=pt[1]-dr.sy;if(!dr.moved&&Math.hypot(dx,dy)<4)return;dr.moved=true;applyDrag(i,dr,dx,dy);});
+  function endDrag(e,cancel){
+    if(!dr)return;var d=dr;dr=null;
+    if(!d.moved){if(!cancel){location.hash='#'+o.id;}return;}
+    var pt=svgPt(e),dx=pt[0]-d.sx,dy=pt[1]-d.sy;
+    var far=!cancel&&Math.hypot(Math.max(-1e3,Math.min(1e3,dx)),Math.max(-1e3,Math.min(1e3,dy)))>THRESH;
+    if(far&&decodeURIComponent(location.hash.slice(1))!==o.id){location.hash='#'+o.id;}
+    else{setYarn(far?o.id:focusId,Object.keys(hitSet));}
+  }
+  g.addEventListener('pointerup',function(e){endDrag(e,false);});
+  g.addEventListener('pointercancel',function(e){endDrag(e,true);});
+  g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();location.hash='#'+o.id;}});
+  return {g:g,ring:ring,k:k,t:t,op:1,ot:1,lo:0,lt:0,rg:0,rt:0,side:1,lines:lines};
+});
+var focusId=null,hitSet={};
+function setYarn(id,hits){
+  focusId=id;hitSet={};(hits||[]).forEach(function(x){hitSet[x]=1;});
+  yarnEl.setAttribute('data-focus',id||'');
+  var ce=document.getElementById('yarnCap');if(ce){ce.textContent=id?'Fookuses: '+(ALL[AIDX[id]].kind==='r'?'„'+ALL[AIDX[id]].title+'“':ALL[AIDX[id]].title):'Tiri sõlme välja või puuduta seda.';}
+  var f=id?AIDX[id]:-1,nb={},i;
+  EDGES.forEach(function(e){if(e.a===f)nb[e.b]=1;if(e.b===f)nb[e.a]=1;});
+  var nl=Object.keys(nb).map(Number);
+  if(f>=0){nl.sort(function(a,b){return Math.atan2(P0[a][1]-P0[f][1],P0[a][0]-P0[f][0])-Math.atan2(P0[b][1]-P0[f][1],P0[b][0]-P0[f][0]);});}
+  for(i=0;i<ALL.length;i++){
+    var q=P0[i];
+    if(f<0){tar[i]=q.slice();}
+    else if(i===f){tar[i]=[CX,CY];}
+    else if(nb[i]){
+      var idx=nl.indexOf(i),n=nl.length,ang=-Math.PI/2+idx*2*Math.PI/n,rr=n<=9?82:(idx%2===0?60:112);
+      var px=CX+rr*Math.cos(ang)*1.15,py=CY+rr*Math.sin(ang)*0.95;tar[i]=[px,py];
+      KN[i].side=Math.cos(ang)>=0?1:-1;
+    }
+    else{var dx=q[0]-CX,dy=q[1]-CY,d=Math.hypot(dx,dy)+0.01,nd=Math.min(150,118+0.3*d);tar[i]=[CX+dx/d*nd*(VW/2-12)/150,CY+dy/d*nd*(VH/2-12)/150];}
+    KN[i].ot=f<0?1:(i===f||nb[i]?1:0.3);
+    KN[i].lt=(f>=0&&(i===f||nb[i]))?1:0;
+    KN[i].rt=hitSet[ALL[i].id]?1:0;
+    KN[i].big=(i===f);
+  }
+  EDGES.forEach(function(e){var t=(f>=0&&(e.a===f||e.b===f));e.wt=t?0.05:0.9;e.ot=f<0?0.5:(t?0.95:0.1);e.hl=t;});
+  if(reduce){for(i=0;i<ALL.length;i++){cur[i]=tar[i].slice();KN[i].op=KN[i].ot;KN[i].lo=KN[i].lt;KN[i].rg=KN[i].rt;}EDGES.forEach(function(e){e.wob=e.wt;e.op=e.ot;});draw(0);}
+}
+function pathFor(e,s,t){
+  var A=cur[e.a],B=cur[e.b],dx=B[0]-A[0],dy=B[1]-A[1],L=Math.hypot(dx,dy)+0.01,nx=-dy/L,ny=dx/L,w=e.wob,k=e.k[s],Lm=Math.min(L,110);
+  var sw=reduce?0:Math.sin(t*0.0006*k.sp+k.ph)*0.12;
+  var c1x=A[0]+dx*k.u1+nx*Lm*(k.a1+sw)*w*1.1,c1y=A[1]+dy*k.u1+ny*Lm*(k.a1+sw)*w*1.1;
+  var c2x=B[0]-dx*k.u2+nx*Lm*(k.a2-sw)*w*1.1,c2y=B[1]-dy*k.u2+ny*Lm*(k.a2-sw)*w*1.1;
+  return 'M'+A[0].toFixed(1)+' '+A[1].toFixed(1)+'C'+c1x.toFixed(1)+' '+c1y.toFixed(1)+' '+c2x.toFixed(1)+' '+c2y.toFixed(1)+' '+B[0].toFixed(1)+' '+B[1].toFixed(1);
+}
+function draw(t){
+  EDGES.forEach(function(e){for(var s=0;s<3;s++){var pe=e.paths[s];pe.setAttribute('d',pathFor(e,s,t));pe.setAttribute('stroke-opacity',(e.op*(s===1?0.8:1)).toFixed(3));pe.setAttribute('stroke-width',(e.hl?(s===1?1.2:2):(s===1?0.8:1.2)));}});
+  KN.forEach(function(n,i){
+    var o=ALL[i],c=cur[i];
+    n.g.setAttribute('transform','translate('+c[0].toFixed(1)+' '+c[1].toFixed(1)+')');
+    n.g.setAttribute('opacity',n.op.toFixed(2));
+    n.k.setAttribute('r',((o.kind==='r'?5:6.5)+(n.big?3:0)).toFixed(1));
+    n.ring.setAttribute('opacity',n.rg.toFixed(2));
+    n.t.setAttribute('opacity',n.lo.toFixed(2));
+    var ax=n.big?0:(n.side>0?10:-10),anc=n.big?'middle':(n.side>0?'start':'end'),ty=n.big?(n.lines.length>1?16:22):(n.lines.length>1?-2:4);
+    n.t.setAttribute('y',ty);n.t.setAttribute('text-anchor',anc);n.t.setAttribute('font-size',n.big?'12':'11');n.t.setAttribute('font-weight',n.big?'600':'400');
+    for(var li=0;li<n.t.childNodes.length;li++){var ts=n.t.childNodes[li];ts.setAttribute('x',ax);ts.setAttribute('dy',li===0?'0':'1.15em');}
+  });
+}
+var last=0;
+function frame(ts){
+  var dt=Math.min(0.05,(ts-last)/1000||0.016);last=ts;
+  if(!document.hidden){
+    var k=1-Math.exp(-dt*7),i;
+    for(i=0;i<ALL.length;i++){cur[i][0]+=(tar[i][0]-cur[i][0])*k;cur[i][1]+=(tar[i][1]-cur[i][1])*k;KN[i].op+=(KN[i].ot-KN[i].op)*k;KN[i].lo+=(KN[i].lt-KN[i].lo)*k;KN[i].rg+=(KN[i].rt-KN[i].rg)*k;}
+    EDGES.forEach(function(e){e.wob+=(e.wt-e.wob)*k;e.op+=(e.ot-e.op)*k;});
+    draw(ts);
+  }
+  requestAnimationFrame(frame);
+}
+var yarn={set:setYarn,focus:function(){return focusId;}};
+setYarn(null,[]);draw(0);
+if(!reduce){requestAnimationFrame(frame);}
+var out=document.getElementById('out'),lists=document.getElementById('lists'),qEl=document.getElementById('q');
+function resList(arr){return arr.map(function(n){return '<a class="res" href="#'+esc(n.id)+'"><div class="meta"><span class="chip">'+esc(n.type)+'</span>'+chipT(n)+'</div><b>'+esc(n.title)+'</b><div>'+esc(n.short)+'</div></a>';}).join('');}
+
+var RBY={};RUMORS.forEach(function(r){RBY[r.id]=r;});
+var SAYQ=[],SAYP=null;
+function sayReset(){SAYP=null;SAYQ=[];var b=document.getElementById('say');if(b)b.textContent='Kuula kõnet';}
+function sayFallback(text,msg){
+  if(!('speechSynthesis' in window)){msg.textContent='Heli ei laadinud ja sinu brauser ei oska ette lugeda. Tekst on ekraanil.';return;}
+  var vs=window.speechSynthesis.getVoices(),has=false;for(var i=0;i<vs.length;i++){if(vs[i].lang&&vs[i].lang.toLowerCase().indexOf('et')===0)has=true;}
+  if(!has){msg.textContent='Heli ei laadinud ja sinu brauseris pole eesti häält. Tekst on ekraanil.';return;}
+  window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(text);u.lang='et-EE';u.rate=0.9;window.speechSynthesis.speak(u);
+}
+function sayNext(msg,text){
+  if(!SAYQ.length){sayReset();return;}
+  var id=SAYQ.shift(),exts=['mp3','wav'],ei=0;
+  function tryExt(){
+    var a=new Audio('audio/'+id+'.'+exts[ei]),done=false;SAYP=a;
+    function fail(){if(done)return;done=true;ei++;if(ei<exts.length){tryExt();}else{sayReset();sayFallback(text,msg);}}
+    a.onended=function(){if(done)return;done=true;sayNext(msg,text);};
+    a.onerror=fail;
+    var pr=a.play();
+    if(pr&&pr.catch)pr.catch(function(e){if(e&&e.name==='NotAllowedError'){done=true;sayReset();msg.textContent='Brauser ei lubanud heli esitada. Puuduta nuppu uuesti.';}else{fail();}});
+  }
+  tryExt();
+}
+function bindSay(kind,id){
+  var b=document.getElementById('say'),msg=document.getElementById('sayMsg');if(!b)return;
+  var item=kind==='n'?BYID[id]:RBY[id];
+  b.onclick=function(){msg.textContent='';if(SAYP){SAYP.pause();sayReset();return;}
+    SAYQ=['g0',(kind==='n'?'hn-':'hr-')+id,'h-end'];b.textContent='Peata';
+    sayNext(msg,'Tere, siin mina pensionil. '+item.say+' Seadust ja usaldusmärki näed ekraanilt. See on haridus, mitte nõu.');};
+}
+function rumorCard(r){return '<div class="card" id="rumorCard"><div class="small">Kuulujutt</div><p><i>'+esc(r.text)+'</i></p><div class="verd"><span class="chip '+(KCLS[r.kind]||'')+'">'+esc(r.verdict)+'</span></div><p style="margin-top:10px">'+esc(r.answer)+'</p><div class="small">Sõlmed, kust vastus tuleb:</div><div class="row">'+r.nodes.map(function(id){return nodeLink(BYID[id]);}).join(' ')+'</div><div class="small">Seadus muutub. Vaata sõlmest usaldusmärki ja kontrolli kuupäeva.</div><div class="row"><button class="btn" id="say" type="button">Kuula kõnet</button></div><div id="sayMsg" class="small"></div></div>';}
+function renderResults(q){
+  document.title='Haruta lõngakera | Raha Meeled';lists.hidden=false;
+  q=(q||'').trim();
+  if(!q){out.innerHTML='';yarn.set(null,[]);return;}
+  var r=rumor(q),found=search(q),h='';
+  if(r){h+=rumorCard(r);found=found.filter(function(n){return r.nodes.indexOf(n.id)<0;});}
+  if(found.length){h+='<div class="card"><h2>'+(r?'Veel seotud sõlmi':'Sõlmed, mis vastavad')+'</h2>'+resList(found.slice(0,6))+'</div>';}
+  else if(!r){h+='<div class="card" id="none"><p>Sellele küsimusele ei leidnud ma sõlme. Proovi lühemat sõna (näiteks „periood“, „55“ või „lapsed“) või puuduta lõngakera sõlme.</p></div>';}
+  out.innerHTML=h;if(r){bindSay('r',r.id);}
+  var hits=found.slice(0,6).map(function(n){return n.id;});if(r){hits=r.nodes.concat(hits);}
+  yarn.set(r?r.id:(found[0]?found[0].id:null),hits);
+}
+function renderNode(n){
+  document.title=n.title+' | Haruta lõngakera';lists.hidden=true;
+  var h='<div class="card" id="node"><div class="row" style="margin-top:0"><span class="chip">'+esc(n.type)+'</span>'+chipT(n)+'<span class="small">kontrollitud '+esc(n.verified_at)+'</span></div>';
+  h+='<h2>'+esc(n.title)+'</h2><div class="row"><button class="btn" id="say" type="button">Kuula kõnet</button></div><div id="sayMsg" class="small"></div><h3>Lühidalt</h3><p class="lead">'+esc(n.short)+'</p><h3>Lähemalt</h3><p>'+esc(n.long)+'</p>';
+  h+='<h3>Seadus</h3><div class="row">'+lawChips(n)+'</div>';
+  h+='<h3>Mida see ei arvesta</h3><ul class="nm" id="notmod">'+n.not_modelled.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';
+  h+='<h3>Seotud sõlmed</h3><ul class="nm">'+n.related.map(function(r){return '<li><span class="small">'+esc(r[1])+':</span> '+nodeLink(BYID[r[0]])+'</li>';}).join('')+'</ul>';
+  var inb=[];NODES.forEach(function(m){m.related.forEach(function(r){if(r[0]===n.id)inb.push([m,r[1]]);});});
+  if(inb.length){h+='<h3>Viitavad siia</h3><ul class="nm">'+inb.map(function(x){return '<li><span class="small">'+esc(x[1])+':</span> '+nodeLink(x[0])+'</li>';}).join('')+'</ul>';}
+  var rr=RUMORS.filter(function(r){return r.nodes.indexOf(n.id)>=0;});
+  if(rr.length){h+='<h3>Kuulujutud</h3><ul class="nm">'+rr.map(function(r){return '<li><a href="#'+esc(r.id)+'">'+esc(r.text)+'</a></li>';}).join('')+'</ul>';}
+  h+='<p class="small" style="margin-top:14px">Omanik: '+esc(n.owner)+'. Püsilink: <code>haruta.html#'+esc(n.id)+'</code></p></div>';
+  h+='<p><a href="haruta.html" id="backs">← Tagasi otsingusse</a></p>';
+  out.innerHTML=h;bindSay('n',n.id);yarn.set(n.id,[]);
+}
+function renderRumorPage(r){
+  document.title='Kuulujutt | Haruta lõngakera';lists.hidden=true;
+  out.innerHTML=rumorCard(r)+'<p><a href="haruta.html" id="backs">← Tagasi otsingusse</a></p>';bindSay('r',r.id);yarn.set(r.id,r.nodes);
+}
+function show(){
+  if(SAYP){SAYP.pause();}sayReset();
+  var h=decodeURIComponent(location.hash.slice(1));
+  if(h&&BYID[h]){renderNode(BYID[h]);}
+  else if(h&&RBY[h]){renderRumorPage(RBY[h]);}
+  else{renderResults(qEl.value);}
+  document.getElementById('reset').hidden=!(yarn.focus()||(h&&true));
+}
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();if(location.hash){history.replaceState(null,'',location.pathname);}renderResults(qEl.value);document.getElementById('reset').hidden=!yarn.focus();});
+document.getElementById('reset').addEventListener('click',function(){qEl.value='';history.replaceState(null,'',location.pathname);out.innerHTML='';lists.hidden=false;yarn.set(null,[]);this.hidden=true;document.title='Haruta lõngakera | Raha Meeled';});
+window.addEventListener('hashchange',show);
+var ex=document.getElementById('ex');
+['kas ootan?','periood','55','lapsed','maksuvaba','III sammast saab alati 55-aastaselt kätte','Fondipensioni makse on iga kuu täpselt sama suur'].forEach(function(t){var b=document.createElement('button');b.type='button';b.className='btn';b.textContent=t;b.onclick=function(){qEl.value=t;document.getElementById('f').dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}));};ex.appendChild(b);});
+var types=['Mõiste','Valik','Sisend'],th='';
+types.forEach(function(t){th+='<h3>'+t+'</h3><div class="row">'+NODES.filter(function(n){return n.type===t;}).map(nodeLink).join(' ')+'</div>';});
+document.getElementById('typeList').innerHTML=th;
+var law={};NODES.forEach(function(n){n.law.forEach(function(l){var k=l[0]==='RM41'?'RM nr 41':l[0];(law[k]=law[k]||{});(law[k][l[1]]=law[k][l[1]]||[]).push(n);});});
+var lh='';Object.keys(law).forEach(function(a){lh+='<h3>'+esc(a)+'</h3><ul class="nm">';Object.keys(law[a]).forEach(function(p){lh+='<li>'+esc(p)+': '+law[a][p].map(nodeLink).join(' ')+'</li>';});lh+='</ul>';});
+document.getElementById('lawList').innerHTML=lh;
+var dawn=document.getElementById('dawn'),tick=false;
+function sky(){tick=false;var h=document.documentElement,max=Math.max(1,h.scrollHeight-window.innerHeight);dawn.style.opacity=Math.max(0,Math.min(1,window.scrollY/max));}
+window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(sky);}},{passive:true});
+show();sky();
+})();
+</script>
+</body>
+</html>

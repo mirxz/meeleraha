@@ -13,9 +13,27 @@ function ids() {
   return out;
 }
 
+const harutaHtml = await readFile(`${ROOT}public/haruta.html`, 'utf8');
+const harutaJson = (id) => JSON.parse(harutaHtml.match(new RegExp(`<script type="application/json" id="${id}">([\\s\\S]*?)</script>`))[1]);
+const H_NODES = harutaJson('nodes');
+const H_RUMORS = harutaJson('rumors');
+function harutaIds() {
+  return ['h-end', ...H_NODES.map((n) => `hn-${n.id}`), ...H_RUMORS.map((r) => `hr-${r.id}`)];
+}
+const allIds = () => [...ids(), ...harutaIds()];
+
 test('iga lehel mängitav klipp on clips.json-is', () => {
-  for (const id of ids()) assert.ok(clips[id], `puudub: ${id}`);
-  assert.equal(Object.keys(clips).length, ids().length, 'clips.json sisaldab üleliigseid klippe');
+  for (const id of allIds()) assert.ok(clips[id], `puudub: ${id}`);
+  assert.equal(Object.keys(clips).length, allIds().length, 'clips.json sisaldab üleliigseid klippe');
+});
+
+test('lõngakera kõne tekst clips.json-is on sama, mis lehel (say väli)', () => {
+  for (const n of H_NODES) assert.equal(clips[`hn-${n.id}`], n.say, `hn-${n.id}`);
+  for (const r of H_RUMORS) assert.equal(clips[`hr-${r.id}`], r.say, `hr-${r.id}`);
+});
+
+test('kõnes ei ole numbreid ega sümboleid, mida TTS valesti loeb', () => {
+  for (const id of harutaIds()) assert.doesNotMatch(clips[id], /[0-9€§%]|\b[IV]{1,3}\b/, id);
 });
 
 test('clips.json tekstid on samad, mis lehel (hoia sünkroonis)', () => {
@@ -33,8 +51,10 @@ test('clips.json tekstid on samad, mis lehel (hoia sünkroonis)', () => {
 
 test('heliklipid on kaustas public/audio (nõutud, kui REQUIRE_AUDIO=1)', async (t) => {
   const missing = [];
-  for (const id of ids()) {
-    try { await access(`${ROOT}public/audio/${id}.wav`); } catch { missing.push(id); }
+  for (const id of allIds()) {
+    let ok = false;
+    for (const ext of ['mp3', 'wav']) { try { await access(`${ROOT}public/audio/${id}.${ext}`); ok = true; break; } catch { /* proovi järgmist */ } }
+    if (!ok) missing.push(id);
   }
   if (missing.length && process.env.REQUIRE_AUDIO !== '1') {
     t.skip(`${missing.length} klippi puudub (käivita node scripts/make-audio.mjs)`);

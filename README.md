@@ -32,7 +32,7 @@ Brauserites pole sageli eesti häält, seepärast mängib leht eelnevalt generee
 
     node scripts/make-audio.mjs
 
-Tekstid on failis `scripts/clips.json` (hoia sünkroonis lehel oleva tekstiga). Vaikimisi hääl on `mari`; teise häälega: `SPEAKER=albert node scripts/make-audio.mjs`. Enne avalikku kasutamist teavita TartuNLP-d (ping@tartunlp.ai) ja kontrolli nende kasutustingimusi.
+Tekstid on failis `scripts/clips.json` (hoia sünkroonis lehel oleva tekstiga). Vaikimisi hääl on `mari`; teise häälega: `SPEAKER=albert node scripts/make-audio.mjs`. Lõngakera lehe klipid (`hn-…`, `hr-…`, `h-end`) on pikemad. Soovi korral tee need väiksemaks: `MP3=1 node scripts/make-audio.mjs` (vajab ffmpeg-i), leht proovib kõigepealt mp3, siis wav. Enne avalikku kasutamist teavita TartuNLP-d (ping@tartunlp.ai) ja kontrolli nende kasutustingimusi.
 
 ## Testid
 
