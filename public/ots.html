@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lõnga ots | Raha Meeled</title>
+<meta name="description" content="Infot on külluses ja eesmärgid on sasipuntras. Üks lõng kaheksa sõlmega, sinu enda numbritega ja sinu unistusega lõnga otsas. Haridus, mitte nõu; numbrid jäävad sinu seadmesse.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/ots.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Lõnga ots">
+<meta property="og:description" content="Infot on külluses ja eesmärgid on sasipuntras. Üks lõng kaheksa sõlmega, sinu enda numbritega ja sinu unistusega lõnga otsas.">
+<meta property="og:url" content="https://meeleraha.ee/ots.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#241f3a;--ink2:#554f70;--card:rgba(255,255,255,.88);--line:rgba(36,31,58,.18);
+  --sun:#f0a22e;--link:#4a3fc4;--onlink:#ffffff;
+  --good-bg:#d7f1e6;--good-fg:#0f5a3f;--warn-bg:#fbe9c4;--warn-fg:#6b4700;--bad-bg:#fbd9d4;--bad-fg:#7a1f16;--info-bg:#dde6fb;--info-fg:#1f3a8a;
+  --base:#3d62c9;--loan:#c8453f;--fun:#e0a21f;--sav:#2f9a72;--pro:#7a4fd0;
+  --skyDT:#cfd0f2;--skyDH:#ffd1a8;--skyAT:#dce9ff;--skyAH:#ffeab8;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.88);--line:rgba(241,236,255,.2);
+    --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+    --good-bg:#12392c;--good-fg:#9fe8c8;--warn-bg:#4a3708;--warn-fg:#f6d98b;--bad-bg:#4a1a14;--bad-fg:#ffb3a8;--info-bg:#1a2a5a;--info-fg:#b9c9ff;
+    --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+    --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.88);--line:rgba(241,236,255,.2);
+  --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+  --good-bg:#12392c;--good-fg:#9fe8c8;--warn-bg:#4a3708;--warn-fg:#f6d98b;--bad-bg:#4a1a14;--bad-fg:#ffb3a8;--info-bg:#1a2a5a;--info-fg:#b9c9ff;
+  --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+  --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--skyDT);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+#sky{position:fixed;inset:0;z-index:-1;overflow:hidden}
+#sky .l{position:absolute;inset:0}
+#sky .dusk{background:linear-gradient(to bottom,var(--skyDT) 0%,var(--skyDH) 100%)}
+#sky .dawn{background:linear-gradient(to bottom,var(--skyAT) 0%,var(--skyAH) 100%);opacity:0}
+main{width:min(640px,100% - 40px);margin:0 auto;padding:28px 0 64px}
+a{color:var(--link)}
+.back{display:inline-block;margin-bottom:20px;font-size:15px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,9vw,48px);line-height:1.06;margin:0 0 12px;font-variation-settings:"opsz" 144}
+h2{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.2;margin:0 0 8px;font-variation-settings:"opsz" 72}
+h3{font-size:14px;font-weight:600;margin:14px 0 4px}
+p{margin:0 0 10px}
+.lead{font-family:var(--serif);font-size:19px;line-height:1.5}
+.sub{color:var(--ink2)}
+.small{font-size:13px;color:var(--ink2);line-height:1.5}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.btn{font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.btn.go{background:var(--link);color:var(--onlink);border-color:var(--link)}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
+.t-good{background:var(--good-bg);color:var(--good-fg);border-color:transparent}
+.t-warn{background:var(--warn-bg);color:var(--warn-fg);border-color:transparent}
+.t-bad{background:var(--bad-bg);color:var(--bad-fg);border-color:transparent}
+.t-info{background:var(--info-bg);color:var(--info-fg);border-color:transparent}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fields label{display:block;font-size:13px;color:var(--ink2);margin-bottom:3px}
+.fields input{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.fields .full{grid-column:1/-1}
+#thread{position:relative;margin-top:22px}
+#threadSvg{position:absolute;left:0;top:0;width:52px;height:100%;pointer-events:none;overflow:visible}
+.knot{position:relative;margin:0 0 14px 60px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.knot .mk{position:absolute;left:-60px;top:14px;width:28px;height:28px}
+.nr{font-family:var(--serif);font-size:18px;line-height:1.45;color:var(--ink)}
+.nr .hint{font-family:var(--sans);font-size:14px;color:var(--ink2)}
+.nr b{font-weight:600}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:14px;font-weight:600}
+.src{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;margin-top:6px}
+ul.nm{padding-left:18px;margin:6px 0}
+ul.nm li{margin-bottom:4px}
+footer{margin-top:36px}
+.sit{display:block;width:100%;text-align:left;margin:0 0 8px;font:inherit;font-size:16px;line-height:1.35;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.sit[aria-pressed="true"]{background:var(--link);color:var(--onlink);border-color:var(--link)}
+.khead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.khead h2{margin:0}
+.kmeta{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.knot.collapsed .kbody{display:none}
+.knext{margin-top:10px}
+#panel h3{margin-top:12px}
+.pot{display:flex;height:34px;border-radius:10px;overflow:hidden;margin:8px 0 4px}
+.pot>i{display:block;height:100%;border-right:2px solid var(--card)}
+.potleg{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.5}
+.dream{font-family:var(--serif);font-size:17px;line-height:1.5;margin:0 0 6px}
+.dream i{color:var(--ink)}
+.knot.end{border-color:var(--sun)}
+#dreamField{width:100%;font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+@media (max-width:420px){.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-mr-page="ots" data-mr-partial="1">
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<a class="back" href="index.html">← Raha Meeled</a>
+<h1 data-i18n="ots.h1">Lõnga ots</h1>
+<p class="lead" data-i18n="ots.lead">Infot on külluses ja eesmärgid on sasipuntras. Siin on üks lõng kaheksa sõlmega: üks samm korraga, sinu enda numbritega. Lõnga otsas on sinu unistus ja iga sõlm viib selle poole.</p>
+<p class="sub">Kõik arvutused toimuvad sinu seadmes ja midagi ei salvestata. Tulemused on vahemikud, mitte lubadused, ja see on haridus, mitte nõu.</p>
+
+<div class="card" id="pick">
+  <h2>Esimene tõmme</h2>
+  <p class="small">Infot on palju. Alusta olukorrast, mis kõlab nagu sina. Ma täidan numbrid näitena ette ja avan ainult esimese lõnga.</p>
+  <div id="sits"></div>
+  <a class="sit" id="sitTime" href="ajatelg.html" style="text-decoration:none">Alustan oma elust: lohistan eluklotsid ajateljele</a>
+  <button class="sit" type="button" id="sitNone" aria-pressed="false">Midagi muud: alustan tühjalt</button>
+  <p class="small">Need on väljamõeldud näited, mitte inimeste kategooriad. Sinu numbrid võivad olla hoopis teised.</p>
+</div>
+<div class="card" id="panel" hidden></div>
+<div id="recog" class="small" style="margin-top:10px"></div>
+
+<div class="card" id="compass">
+  <h2>Kompass</h2>
+  <p class="small">Kolm küsimust, mis käivad iga sõlmega kaasas:</p>
+  <ul class="nm">
+    <li><b>Keda usaldan?</b> Vaata, kes sellest võidab, kas seal on paragrahv ja kuupäev ning kas see on nõu või haridus.</li>
+    <li><b>Kust infot saan?</b> Seadus ja ametkond esimesena, sõltumatud andmed teiseks. Kogukond on hea küsimuste ja kuulujuttude jaoks, aga mitte lõppotsuse jaoks.</li>
+    <li><b>Kas olen enda vastu aus?</b> Millist numbrit ma väldin vaatamast? Mis on lootus, mitte plaan? Mida ütleks tulevane mina sellest otsusest?</li>
+  </ul>
+  <p class="small">Usaldusmärgid: <span class="chip t-good">[verified]</span> seaduse tekst loetud, <span class="chip t-warn">[secondary]</span> ametkonna või meedia leht, <span class="chip t-info">[inferred]</span> arvutatud sinu numbritest, <span class="chip t-bad">[kontrollimata]</span> ei õnnestunud kontrollida.</p>
+</div>
+
+<div class="card" id="dreamCard">
+  <h2>Sinu unistus</h2>
+  <p class="small">Üks lause. See on lõnga ots: iga sõlm all viib selle poole. Tulevane mina helistab <a href="index.html#unista">manifestis</a> ja küsib sama.</p>
+  <label class="small" for="unistus">Mida tahaksid pensionil teha või elus teha, et see oleks elamist väärt?</label>
+  <input id="unistus" maxlength="140" autocomplete="off" placeholder="Näiteks: aeglased hommikud maakodus" style="width:100%;font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)">
+</div>
+
+<div class="card" id="inputs">
+  <h2>Sinu numbrid</h2>
+  <div class="fields">
+    <div><label for="tulu">Netosissetulek kuus (€)</label><input id="tulu" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="kulu">Kulud kuus kokku (€)</label><input id="kulu" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="saast">Säästmine ja sissemaksed kuus (€)</label><input id="saast" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="puhver">Puhver täna (€, valikuline)</label><input id="puhver" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="laen">Laenumaksed kuus (€, valikuline, kulude sees)</label><input id="laen" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="fun">Fun money kuus (€, valikuline, kulude sees)</label><input id="fun" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="kuud">Kuud, mida tahaksid kodus olla (valikuline)</label><input id="kuud" inputmode="decimal" autocomplete="off"></div>
+    <div class="full"><label for="hind">Kodus oldud kuu hind (€, valikuline; muidu kasutan sinu kulusid)</label><input id="hind" inputmode="decimal" autocomplete="off"></div>
+  </div>
+  <div class="row">
+    <button class="btn" type="button" id="sample" data-mr-c="ots.inputs.sample-button" data-mr-e="Sample Loaded">Näidisandmed (väljamõeldud)</button>
+    <button class="btn" type="button" id="clear">Tühjenda</button>
+  </div>
+  <p class="small">Sisesta ainult need, mida tead. Sõlmed, mille jaoks arv puudub, ütlevad, mida lisada.</p>
+</div>
+
+<div class="row"><button class="btn" id="openAll" type="button">Ava kõik sõlmed</button></div>
+<div id="thread">
+  <svg id="threadSvg" aria-hidden="true"></svg>
+  <div id="knots"></div>
+  <section class="knot end" id="end"><span class="mk" aria-hidden="true"></span><h2>Lõnga ots: sinu unistus</h2><div class="nr" id="endNr"></div><p class="small">Kaheksa sõlme viivad siia. Sõlmed ei ütle, mida sa pead tegema; need aitavad näha, mis sinu ja unistuse vahel on.</p><p><a class="btn go" href="index.html#unista">Tulevane mina helistab</a> <a class="btn" href="ajatelg.html">Tee rahu minevikuga</a></p></section>
+</div>
+
+<div class="card" id="fail">
+  <h2 data-i18n="ots.file.h2">Võta kaasa</h2>
+  <p data-i18n="ots.file.p">Lae alla oma olukorra kaart (lõngaots.md) vestlusaluseks inimesega, keda usaldad. See on vestlusalus, mitte nõu.</p>
+  <label class="small" style="display:flex;gap:8px;align-items:center;margin:6px 0"><input id="mdHide" type="checkbox" style="width:auto"><span data-i18n="ots.file.hide">Peida summad failis</span></label>
+  <div class="row"><button class="btn go" type="button" id="mdBtn" data-mr-c="ots.file.md-button" data-i18n="ots.file.btn">Lae lõngaots.md alla</button></div>
+  <p class="small" id="mdMsg" aria-live="polite"></p>
+</div>
+
+<div class="card" id="reveal">
+  <h2>Mida see leht sinuga tegi</h2>
+  <ul class="nm">
+    <li>Kaheksa sõlme on lihtsustus: ma jätsin välja enamiku valikuid. Järjekord on üldine rusikareegel, mitte sinu tee. Sina valid, mida teed ja mis järjekorras.</li>
+    <li>Sõlme number ja lõng, mis harutub, on metafoor. See ei tähenda, et üks sõlm tuleb enne lõpetada kui teine.</li>
+    <li>Arvud tulevad ainult sinu sisestatud numbritest. Tulevikuvahemik arvutab 0–4% aastast reaaltootlust ja ei ole prognoos.</li>
+    <li>Ringid (Mina, Lähedased, Kaudne, Seadus ja kultuur, Aeg) on meie paigutus, inspireeritud Bronfenbrenneri mudelist. See ei ole tema väide ega mõõt ja paigutus on subjektiivne.</li>
+    <li>Olukorra tuvastamise reegel eksib sageli. Sa näed reeglit ja sina otsustad, kas see kõlab nagu sina.</li>
+    <li>Levinud rusikareegel, nt „puhver 3–6 kuud", ei ole siin kontrollitud ega seadus ning on märgitud kontrollimata.</li>
+    <li>Midagi ei salvestata ega saadeta kuhugi. Leht ei kasuta kaamerat ega mikrofoni.</li>
+  </ul>
+</div>
+
+<footer class="small">
+  <p>Haridus ja simulatsioon, mitte nõu. Pensionireeglite kohta vaata <a href="haruta.html">Haruta lõngakera</a>, manifest ja kõne tulevaselt minalt on lehel <a href="index.html">Raha Meeled</a>.</p>
+</footer>
+</main>
+<div id="mr-foot"></div>
+<script type="application/json" id="sitdata">[
+ {
+  "id": "kuu-lopp",
+  "nimi": "Kuu lõpp jääb lühikeseks",
+  "lause": "Kuu lõpus jääb raha puudu. II samba võtsin välja.",
+  "tunnus": "number",
+  "reegel": {
+   "tekst": "säästumäär on kuni 5% ja kulud on vähemalt 95% sinu tulust",
+   "need": [
+    "tulu",
+    "kulu",
+    "saast"
+   ],
+   "conds": [
+    [
+     "saastmaar",
+     "<=",
+     0.05
+    ],
+    [
+     "kulumaar",
+     ">=",
+     0.95
+    ]
+   ]
+  },
+  "naide": {
+   "tulu": 1450,
+   "kulu": 1420,
+   "saast": 0,
+   "puhver": 300,
+   "laen": 150,
+   "fun": 100
+  },
+  "esimene": 1,
+  "kusimus": "Kuhu raha kuu lõpuks kadus?",
+  "mang": "Nimeta jääk: palgapoti riba näitab, kus raha on nimetamata.",
+  "rahu": "Võtsin välja, sest vajasin. See oli minu parim valik sellest teadmisest, mis mul tol hetkel oli.",
+  "korduv": "Kord kuus 10 minutit: sama kolm numbrit ja üks küsimus, kuhu raha läks.",
+  "eiVaida": "Ma ei väida, et II samba väljavõtt oli viga või õige. See oli sinu otsus."
+ },
+ {
+  "id": "algus",
+  "nimi": "Teekonna algus",
+  "lause": "Alustan oma teed. Kõik on veel ees.",
+  "tunnus": "enda ütlus",
+  "reegel": {
+   "tekst": "Seda ei näe numbritest. Sa valid selle ise.",
+   "need": [],
+   "conds": []
+  },
+  "naide": {
+   "tulu": 1800,
+   "kulu": 1400,
+   "saast": 250,
+   "puhver": 1500,
+   "laen": 0,
+   "fun": 200
+  },
+  "esimene": 5,
+  "kusimus": "Mida annab 10 aastat sinu tulevasele minale?",
+  "mang": "Aja liugur: 50 kuni 300 € kuus ja 10 aasta vahemik (0–4%).",
+  "rahu": "Mul ei ole vaja olla tark kohe. Mul on aega õppida.",
+  "korduv": "Kord kuus: sama sääst ja üks lause, mida see sinu unistusele annab.",
+  "eiVaida": "Ma ei väida, et noorus tähendab väiksemat riski."
+ },
+ {
+  "id": "lapsed",
+  "nimi": "Esimesed lapsed",
+  "lause": "Meil sündisid lapsed. Mis nüüd?",
+  "tunnus": "enda ütlus",
+  "reegel": {
+   "tekst": "Seda ei näe numbritest. Sa valid selle ise.",
+   "need": [],
+   "conds": []
+  },
+  "naide": {
+   "tulu": 2900,
+   "kulu": 2600,
+   "saast": 150,
+   "puhver": 3000,
+   "laen": 600,
+   "fun": 150,
+   "kuud": 12,
+   "hind": 1500
+  },
+  "esimene": 8,
+  "kusimus": "Mitu kuud tahaksid kodus olla?",
+  "mang": "Kuude liugur: sinu soov ja sinu puhver kõrvuti.",
+  "rahu": "Ma ei teadnud, et elu muutub nii palju. Teen nüüd selle, mida oskan.",
+  "korduv": "Kord kuus: üks vestlus partneriga, mitu kuud ja mis see maksab.",
+  "eiVaida": "Ma ei väida midagi vanemahüvitise kohta. Seda tuleb kontrollida Sotsiaalkindlustusametist."
+ },
+ {
+  "id": "kaasa",
+  "nimi": "Kaasaandmine",
+  "lause": "Tahan lastele midagi kaasa anda.",
+  "tunnus": "enda ütlus",
+  "reegel": {
+   "tekst": "Seda ei näe numbritest. Sa valid selle ise.",
+   "need": [],
+   "conds": []
+  },
+  "naide": {
+   "tulu": 3200,
+   "kulu": 2300,
+   "saast": 700,
+   "puhver": 8000,
+   "laen": 0,
+   "fun": 300
+  },
+  "esimene": 6,
+  "kusimus": "Mida tahad neile anda: raha, aega või kogemusi?",
+  "mang": "Kinkeliugur: X € kuus lastele ja näed, mis sinu potis muutub.",
+  "rahu": "Mis oli, see oli. Täna saan valida, mida edasi anda.",
+  "korduv": "Kord kuus: üks kingitus, mis ei ole raha.",
+  "eiVaida": "Ma ei väida, et raha andmine on parim kingitus."
+ },
+ {
+  "id": "rahatark",
+  "nimi": "Rahatark, kes koonerdab?",
+  "lause": "Numbrid on mul peas. Kas ma koonerdan?",
+  "tunnus": "number",
+  "reegel": {
+   "tekst": "säästumäär on vähemalt 25% ja puhver katab vähemalt 6 kuud",
+   "need": [
+    "tulu",
+    "kulu",
+    "saast",
+    "puhver"
+   ],
+   "conds": [
+    [
+     "saastmaar",
+     ">=",
+     0.25
+    ],
+    [
+     "puhverKuud",
+     ">=",
+     6
+    ]
+   ]
+  },
+  "naide": {
+   "tulu": 3500,
+   "kulu": 2100,
+   "saast": 1000,
+   "puhver": 15000,
+   "laen": 0,
+   "fun": 400
+  },
+  "esimene": 6,
+  "kusimus": "Kas koonerdad või naudid? Nimeta see number.",
+  "mang": "Täna ja hiljem: liiguta 100 € ühelt poolt teisele ja vaata, mis juhtub.",
+  "rahu": "Olen hoolikalt tulnud siia. Nüüd tohin ka elada.",
+  "korduv": "Kord kuus: sama fun money number ja üks asi, mida sa sellega tegid.",
+  "eiVaida": "Ma ei väida, et sa koonerdad. Ma ütlen ainult, et sa nimeta see number."
+ },
+ {
+  "id": "elunautleja",
+  "nimi": "Elunautleja, kes arvutab peast",
+  "lause": "Arvutan peast. Kas pensioniks piisab?",
+  "tunnus": "number",
+  "reegel": {
+   "tekst": "fun money on vähemalt 20% tulust ja säästumäär on kuni 5%",
+   "need": [
+    "tulu",
+    "saast",
+    "fun"
+   ],
+   "conds": [
+    [
+     "funmaar",
+     ">=",
+     0.2
+    ],
+    [
+     "saastmaar",
+     "<=",
+     0.05
+    ]
+   ]
+  },
+  "naide": {
+   "tulu": 2200,
+   "kulu": 2150,
+   "saast": 0,
+   "puhver": 200,
+   "laen": 0,
+   "fun": 600
+  },
+  "esimene": 7,
+  "kusimus": "Mis on sinu staaž ja kust seda näed?",
+  "mang": "Staažilugeja: lisa tööaastad ja vaata, kui kaugel sa oled (reegel on kontrollimata).",
+  "rahu": "Ma ei pea kõike teadma. Alustan ühest numbrist.",
+  "korduv": "Kord poolaastas: sama staaž ja üks küsimus Sotsiaalkindlustusametile.",
+  "eiVaida": "Ma ei väida midagi riikliku pensioni miinimumnõuete kohta. Seda ei ole siin kontrollitud."
+ }
+]</script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id);};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function num(id){var v=$(id).value.replace(/\s/g,'').replace(',','.');if(v==='')return null;var n=Number(v);return isFinite(n)&&n>=0?n:null;}
+function fe(n){return Math.round(n).toLocaleString('en-US').replace(/,/g,'\u00a0')+'\u00a0€';}
+function fr(n){return fe(Math.round(n/100)*100);}
+function pc(n){return Math.round(n*100)+'%';}
+function fv(s,years,r){if(r===0)return s*12*years;var rm=Math.pow(1+r,1/12)-1;return s*(Math.pow(1+rm,12*years)-1)/rm;}
+var TRUST={'[verified]':'t-good','[secondary]':'t-warn','[inferred]':'t-info','[kontrollimata]':'t-bad'};
+function lk(id,label){return '<a href="haruta.html#'+id+'">'+esc(label)+'</a>';}
+
+function seg(parts,total){var h='<div class="pot" role="img" aria-label="Sinu tulu jaotus">';parts.forEach(function(p){if(p.v>0)h+='<i style="width:'+(p.v/total*100).toFixed(2)+'%;background:'+p.c+'"></i>';});return h+'</div>';}
+function potBar(v){
+  if(v.tulu===null||v.tulu<=0||v.kulu===null||v.saast===null)return '';
+  var laen=v.laen||0,fun=v.fun||0,baas=Math.max(0,v.kulu-laen-fun),saast=v.saast,jaak=Math.max(0,v.tulu-v.kulu-v.saast),sum=baas+laen+fun+saast+jaak,total=Math.max(v.tulu,sum);
+  var leg=['Baas '+fe(baas)];if(v.laen!==null)leg.push('Laen '+fe(laen));if(v.fun!==null)leg.push('Fun '+fe(fun));leg.push('Sääst '+fe(saast));if(jaak>0)leg.push('Nimetamata '+fe(jaak));
+  return seg([{v:baas,c:'var(--base)'},{v:laen,c:'var(--loan)'},{v:fun,c:'var(--fun)'},{v:saast,c:'var(--sav)'},{v:jaak,c:'var(--ink2)'}],total)+'<div class="potleg">'+leg.join(' · ')+'</div>';
+}
+var KNOTS=[
+ {id:1,title:'Tea oma numbreid',dream:'Millist unistust sinu numbrid täna toetavad ja millist mitte?',
+  muutub:'Sa näed ühel real, kui palju tuleb, läheb ja jääb.',
+  lõks:'Kulu, mida sa ei loe (väikesed igakuised maksed, tellimused, ostud), ja tulu, mida sa arvestad, aga mis ei tule.',
+  valmis:'Tulu, kulu ja sääst klapivad kuu lõpus sinu kontoga.',
+  trust:'[inferred]',src:'Arvutus sinu numbritest.',
+  nr:function(v){
+    if(v.tulu===null||v.kulu===null||v.saast===null)return '<span class="hint">Lisa netosissetulek, kulud ja säästmine, siis näed siin jääki.</span>';
+    var j=v.tulu-v.kulu-v.saast,h='Tulu <b>'+fe(v.tulu)+'</b>, kulud <b>'+fe(v.kulu)+'</b>, sääst <b>'+fe(v.saast)+'</b>. ';
+    if(Math.abs(j)<=0.05*v.tulu)h+='Numbrid klapivad: jääk on <b>'+fe(Math.abs(j))+'</b> kuus.';
+    else if(j>0)h+='Siin on <b>'+fe(j)+'</b> kuus, mida sa ei oska nimetada. Kuhu need lähevad?';
+    else h+='Sa kulutad ja säästad rohkem, kui teenid: <b>'+fe(-j)+'</b> kuus on puudu. Kust see tuleb?';
+    return h+potBar(v);}},
+ {id:2,title:'Puhver',dream:'Puhver ostab sulle aega: mitu kuud saad sa unistuse poole liikuda ilma hirmuta?',
+  muutub:'Sa tead, mitu kuud sa vastu pead, kui sissetulek peatub.',
+  lõks:'Puhvri ja investeeringu segamine: puhvrit peab saama kätte siis, kui vaja, ilma kaotuseta.',
+  valmis:'Sa oled ise valinud, mitu kuud sa tahad vastu pidada, ja sinu puhver katab selle.',
+  trust:'[kontrollimata]',src:'Levinud rusikareegel on 3–6 kuud, kuid see ei ole seadus ega ole siin kontrollitud.',
+  nr:function(v){
+    if(v.kulu===null||v.puhver===null||v.kulu<=0)return '<span class="hint">Lisa kulud ja puhver, siis näed siin, mitu kuud see katab.</span>';
+    var m=v.puhver/v.kulu,band=m<1?'alla ühe kuu':m<3?'1–3 kuud':m<6?'3–6 kuud':'üle kuue kuu';
+    return 'Sinu puhver katab <b>'+(Math.round(m*10)/10).toString().replace('.',',')+' kuud</b> sinu praeguste kuludega ('+band+').';}},
+ {id:3,title:'Kohustused',dream:'Millist unistust hoiab see kohustus täna kinni ja millal see lõpeb?',
+  muutub:'Laenumaksed võtavad osa sinu tulust enne, kui sul on valikut.',
+  lõks:'Võrrelda laenu intressi (kindel) lootusega tootlusele (vahemik).',
+  valmis:'Sa tead iga laenu intressi ja lõpptähtaega.',
+  trust:'[inferred]',src:'Arvutus sinu numbritest.',
+  nr:function(v){
+    if(v.tulu===null||v.laen===null||v.tulu<=0)return '<span class="hint">Lisa netosissetulek ja laenumaksed, siis näed siin laenukoormust.</span>';
+    var h='Laenumaksed on <b>'+pc(v.laen/v.tulu)+'</b> sinu sissetulekust.';
+    if(v.saast!==null)h+=' Kui need vabaneksid ja kogu vabanev raha läheks säästu, oleks sinu säästumäär <b>'+pc(v.saast/v.tulu)+' → '+pc((v.saast+v.laen)/v.tulu)+'</b>.';
+    return h;}},
+ {id:4,title:'Sissetuleku suur liigutus',dream:'Mis üks suur muutus viiks sind unistusele kõige lähemale?',
+  muutub:'Sinu tulu kasv või kulu kahanemine muudab säästumäära rohkem kui väikesed trikid.',
+  lõks:'Elustiili kasv: lisatulu kaob uutesse kuludesse.',
+  valmis:'Sa oled valinud ühe liigutuse (palk, oskus, kõrvaltöö või kulu vähendamine) ja kirjutanud tähtaja.',
+  trust:'[inferred]',src:'Arvutus sinu numbritest.',
+  nr:function(v){
+    if(v.tulu===null||v.kulu===null||v.saast===null||v.tulu<=0)return '<span class="hint">Lisa netosissetulek, kulud ja säästmine, siis näed, kuidas kaks liigutust sinu säästumäära muudavad.</span>';
+    var r0=v.saast/v.tulu,a=(v.saast+0.1*v.tulu)/(1.1*v.tulu),b=(v.saast+0.1*v.kulu)/v.tulu;
+    return 'Sinu säästumäär on praegu <b>'+pc(r0)+'</b>. Kui sissetulek kasvab 10% ja kogu lisa läheb säästu, on see <b>'+pc(a)+'</b>. Kui kulud kahanevad 10% ja kogu kokkuhoid läheb säästu, on see <b>'+pc(b)+'</b>.';}},
+ {id:5,title:'Säästa enne kulutamist',dream:'Milline päev ootab sind, kui see sääst kord kasvab?',
+  muutub:'Sinu säästumäär ja see, kuhu sääst jõuab, on sinu tulevane mina.',
+  lõks:'Tootlus ei ole kindel ja varasemad tootlused ei ole tulevaste lubadus.',
+  valmis:'Sääst läheb kontolt ära enne, kui sa jõuad kulutada.',
+  trust:'[inferred]',src:'Arvutus 0–4% aastase reaaltootlusega. See on vahemik, mitte prognoos.',
+  nr:function(v){
+    if(v.tulu===null||v.saast===null||v.tulu<=0)return '<span class="hint">Lisa netosissetulek ja säästmine, siis näed siin säästumäära ja vahemikku.</span>';
+    var h='Sinu säästumäär on <b>'+pc(v.saast/v.tulu)+'</b>.';
+    if(v.saast>0)h+=' Samas tempos kogub see 5 aastaga <b>'+fr(fv(v.saast,5,0))+'–'+fr(fv(v.saast,5,0.04))+'</b> ja 10 aastaga <b>'+fr(fv(v.saast,10,0))+'–'+fr(fv(v.saast,10,0.04))+'</b> (0–4% aastas, tänase raha hindades).';
+    return h;}},
+ {id:6,title:'Fun money: teadlik nauding',dream:'Milline nauding on see, mida sa ei jäta hilisemaks? Mis on veel elamata?',
+  muutub:'Sa otsustad ise, kui palju naudingut on täna ja kui palju hiljem. Mõlemad on valikud.',
+  lõks:'Fun money kaob nimetamata jäägi sisse, siis ei saa sa seda nautida ega kontrollida. Või sa koonerdad nii kaua, kuni elu jääb elamata.',
+  valmis:'Fun money\'l on sinu enda number ja sa kasutad seda süütunde ilma. Sääst on sama teadlik otsus: nauding hiljem.',
+  trust:'[inferred]',src:'Arvutus sinu numbritest. See ei ütle, kui palju naudingut on õige.',
+  nr:function(v){
+    if(v.tulu===null||v.tulu<=0)return '<span class="hint">Lisa netosissetulek ja fun money, siis näed siin tasakaalu täna ja hiljem.</span>';
+    if(v.fun===null)return '<span class="hint">Lisa fun money kuus (reisid, söömine väljas, hobid, kingitused endale). See on osa sinu kuludest. Kui see on null, küsi endalt: kas see on teadlik valik?</span>';
+    var h='Fun money on <b>'+fe(v.fun)+'</b> kuus ('+pc(v.fun/v.tulu)+' sinu tulust).';
+    if(v.fun===0)h+=' See tähendab, et kogu nauding on jäetud hilisemaks. Kas see on teadlik valik?';
+    else if(v.saast!==null)h+=' Sa jagad naudingu: täna <b>'+pc(v.fun/v.tulu)+'</b> ja hiljem (sääst) <b>'+pc(v.saast/v.tulu)+'</b> sinu tulust.';
+    if(v.saast!==null&&v.fun>=50)h+=' Iga 50 € kuus, mille liigutad fun money’st säästu, annab 10 aasta pärast <b>'+fr(fv(50,10,0))+'–'+fr(fv(50,10,0.04))+'</b> ja võtab täna 50 € kuus elu.';
+    if(v.saast!==null)h+=seg([{v:v.fun,c:'var(--fun)'},{v:v.saast,c:'var(--sav)'}],Math.max(1,v.fun+v.saast))+'<div class="potleg">Täna (fun) · Hiljem (sääst)</div>';
+    return h;}},
+ {id:7,title:'Pensionisambad ja maksud',
+  muutub:'Sa tead reegleid, mis kehtivad sinu raha välja võtmisel ja sissemaksmisel.',
+  dream:'Millise pensionipäeva sa lõpuks ehitad ja millised reeglid seda mõjutavad?',
+  lõks:'Kuulujutt: „seda saab alati kätte" või „raha põleb".',
+  valmis:'Sa oled kontrollinud reegli sõlmest ja seadusest, mitte kuulnud kelleltki.',
+  trust:'[verified]',src:'Lõngakera sõlmed: seaduse tekst loetud 12.10.2026. Seadus muutub, vaata iga sõlme kontrollikuupäeva.',
+  nr:function(v){
+    var h='';
+    if(v.saast!==null)h+='Aastane säästmine kokku: <b>'+fe(12*v.saast)+'</b>. ';
+    h+='Reeglid, mida saad kontrollida: '+lk('ii-samba-varajane','II samba varajane väljavõtt')+', '+lk('iii-samba-vanus','III samba vanus ja maks')+', '+lk('iii-samba-mahaarvamine','III samba mahaarvamine')+', '+lk('maksuvaba-tulu','maksuvaba tulu')+'. Kuulujutt? <a href="haruta.html">Kontrolli seda lõngakeras</a>.';
+    return h;}},
+ {id:8,title:'Elusündmused',dream:'Kui kauaks sa tahad kodus olla ja mida sa siis teed?',
+  muutub:'Laps, kodu või vanemapuhkus muudavad kuus vajaliku raha ja sissetuleku.',
+  lõks:'Eeldada, et kodus oldud kuu maksab sama, mis praegu, ja unustada, kuhu sissetulek jääb.',
+  valmis:'Sa tead, mitu kuud sa tahad kodus olla ja kust tuleb raha igal kuul.',
+  trust:'[kontrollimata]',src:'Vanemahüvitise ja muud toetuste reeglid tuleb kontrollida Sotsiaalkindlustusametist (sotsiaalkindlustusamet.ee). Siin neid ei arvutata.',
+  nr:function(v){
+    var h=(v.hind!==null?v.hind:v.kulu);
+    if(h===null||h<=0)return '<span class="hint">Lisa kulud (või kodus oldud kuu hind), siis näed siin, mitu kuud su raha katab.</span>';
+    var out='',p=v.puhver===null?0:v.puhver;
+    if(v.puhver!==null)out+='Sinu puhver katab <b>'+(Math.round(p/h*10)/10).toString().replace('.',',')+' kuud</b> hinnaga '+fe(h)+' kuus. ';
+    if(v.saast!==null&&v.saast>0){var a=(p+fv(v.saast,5,0))/h,b=(p+fv(v.saast,5,0.04))/h,c=(p+fv(v.saast,10,0))/h,d=(p+fv(v.saast,10,0.04))/h;
+      out+='Kui jätkad samas tempos, katab raha 5 aasta pärast <b>'+Math.round(a)+'–'+Math.round(b)+' kuud</b> ja 10 aasta pärast <b>'+Math.round(c)+'–'+Math.round(d)+' kuud</b> (0–4% aastas). ';}
+    if(v.kuud!==null&&v.kuud>0){var need=v.kuud*h;out+='Soov <b>'+Math.round(v.kuud)+' kuud</b> maksab <b>'+fe(need)+'</b>'+(v.puhver!==null?(need>p?', mis on <b>'+fe(need-p)+'</b> rohkem kui sinu puhver täna':', mis mahub sinu puhvrisse'):'')+'. Eeldus: kodus oldud kuul ei ole sissetulekut.';}
+    return out||'<span class="hint">Lisa puhver või säästmine, et näha kuude arvu.</span>';}}
+];
+
+function vals(){return {tulu:num('tulu'),kulu:num('kulu'),saast:num('saast'),puhver:num('puhver'),laen:num('laen'),fun:num('fun'),kuud:num('kuud'),hind:num('hind'),dream:$('unistus').value.trim()};}
+var host=$('knots');
+var RINGS={1:'Mina',2:'Mina',3:'Kaudne (pank, laenuandja)',4:'Kaudne (tööandja, turg)',5:'Mina',6:'Lähedased',7:'Seadus ja kultuur',8:'Aeg'};
+var REQ={1:['tulu','kulu','saast'],2:['kulu','puhver'],3:['tulu','laen'],4:['tulu','kulu','saast'],5:['tulu','saast'],6:['tulu','fun'],7:['saast'],8:['kulu','puhver']};
+var DEF={
+ 1:['Jääk = tulu − kulu − sääst.','Üks tüüpiline kuu.','Ühekordsed kulud ja tulud puuduvad; kulude täpsus on sinu hinnang.'],
+ 2:['Puhver kuudes = puhver ÷ kulud kuus.','Täna.','Eeldab, et kulud ei muutu ja sissetulek peatub; puhvri kättesaadavust ei hinnata.'],
+ 3:['Laenukoormus = laenumaksed ÷ netosissetulek.','Üks tüüpiline kuu.','Intressi ja lõpptähtaega ei näe; vabanemise näide eeldab, et kogu vabanev raha läheb säästu.'],
+ 4:['Uus säästumäär = (sääst + lisa) ÷ (tulu + lisa) või (sääst + kokkuhoid) ÷ tulu.','Üks tüüpiline kuu.','Eeldab, et kogu lisa või kokkuhoid läheb säästu; maksud ei ole arvestatud.'],
+ 5:['Tulevane vahemik = sääst × 12 × aastad (0%) kuni annuiteedivalem 4% aastas.','5 ja 10 aastat.','Tootlus ei ole kindel; tasud, maksud ja inflatsioon ei ole arvestatud.'],
+ 6:['Fun % = fun money ÷ tulu; sääst % = sääst ÷ tulu; 50 € liigutus = 50 € × 12 × 10 aastat vahemikuna.','Üks tüüpiline kuu ja 10 aastat.','Ei hinda, kui palju naudingut on õige; tulevikuvahemik on sama mis säästu sõlmes.'],
+ 7:['Aastane säästmine = 12 × sääst; reeglid tulevad lõngakera sõlmedest.','Aasta.','Maksusid ei arvutata; reeglite kontrollikuupäev on sõlmes.'],
+ 8:['Kuud = (puhver + säästuvahemik) ÷ kodus oldud kuu hind.','Täna, 5 ja 10 aastat.','Eeldab, et kodus oldud kuul ei ole sissetulekut; toetusi ei arvestata.']
+};
+var FIELDS=['tulu','kulu','saast','puhver','laen','fun','kuud','hind'],EX={};
+KNOTS.forEach(function(k){
+  var s=document.createElement('section');s.className='knot collapsed';s.setAttribute('data-k',k.id);
+  var d=DEF[k.id];
+  s.innerHTML='<span class="mk" aria-hidden="true"></span>'+
+   '<div class="khead"><h2>'+esc(k.title)+'</h2><button class="btn kopen" type="button" aria-expanded="false">Ava</button></div>'+
+   '<div class="kmeta"><span class="chip">Ring: '+esc(RINGS[k.id])+'</span><span class="chip dq" data-dq="'+k.id+'"></span></div>'+
+   '<div class="kbody">'+
+   '<h3>Mis muutub</h3><p>'+esc(k.muutub)+'</p>'+
+   '<h3>Sinu arv</h3><div class="nr" data-nr="'+k.id+'"></div>'+
+   '<details class="how"><summary>Kuidas see arv tehti?</summary><ul class="nm"><li><b>Arvutus:</b> '+esc(d[0])+'</li><li><b>Aken:</b> '+esc(d[1])+'</li><li><b>Piirangud:</b> '+esc(d[2])+'</li></ul></details>'+
+   '<h3>Unista</h3><p class="dream" data-dream="'+k.id+'"></p>'+
+   '<details><summary>Lõks ja valmisoleku märk</summary><h3>Lõks</h3><p>'+esc(k.lõks)+'</p><h3>Kuidas tead, et oled valmis</h3><p>'+esc(k.valmis)+'</p></details>'+
+   '<h3>Allikas</h3><div class="src"><span class="chip '+(TRUST[k.trust]||'')+'">'+esc(k.trust)+'</span><span class="small">'+esc(k.src)+'</span></div>'+
+   '<button class="btn knext" type="button" data-mr-c="ots.thread.next-button" data-mr-e="Next Thread Pulled">Tiri järgmine lõng</button></div>';
+  host.appendChild(s);
+});
+function knotEl(id){return document.querySelector('section.knot[data-k="'+id+'"]');}
+function isOpen(id){return !knotEl(id).classList.contains('collapsed');}
+function setOpen(id,open){var el=knotEl(id),b=el.querySelector('.kopen');el.classList.toggle('collapsed',!open);b.setAttribute('aria-expanded',open?'true':'false');b.textContent=open?'Sulge':'Ava';}
+function refreshNext(){var any=KNOTS.some(function(k){return !isOpen(k.id);});document.querySelectorAll('.knext').forEach(function(b){b.hidden=!any;});drawThread();}
+KNOTS.forEach(function(k){
+  var el=knotEl(k.id);
+  el.querySelector('.kopen').addEventListener('click',function(){var o=!isOpen(k.id);setOpen(k.id,o);refreshNext();if(o&&window.MR)MR.track('Knot Opened',{knot_id:String(k.id)},'ots.thread.knot');});
+  el.querySelector('.knext').addEventListener('click',function(){
+    var nx=null,i;for(i=k.id+1;i<=KNOTS.length;i++){if(!isOpen(i)){nx=i;break;}}
+    if(nx===null){for(i=1;i<=KNOTS.length;i++){if(!isOpen(i)){nx=i;break;}}}
+    if(nx!==null){setOpen(nx,true);refreshNext();if(window.MR)MR.track('Knot Opened',{knot_id:String(nx)},'ots.thread.knot');knotEl(nx).scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+function openOnly(first){KNOTS.forEach(function(k){setOpen(k.id,k.id===first);});refreshNext();}
+$('openAll').onclick=function(){KNOTS.forEach(function(k){setOpen(k.id,true);});refreshNext();};
+
+/* olukorrad: tabel juhib kõike */
+var SIT=JSON.parse($('sitdata').textContent),curSit=null;
+function metric(n,v){
+  if(n==='saastmaar')return(v.tulu>0&&v.saast!==null)?v.saast/v.tulu:null;
+  if(n==='kulumaar')return(v.tulu>0&&v.kulu!==null)?v.kulu/v.tulu:null;
+  if(n==='funmaar')return(v.tulu>0&&v.fun!==null)?v.fun/v.tulu:null;
+  if(n==='puhverKuud')return(v.kulu>0&&v.puhver!==null)?v.puhver/v.kulu:null;
+  return null;
+}
+function matches(r,v){
+  if(!r.conds.length)return null;
+  for(var i=0;i<r.conds.length;i++){var c=r.conds[i],m=metric(c[0],v);if(m===null)return null;if(c[1]==='<='&&!(m<=c[2]))return false;if(c[1]==='>='&&!(m>=c[2]))return false;}
+  return true;
+}
+var sitsEl=$('sits');
+SIT.forEach(function(st,i){var b=document.createElement('button');b.type='button';b.className='sit';b.setAttribute('aria-pressed','false');b.setAttribute('data-sit',st.id);b.setAttribute('data-mr-c','ots.picker.situation-card');b.setAttribute('data-mr-e','Situation Selected');b.setAttribute('data-mr-p-situation-id',st.id);b.textContent=st.lause;b.onclick=function(){applySit(i,false);};sitsEl.appendChild(b);});
+$('sitNone').onclick=function(){applySit(-1,false);};
+function setPressed(i){document.querySelectorAll('.sit').forEach(function(b){b.setAttribute('aria-pressed','false');});if(i>=0){sitsEl.children[i].setAttribute('aria-pressed','true');}else{$('sitNone').setAttribute('aria-pressed','true');}}
+function applySit(i,keep){
+  curSit=i>=0?i:null;setPressed(i);var panel=$('panel');
+  if(i<0){FIELDS.forEach(function(f){$(f).value='';EX[f]=false;});panel.hidden=true;openOnly(1);render();return;}
+  var st=SIT[i];
+  if(!keep){FIELDS.forEach(function(f){var has=st.naide[f]!==undefined;$(f).value=has?String(st.naide[f]):'';EX[f]=has;});}
+  var kn=KNOTS[st.esimene-1];
+  panel.hidden=false;
+  panel.innerHTML='<h2>'+esc(st.nimi)+'</h2>'+
+   '<p class="small">'+(keep?'<span class="chip t-good">sinu number</span> Numbrid on sinu omad.':'<span class="chip t-warn">näide</span> Numbrid on näide. Muuda neid ja need saavad sinu omaks.')+'</p>'+
+   '<h3>Kuidas ma sind ära tunnen</h3><p>'+(st.tunnus==='number'?'Reegel: '+esc(st.reegel.tekst)+'.':esc(st.reegel.tekst))+'</p>'+
+   '<h3>Esimene lõng</h3><p><b>'+kn.id+'. '+esc(kn.title)+'</b> (ring: '+esc(RINGS[kn.id])+')</p>'+
+   '<h3>Esimene küsimus</h3><p>'+esc(st.kusimus)+'</p>'+
+   '<h3>Esimene mänguasi</h3><p>'+esc(st.mang)+'</p>'+
+   '<h3>Rahu minevikuga</h3><p class="dream"><i>„'+esc(st.rahu)+'“</i></p>'+
+   '<h3>Korduv vestlus</h3><p>'+esc(st.korduv)+'</p>'+
+   '<p class="small">'+esc(st.eiVaida)+'</p>';
+  openOnly(st.esimene);render();
+}
+function recog(v){
+  var el=$('recog'),h='',found=[];
+  SIT.forEach(function(st,i){if(st.tunnus==='number'&&matches(st.reegel,v)===true)found.push(i);});
+  if(curSit===null&&found.length){
+    h='<div class="card"><b>Sind tunneb ära reegel.</b> Reegel eksib sageli: sa otsustad.<ul class="nm">'+found.map(function(i){return '<li>'+esc(SIT[i].reegel.tekst)+': <i>'+esc(SIT[i].nimi)+'</i> <button class="btn" type="button" data-rec="'+i+'" data-mr-c="ots.recognition.suggestion" data-mr-e="Situation Recognized" data-mr-p-situation-id="'+SIT[i].id+'">Vali see olukord</button></li>';}).join('')+'</ul></div>';
+  }else if(curSit!==null&&SIT[curSit].tunnus==='number'&&matches(SIT[curSit].reegel,v)===false){
+    h='<div class="card small">Sinu numbrid ei vasta enam reeglile „'+esc(SIT[curSit].reegel.tekst)+'“. Olukord jääb sinu valikuks.</div>';
+  }
+  el.innerHTML=h;
+  el.querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){applySit(parseInt(b.getAttribute('data-rec'),10),true);};});
+}
+function dq(v){
+  KNOTS.forEach(function(k){
+    var miss=REQ[k.id].some(function(f){return v[f]===null;}),ex=REQ[k.id].some(function(f){return EX[f];}),el=document.querySelector('[data-dq="'+k.id+'"]');
+    var txt=miss?'andmed: puudub':(ex?'andmed: näide':'andmed: sinu number');
+    el.textContent=txt;el.className='chip dq '+(miss?'t-bad':(ex?'t-warn':'t-good'));
+  });
+}
+function render(){
+  var v=vals();
+  KNOTS.forEach(function(k){
+    document.querySelector('[data-nr="'+k.id+'"]').innerHTML=k.nr(v);
+    document.querySelector('[data-dream="'+k.id+'"]').innerHTML=esc(k.dream)+(v.dream?' <i>Sinu unistus: „'+esc(v.dream)+'“.</i>':'');
+  });
+  $('endNr').innerHTML=v.dream?'<b>„'+esc(v.dream)+'“</b>':'<span class="hint">Kirjuta oma unistus ülal. See on lõnga ots, kuhu kõik sõlmed viivad.</span>';
+  dq(v);recog(v);drawThread();
+}
+
+/* lõng: sasipuntrast sirgeks */
+var NS='http://www.w3.org/2000/svg',svg=$('threadSvg');
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function drawThread(){
+  var box=$('thread'),H=box.offsetHeight,R=rng(5),h='',ys=[],bt=box.getBoundingClientRect().top;
+  document.querySelectorAll('.knot').forEach(function(n){var m=n.querySelector('.mk').getBoundingClientRect();ys.push(m.top-bt+14);});
+  svg.setAttribute('viewBox','0 0 52 '+H);
+  var cols=['var(--base)','var(--loan)','var(--fun)','var(--sav)'],i;
+  for(i=0;i<9;i++){var cx=26+(R()*2-1)*10,cy=30+(R()*2-1)*10,rx=10+R()*14,ry=8+R()*12,rot=R()*180;h+='<ellipse cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" rx="'+rx.toFixed(1)+'" ry="'+ry.toFixed(1)+'" transform="rotate('+rot.toFixed(0)+' '+cx.toFixed(1)+' '+cy.toFixed(1)+')" fill="none" stroke="'+cols[i%4]+'" stroke-opacity="0.55" stroke-width="1.3"></ellipse>';}
+  var d='M26 40',px=26,py=40;
+  ys.forEach(function(y,k){var sway=Math.max(0,16-k*3),c1y=py+(y-py)*0.35,c2y=py+(y-py)*0.7,dir=k%2?1:-1;d+=' C'+(26+dir*sway)+' '+c1y.toFixed(1)+' '+(26-dir*sway)+' '+c2y.toFixed(1)+' 26 '+y.toFixed(1);py=y;});
+  
+  h+='<path d="'+d+'" fill="none" style="stroke:var(--ink2)" stroke-width="2.2" stroke-linecap="round"></path>';
+  ys.forEach(function(y,k){
+    if(k===ys.length-1){var a;for(a=0;a<8;a++){var ang=a*Math.PI/4;h+='<line x1="'+(26+Math.cos(ang)*16).toFixed(1)+'" y1="'+(y+Math.sin(ang)*16).toFixed(1)+'" x2="'+(26+Math.cos(ang)*22).toFixed(1)+'" y2="'+(y+Math.sin(ang)*22).toFixed(1)+'" style="stroke:var(--sun)" stroke-width="2" stroke-linecap="round"></line>';}h+='<circle class="sunc" cx="26" cy="'+y.toFixed(1)+'" r="13" style="fill:var(--sun)"></circle>';}
+    else{h+='<circle cx="26" cy="'+y.toFixed(1)+'" r="13" style="fill:var(--link)"></circle><text x="26" y="'+(y+4.5).toFixed(1)+'" text-anchor="middle" font-size="13" font-weight="600" font-family="Instrument Sans,sans-serif" style="fill:var(--onlink)">'+(k+1)+'</text>';}
+  });
+  svg.innerHTML=h;
+}
+FIELDS.forEach(function(id){$(id).addEventListener('input',function(){EX[id]=false;render();});});
+$('unistus').addEventListener('input',render);
+$('sample').onclick=function(){var s={tulu:'2500',kulu:'1900',saast:'300',puhver:'4000',laen:'375',fun:'400',kuud:'12',hind:'1000',unistus:'Aeglased hommikud maakodus'};Object.keys(s).forEach(function(k){$(k).value=s[k];EX[k]=(k!=='unistus');});render();};
+$('clear').onclick=function(){FIELDS.concat(['unistus']).forEach(function(k){$(k).value='';EX[k]=false;});setPressed(-2);curSit=null;$('panel').hidden=true;render();};
+window.addEventListener('resize',drawThread);
+document.addEventListener('toggle',drawThread,true);
+if(window.ResizeObserver){new ResizeObserver(drawThread).observe($('thread'));}
+var dawn=$('dawn'),tick=false;
+function sky(){tick=false;var h=document.documentElement,max=Math.max(1,h.scrollHeight-window.innerHeight);dawn.style.opacity=Math.max(0,Math.min(1,window.scrollY/max));}
+window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(sky);}},{passive:true});
+
+/* lõngaots.md: vestlusalus, mitte nõu */
+function plain(h){var d=document.createElement('div');d.innerHTML=h;return (d.textContent||'').replace(/\s+/g,' ').trim();}
+function hideEur(t){return t.replace(/\d[\d\u00a0 ]*(?:,\d+)?\s*€/g,'– €');}
+var LABELS={tulu:'Netosissetulek kuus',kulu:'Kulud kuus',saast:'Säästmine kuus',puhver:'Puhver',laen:'Laenumaksed kuus',fun:'Fun money kuus',kuud:'Kuud, mida tahaksid kodus olla',hind:'Kodus oldud kuu hind'};
+function buildMd(hide){
+  var v=vals(),d=new Date(),dt=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear(),L=[],st=curSit!==null?SIT[curSit]:null;
+  function amt(t){return hide?hideEur(t):t;}
+  L.push('# Lõnga ots: minu olukorra kaart','','*Vestlusalus, mitte nõu. Koostatud '+dt+' meeleraha.ee lehel minu seadmes.*','');
+  L.push('## Minu olukord','');
+  if(st){var kn=KNOTS[st.esimene-1];L.push('**'+st.nimi+'**: „'+st.lause+'“','','- Esimene lõng: '+kn.id+'. '+kn.title+' (ring: '+RINGS[kn.id]+')','- Esimene küsimus: '+st.kusimus,'- Rahu minevikuga: „'+st.rahu+'“','- Korduv vestlus: '+st.korduv);}
+  else L.push('Alustan tühjalt, ilma olukorra kaardita.');
+  L.push('','## Minu numbrid','','| Näitaja | Väärtus | Andmed |','|---|---|---|');
+  FIELDS.forEach(function(f){if(v[f]===null)return;L.push('| '+LABELS[f]+' | '+(hide?'–':(f==='kuud'?String(Math.round(v[f])):fe(v[f])))+' | '+(EX[f]?'näide':'sinu number')+' |');});
+  L.push('','## Kaheksa sõlme ja minu seis','');
+  KNOTS.forEach(function(k){L.push((k.id)+'. **'+k.title+'** (ring: '+RINGS[k.id]+'): '+amt(plain(k.nr(v))));});
+  if(v.dream)L.push('','## Minu unistus','','„'+v.dream+'“');
+  L.push('','## Küsimused vestluseks','','1. Millist numbrit ma väldin vaatamast ja miks?','2. Mis siin on minu valik ja mis on minu ümber (lähedased, tööandja, seadus)?','3. Mis on üks samm, mille teen järgmise kuu jooksul?','4. Kellega ma tahan seda arutada ja mida ma temalt ootan?');
+  if(st)L.push('5. '+st.kusimus);
+  L.push('','## Mida see kaart ei väida','','- See ei ole finants- ega õigusnõu. See on vestlusalus.','- „näide“ märgiga numbrid on väljamõeldud näited, mitte minu omad.','- Tulevikuvahemikud on 0–4% aastas, tänase raha hindades, ilma maksudeta, ja ei ole prognoos.','- Olukorra reegel eksib sageli; mina otsustan, kas see kõlab nagu mina.','- Ringid (Mina, Lähedased, Kaudne, Seadus ja kultuur, Aeg) on Meeleraha paigutus, inspireeritud Bronfenbrenneri mudelist.','- Pensionireegleid kontrolli lõngakerast ja seadusest: meeleraha.ee/haruta.html');
+  return L.join('\n')+'\n';
+}
+$('mdBtn').addEventListener('click',function(){
+  var hide=$('mdHide').checked,blob=new Blob([buildMd(hide)],{type:'text/markdown'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download='longaots.md';document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+  $('mdMsg').textContent=(window.MR?MR.t('ots.file.msg'):'Fail on alla laetud.');
+  if(window.MR)MR.track('Card Downloaded',{card:'md',amounts:hide?'hidden':'shown'},'ots.file.md-button');
+});
+openOnly(1);render();sky();
+})();
+</script>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+</body>
+</html>

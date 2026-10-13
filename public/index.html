@@ -24,6 +24,7 @@
 <meta name="twitter:image" content="https://meeleraha.ee/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
 <style>
 :root{
   box-sizing:border-box;
@@ -98,15 +99,30 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
 }
 </style>
 </head>
-<body>
+<body data-mr-page="index" data-mr-partial="1">
 <div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div><div id="sun"></div><div class="gr"></div></div>
-<main>
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
 <header class="hero">
-  <h1>Raha, mida kuuled, vaatad ja hingad.</h1>
-  <p class="lead">Mängulise rahatarkuse manifest. Sa ei loe numbreid, sa kohtud oma tulevase minaga.</p>
-  <p class="sub">Iga õhtu on otsus, mis hommikul sulle vastu tuleb. Lehe taevas muutub sinuga: õhtust koiduni.</p>
-  <p class="row"><a class="btn go" href="#hinga">Alusta hingamisest</a> <a class="btn" href="haruta.html">Haruta pensioni lõngakera</a></p>
+  <h1 data-i18n="index.h1">Raha, mida kuuled, vaatad ja hingad.</h1>
+  <p class="lead" data-i18n="index.lead">Mängulise rahatarkuse manifest. Sa ei loe numbreid, sa kohtud oma tulevase minaga.</p>
+  <p class="sub" data-i18n="index.sub">Iga õhtu on otsus, mis hommikul sulle vastu tuleb. Lehe taevas muutub sinuga: õhtust koiduni.</p>
+  <p class="row"><a class="btn go" href="#hinga" data-mr-c="index.hero.cta" data-i18n="index.cta">Alusta hingamisest</a> <a class="btn" href="haruta.html">Haruta pensioni lõngakera</a></p>
 </header>
+
+<section id="kaart">
+  <h2 data-i18n="hub.h2">Meeleraha kaart</h2>
+  <p class="sub" data-i18n="hub.p">Viis ust samasse majja. Alusta sealt, kus oled.</p>
+  <div id="doors" class="row" style="flex-direction:column;gap:8px">
+    <a class="btn" href="#hinga" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="feel"><b data-i18n="hub.feel.t">Tunne</b>&nbsp;<span class="small" data-i18n="hub.feel.d">Hinga, räägi tulevase minaga, kingi ja kata.</span></a>
+    <a class="btn" href="haruta.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="haruta"><b data-i18n="hub.haruta.t">Haruta</b>&nbsp;<span class="small" data-i18n="hub.haruta.d">Pensionireeglid ja kuulujutud seaduse järgi.</span></a>
+    <a class="btn" href="ots.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="plan"><b data-i18n="hub.plan.t">Plaani</b>&nbsp;<span class="small" data-i18n="hub.plan.d">Sinu numbrid ja unistus, üks lõng korraga.</span></a>
+    <a class="btn" href="ajatelg.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="timeline"><b data-i18n="hub.timeline.t">Ajatelg</b>&nbsp;<span class="small" data-i18n="hub.timeline.d">Elatud ja ees olev elu, rahavood ja bilanss.</span></a>
+    <a class="btn" href="kast.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="kast"><b data-i18n="hub.kast.t">Kast</b>&nbsp;<span class="small" data-i18n="hub.kast.d">Tööriistad, allalaadimised ja mängud.</span></a>
+  </div>
+</section>
 
 <section id="hinga">
   <h2>Hinga</h2>
@@ -143,7 +159,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
   <div class="card">
     <div class="small" style="margin-bottom:6px">Kõne tulevaselt minalt (näidis)</div>
     <div id="call" class="call"></div>
-    <div class="row"><button id="say" class="btn" type="button">Loe ette</button></div>
+    <div class="row"><button id="say" class="btn" type="button" data-mr-c="index.dream.say-button" data-mr-e="Call Played">Loe ette</button></div>
     <div id="sayMsg" class="small"></div>
   </div>
 </section>
@@ -164,8 +180,8 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
   <h2>Kingi</h2>
   <p class="sub">Võta osa fun moneyst ja kingi see tulevasele minale. Või anna see meeldivale asjale: see annab täna hea tunde.</p>
   <div class="row">
-    <button id="k1" class="btn" type="button">Tulevasele minale</button>
-    <button id="k2" class="btn" type="button">Meeldivale asjale</button>
+    <button id="k1" class="btn" type="button" data-mr-c="index.gift.mode-button" data-mr-e="Gift Mode Selected" data-mr-p-mode="fut">Tulevasele minale</button>
+    <button id="k2" class="btn" type="button" data-mr-c="index.gift.mode-button" data-mr-e="Gift Mode Selected" data-mr-p-mode="don">Meeldivale asjale</button>
   </div>
   <label class="small" for="gf">Fun moneyst kuus: <span id="gfo" style="font-weight:600;color:var(--ink)">0 €</span></label>
   <input type="range" id="gf" min="0" max="300" step="25" value="0">
@@ -178,7 +194,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
   <div id="share" class="card"></div>
   <div class="row">
     <button id="hide" class="btn" type="button" aria-pressed="false">Peida summad</button>
-    <button id="copy" class="btn" type="button">Kopeeri tekst</button>
+    <button id="copy" class="btn" type="button" data-mr-c="index.share.copy-button" data-mr-e="Share Card Changed" data-mr-p-action="copy">Kopeeri tekst</button>
   </div>
   <div id="copyMsg" class="small"></div>
 </section>
@@ -186,7 +202,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
 <section id="haruta">
   <h2>Haruta</h2>
   <p class="sub">Pensionireeglid on sassis lõngakera. Haruta see lahti: kontrolli kuulujuttu ja vaata, mis seadus tegelikult ütleb.</p>
-  <p><a class="btn go" href="haruta.html">Haruta lõngakera</a></p>
+  <p class="row"><a class="btn go" href="haruta.html">Haruta lõngakera</a> <a class="btn" href="ots.html">Leia lõnga ots</a> <a class="btn" href="ajatelg.html">Ajatelgekiik</a></p>
 </section>
 
 <section id="tode">
@@ -198,6 +214,8 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
     <li>Kõne tekst on näidis. Lugemine toimub sinu brauseris.</li>
     <li>Hääl on sünteetiline, mitte päris inimese oma. Lugemine toimub sinu brauseris ja midagi ei salvestata.</li>
     <li>Lõngakera on metafoor. Iga sõlm tuleb seaduse tekstist ja näitab usaldusmärki; vastused on haridus, mitte nõu.</li>
+    <li>Ajatelgekiik on peegel, mitte prognoos. Ajahorisont on sinu valik ja „tee rahu“ on mänguline harjutus, mitte teraapia.</li>
+    <li>„Lõnga ots“ on lihtsustus: kaheksa sõlme jätavad enamiku valikuid välja ja järjekord on rusikareegel, mitte sinu tee. Arvud tulevad ainult sinu sisestatud numbritest ja jäävad sinu seadmesse.</li>
     <li>Kuulujutu kontroll annab lühikese vastuse ja viite paragrahvile. Täielik tekst on sõlmes ja seaduses.</li>
     <li>Numbrid on näide (sissetulek 2 500 €, reaaltootlus 4%, väljavõtmismäär 4%) ja kõik on simulatsioon, mitte prognoos ega nõu.</li>
   </ul>
@@ -215,6 +233,7 @@ footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
   <p class="small" style="margin-top:20px">Raha Meeled. Disain ja unistused: Mirko.</p>
 </footer>
 </main>
+<div id="mr-foot"></div>
 
 <script>
 (function(){
@@ -333,7 +352,7 @@ micBtn.onclick=function(){
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(st){
     var AC=window.AudioContext||window.webkitAudioContext;mic.ctx=new AC();if(mic.ctx.resume)mic.ctx.resume();
     mic.sr=mic.ctx.sampleRate;mic.stream=st;var src=mic.ctx.createMediaStreamSource(st);mic.an=mic.ctx.createAnalyser();mic.an.fftSize=2048;src.connect(mic.an);
-    mic.buf=new Uint8Array(mic.an.fftSize);mic.fb=new Float32Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.hz=0;mic.vo=0;mic.t0=performance.now();mic.on=true;
+    mic.buf=new Uint8Array(mic.an.fftSize);mic.fb=new Float32Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.hz=0;mic.vo=0;mic.t0=performance.now();mic.on=true;if(window.MR)MR.track('Breath Started',{mode:mic.mode==='voice'?'voice':'breath'},'index.breath.mic-button');
     micMsg.removeAttribute('data-cal');micMsg.textContent='Kalibreerin 2 sekundit: ole vaikselt.';micM.hidden=false;
     micBtn.setAttribute('aria-pressed','true');micBtn.textContent='Lülita mikrofon välja';micLoop();
   },function(err){
@@ -344,7 +363,7 @@ micBtn.onclick=function(){
 document.addEventListener('visibilitychange',function(){if(document.hidden&&mic.on)micStop('Mikrofon lülitus välja, sest leht läks taustale.');});
 
 /* chips */
-function chips(id,list,multi,onpick){var el=document.getElementById(id);list.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.className='btn';b.setAttribute('aria-pressed','false');b.textContent=it[0];b.onclick=function(){onpick(i);sync();};el.appendChild(b);});}
+function chips(id,list,multi,onpick){var el=document.getElementById(id);list.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.className='btn';b.setAttribute('aria-pressed','false');b.textContent=it[0];if(id==='gA'){b.setAttribute('data-mr-c','index.dream.activity-chip');b.setAttribute('data-mr-e','Activity Selected');b.setAttribute('data-mr-p-activity-id',['reisida','lastelastega','aed','oppimine'][i]);}b.onclick=function(){onpick(i);sync();};el.appendChild(b);});}
 chips('gA',ACTS,true,function(i){sel[i]=!sel[i];});
 chips('gW',WHO,false,function(i){who=who===i?-1:i;});
 chips('gP',WHERE,false,function(i){where=where===i?-1:i;});
@@ -410,7 +429,7 @@ function shareText(){
   L.push('Simulatsioon, mitte nõu.');
   return L;}
 function share(){var L=shareText(),h='<div class="big" style="font-size:26px;margin-bottom:10px">'+L[0]+'</div>';for(var i=1;i<L.length;i++){h+='<p style="margin:0 0 6px">'+L[i]+'</p>';}document.getElementById('share').innerHTML=h;}
-document.getElementById('hide').onclick=function(){hideAmt=!hideAmt;this.setAttribute('aria-pressed',hideAmt?'true':'false');this.textContent=hideAmt?'Näita summasid':'Peida summad';share();};
+document.getElementById('hide').onclick=function(){hideAmt=!hideAmt;if(window.MR)MR.track('Share Card Changed',{action:hideAmt?'hide':'show'},'index.share.hide-button');this.setAttribute('aria-pressed',hideAmt?'true':'false');this.textContent=hideAmt?'Näita summasid':'Peida summad';share();};
 document.getElementById('copy').onclick=function(){var t=shareText().join('\n'),msg=document.getElementById('copyMsg');try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Tekst kopeeritud.';},function(){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';});}catch(e){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';}};
 
 /* speech */
@@ -437,5 +456,8 @@ function sync(){
 sync();
 })();
 </script>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
 </body>
 </html>

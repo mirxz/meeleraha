@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="kell.title">Kellakeeramise vestlus | Raha Meeled</title>
+<meta name="description" content="Kaks korda aastas kümme minutit iseendaga: sügisene lisatund ja kevadine tund edasi. Kalendrifail ja küsimused.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/kell.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Kellakeeramise vestlus">
+<meta property="og:description" content="Kaks korda aastas kümme minutit iseendaga: sügisene lisatund ja kevadine tund edasi. Kalendrifail ja küsimused.">
+<meta property="og:url" content="https://meeleraha.ee/kell.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+</head>
+<body data-mr-page="kell">
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<h1 data-i18n="kell.h1">Kellakeeramise vestlus</h1>
+<p class="lead" data-i18n="kell.lead"></p>
+<div class="card"><h2 data-i18n="kell.a.h"></h2><p data-i18n="kell.a.p"></p><ul class="nm"><li data-i18n="kell.a1"></li><li data-i18n="kell.a2"></li><li data-i18n="kell.a3"></li></ul></div>
+<div class="card"><h2 data-i18n="kell.s.h"></h2><p data-i18n="kell.s.p"></p><ul class="nm"><li data-i18n="kell.s1"></li><li data-i18n="kell.s2"></li><li data-i18n="kell.s3"></li></ul></div>
+<div class="card" id="cal"><h2 data-i18n="kell.cal.h"></h2><p data-i18n="kell.cal.p"></p><div class="row"><button class="btn go" type="button" id="dl" data-mr-c="kell.calendar.download-button" data-mr-e="Calendar Downloaded" data-i18n="kell.cal.btn"></button></div><p class="small" data-i18n="kell.cal.note"></p><p class="small" id="msg" aria-live="polite"></p></div>
+<p><a href="ajatelg.html" data-i18n="nav.ajatelg"></a> · <a href="ots.html" data-i18n="nav.ots"></a></p>
+<p class="small" data-i18n="kell.next"></p>
+</main>
+<div id="mr-foot"></div>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+<script>
+(function(){
+var DATES=[['20261025','a'],['20270328','s'],['20271031','a'],['20280326','s'],['20281029','a']];
+function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');}
+function next(d){var y=+d.slice(0,4),m=+d.slice(4,6)-1,dd=+d.slice(6,8),t=new Date(Date.UTC(y,m,dd+1));return t.getUTCFullYear()+('0'+(t.getUTCMonth()+1)).slice(-2)+('0'+t.getUTCDate()).slice(-2);}
+function build(){
+  var stamp=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z',out=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Meeleraha//Kellakeeramine//ET','CALSCALE:GREGORIAN'];
+  DATES.forEach(function(x){
+    var s=x[1]==='a',qs=s?['kell.a1','kell.a2','kell.a3']:['kell.s1','kell.s2','kell.s3'];
+    var desc=MR.t(s?'kell.a.h':'kell.s.h')+'\n'+qs.map(function(k,i){return (i+1)+'. '+MR.t(k);}).join('\n')+'\nhttps://meeleraha.ee/kellakeeramine.html';
+    out.push('BEGIN:VEVENT','UID:meeleraha-'+x[0]+'@meeleraha.ee','DTSTAMP:'+stamp,'DTSTART;VALUE=DATE:'+x[0],'DTEND;VALUE=DATE:'+next(x[0]),'SUMMARY:'+esc('Meeleraha: '+MR.t('kell.h1')+' ('+MR.t(s?'kell.a.h':'kell.s.h')+')'),'DESCRIPTION:'+esc(desc),'END:VEVENT');
+  });
+  out.push('END:VCALENDAR');return out.join('\r\n')+'\r\n';
+}
+document.getElementById('dl').addEventListener('click',function(){
+  var blob=new Blob([build()],{type:'text/calendar'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='meeleraha-kellakeeramine.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(a.href);},1000);document.getElementById('msg').textContent=MR.t('kell.cal.msg');
+});
+})();
+</script>
+</body>
+</html>

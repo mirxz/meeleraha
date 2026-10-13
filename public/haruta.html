@@ -20,6 +20,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
 <style>
 :root{
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
@@ -97,12 +98,15 @@ footer{margin-top:36px}
 .leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
 </style>
 </head>
-<body>
+<body data-mr-page="haruta" data-mr-partial="1">
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
 <div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
-<main>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
 <a class="back" href="index.html">← Raha Meeled</a>
-<h1>Haruta lõngakera</h1>
-<p class="lead">Pensionireeglid on sassis lõngakera: iga sõlm on seotud teistega. Tiri sõlme lõnga otsast välja või puuduta seda, ja vajalik lõng harutub.</p>
+<h1 data-i18n="haruta.h1">Haruta lõngakera</h1>
+<p class="lead" data-i18n="haruta.lead">Pensionireeglid on sassis lõngakera: iga sõlm on seotud teistega. Tiri sõlme lõnga otsast välja või puuduta seda, ja vajalik lõng harutub.</p>
 <form id="f" role="search">
   <input id="q" type="search" aria-label="Küsi pensioni kohta või kirjuta kuulujutt" placeholder="Näiteks: kas ootan? või: III sammast saab 55-aastaselt kätte" autocomplete="off">
   <button class="btn go" type="submit">Küsi</button>
@@ -122,9 +126,10 @@ footer{margin-top:36px}
 <footer class="small">
   <p>Haridus ja simulatsioon, mitte nõu. Vastus näitab, mida seadus ütleb, mitte seda, mida sina peaksid tegema. Seadus muutub: iga sõlm näitab viimast kontrolli ja usaldusmärki. Praegu kontrollitud seadused kehtivad kuni 31.12.2026; uuemaid redaktsioone ei ole loetud.</p>
   <p>Usaldusmärgid: [verified] seaduse tekst loetud; [secondary] ainult ametkonna või ajakirjanduse leht; [inferred] järeldatud; [kontrollimata] ei õnnestunud kontrollida. Seaduste tekstid: <a href="https://www.riigiteataja.ee/akt/KoPS">KoPS</a>, <a href="https://www.riigiteataja.ee/akt/TuMS">TuMS</a>, <a href="https://www.riigiteataja.ee/akt/RPKS">RPKS</a>. Omanik: Meeleraha.</p>
-  <p>Manifest, kõne tulevaselt minalt ja hingamine: <a href="index.html">Raha Meeled</a>. Hääl on sünteetiline, mitte päris inimese oma.</p>
+  <p>Manifest, kõne tulevaselt minalt ja hingamine: <a href="index.html">Raha Meeled</a>. Oma numbritega: <a href="ots.html">Lõnga ots</a>. Oma elu ajateljel: <a href="ajatelg.html">Ajatelgekiik</a>. Hääl on sünteetiline, mitte päris inimese oma.</p>
 </footer>
 </main>
+<div id="mr-foot"></div>
 <script type="application/json" id="nodes">[
  {
   "id": "kolm-sammast",
@@ -1585,6 +1590,7 @@ var KN=ALL.map(function(o,i){
     if(!d.moved){if(!cancel){location.hash='#'+o.id;}return;}
     var pt=svgPt(e),dx=pt[0]-d.sx,dy=pt[1]-d.sy;
     var far=!cancel&&Math.hypot(Math.max(-1e3,Math.min(1e3,dx)),Math.max(-1e3,Math.min(1e3,dy)))>THRESH;
+    if(window.MR)MR.track('Knot Pulled',{outcome:far?'opened':'released'},'haruta.yarn.knot');
     if(far&&decodeURIComponent(location.hash.slice(1))!==o.id){location.hash='#'+o.id;}
     else{setYarn(far?o.id:focusId,Object.keys(hitSet));}
   }
@@ -1684,7 +1690,7 @@ function bindSay(kind,id){
   var b=document.getElementById('say'),msg=document.getElementById('sayMsg');if(!b)return;
   var item=kind==='n'?BYID[id]:RBY[id];
   b.onclick=function(){msg.textContent='';if(SAYP){SAYP.pause();sayReset();return;}
-    SAYQ=['g0',(kind==='n'?'hn-':'hr-')+id,'h-end'];b.textContent='Peata';
+    SAYQ=['g0',(kind==='n'?'hn-':'hr-')+id,'h-end'];b.textContent='Peata';if(window.MR)MR.track('Audio Played',{kind:kind==='n'?'node':'rumor'},'haruta.card.say-button');
     sayNext(msg,'Tere, siin mina pensionil. '+item.say+' Seadust ja usaldusmärki näed ekraanilt. See on haridus, mitte nõu.');};
 }
 function rumorCard(r){return '<div class="card" id="rumorCard"><div class="small">Kuulujutt</div><p><i>'+esc(r.text)+'</i></p><div class="verd"><span class="chip '+(KCLS[r.kind]||'')+'">'+esc(r.verdict)+'</span></div><p style="margin-top:10px">'+esc(r.answer)+'</p><div class="small">Sõlmed, kust vastus tuleb:</div><div class="row">'+r.nodes.map(function(id){return nodeLink(BYID[id]);}).join(' ')+'</div><div class="small">Seadus muutub. Vaata sõlmest usaldusmärki ja kontrolli kuupäeva.</div><div class="row"><button class="btn" id="say" type="button">Kuula kõnet</button></div><div id="sayMsg" class="small"></div></div>';}
@@ -1699,6 +1705,7 @@ function renderResults(q){
   out.innerHTML=h;if(r){bindSay('r',r.id);}
   var hits=found.slice(0,6).map(function(n){return n.id;});if(r){hits=r.nodes.concat(hits);}
   yarn.set(r?r.id:(found[0]?found[0].id:null),hits);
+  if(window.MR){var nf=found.length;MR.track('Search Submitted',{matched:r?'rumor':(nf?'node':'none'),result_bucket:nf===0?'0':(nf===1?'1':(nf<=5?'2-5':'6+'))},'haruta.search.form');}
 }
 function renderNode(n){
   document.title=n.title+' | Haruta lõngakera';lists.hidden=true;
@@ -1722,8 +1729,8 @@ function renderRumorPage(r){
 function show(){
   if(SAYP){SAYP.pause();}sayReset();
   var h=decodeURIComponent(location.hash.slice(1));
-  if(h&&BYID[h]){renderNode(BYID[h]);}
-  else if(h&&RBY[h]){renderRumorPage(RBY[h]);}
+  if(h&&BYID[h]){renderNode(BYID[h]);if(window.MR)MR.track('Node Opened',{node_id:h},'haruta.card.node');}
+  else if(h&&RBY[h]){renderRumorPage(RBY[h]);if(window.MR)MR.track('Rumor Opened',{rumor_id:h},'haruta.card.rumor');}
   else{renderResults(qEl.value);}
   document.getElementById('reset').hidden=!(yarn.focus()||(h&&true));
 }
@@ -1744,5 +1751,8 @@ window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimation
 show();sky();
 })();
 </script>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
 </body>
 </html>

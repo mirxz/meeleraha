@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="kontakt.title">Kontakt | Raha Meeled</title>
+<meta name="description" content="Kirjuta meile. Kiri avatakse sinu e-posti programmis ja läheb teele alles siis, kui sina vajutad saada.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/kontakt.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Kontakt">
+<meta property="og:description" content="Kirjuta meile. Kiri avatakse sinu e-posti programmis ja läheb teele alles siis, kui sina vajutad saada.">
+<meta property="og:url" content="https://meeleraha.ee/kontakt.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+</head>
+<body data-mr-page="kontakt">
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<h1 data-i18n="kontakt.h1">Kontakt</h1>
+<p class="lead" data-i18n="kontakt.lead"></p>
+<form class="card" id="form" novalidate>
+  <div class="fields">
+    <div class="full"><label for="reason" data-i18n="kontakt.reason"></label><select id="reason"></select></div>
+    <div class="full"><label for="name" data-i18n="kontakt.name"></label><input id="name" autocomplete="name"></div>
+    <div class="full"><label for="email" data-i18n="kontakt.email"></label><input id="email" type="email" autocomplete="email"></div>
+    <div class="full"><label for="msg" data-i18n="kontakt.msg"></label><textarea id="msg" rows="5"></textarea></div>
+  </div>
+  <label class="small" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0"><input id="consent" type="checkbox" style="width:auto;margin-top:4px"><span data-i18n="kontakt.consent"></span></label>
+  <div class="row"><button class="btn go" type="submit" id="send" data-mr-c="kontakt.form.submit" data-i18n="kontakt.send"></button></div>
+  <p class="small" id="msgOut" aria-live="polite"></p>
+</form>
+</main>
+<div id="mr-foot"></div>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+<script>
+(function(){
+var REASONS=['general','tool','delivery','seller'];
+function q(n){try{return new URLSearchParams(location.search).get(n);}catch(e){return null;}}
+var sel=document.getElementById('reason');
+function fill(){var cur=sel.value||q('reason')||'general';sel.innerHTML='';REASONS.forEach(function(r){var o=document.createElement('option');o.value=r;o.textContent=MR.t('kontakt.reason.'+r);sel.appendChild(o);});sel.value=REASONS.indexOf(cur)>=0?cur:'general';}
+fill();MR.onLang(fill);
+var tool=q('tool');if(tool&&/^[a-z0-9-]{1,40}$/.test(tool))document.getElementById('msg').value='['+tool+'] ';
+document.getElementById('form').addEventListener('submit',function(e){
+  e.preventDefault();var email=document.getElementById('email').value.trim(),ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)&&document.getElementById('consent').checked,out=document.getElementById('msgOut');
+  if(!ok){out.textContent=MR.t('kontakt.need');return;}
+  var reason=sel.value,body=document.getElementById('msg').value+'\n\n'+(document.getElementById('name').value?document.getElementById('name').value+'\n':'')+email;
+  var href='mailto:'+MR.config.contact+'?subject='+encodeURIComponent('Meeleraha: '+MR.t('kontakt.reason.'+reason))+'&body='+encodeURIComponent(body);
+  MR.track('Contact Started',{reason:reason},'kontakt.form.submit');
+  out.textContent=MR.t('kontakt.note',{addr:MR.config.contact});
+  window.__mrMailto=href;
+  try{window.location.href=href;}catch(x){}
+});
+})();
+</script>
+</body>
+</html>

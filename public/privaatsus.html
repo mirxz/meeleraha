@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="priv.title">Privaatsus ja mõõtmine | Raha Meeled</title>
+<meta name="description" content="Mida me mõõdame, kuidas iga komponent on nimetatud ja mida me kunagi ei saada.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/privaatsus.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Privaatsus ja mõõtmine">
+<meta property="og:description" content="Mida me mõõdame, kuidas iga komponent on nimetatud ja mida me kunagi ei saada.">
+<meta property="og:url" content="https://meeleraha.ee/privaatsus.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+</head>
+<body data-mr-page="privaatsus">
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<h1 data-i18n="priv.h1">Privaatsus ja mõõtmine</h1>
+<p class="lead" data-i18n="priv.lead"></p>
+<div class="card"><h2 data-i18n="priv.p.h"></h2><ul class="nm"><li data-i18n="priv.p1"></li><li data-i18n="priv.p2"></li><li data-i18n="priv.p3"></li><li data-i18n="priv.p4"></li><li data-i18n="priv.p5"></li></ul></div>
+<div class="card"><h2 data-i18n="priv.never.h"></h2><ul class="nm"><li data-i18n="priv.never1"></li><li data-i18n="priv.never2"></li><li data-i18n="priv.never3"></li><li data-i18n="priv.never4"></li></ul></div>
+<div class="card"><h2 data-i18n="priv.set.h"></h2><p data-i18n="priv.set.p"></p><div class="row"><button class="btn" type="button" id="tg" aria-pressed="true" data-mr-c="privaatsus.settings.toggle"></button></div><p class="small" id="tgState"></p></div>
+<div class="card"><h2 data-i18n="priv.demo.h"></h2><p data-i18n="priv.demo.p"></p><div class="row"><button class="btn" type="button" id="demo" data-mr-c="privaatsus.demo.button" data-i18n="priv.demo.btn"></button></div></div>
+<div class="card"><h2 data-i18n="priv.conv.h"></h2><p data-i18n="priv.conv"></p></div>
+<div class="card"><h2 data-i18n="priv.ev.h"></h2><div class="scroll-x"><table class="tx" id="evt"></table></div></div>
+<div class="card"><h2 data-i18n="priv.co.h"></h2><div class="scroll-x"><table class="tx" id="cot"></table></div></div>
+<p class="small" data-i18n="priv.legal"></p>
+</main>
+<div id="mr-foot"></div>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+<script>
+(function(){
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function tables(){
+  var T=MR.tax,h='<tr><th>'+esc(MR.t('priv.th.event'))+'</th><th>'+esc(MR.t('priv.th.desc'))+'</th><th>'+esc(MR.t('priv.th.props'))+'</th></tr>';
+  Object.keys(T.events).forEach(function(k){var e=T.events[k],ps=Object.keys(e.props).map(function(p){var en=T.enums[e.props[p].replace('enum:','')];return p+': '+(en.length>6?en.slice(0,5).join(' | ')+' | … ('+en.length+')':en.join(' | '));}).join('; ');h+='<tr><td><code>'+esc(k)+'</code></td><td>'+esc(MR.lang==='en'?e.desc_en:e.desc)+'</td><td>'+esc(ps||'–')+'</td></tr>';});
+  document.getElementById('evt').innerHTML=h;
+  var c='<tr><th>'+esc(MR.t('priv.th.component'))+'</th><th>'+esc(MR.t('priv.th.desc'))+'</th><th>'+esc(MR.t('priv.th.page'))+'</th></tr>';
+  Object.keys(T.components).forEach(function(k){var x=T.components[k],pg=T.pages[x.page];c+='<tr><td><code>'+esc(k)+'</code></td><td>'+esc(MR.lang==='en'?x.desc_en:x.desc)+'</td><td>'+esc(pg?(MR.lang==='en'?pg.name_en+' ('+pg.space_en+')':pg.name+' ('+pg.space+')'):x.page)+'</td></tr>';});
+  document.getElementById('cot').innerHTML=c;
+}
+function state(){var r=MR.measureReason();document.getElementById('tg').textContent=MR.measure()?MR.t('log.turn_off'):MR.t('log.turn_on');document.getElementById('tg').setAttribute('aria-pressed',MR.measure()?'true':'false');document.getElementById('tgState').textContent=r===null?MR.t('log.on'):MR.t('log.off.'+r);}
+document.getElementById('tg').onclick=function(){MR.setMeasure(!MR.measure());state();};
+document.getElementById('demo').onclick=function(){MR.track('Door Clicked',{door:'kast'},'index.hub.door',{dry:true});};
+tables();state();MR.onLang(function(){tables();state();});
+})();
+</script>
+</body>
+</html>

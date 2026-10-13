@@ -1,0 +1,129 @@
+{
+ "about": "Meeleraha terminibaas: iga mõiste tõlge on lukus; test kontrollib, et sõnastik kasutab täpselt neid sõnu.",
+ "voice": {
+  "et": "Soe ja otsene, selge ja praktiline, kübe huumorit, ei mingit korporatiivset udu. Sina-vorm. Haridus, mitte nõu.",
+  "rules": [
+   "Kohanda, ära tõlgi sõna-sõnalt (madly-marketing: local sense).",
+   "Mitteformaalne „sina“ kõigis keeltes (du, tú, tu, je, du, du, du). Otsusta formaalsus emakeelsega, eriti prantsuse keeles (tu või vous).",
+   "Metafoorid: lõng, sõlm, kera, kiik. Kui keeles on parem pilt, kasuta seda, aga hoia lõng.",
+   "Ei kiirustamist, nappust ega sotsiaalset survet; ükski tekst ei lubada tulemust.",
+   "Rahandus ja privaatsus on reguleeritud teemad: õiguslikult tundlikud read (priv.*, kontakt.consent, log.*) vaatab emakeelne lugeja, kes tunneb kohalikku konteksti."
+  ]
+ },
+ "locked_do_not_translate": [
+  "Meeleraha",
+  "Raha Meeled",
+  "lõngaots.md",
+  "Segment Spec",
+  "Do Not Track",
+  "Global Privacy Control"
+ ],
+ "concepts": {
+  "thread_end": {
+   "key": "ots.title",
+   "terms": {
+    "et": "Lõnga ots",
+    "en": "Thread end",
+    "de": "Fadenende",
+    "es": "Cabo del hilo",
+    "fr": "Bout du fil",
+    "nl": "Draadeinde",
+    "sv": "Trådänden",
+    "da": "Trådenden",
+    "nb": "Trådenden"
+   }
+  },
+  "untangle": {
+   "key": "nav.haruta",
+   "terms": {
+    "et": "Haruta",
+    "en": "Untangle",
+    "de": "Entwirren",
+    "es": "Desenredar",
+    "fr": "Démêler",
+    "nl": "Ontwarren",
+    "sv": "Reda ut",
+    "da": "Rod ud",
+    "nb": "Nøste opp"
+   }
+  },
+  "timeline": {
+   "key": "nav.ajatelg",
+   "terms": {
+    "et": "Ajatelg",
+    "en": "Timeline",
+    "de": "Zeitachse",
+    "es": "Línea de tiempo",
+    "fr": "Ligne du temps",
+    "nl": "Tijdlijn",
+    "sv": "Tidslinje",
+    "da": "Tidslinje",
+    "nb": "Tidslinje"
+   }
+  },
+  "toolbox": {
+   "key": "nav.kast",
+   "terms": {
+    "et": "Kast",
+    "en": "Toolbox",
+    "de": "Werkzeugkasten",
+    "es": "Caja de herramientas",
+    "fr": "Boîte à outils",
+    "nl": "Gereedschapskist",
+    "sv": "Verktygslåda",
+    "da": "Værktøjskasse",
+    "nb": "Verktøykasse"
+   }
+  },
+  "timeline_swing": {
+   "key": "aj.title",
+   "terms": {
+    "et": "Ajatelgekiik",
+    "en": "Timeline swing",
+    "de": "Zeitachsen-Schaukel",
+    "es": "Columpio del tiempo",
+    "fr": "Balançoire du temps",
+    "nl": "Tijdlijnschommel",
+    "sv": "Tidslinjegunga",
+    "da": "Tidslinjegyngen",
+    "nb": "Tidslinjegyngen"
+   }
+  },
+  "clock_change": {
+   "key": "foot.kell",
+   "terms": {
+    "et": "Kellakeeramine",
+    "en": "Clock change",
+    "de": "Zeitumstellung",
+    "es": "Cambio de hora",
+    "fr": "Changement d’heure",
+    "nl": "Klokwissel",
+    "sv": "Tidsomställning",
+    "da": "Tidsomstilling",
+    "nb": "Klokkeskifte"
+   }
+  }
+ },
+ "native_review_needed": {
+  "priority_keys": [
+   "priv.p1",
+   "priv.p2",
+   "priv.p3",
+   "priv.p4",
+   "priv.p5",
+   "priv.conv",
+   "priv.legal",
+   "kontakt.consent",
+   "kontakt.lead",
+   "log.intro",
+   "foot.tagline"
+  ],
+  "notes": {
+   "fr": "tu või vous: otsusta emakeelsega.",
+   "nb": "Norra bokmål; nynorsk ja soome keel on eraldi keeled, neid ei ole tehtud.",
+   "de": "Saksa tekst on umbes 30% pikem: kontrolli telefonis paigutust.",
+   "en": "Inglise keel on samuti masinmustand ja ootab emakeelse lugeja ülevaatust."
+  }
+ },
+ "not_done": "Tööriistade sisu (seaduse sõlmed, kuulujutud, küsimused, kõne, lõngaots.md) on eesti keeles. Eesti seadus ei ole tõlkimata kohaldatav teises riigis: vt riigipaketi mõistet README-s."
+}

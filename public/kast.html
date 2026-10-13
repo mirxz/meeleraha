@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="kast.title">Mängukast | Raha Meeled</title>
+<meta name="description" content="Mängukast: tasuta tööriistad, allalaadimised ja mängud, mis aitavad iseenda otsuseid toetada.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/kast.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Mängukast">
+<meta property="og:description" content="Mängukast: tasuta tööriistad, allalaadimised ja mängud, mis aitavad iseenda otsuseid toetada.">
+<meta property="og:url" content="https://meeleraha.ee/kast.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+</head>
+<body data-mr-page="kast">
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<h1 data-i18n="kast.h1">Mängukast</h1>
+<p class="lead" data-i18n="kast.lead"></p>
+<div class="card" id="filters">
+  <label class="l" for="q" data-i18n="kast.search">Otsi kastist</label>
+  <input class="t" id="q" type="search" autocomplete="off" data-i18n-attr="placeholder:kast.search.ph">
+  <div id="fbox"></div>
+</div>
+<p class="small" id="count" aria-live="polite"></p>
+<div id="list"></div>
+<div class="card" id="shop">
+  <h2 data-i18n="kast.shop.h2"></h2>
+  <p data-i18n="kast.shop.p1"></p>
+  <p data-i18n="kast.shop.p2"></p>
+  <p data-i18n="kast.shop.p3"></p>
+  <p><a class="btn go" href="kontakt.html?reason=seller" data-i18n="kast.shop.contact"></a></p>
+</div>
+</main>
+<script type="application/json" id="catalog">[
+ {
+  "id": "longa-ots",
+  "href": "ots.html",
+  "ring": "mina",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Lõnga ots",
+   "d": "Alusta olukorrast, mis kõlab nagu sina. Kaheksa sõlme sinu numbritega ja unistusega lõnga otsas."
+  },
+  "en": {
+   "n": "Thread end",
+   "d": "Start from a situation that sounds like you. Eight knots with your own numbers and your dream at the end of the thread."
+  },
+  "de": {
+   "n": "Fadenende",
+   "d": "Beginne bei einer Situation, die nach dir klingt. Acht Knoten mit deinen eigenen Zahlen und deinem Traum am Ende des Fadens."
+  },
+  "es": {
+   "n": "Cabo del hilo",
+   "d": "Empieza por una situación que suene a ti. Ocho nudos con tus propios números y tu sueño en el cabo del hilo."
+  },
+  "fr": {
+   "n": "Bout du fil",
+   "d": "Commence par une situation qui te ressemble. Huit nœuds avec tes propres chiffres et ton rêve au bout du fil."
+  },
+  "nl": {
+   "n": "Draadeinde",
+   "d": "Begin bij een situatie die op jou lijkt. Acht knopen met je eigen cijfers en je droom aan het draadeinde."
+  },
+  "sv": {
+   "n": "Trådänden",
+   "d": "Börja med en situation som låter som du. Åtta knutar med dina egna siffror och din dröm i trådänden."
+  },
+  "da": {
+   "n": "Trådenden",
+   "d": "Begynd med en situation, der lyder som dig. Otte knuder med dine egne tal og din drøm for enden af tråden."
+  },
+  "nb": {
+   "n": "Trådenden",
+   "d": "Begynn med en situasjon som høres ut som deg. Åtte knuter med dine egne tall og drømmen din i enden av tråden."
+  }
+ },
+ {
+  "id": "haruta",
+  "href": "haruta.html",
+  "ring": "seadus",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Haruta lõngakera",
+   "d": "Pensionireeglid sõlmedena: otsi, tiri ja loe seadust paragrahvini koos usaldusmärgiga."
+  },
+  "en": {
+   "n": "Untangle the yarn ball",
+   "d": "Pension rules as knots: search, pull and read the law down to the paragraph, with a trust mark."
+  },
+  "de": {
+   "n": "Das Garnknäuel entwirren",
+   "d": "Rentenregeln als Knoten: suchen, ziehen und das Gesetz bis zum Paragrafen lesen, mit Vertrauenszeichen."
+  },
+  "es": {
+   "n": "Desenredar la madeja",
+   "d": "Reglas de pensiones como nudos: busca, tira y lee la ley hasta el artículo, con una marca de confianza."
+  },
+  "fr": {
+   "n": "Démêler la pelote",
+   "d": "Les règles de retraite en nœuds : cherche, tire et lis la loi jusqu’à l’article, avec une marque de confiance."
+  },
+  "nl": {
+   "n": "Het kluwen ontwarren",
+   "d": "Pensioenregels als knopen: zoek, trek en lees de wet tot op het artikel, met een vertrouwensmerk."
+  },
+  "sv": {
+   "n": "Reda ut garnnystanet",
+   "d": "Pensionsregler som knutar: sök, dra och läs lagen ner till paragrafen, med ett förtroendemärke."
+  },
+  "da": {
+   "n": "Rod garnnøglet ud",
+   "d": "Pensionsregler som knuder: søg, træk og læs loven helt ned til paragraffen, med et tillidsmærke."
+  },
+  "nb": {
+   "n": "Nøste opp garnnøstet",
+   "d": "Pensjonsregler som knuter: søk, trekk og les loven helt ned til paragrafen, med et tillitsmerke."
+  }
+ },
+ {
+  "id": "kuulujutu-kontroll",
+  "href": "haruta.html",
+  "ring": "seadus",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Kuulujutu kontroll",
+   "d": "Kirjuta kuulujutt ja saa kahe lausega vastus koos viitega sõlmele ja seadusele."
+  },
+  "en": {
+   "n": "Rumor check",
+   "d": "Write a rumor and get a two-sentence answer with a reference to the knot and the law."
+  },
+  "de": {
+   "n": "Gerüchte-Check",
+   "d": "Schreib ein Gerücht und erhalte eine Antwort in zwei Sätzen mit Verweis auf Knoten und Gesetz."
+  },
+  "es": {
+   "n": "Comprobador de rumores",
+   "d": "Escribe un rumor y recibe una respuesta de dos frases con referencia al nudo y a la ley."
+  },
+  "fr": {
+   "n": "Vérificateur de rumeurs",
+   "d": "Écris une rumeur et reçois une réponse en deux phrases avec un renvoi au nœud et à la loi."
+  },
+  "nl": {
+   "n": "Geruchtencheck",
+   "d": "Schrijf een gerucht en krijg een antwoord in twee zinnen met een verwijzing naar de knoop en de wet."
+  },
+  "sv": {
+   "n": "Rykteskollen",
+   "d": "Skriv ett rykte och få ett svar på två meningar med hänvisning till knuten och lagen."
+  },
+  "da": {
+   "n": "Rygtetjek",
+   "d": "Skriv et rygte og få et svar på to sætninger med henvisning til knuden og loven."
+  },
+  "nb": {
+   "n": "Ryktesjekk",
+   "d": "Skriv et rykte og få et svar på to setninger med henvisning til knuten og loven."
+  }
+ },
+ {
+  "id": "ajatelg",
+  "href": "ajatelg.html",
+  "ring": "aeg",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Ajatelgekiik",
+   "d": "Lohista eluklotsid ajateljele, tee rahu minevikuga ja kiiguta oma lugu."
+  },
+  "en": {
+   "n": "Timeline swing",
+   "d": "Drag life blocks onto a timeline, make peace with the past and swing your story."
+  },
+  "de": {
+   "n": "Zeitachsen-Schaukel",
+   "d": "Zieh Lebensblöcke auf eine Zeitachse, schließe Frieden mit der Vergangenheit und schaukle deine Geschichte."
+  },
+  "es": {
+   "n": "Columpio del tiempo",
+   "d": "Arrastra bloques de vida a una línea de tiempo, haz las paces con el pasado y columpia tu historia."
+  },
+  "fr": {
+   "n": "Balançoire du temps",
+   "d": "Fais glisser des blocs de vie sur une ligne du temps, fais la paix avec le passé et balance ton histoire."
+  },
+  "nl": {
+   "n": "Tijdlijnschommel",
+   "d": "Sleep levensblokken op een tijdlijn, sluit vrede met het verleden en schommel je verhaal."
+  },
+  "sv": {
+   "n": "Tidslinjegunga",
+   "d": "Dra livsblock till en tidslinje, gör fred med det förflutna och gunga din historia."
+  },
+  "da": {
+   "n": "Tidslinjegyngen",
+   "d": "Træk livsblokke ind på en tidslinje, slut fred med fortiden og gynge din historie."
+  },
+  "nb": {
+   "n": "Tidslinjegyngen",
+   "d": "Dra livsblokker inn på en tidslinje, slutt fred med fortiden og gynge historien din."
+  }
+ },
+ {
+  "id": "elukaar",
+  "href": "ajatelg.html#elukaar",
+  "ring": "aeg",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Elukaar: rahavood ja bilanss",
+   "d": "Klotsid muutuvad rahavoo lainetes, bilansiks ja vahemikuks: edasi tänastest numbritest ja tagurpidi unistusest."
+  },
+  "en": {
+   "n": "Life arc: cash flow and balance sheet",
+   "d": "Blocks turn into cash-flow waves, a balance sheet and a range: forward from today and backward from your dream."
+  },
+  "de": {
+   "n": "Lebensbogen: Geldflüsse und Bilanz",
+   "d": "Blöcke werden zu Geldflusswellen, einer Bilanz und einer Spanne: vorwärts von heute und rückwärts von deinem Traum."
+  },
+  "es": {
+   "n": "Arco de vida: flujos de dinero y balance",
+   "d": "Los bloques se convierten en olas de flujo de caja, un balance y un rango: hacia delante desde hoy y hacia atrás desde tu sueño."
+  },
+  "fr": {
+   "n": "Arc de vie : flux d’argent et bilan",
+   "d": "Les blocs deviennent des vagues de flux de trésorerie, un bilan et une fourchette : vers l’avant depuis aujourd’hui et vers l’arrière depuis ton rêve."
+  },
+  "nl": {
+   "n": "Levensboog: geldstromen en balans",
+   "d": "Blokken worden geldstroomgolven, een balans en een bandbreedte: vooruit vanaf vandaag en achteruit vanuit je droom."
+  },
+  "sv": {
+   "n": "Livsbåge: kassaflöden och balansräkning",
+   "d": "Block blir kassaflödesvågor, en balansräkning och ett intervall: framåt från i dag och bakåt från din dröm."
+  },
+  "da": {
+   "n": "Livsbue: pengestrømme og balance",
+   "d": "Blokke bliver til pengestrømsbølger, en balance og et interval: fremad fra i dag og bagud fra din drøm."
+  },
+  "nb": {
+   "n": "Livsbue: pengestrømmer og balanse",
+   "d": "Blokker blir til pengestrømsbølger, en balanse og et intervall: fremover fra i dag og bakover fra drømmen din."
+  }
+ },
+ {
+  "id": "hingamine",
+  "href": "index.html#hinga",
+  "ring": "mina",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Hinga ja häälitse",
+   "d": "Juhi rahavoogu hingamise ja hääle kõrgusega. Heli jääb sinu seadmesse."
+  },
+  "en": {
+   "n": "Breathe and hum",
+   "d": "Steer the money flow with your breath and the pitch of your voice. Sound stays on your device."
+  },
+  "de": {
+   "n": "Atmen und summen",
+   "d": "Steuere den Geldfluss mit deinem Atem und der Tonhöhe deiner Stimme. Der Ton bleibt auf deinem Gerät."
+  },
+  "es": {
+   "n": "Respira y tararea",
+   "d": "Dirige el flujo de dinero con tu respiración y el tono de tu voz. El sonido se queda en tu dispositivo."
+  },
+  "fr": {
+   "n": "Respire et fredonne",
+   "d": "Pilote le flux d’argent avec ton souffle et la hauteur de ta voix. Le son reste sur ton appareil."
+  },
+  "nl": {
+   "n": "Adem en neurie",
+   "d": "Stuur de geldstroom met je adem en de toonhoogte van je stem. Het geluid blijft op je apparaat."
+  },
+  "sv": {
+   "n": "Andas och nynna",
+   "d": "Styr pengaflödet med din andning och tonhöjden på din röst. Ljudet stannar på din enhet."
+  },
+  "da": {
+   "n": "Ånd og nynn",
+   "d": "Styr pengestrømmen med din vejrtrækning og din stemmes tonehøjde. Lyden bliver på din enhed."
+  },
+  "nb": {
+   "n": "Pust og nynn",
+   "d": "Styr pengestrømmen med pusten og tonehøyden på stemmen din. Lyden blir på enheten din."
+  }
+ },
+ {
+  "id": "tulevane-mina",
+  "href": "index.html#unista",
+  "ring": "mina",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Tulevane mina helistab",
+   "d": "Vali, mida tahaksid pensionil teha, ja kuula kõnet oma tulevaselt minalt."
+  },
+  "en": {
+   "n": "Your future self calls",
+   "d": "Choose what you want to do in retirement and listen to a call from your future self."
+  },
+  "de": {
+   "n": "Dein zukünftiges Ich ruft an",
+   "d": "Wähle, was du im Ruhestand tun möchtest, und höre einen Anruf von deinem zukünftigen Ich."
+  },
+  "es": {
+   "n": "Te llama tu yo del futuro",
+   "d": "Elige qué quieres hacer en la jubilación y escucha una llamada de tu yo del futuro."
+  },
+  "fr": {
+   "n": "Ton moi du futur t’appelle",
+   "d": "Choisis ce que tu veux faire à la retraite et écoute un appel de ton moi du futur."
+  },
+  "nl": {
+   "n": "Je toekomstige zelf belt",
+   "d": "Kies wat je met pensioen wilt doen en luister naar een telefoontje van je toekomstige zelf."
+  },
+  "sv": {
+   "n": "Ditt framtida jag ringer",
+   "d": "Välj vad du vill göra som pensionär och lyssna på ett samtal från ditt framtida jag."
+  },
+  "da": {
+   "n": "Dit fremtidige jeg ringer",
+   "d": "Vælg, hvad du vil lave som pensionist, og lyt til et opkald fra dit fremtidige jeg."
+  },
+  "nb": {
+   "n": "Ditt fremtidige jeg ringer",
+   "d": "Velg hva du vil gjøre som pensjonist og lytt til en samtale fra ditt fremtidige jeg."
+  }
+ },
+ {
+  "id": "kattuvus",
+  "href": "index.html#kata",
+  "ring": "mina",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Kata: kulude kattuvus",
+   "d": "Tõmba tulevase mina pott tänase peale ja vaata, kui palju sinu kulud kattuvad."
+  },
+  "en": {
+   "n": "Overlap: spending overlap",
+   "d": "Drag your future self’s pot over today’s and see how much of your spending overlaps."
+  },
+  "de": {
+   "n": "Überlagern: Ausgaben-Überschneidung",
+   "d": "Zieh den Topf deines zukünftigen Ichs über den heutigen und sieh, wie viel deiner Ausgaben sich überschneidet."
+  },
+  "es": {
+   "n": "Superponer: solapamiento de gastos",
+   "d": "Arrastra el bote de tu yo del futuro sobre el de hoy y mira cuánto de tu gasto se solapa."
+  },
+  "fr": {
+   "n": "Superposer : chevauchement des dépenses",
+   "d": "Fais glisser la cagnotte de ton moi du futur sur celle d’aujourd’hui et vois quelle part de tes dépenses se chevauche."
+  },
+  "nl": {
+   "n": "Overlappen: overlap van uitgaven",
+   "d": "Sleep de pot van je toekomstige zelf over die van vandaag en zie hoeveel van je uitgaven overlapt."
+  },
+  "sv": {
+   "n": "Lägg över: utgiftsöverlapp",
+   "d": "Dra ditt framtida jags pott över dagens och se hur mycket av dina utgifter som överlappar."
+  },
+  "da": {
+   "n": "Læg over: udgiftsoverlap",
+   "d": "Træk dit fremtidige jegs pulje over dagens og se, hvor meget af dine udgifter der overlapper."
+  },
+  "nb": {
+   "n": "Legg over: utgiftsoverlapp",
+   "d": "Dra ditt fremtidige jegs pott over dagens og se hvor mye av utgiftene dine som overlapper."
+  }
+ },
+ {
+  "id": "kingi",
+  "href": "index.html#kingi",
+  "ring": "mina",
+  "type": "tool",
+  "status": "live",
+  "et": {
+   "n": "Kingi tulevasele minale",
+   "d": "Liiguta osa fun moneyst tulevasele minale või meeldivale asjale ja vaata, mis muutub."
+  },
+  "en": {
+   "n": "Gift to your future self",
+   "d": "Move part of your fun money to your future self or to something pleasant and see what changes."
+  },
+  "de": {
+   "n": "Geschenk an dein zukünftiges Ich",
+   "d": "Verschiebe einen Teil deines Spielgelds zu deinem zukünftigen Ich oder zu etwas Schönem und sieh, was sich ändert."
+  },
+  "es": {
+   "n": "Un regalo para tu yo del futuro",
+   "d": "Mueve parte de tu dinero para disfrutar a tu yo del futuro o a algo agradable y mira qué cambia."
+  },
+  "fr": {
+   "n": "Un cadeau à ton moi du futur",
+   "d": "Déplace une partie de ton argent plaisir vers ton moi du futur ou vers quelque chose d’agréable et vois ce qui change."
+  },
+  "nl": {
+   "n": "Cadeau voor je toekomstige zelf",
+   "d": "Verplaats een deel van je plezierpot naar je toekomstige zelf of naar iets leuks en zie wat er verandert."
+  },
+  "sv": {
+   "n": "Present till ditt framtida jag",
+   "d": "Flytta en del av dina nöjespengar till ditt framtida jag eller till något trevligt och se vad som förändras."
+  },
+  "da": {
+   "n": "Gave til dit fremtidige jeg",
+   "d": "Flyt en del af dine sjove penge til dit fremtidige jeg eller til noget rart og se, hvad der ændrer sig."
+  },
+  "nb": {
+   "n": "Gave til ditt fremtidige jeg",
+   "d": "Flytt en del av morsomme-pengene dine til ditt fremtidige jeg eller til noe hyggelig og se hva som endrer seg."
+  }
+ },
+ {
+  "id": "kellakeeramine",
+  "href": "kellakeeramine.html",
+  "ring": "aeg",
+  "type": "download",
+  "status": "live",
+  "et": {
+   "n": "Kellakeeramise vestlus",
+   "d": "Kaks korda aastas kümme minutit: sügisene lisatund ja kevadine tund edasi. Kalendrifail ja küsimused."
+  },
+  "en": {
+   "n": "Clock-change check-in",
+   "d": "Ten minutes twice a year: the autumn extra hour and the spring hour forward. Calendar file and questions."
+  },
+  "de": {
+   "n": "Check-in zur Zeitumstellung",
+   "d": "Zweimal im Jahr zehn Minuten: die zusätzliche Stunde im Herbst und die Stunde vor im Frühjahr. Kalenderdatei und Fragen."
+  },
+  "es": {
+   "n": "Charla del cambio de hora",
+   "d": "Diez minutos dos veces al año: la hora extra de otoño y la hora adelante de primavera. Archivo de calendario y preguntas."
+  },
+  "fr": {
+   "n": "Rendez-vous du changement d’heure",
+   "d": "Dix minutes deux fois par an : l’heure en plus de l’automne et l’heure en avant du printemps. Fichier de calendrier et questions."
+  },
+  "nl": {
+   "n": "Gesprek bij de klokwissel",
+   "d": "Twee keer per jaar tien minuten: het extra uur in het najaar en het uur vooruit in het voorjaar. Kalenderbestand en vragen."
+  },
+  "sv": {
+   "n": "Samtal vid tidsomställningen",
+   "d": "Tio minuter två gånger om året: extratimmen på hösten och timmen framåt på våren. Kalenderfil och frågor."
+  },
+  "da": {
+   "n": "Samtale ved tidsomstillingen",
+   "d": "Ti minutter to gange om året: ekstratimen om efteråret og timen frem om foråret. Kalenderfil og spørgsmål."
+  },
+  "nb": {
+   "n": "Samtale ved klokkeskiftet",
+   "d": "Ti minutter to ganger i året: ekstratimen om høsten og timen fremover om våren. Kalenderfil og spørsmål."
+  }
+ },
+ {
+  "id": "longaots-md",
+  "href": "ots.html#fail",
+  "ring": "lahedased",
+  "type": "download",
+  "status": "live",
+  "et": {
+   "n": "lõngaots.md situatsioonikaart",
+   "d": "Lae alla oma olukorra kaart vestlusaluseks inimesega, keda usaldad. Soovi korral ilma summadeta."
+  },
+  "en": {
+   "n": "Thread-end situation card (.md)",
+   "d": "Download a card of your situation as a conversation starter with someone you trust. Optionally without amounts."
+  },
+  "de": {
+   "n": "Situationskarte vom Fadenende (.md)",
+   "d": "Lade eine Karte deiner Situation herunter, als Gesprächsgrundlage mit jemandem, dem du vertraust. Auf Wunsch ohne Beträge."
+  },
+  "es": {
+   "n": "Tarjeta de situación del cabo del hilo (.md)",
+   "d": "Descarga una tarjeta de tu situación como punto de partida para conversar con alguien de confianza. Si quieres, sin importes."
+  },
+  "fr": {
+   "n": "Fiche de situation du bout du fil (.md)",
+   "d": "Télécharge une fiche de ta situation comme point de départ d’une conversation avec une personne de confiance. Si tu veux, sans montants."
+  },
+  "nl": {
+   "n": "Situatiekaart van het draadeinde (.md)",
+   "d": "Download een kaart van je situatie als gespreksstarter met iemand die je vertrouwt. Desgewenst zonder bedragen."
+  },
+  "sv": {
+   "n": "Situationskort från trådänden (.md)",
+   "d": "Ladda ner ett kort över din situation som samtalsunderlag med någon du litar på. Om du vill utan belopp."
+  },
+  "da": {
+   "n": "Situationskort fra trådenden (.md)",
+   "d": "Download et kort over din situation som oplæg til en samtale med en, du stoler på. Om du vil uden beløb."
+  },
+  "nb": {
+   "n": "Situasjonskort fra trådenden (.md)",
+   "d": "Last ned et kort over situasjonen din som utgangspunkt for en samtale med noen du stoler på. Om du vil uten beløp."
+  }
+ },
+ {
+  "id": "vestluskaardid",
+  "href": "",
+  "ring": "lahedased",
+  "type": "game",
+  "status": "building",
+  "et": {
+   "n": "Vestluskaardid",
+   "d": "Kaardipakk üksi jalutamiseks, kahekesi õhtuks ja sõpradega mängimiseks. Neli masti on neli potti."
+  },
+  "en": {
+   "n": "Conversation cards",
+   "d": "A card deck for walking alone, an evening for two and playing with friends. Four suits are four pots."
+  },
+  "de": {
+   "n": "Gesprächskarten",
+   "d": "Ein Kartenspiel für den Spaziergang allein, einen Abend zu zweit und das Spielen mit Freunden. Vier Farben sind vier Töpfe."
+  },
+  "es": {
+   "n": "Cartas de conversación",
+   "d": "Una baraja para pasear a solas, una velada de dos y jugar con amigos. Cuatro palos son cuatro botes."
+  },
+  "fr": {
+   "n": "Cartes de conversation",
+   "d": "Un jeu de cartes pour marcher seul, passer une soirée à deux et jouer entre amis. Quatre couleurs, quatre cagnottes."
+  },
+  "nl": {
+   "n": "Gesprekskaarten",
+   "d": "Een kaartspel voor een wandeling alleen, een avond met z’n tweeën en spelen met vrienden. Vier kleuren zijn vier potten."
+  },
+  "sv": {
+   "n": "Samtalskort",
+   "d": "En kortlek för promenaden ensam, en kväll för två och spel med vänner. Fyra färger är fyra potter."
+  },
+  "da": {
+   "n": "Samtalekort",
+   "d": "Et kortspil til gåturen alene, en aften for to og spil med venner. Fire kulører er fire puljer."
+  },
+  "nb": {
+   "n": "Samtalekort",
+   "d": "En kortstokk for turen alene, en kveld for to og spill med venner. Fire farger er fire potter."
+  }
+ },
+ {
+  "id": "trumbimang",
+  "href": "",
+  "ring": "lahedased",
+  "type": "game",
+  "status": "idea",
+  "et": {
+   "n": "Trumbiga või trumbita",
+   "d": "Lauamäng pakkumise ja trumbiga: milline pott lööb kõik teised?"
+  },
+  "en": {
+   "n": "With trump or without",
+   "d": "A table game with bidding and trump: which pot beats all the others?"
+  },
+  "de": {
+   "n": "Mit Trumpf oder ohne",
+   "d": "Ein Tischspiel mit Reizen und Trumpf: Welcher Topf sticht alle anderen?"
+  },
+  "es": {
+   "n": "Con triunfo o sin él",
+   "d": "Un juego de mesa con subasta y triunfo: ¿qué bote gana a todos los demás?"
+  },
+  "fr": {
+   "n": "Avec atout ou sans atout",
+   "d": "Un jeu de table avec enchères et atout : quelle cagnotte bat toutes les autres ?"
+  },
+  "nl": {
+   "n": "Met troef of zonder",
+   "d": "Een tafelspel met bieden en troef: welke pot verslaat alle andere?"
+  },
+  "sv": {
+   "n": "Med trumf eller utan",
+   "d": "Ett sällskapsspel med budgivning och trumf: vilken pott slår alla andra?"
+  },
+  "da": {
+   "n": "Med trumf eller uden",
+   "d": "Et brætspil med melding og trumf: Hvilken pulje slår alle de andre?"
+  },
+  "nb": {
+   "n": "Med trumf eller uten",
+   "d": "Et brettspill med melding og trumf: Hvilken pott slår alle de andre?"
+  }
+ },
+ {
+  "id": "podcast",
+  "href": "",
+  "ring": "aeg",
+  "type": "download",
+  "status": "idea",
+  "et": {
+   "n": "Kellakeeramise podcast",
+   "d": "Avalik voog kaks korda aastas: sama küsimustik, sinu isiklik osa tuleb sinu enda failist."
+  },
+  "en": {
+   "n": "Clock-change podcast",
+   "d": "A public feed twice a year: the same question set, your personal part comes from your own file."
+  },
+  "de": {
+   "n": "Podcast zur Zeitumstellung",
+   "d": "Ein öffentlicher Feed zweimal im Jahr: derselbe Fragenkatalog, dein persönlicher Teil kommt aus deiner eigenen Datei."
+  },
+  "es": {
+   "n": "Pódcast del cambio de hora",
+   "d": "Un canal público dos veces al año: el mismo conjunto de preguntas, tu parte personal sale de tu propio archivo."
+  },
+  "fr": {
+   "n": "Podcast du changement d’heure",
+   "d": "Un flux public deux fois par an : le même jeu de questions, ta partie personnelle vient de ton propre fichier."
+  },
+  "nl": {
+   "n": "Podcast bij de klokwissel",
+   "d": "Een openbare feed twee keer per jaar: dezelfde vragenlijst, je persoonlijke deel komt uit je eigen bestand."
+  },
+  "sv": {
+   "n": "Podd vid tidsomställningen",
+   "d": "Ett öppet flöde två gånger om året: samma frågor, din personliga del kommer från din egen fil."
+  },
+  "da": {
+   "n": "Podcast ved tidsomstillingen",
+   "d": "Et åbent feed to gange om året: de samme spørgsmål, din personlige del kommer fra din egen fil."
+  },
+  "nb": {
+   "n": "Podkast ved klokkeskiftet",
+   "d": "En åpen strøm to ganger i året: de samme spørsmålene, din personlige del kommer fra din egen fil."
+  }
+ }
+]</script>
+<div id="mr-foot"></div>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+<script>
+(function(){
+var CAT=JSON.parse(document.getElementById('catalog').textContent),st={ring:'all',type:'all',status:'all',q:''};
+var DIMS={ring:['mina','lahedased','seadus','aeg'],type:['tool','download','game'],status:['live','building','idea']};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function name(it){return (it[MR.lang]||it.en||it.et);}
+function filters(){
+  var h='';Object.keys(DIMS).forEach(function(d){
+    h+='<div class="row" role="group" aria-label="'+esc(MR.t('kast.filter.'+d))+'"><span class="small" style="align-self:center">'+esc(MR.t('kast.filter.'+d))+'</span>';
+    ['all'].concat(DIMS[d]).forEach(function(v){h+='<button type="button" class="btn" aria-pressed="'+(st[d]===v?'true':'false')+'" data-f="'+d+'" data-v="'+v+'" data-mr-c="kast.filters.filter" data-mr-e="Filter Changed" data-mr-p-filter="'+d+'" data-mr-p-value="'+v+'">'+esc(v==='all'?MR.t('kast.all'):MR.t(d+'.'+v))+'</button>';});
+    h+='</div>';
+  });
+  var box=document.getElementById('fbox');box.innerHTML=h;
+  Array.prototype.forEach.call(box.querySelectorAll('button'),function(b){b.addEventListener('click',function(){st[b.getAttribute('data-f')]=b.getAttribute('data-v');render();});});
+}
+function match(it){
+  if(st.ring!=='all'&&it.ring!==st.ring)return false;if(st.type!=='all'&&it.type!==st.type)return false;if(st.status!=='all'&&it.status!==st.status)return false;
+  if(st.q){var n=name(it),t=(n.n+' '+n.d).toLowerCase();if(t.indexOf(st.q.toLowerCase())<0)return false;}
+  return true;
+}
+function render(){
+  filters();
+  var items=CAT.filter(match),h='';
+  items.forEach(function(it){
+    var n=name(it),live=it.status==='live'&&it.href;
+    h+='<article class="card" data-tool="'+it.id+'"><div class="row" style="margin-top:0"><span class="chip">'+esc(MR.t('ring.'+it.ring))+'</span><span class="chip">'+esc(MR.t('type.'+it.type))+'</span><span class="chip '+(it.status==='live'?'t-good':(it.status==='building'?'t-warn':'t-info'))+'">'+esc(MR.t('status.'+it.status))+'</span><span class="chip t-good">'+esc(MR.t('kast.free'))+'</span></div><h2>'+esc(n.n)+'</h2><p>'+esc(n.d)+'</p>';
+    if(live)h+='<a class="btn go" href="'+it.href+'" data-mr-c="kast.catalog.tool-card" data-mr-e="Tool Opened" data-mr-p-tool-id="'+it.id+'">'+esc(MR.t('kast.open'))+'</a>';
+    else h+='<a class="btn" href="kontakt.html?reason=tool&amp;tool='+it.id+'" data-mr-c="kast.catalog.waitlist-button" data-mr-e="Waitlist Clicked" data-mr-p-tool-id="'+it.id+'">'+esc(MR.t('kast.notify'))+'</a>';
+    h+='</article>';
+  });
+  var list=document.getElementById('list');list.innerHTML=h||'<p class="small">'+esc(MR.t('kast.empty'))+'</p>';
+  document.getElementById('count').textContent=MR.tn('kast.count',items.length);
+  MR.fixLinks(list);
+}
+document.getElementById('q').addEventListener('input',function(){st.q=this.value;render();});
+MR.onLang(render);render();
+})();
+</script>
+</body>
+</html>

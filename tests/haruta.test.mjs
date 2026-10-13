@@ -444,6 +444,7 @@ test('sildid: fookuses sõlme täisnimi on nähtav pealdises', async () => {
 
 // ---------- tirimine ----------
 async function dragKnot(page, id, dy, { release = true, steps = 12 } = {}) {
+  await page.locator(`.knot[data-id="${id}"] .hit`).scrollIntoViewIfNeeded();
   const box = await page.locator(`.knot[data-id="${id}"] .hit`).boundingBox();
   const x = box.x + box.width / 2, y = box.y + box.height / 2;
   await page.mouse.move(x, y);

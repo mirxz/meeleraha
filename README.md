@@ -44,3 +44,47 @@ Testid on kaustas `tests/` omaenda `package.json`-iga, nii et Cloudflare'i build
     npm test
 
 Mida kontrollitakse: leht laeb ilma vigadeta ja ilma horisontaalse kerimiseta, kõne tekst, kattuvus, FIRE-aeg võrreldes sõltumatu referendiga, kingi omadused, jagatav kaart, mikrofon (võlts-seadmega) ning heliklippide täielikkus ja tekstide sünkroon. Arvude (sissetulek, tootlus jms) muutmisel uuenda `referee` funktsiooni failis `tests/smoke.test.mjs`. GitHub Actions käivitab testid iga PR-i ja main'i push'i peal.
+
+## Lehed
+
+- `public/index.html`: manifest (hingamine, hääl, kõne, kattuvus, kingitus).
+- `public/haruta.html`: Haruta lõngakera (pensionireeglid sõlmede ja kuulujuttudena, tirimine, hääl).
+- `public/ajatelg.html`: Ajatelgekiik (eluklotsid ajateljel, rahu minevikuga; fail ainult sinu seadmes).
+- `public/ots.html`: Lõnga ots (üks lõng seitsme sõlmega sinu enda numbritega; arvutused sinu seadmes, midagi ei salvestata).
+
+## Meeleraha tervik: infoarhitektuur
+
+Viis ust samasse majja (peamenüü) ja kolm abilehte (jalus):
+
+| Ruum | Leht | Mida teeb |
+|---|---|---|
+| Tunne | `index.html` | Manifest: hinga, räägi tulevase minaga, kata, kingi. Alguses Meeleraha kaart. |
+| Haruta | `haruta.html` | Pensionireeglid sõlmedena ja kuulujutu kontroll, seaduse paragrahvini. |
+| Plaani | `ots.html` | Olukord, sinu numbrid, kaheksa sõlme, unistus lõnga otsas, `lõngaots.md`. |
+| Elu | `ajatelg.html` | Eluklotsid ajateljel, rahu minevikuga, Elukaar: rahavood, bilanss, edasi ja tagurpidi. |
+| Elu | `kellakeeramine.html` | Kaks korda aastas kümme minutit iseendaga, kalendrifail. |
+| Kast | `kast.html` | Mängukast: kõigi tööriistade, allalaadimiste ja mängude kataloog (tasuta). |
+| Meta | `privaatsus.html`, `kontakt.html` | Mida mõõdame, kuidas komponendid on nimetatud; kontakt nõusolekuga. |
+
+Ühine raam (nav, jalus, keel, mõõtmine) tuleb failist `meeleraha.js`. Stiil: `mr.css`.
+
+## Keel
+
+Eesti keel on ametlik versioon. Liides on olemas üheksas keeles: eesti, inglise, saksa, hispaania, prantsuse, hollandi, rootsi, taani ja norra (bokmål). Keelevalija on navis, keel püsib linkides (`?lang=de`) ilma salvestamata.
+
+Staatus: **kõik peale eesti keele on masinmustand** ja ootavad emakeelse lugeja ülevaatust. Iga mustandi keele all on bänner ja link „Paranda tõlget“ (viib kontaktivormi).
+
+Mis on tõlgitud: raam (nav, jalus, mõõtmise paneel), manifesti kaart ja pealkirjad, Mängukast koos kataloogiga, kontakt, privaatsus, kellakeeramine, kalendrifail. Mis on **eesti keeles**: tööriistade sisu (seaduse sõlmed, kuulujutud, olukorrad, küsimused, kõne, `lõngaots.md`). Seda märgib bänner.
+
+Kuidas parandada või lisada keel:
+1. `node tools/i18n.mjs export tolked.csv` annab tabeli (võti, eesti, inglise, ... ).
+2. Emakeelne parandab lahtreid (kohahoidjad `{n}` ja `{addr}` peavad jääma).
+3. `node tools/i18n.mjs import tolked.csv --langs de` kannab parandused tagasi (ET jääb puutumata, kui ei anna `--et`). `node tools/i18n.mjs check` kontrollib täielikkust.
+4. Uus keel: lisa `public/i18n.js` lõppu `window.MR_LANGS` loendisse rida ja `MR_I18N` objekti sõnastik; kataloogi (`kast.html` JSON) lisa nimi ja kirjeldus. Testid (`tests/keeled.test.mjs`) nõuavad täielikkust.
+5. Terminid on lukus: `i18n/glossary.json` ja `i18n/GLOSSARY.md` (häälejuhend, ülevaatuse prioriteedid).
+
+Riigipakett: Haruta räägib Eesti seadusest. Teise riigi jaoks ei piisa tõlkest; vaja on selle riigi reeglite paketti (seadus, maksud, vanused, allikad ja juristi kontroll). Seni on teistes keeltes seaduse sisu eesti keeles ja see on märgitud.
+
+## Mõõtmine
+
+Vt `analytics/README.md`. Põhimõte: sündmused kannavad ainult nime, komponendi ja lubatud valikud; sisestatud numbrid ja tekst ei jõua kunagi sündmusse. Registri allikas on `public/taxonomy.json`.

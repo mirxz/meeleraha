@@ -1,0 +1,10 @@
+// Näide: lisa need read repo wrangler.jsonc faili ALLES SIIS, kui D1 andmebaas on loodud (vt README.md).
+{
+  "name": "meeleraha",
+  "main": "analytics/worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "meeleraha-mootmine", "database_id": "<SIIA_TULEB_ID>" }
+  ]
+}
