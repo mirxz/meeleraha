@@ -76,7 +76,7 @@ test('keeled: iga keel avab kõik täielikult tõlgitud lehed vigadeta, õige ht
       assert.equal(await page.locator('html').getAttribute('lang'), lang === 'et' ? 'et' : lang, `${lang} ${f}`);
       assert.equal(await page.inputValue('#mr-langsel'), lang);
       const nav = await page.locator('#mr-nav ul a').allInnerTexts();
-      assert.deepEqual(nav, ['nav.home', 'nav.haruta', 'nav.ots', 'nav.debate', 'nav.ajatelg', 'nav.kast'].map((k) => D[lang][k]), `${lang} ${f}: nav`);
+      assert.deepEqual(nav, ['nav.home', 'nav.haruta', 'nav.ots', 'nav.tingi', 'nav.ajatelg', 'nav.kast'].map((k) => D[lang][k]), `${lang} ${f}: nav`);
       assert.equal(await page.locator('#mr-foot ul a').nth(1).innerText(), D[lang]['foot.privacy']);
       const banner = (await page.locator('#mr-banner').innerText()).trim();
       if (lang === 'et') assert.equal(banner, '', `${f}`); else assert.ok(banner.includes(D[lang]['lang.draft']) && banner.includes(D[lang]['lang.fix']), `${lang} ${f}: bänner`);

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Debatable machine | Raha Meeled</title>
+<meta name="description" content="Write one sentence about your pay conversation. The machine says honestly what it heard and what it does not know, and puts three offers on the table that are equal to you. Free, in your browser.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/tingi.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Debatable machine">
+<meta property="og:description" content="One sentence in, three equal offers out. Free, in your browser, nothing leaves it.">
+<meta property="og:url" content="https://meeleraha.ee/tingi.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+<style>
+.back{display:inline-block;margin-bottom:20px;font-size:15px}
+main{padding-top:28px;padding-bottom:64px}
+.sit{display:block;width:100%;text-align:left;margin:0 0 8px;font:inherit;font-size:16px;line-height:1.35;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:44px}
+.sit[aria-pressed="true"]{background:var(--link);color:var(--onlink);border-color:var(--link)}
+.sit .tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;margin-top:4px}
+.shead{outline:none}
+.rv{list-style:none;margin:8px 0;padding:0}
+.rv li{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.rv li:first-child{border-top:0}
+.rv .k{color:var(--ink2);font-size:13px}
+.sc{background:var(--info-bg);color:var(--info-fg);border-radius:12px;padding:10px 12px;margin:8px 0;font-size:15px}
+.warn{background:var(--warn-bg);color:var(--warn-fg);border-radius:12px;padding:8px 12px;margin:8px 0;font-size:14px}
+.nr{font-family:var(--serif);font-size:18px;line-height:1.45;color:var(--ink)}
+.nr .hint{font-family:var(--sans);font-size:14px;color:var(--ink2)}
+.nr b{font-weight:600}
+.blk{margin:14px 0 4px;font-size:14px;font-weight:600}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:420px){.cols2{grid-template-columns:1fr}.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-mr-page="tingi" data-mr-native="en">
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div></div>
+<a class="mr-skip" href="#main" data-i18n="skip">Skip to content</a>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<a class="back" href="index.html">← Raha Meeled</a>
+<h1 data-t="h1"></h1>
+<p class="lead" data-t="lead"></p>
+<p class="sub" data-t="sub"></p>
+
+<div class="card" id="sentCard">
+  <h2 id="h-sent" class="shead" tabindex="-1" data-t="sentH"></h2>
+  <label class="small" for="sentence" data-t="sentLbl"></label>
+  <textarea id="sentence" class="t" maxlength="400" data-t-ph="sentPh"></textarea>
+  <p class="small" data-t="exH"></p>
+  <div id="examples" role="group" aria-label=""></div>
+  <div class="row"><button type="button" class="btn go" id="listen" data-mr-c="tingi.sentence.listen-button" data-t="listen"></button></div>
+</div>
+
+<div class="card" id="reading" hidden>
+  <h2 id="h-read" class="shead" tabindex="-1" data-t="readH"></h2>
+  <p class="small" data-t="readP"></p>
+  <div class="sc" id="askNote" hidden role="status"></div>
+  <div class="blk" id="lbStyle" data-t="rStyle"></div>
+  <div id="rStyle" role="group" aria-labelledby="lbStyle"></div>
+  <div class="blk" id="lbClaims" data-t="rClaims"></div>
+  <div id="rClaims" role="group" aria-labelledby="lbClaims"></div>
+  <div class="blk" data-t="rPrio"></div>
+  <div class="fields">
+    <div><label for="pr1" data-t="fPr1"></label><select id="pr1"></select></div>
+    <div><label for="pr2" data-t="fPr2"></label><select id="pr2"></select></div>
+    <div class="full"><label for="pr3" data-t="fPr3"></label><select id="pr3"></select></div>
+  </div>
+  <p class="small" id="prNote"></p>
+  <div class="blk" data-t="rNums"></div>
+  <div class="fields">
+    <div><label for="f-ask" data-t="fAsk"></label><input id="f-ask" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="f-offer" data-t="fOffer"></label><input id="f-offer" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="f-walk" data-t="fWalk"></label><input id="f-walk" inputmode="decimal" autocomplete="off"></div>
+    <div><label for="f-pay" data-t="fPay"></label><input id="f-pay" inputmode="decimal" autocomplete="off"></div>
+  </div>
+  <div class="blk" data-t="unkH"></div>
+  <p class="small" id="unk"></p>
+</div>
+
+<div class="card" id="board" hidden>
+  <h2 id="h-board" class="shead" tabindex="-1" data-t="boardH"></h2>
+  <p class="small" data-t="boardP"></p>
+  <div class="row" id="limits" role="group"></div>
+  <p class="small" id="baseLine"></p>
+  <ul class="rv" id="pkgs"></ul>
+  <div class="sc" id="oneOnly" hidden></div>
+  <div class="warn" id="noRoom" hidden></div>
+  <div class="row"><button type="button" class="btn go" id="offer" data-mr-c="tingi.board.offer-button" data-t="offer"></button></div>
+  <div class="nr" id="boardRes" role="status" aria-live="polite"></div>
+</div>
+
+<div class="card" id="deeper" hidden>
+  <h2 data-t="deepH"></h2>
+  <p data-t="deepP"></p>
+  <div class="row"><a class="btn" id="playbookLink" href="playbook.html" data-mr-c="tingi.board.playbook-link" data-mr-e="Playbook Opened" data-t="deepBtn"></a></div>
+</div>
+
+<div class="card" id="fail" hidden>
+  <h2 data-t="fileH"></h2>
+  <p data-t="fileP"></p>
+  <label class="small" style="display:flex;gap:8px;align-items:center;margin:6px 0"><input id="mdHide" type="checkbox" style="width:auto"><span data-t="mdHide"></span></label>
+  <div class="row"><button type="button" class="btn go" id="mdBtn" data-mr-c="tingi.file.md-button" data-t="mdBtn"></button></div>
+  <p class="small" id="mdMsg" aria-live="polite"></p>
+</div>
+
+<footer style="margin-top:36px">
+  <p class="small" id="modelLine"></p>
+  <p class="small"><a href="playbook.html" data-t="deepBtn"></a> · <a href="ots.html" data-i18n="nav.ots"></a> · <a href="ajatelg.html" data-i18n="nav.ajatelg"></a> · <a href="kast.html" data-i18n="nav.kast"></a></p>
+</footer>
+</main>
+<div id="mr-foot"></div>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+<script src="vaidle-mudel.js"></script>
+<script>
+(function(){
+'use strict';
+var T={
+et:{
+h1:'Vaieldav masin', lead:'Kirjuta ühe lausega, mis vestluses toimub. Masin ütleb ausalt, mida ta kuulis, mida ta ei tea ja mida ta oletab, ning paneb lauale kolm sulle samaväärset pakkumist.',
+sub:'Kõik arvutused toimuvad sinu seadmes ja midagi ei salvestata. Masin loeb sinu lauset lihtsate reeglitega, mitte ennustusmudeliga. See on haridus, mitte nõu.',
+sentH:'Üks lause', sentLbl:'Mis vestluses toimub ja mida sa tahad?', sentPh:'Näiteks: Tahan 10% tõusu, ülemus ütleb, et eelarve on 3% ja et vaatame hiljem.',
+exH:'Või vali näide (väljamõeldud):', ex1:'Tahan 10% palgatõusu, ülemus ütleb, et eelarve on 3% ja et vaatame hiljem.', ex2:'Palgatõus pole mulle kõige tähtsam, tahan rohkem kaugtööd ja õppebüdžetti. Ülemus on avatud, aga vajab midagi, mida ülemusele viia.', ex3:'Mul on kirjalik pakkumine teiselt firmalt ja ma ei võta alla 8%. Ülemus ütleb, et ei saa, eelarvet pole.',
+listen:'Kuula',
+readH:'Ma kuulsin', readP:'Need on arvamused, mitte fakt. Iga rea saad ühe puudutusega parandada. Alla 60% kindlat asja ma ei oleta: küsin.',
+rStyle:'Vastaspoole stiil', rClaims:'Mis on laual', rPrio:'Mis on sulle tähtis', rNums:'Numbrid',
+st_firm:'Jäik', st_flex:'Paindlik', st_busy:'Ajapuudusega',
+cl_budget:'Eelarve', cl_band:'Palgavahemik', cl_market:'Turuandmed', cl_performance:'Tulemushinnang', cl_timing:'Aeg',
+heard:'kuulsin {p}%', guess:'arvan {p}%', dflt:'vaikimisi', fPr1:'Kõige tähtsam sulle', fPr2:'Teisena', fPr3:'Kolmandana',
+prNone:'Prioriteete ma ei kuulnud, seega kasutan vaikimisi: palk, puhkus, õppimine. Vali enda omad.',
+fAsk:'Tõus, mida soovid (%)', fOffer:'Nende pakkumine (%)', fWalk:'Ei võta alla (%)', fPay:'Brutopalk aastas (€)',
+askStyle:'Küsin ühte asja: kuidas vastaspool pigem vastab? „Ei saa“ (jäik), „vaatan, mida saan teha“ (paindlik) või „vaatame hiljem“ (ajapuudusega)? Vali stiil ülal.',
+askPrio:'Küsin ühte asja: mis on sulle palgast peale kõige tähtsam? Vali prioriteet ülal.',
+unkH:'Mida ma ei tea', unkPay:'Ma ei tea sinu päris palka (kasutan {pay}). ', unkRest:'Ma ei tea ettevõtte tegelikku eelarvet ega juhi tegelikke eelistusi. Ma oletan hoobade hinnad ja kulukordajad: mudel v{v}, omanik {o}, üle vaadatud {r}.',
+boardH:'Laud', boardP:'Kolm paketti, mis on sulle ligikaudu samaväärsed. Juht valib neist selle, mis talle kõige odavam on.',
+limCap:'Palgalagi {c}%', limCut:'Eelarve −30%',
+base:'Ainult palk: +{o}% = väärt {v0} punkti. Eelarve on {b}%.',
+tagA:'palgakeskne', tagB:'tasakaalus', tagC:'vähem palka, rohkem muud',
+pkgRow:'{t}. Neile maksab {c}%, sulle väärt {v}.', pkgName:'Pakett {n}',
+offer:'Esita kolm pakkumist',
+noRoom:'Ruumi ei leidnud: sinu prioriteetidega ei ületa ükski pakett ainult palka ({v0} punkti). See on ka tulemus: masin ei otsi ruumi, mida pole.',
+oneOnly:'Leidsin ainult ühe paketi, mis on vähemalt sama hea kui ainult palk. Kolme samaväärset ei ole.',
+picked:'Valisin paketi {n}. Neile maksab see {c}%, sulle on see väärt {v}. Ainult palk oli {v0}. Parim võimalik pakett oleks {vs}; sa jõudsid {p}%. Ruumi oli: +{g}% rohkem väärtust samas eelarves.',
+deepH:'Süvene', deepP:'Kui tahad sammhaaval treenida, ava läbirääkimiste playbook sinu lausega: sama olukord, viis väidet, Laud ja Üllatus.', deepBtn:'Ava playbook',
+fileH:'Võta kaasa', fileP:'Lae alla vestluskaart: mida masin kuulis, laud ja küsimused. See on vestlusalus, mitte nõu.', mdHide:'ilma summadeta', mdBtn:'Lae kaart alla (vaidle.md)', mdMsg:'Fail on alla laetud ja jääb sinu seadmesse.',
+md_title:'Vaieldava masina kaart', md_note:'Harjutus väljamõeldud juhiga. Mitte nõu, mitte ennustus.', md_heard:'Ma kuulsin', md_sentence:'Sinu lause', md_style:'Vastaspoole stiil', md_prio:'Prioriteedid', md_board:'Laud', md_pick:'Juhi valik', md_unk:'Mida ma ei tea', md_ask:'Tõus, mida soovid', md_offer:'Nende pakkumine', md_none:'(pole)'
+},
+en:{
+h1:'Debatable machine', lead:'Write in one sentence what is happening in the conversation. The machine says honestly what it heard, what it does not know and what it assumes, and puts three offers on the table that are equal to you.',
+sub:'All calculations happen on your device and nothing is stored. The machine reads your sentence with simple rules, not a prediction model. This is education, not advice.',
+sentH:'One sentence', sentLbl:'What is happening in the conversation, and what do you want?', sentPh:'For example: I want a 10% raise, my manager says the budget is 3% and that we will revisit later.',
+exH:'Or pick an example (fictional):', ex1:'I want a 10% raise, my manager says the budget is 3% and that we will revisit later.', ex2:'The raise is not the most important thing to me, I want more remote days and a learning budget. My manager is open but needs something to take upstairs.', ex3:'I have a written offer from another company and I will not take less than 8%. My manager says it cannot be done, there is no budget.',
+listen:'Listen',
+readH:'What I heard', readP:'These are guesses, not facts. You can correct each line with one tap. Anything under 60% sure I do not assume: I ask.',
+rStyle:'The other side’s style', rClaims:'What is on the table', rPrio:'What matters to you', rNums:'Numbers',
+st_firm:'Firm', st_flex:'Flexible', st_busy:'Short of time',
+cl_budget:'Budget', cl_band:'Pay band', cl_market:'Market data', cl_performance:'Performance rating', cl_timing:'Timing',
+heard:'heard {p}%', guess:'guess {p}%', dflt:'default', fPr1:'Matters most to me', fPr2:'Second', fPr3:'Third',
+prNone:'I did not hear any priorities, so I use the defaults: pay, leave, learning. Pick your own.',
+fAsk:'The raise you want (%)', fOffer:'Their offer (%)', fWalk:'I will not take less than (%)', fPay:'Gross pay per year (€)',
+askStyle:'I ask one thing: how does the other side tend to answer? “It cannot be done” (firm), “I will see what I can do” (flexible) or “let us revisit later” (short of time)? Pick the style above.',
+askPrio:'I ask one thing: besides pay, what matters most to you? Pick a priority above.',
+unkH:'What I do not know', unkPay:'I do not know your real pay (I use {pay}). ', unkRest:'I do not know the company’s real budget or the manager’s real preferences. I assume the lever prices and cost multipliers: model v{v}, owner {o}, reviewed {r}.',
+boardH:'The table', boardP:'Three packages that are roughly equal to you. The manager picks the one that is cheapest for them.',
+limCap:'Pay cap {c}%', limCut:'Budget −30%',
+base:'Salary only: +{o}% = worth {v0} points. The budget is {b}%.',
+tagA:'pay-centred', tagB:'balanced', tagC:'less pay, more else',
+pkgRow:'{t}. Costs them {c}%, worth {v} to you.', pkgName:'Package {n}',
+offer:'Offer the three packages',
+noRoom:'No room found: with your priorities no package beats salary only ({v0} points). That is a result too: the machine does not look for room that is not there.',
+oneOnly:'I found only one package that is at least as good as salary only. There are not three equal ones.',
+picked:'I picked package {n}. It costs them {c}%, it is worth {v} to you. Salary only was {v0}. The best possible package would be {vs}; you reached {p}%. There was room: +{g}% more value inside the same budget.',
+deepH:'Go deeper', deepP:'If you want to practise step by step, open the negotiation playbook with your sentence: the same situation, five claims, the Table and the Surprise.', deepBtn:'Open the playbook',
+fileH:'Take it with you', fileP:'Download a conversation card: what the machine heard, the table and the questions. It is a conversation starter, not advice.', mdHide:'without amounts', mdBtn:'Download the card (vaidle.md)', mdMsg:'The file is downloaded and stays on your device.',
+md_title:'Debatable machine card', md_note:'Practice with a fictional manager. Not advice, not a prediction.', md_heard:'What I heard', md_sentence:'Your sentence', md_style:'The other side’s style', md_prio:'Priorities', md_board:'The table', md_pick:'The manager’s pick', md_unk:'What I do not know', md_ask:'The raise you want', md_offer:'Their offer', md_none:'(none)'
+}};
+Object.keys(VM.TEXT).forEach(function(l){Object.keys(VM.TEXT[l]).forEach(function(k){T[l][k]=VM.TEXT[l][k];});});
+function L(){return MR.lang==='et'?'et':'en';}
+function tr(k,v){var s=T[L()][k];if(s===undefined)s=T.en[k];if(s===undefined)return k;if(v)Object.keys(v).forEach(function(n){s=s.split('{'+n+'}').join(v[n]);});return s;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+var $=function(id){return document.getElementById(id);};
+function pct(x){return (Math.round(x*10)/10).toString().replace('.',L()==='et'?',':'.');}
+function fe(n){return Math.round(n).toLocaleString('en-US').replace(/,/g,'\u00a0')+'\u00a0€';}
+
+/* ---------- lause lugemine: lihtsad reeglid, Jev'i-kujuline vastus (tüübitud vastused ja tõenäosused) ---------- */
+var STYLES=['firm','flex','busy'],CLAIMS=['budget','band','market','performance','timing'],LEV=VM.LEV,DEF_PR=['salary','leave','learn'];
+var CUE={
+ style:{firm:/ei saa|ei ole võimalik|pole võimalik|ei ole eelarvet|pole eelarvet|eelarvet pole|lagi|jäik|kindel ei|cannot|can't|can’t|not possible|no budget|firm|strict|policy|poliitika/g,
+        busy:/hiljem|järgmine kvartal|järgmisel kvartalil|pole aega|kiire|kuue kuu|later|next quarter|no time|busy|revisit|six months|6 months|come back/g,
+        flex:/avatud|mõistlik|vaatan,? mida saan|vajab midagi|ülemusele viia|upstairs|open to|flexible|reasonable|willing|see what i can|tahaks aidata/g},
+ claim:{budget:/eelarve|(?<!learning |training )budget|\bpott\b|\bpool\b/g,band:/vahemik|palgavahemik|\bband\b|grade|\btase\b/g,market:/turu|\bturg\b|market|uuring|survey|benchmark/g,performance:/tulemus|hinnang|performance|rating|ootus|expectation/g,timing:/hiljem|later|kuue kuu|six months|next quarter|järgmine kvartal|revisit/g},
+ lever:{salary:/palk|tõus|salary|\bpay\b|raise|%/g,bonus:/boonus|preemia|bonus/g,leave:/puhkus|vaba aeg|puhkepäev|\bleave\b|holiday|time off|vacation/g,remote:/kaugtöö|kodukontor|kodus|remote|work from home|commut|pendel/g,learn:/õpp|koolitus|kursus|learning|training|course|conference/g,title:/tiitel|ametinimetus|\brolli?\b|title|promotion|edutus|\bsenior\b/g,review:/läbivaatus|\breview\b|varem läbi/g,hours:/lühem nädal|neljapäev|4-päeva|nelja päeva|four-day|4-day|shorter week|vähem tunde|fewer hours/g}
+};
+function cnt(re,t){var m=t.match(re);return m?m.length:0;}
+function parseMoney(raw){
+  raw=raw.trim();
+  if(/^\d{1,3}([\s.,]\d{3})+$/.test(raw))return parseFloat(raw.replace(/[\s.,]/g,''));
+  return parseFloat(raw.replace(/\s/g,'').replace(',','.'));
+}
+function readSentence(text){
+  var t=' '+text.toLowerCase().replace(/\s+/g,' ')+' ',R={style:{},claims:{},lever:{},ask:null,offer:null,walk:null,pay:null},s={},tot=0;
+  STYLES.forEach(function(k){s[k]=cnt(CUE.style[k],t);tot+=s[k];});
+  STYLES.forEach(function(k){R.style[k]=tot>0?(s[k]+0.15)/(tot+0.45):1/3;});
+  CLAIMS.forEach(function(c){var n=cnt(CUE.claim[c],t);R.claims[c]=n>0?Math.min(.95,.55+.2*n):.1;});
+  var salaryLow=/pole (mulle )?kõige tähtsam|ei ole (mulle )?kõige tähtsam|pal[gk]\w* pole|tõus pole|not (the )?(most )?important|is not the most important|salary is not/.test(t);
+  LEV.forEach(function(l){var n=cnt(CUE.lever[l],t);if(l==='salary'&&salaryLow)n=0;R.lever[l]=n;});
+  var re=/(\d+(?:[.,]\d+)?)\s*%/g,m;
+  while((m=re.exec(t))){
+    var v=parseFloat(m[1].replace(',','.')),ctx=t.slice(Math.max(0,m.index-40),m.index);
+    if(R.walk===null&&/ei võta alla|vähemalt|not below|at least|minimum|miinimum|ei lähe alla|not take less|no less than|not accept less|not go below|won['’]t take less/.test(ctx))R.walk={v:v,p:.9};
+    else if(R.offer===null&&/eelarve|budget|pakub|pakkumine|offers?|ütleb|offered/.test(ctx))R.offer={v:v,p:.9};
+    else if(R.ask===null&&/tahan|soovin|küsin|want|ask|raise of|tõus|looking for/.test(ctx))R.ask={v:v,p:.9};
+    else if(R.ask===null)R.ask={v:v,p:.5};
+  }
+  var pm=/(\d[\d\s.,]{2,}\d)\s*(€|eur|eurot|euro|usd|\$|£)/.exec(t);
+  if(pm){var n=parseMoney(pm[1]),after=t.slice(pm.index,pm.index+pm[0].length+25),said=/kuus|month|kuupalk/.test(after),monthly=said||n<20000;R.pay={v:Math.round(monthly?n*12:n),p:said?.8:(monthly?.6:.8)};}
+  return R;
+}
+function derive(R){
+  var st=STYLES.slice().sort(function(a,b){return R.style[b]-R.style[a];}),top=st[0];
+  var order=LEV.slice().sort(function(a,b){return R.lever[b]-R.lever[a]||LEV.indexOf(a)-LEV.indexOf(b);});
+  var heard=order.filter(function(l){return R.lever[l]>0;}).slice(0,3),pr=heard.slice();
+  DEF_PR.forEach(function(l){if(pr.length<3&&pr.indexOf(l)<0)pr.push(l);});
+  LEV.forEach(function(l){if(pr.length<3&&pr.indexOf(l)<0)pr.push(l);});
+  var claims={};CLAIMS.forEach(function(c){claims[c]={on:R.claims[c]>=.6,p:R.claims[c]};});
+  return {style:top,styleP:R.style[top],claims:claims,pr:pr,prHeard:heard.length,prP:heard.length?Math.min(.95,.5+.15*R.lever[heard[0]]):.2,
+    ask:R.ask?R.ask.v:10,askKnown:!!R.ask,askP:R.ask?R.ask.p:0,offer:R.offer?R.offer.v:null,offerKnown:!!R.offer,offerP:R.offer?R.offer.p:0,
+    walk:R.walk?R.walk.v:null,walkP:R.walk?R.walk.p:0,pay:R.pay?R.pay.v:null,payP:R.pay?R.pay.p:0,cap:false,cut:false,offered:false,sentence:''};
+}
+
+/* ---------- seis ja lugemine ---------- */
+var S=null;
+function offerNow(){return S.offerKnown&&S.offer!==null?S.offer:VM.BASE[S.style];}
+function askU(){return Math.max(4,Math.min(25,S.ask));}
+function payNow(){return S.pay!==null&&S.pay>0?S.pay:60000;}
+function confidence(){var q=0;if(S.styleP<.6)q++;if(S.prHeard===0)q++;return q===0?'high':(q===1?'mid':'low');}
+function question(){if(S.styleP<.6)return 'askStyle';if(S.prHeard===0)return 'askPrio';return null;}
+function chip(kind,p){return '<span class="chip t-info">[inferred] '+esc(tr(kind,{p:Math.round(p*100)}))+'</span>';}
+
+function renderExamples(){
+  var h='';[1,2,3].forEach(function(i){h+='<button type="button" class="sit" data-ex="'+i+'" data-mr-c="tingi.sentence.example">'+esc(tr('ex'+i))+'</button>';});
+  $('examples').innerHTML=h;
+  Array.prototype.forEach.call($('examples').querySelectorAll('button'),function(b){b.onclick=function(){
+    $('sentence').value=tr('ex'+b.getAttribute('data-ex'));MR.track('Sample Loaded',{},'tingi.sentence.example');listen();
+  };});
+}
+function renderPrio(){
+  var keep=S?S.pr:null;
+  [1,2,3].forEach(function(i){var h='';LEV.forEach(function(l){h+='<option value="'+l+'">'+esc(tr('lvl_'+l))+'</option>';});$('pr'+i).innerHTML=h;$('pr'+i).value=keep?keep[i-1]:DEF_PR[i-1];});
+}
+function renderReading(){
+  if(!S)return;
+  $('reading').hidden=false;
+  var q=question();$('askNote').hidden=!q;if(q)$('askNote').textContent=tr(q);
+  var h='';
+  STYLES.forEach(function(k){h+='<button type="button" class="sit" data-style="'+k+'" aria-pressed="'+(S.style===k)+'" data-mr-c="tingi.reading.chip"><b>'+esc(tr('st_'+k))+'</b>'+(S.style===k&&S.styleP<1?' <span class="tags">'+chip('guess',S.styleP)+'</span>':'')+'</button>';});
+  $('rStyle').innerHTML=h;
+  Array.prototype.forEach.call($('rStyle').querySelectorAll('button'),function(b){b.onclick=function(){S.style=b.getAttribute('data-style');S.styleP=1;S.offered=false;MR.track('Reading Corrected',{field:'style'},'tingi.reading.chip');renderAll();};});
+  h='';
+  CLAIMS.forEach(function(c){var d=S.claims[c];h+='<button type="button" class="sit" data-claim="'+c+'" aria-pressed="'+d.on+'" data-mr-c="tingi.reading.chip"><b>'+esc(tr('cl_'+c))+'</b> <span class="tags">'+(d.p>=.6?chip('heard',d.p):'<span class="chip">'+esc(tr('dflt'))+'</span>')+'</span></button>';});
+  $('rClaims').innerHTML=h;
+  Array.prototype.forEach.call($('rClaims').querySelectorAll('button'),function(b){b.onclick=function(){var c=b.getAttribute('data-claim');S.claims[c].on=!S.claims[c].on;MR.track('Reading Corrected',{field:'claim'},'tingi.reading.chip');renderAll();};});
+  [1,2,3].forEach(function(i){$('pr'+i).value=S.pr[i-1];});
+  $('prNote').textContent=S.prHeard?'':tr('prNone');
+  var set=function(id,v){if(document.activeElement!==$(id))$(id).value=v===null?'':String(v).replace('.',L()==='et'?',':'.');};
+  set('f-ask',S.askKnown?S.ask:'');set('f-offer',S.offerKnown&&S.offer!==null?S.offer:'');set('f-walk',S.walk===null?'':S.walk);set('f-pay',S.pay===null?'':S.pay);
+  $('f-ask').placeholder='10';$('f-offer').placeholder=pct(VM.BASE[S.style]);$('f-pay').placeholder='60000';
+  $('unk').textContent=(S.pay===null?tr('unkPay',{pay:fe(60000)}):'')+tr('unkRest',{v:VM.VERSION,o:VM.OWNER,r:VM.REVIEWED});
+}
+function pkgs(){
+  var style=S.style,offer=offerNow(),pay=payNow(),pr=S.pr,au=askU();
+  var B=(offer+VM.POOL[style])*(S.cut?0.7:1),mx=VM.levMax('salary',au),cap=S.cap?VM.capSteps(offer):null,maxS=cap!==null?Math.min(mx,cap):mx,sS=Math.round(offer*2);
+  var o0={style:style,pr:pr,pay:pay,askU:au,B:B},v0=offer*VM.rho('salary',pr);
+  var cls=[{id:'A',lo:Math.min(maxS,Math.ceil(sS*.7)),hi:maxS},{id:'B',lo:Math.min(maxS,Math.ceil(sS*.4)),hi:Math.min(maxS,Math.floor(sS*.7))},{id:'C',lo:0,hi:Math.min(maxS,Math.floor(sS*.4))}].filter(function(c){return c.lo<=c.hi;});
+  var good=[];
+  cls.forEach(function(c){var b=VM.bestP({style:style,pr:pr,pay:pay,askU:au,B:B,minSalary:c.lo,maxSalary:c.hi});if(b.p&&b.v>=v0-1e-9)good.push({c:c,best:b});});
+  var full=VM.bestP({style:style,pr:pr,pay:pay,askU:au,B:B,maxSalary:maxS});
+  var out={B:B,v0:v0,offer:offer,full:full,pk:[],pick:null,cap:cap};
+  if(!good.length)return out;
+  var T0=Math.max(v0,0.9*Math.min.apply(null,good.map(function(x){return x.best.v;})));
+  good.forEach(function(x){var p=VM.cheapestP({style:style,pr:pr,pay:pay,askU:au,B:B,minSalary:x.c.lo,maxSalary:x.c.hi,target:T0});
+    if(p.p){var key=JSON.stringify(p.p);if(!out.pk.some(function(q){return q.key===key;}))out.pk.push({id:x.c.id,p:p.p,c:p.c,v:p.v,key:key});}});
+  if(!out.pk.length)return out;
+  out.single=out.pk.length===1;
+  out.pick=out.pk.slice().sort(function(a,b){return a.c-b.c||b.v-a.v;})[0];
+  return out;
+}
+function amt(l,st){return l==='salary'?pct(st*.5):(l==='bonus'?pct(st*.5)+'% ('+fe(payNow()*st*.5/100)+')':(l==='leave'?st*2:(l==='learn'?fe(st*500):(l==='review'?st*3:st))));}
+function describeP(p){var a=LEV.filter(function(l){return (p[l]||0)>0;}).map(function(l){return tr('lvt_'+l,{n:amt(l,p[l])});});return a.length?a.join(', '):tr('md_none');}
+function timeLine(p){var h=((p.leave||0)*2*8)+((p.hours||0)*46);return h>0?tr('dl_time0',{h:h}):'';}
+function renderBoard(){
+  if(!S)return;
+  $('board').hidden=false;
+  var b=pkgs(),offer=b.offer,h='';
+  var lim='<button type="button" class="sit" data-lim="cap" aria-pressed="'+S.cap+'" data-mr-c="tingi.board.limit-toggle">'+esc(tr('limCap',{c:pct(VM.capSteps(offer)/2)}))+'</button><button type="button" class="sit" data-lim="cut" aria-pressed="'+S.cut+'" data-mr-c="tingi.board.limit-toggle">'+esc(tr('limCut'))+'</button>';
+  $('limits').innerHTML=lim;
+  Array.prototype.forEach.call($('limits').querySelectorAll('button'),function(x){x.onclick=function(){var k=x.getAttribute('data-lim');S[k]=!S[k];S.offered=false;if(S[k])MR.track('Surprise Drawn',{surprise_id:k},'tingi.board.limit-toggle');renderBoard();};});
+  $('baseLine').textContent=tr('base',{o:pct(offer),v0:pct(b.v0),b:pct(b.B)});
+  var tags={A:'tagA',B:'tagB',C:'tagC'};
+  b.pk.forEach(function(x){h+='<li><b>'+esc(tr('pkgName',{n:x.id}))+'</b> <span class="chip">'+esc(tr(tags[x.id]))+'</span><br>'+esc(tr('pkgRow',{t:describeP(x.p),c:pct(x.c),v:pct(x.v)}))+(timeLine(x.p)?'<br><span class="k">'+esc(timeLine(x.p))+'</span>':'')+'</li>';});
+  $('pkgs').innerHTML=h;
+  $('oneOnly').hidden=!b.single;$('oneOnly').textContent=b.single?tr('oneOnly'):'';
+  var none=!b.pk.length;$('noRoom').hidden=!none;$('noRoom').textContent=none?tr('noRoom',{v0:pct(b.v0)}):'';
+  $('offer').disabled=none;
+  var res='';
+  if(S.offered&&b.pick){var p=b.pick;res='<b>'+esc(tr('picked',{n:p.id,c:pct(p.c),v:pct(p.v),v0:pct(b.v0),vs:pct(b.full.v),p:b.full.v>0?Math.round(p.v/b.full.v*100):100,g:b.v0>0?Math.round((b.full.v/b.v0-1)*100):0}))+'</b>';}
+  $('boardRes').innerHTML=res;
+  $('deeper').hidden=false;$('fail').hidden=!S.offered;
+  var first=CLAIMS.filter(function(c){return S.claims[c].on;})[0];
+  var hash='#s='+S.style+'&a='+encodeURIComponent(String(askU()))+(S.walk!==null?'&w='+encodeURIComponent(String(S.walk)):'')+'&p='+S.pr.join(',')+(first?'&k='+first:'');
+  $('playbookLink').setAttribute('href','playbook.html'+(MR.lang!=='et'?'?lang='+encodeURIComponent(MR.lang):'')+hash);
+}
+function renderAll(){renderReading();renderBoard();}
+
+function listen(){
+  var text=$('sentence').value.trim();if(!text)return;
+  var R=readSentence(text);S=derive(R);S.sentence=text;
+  MR.track('Sentence Read',{confidence:confidence()},'tingi.sentence.listen-button');
+  renderPrio();renderAll();$('h-read').focus();$('reading').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---------- vestluskaart (markdown) ---------- */
+function cardMd(hide){
+  var b=pkgs(),nl='\n',md='# '+tr('md_title')+nl+nl+'_'+tr('md_note')+'_'+nl+nl+'## '+tr('md_heard')+nl+nl;
+  md+='- '+tr('md_sentence')+': '+S.sentence+nl+'- '+tr('md_style')+': '+tr('st_'+S.style)+nl+'- '+tr('md_prio')+': '+S.pr.map(function(l){return tr('lvl_'+l);}).join(', ')+nl;
+  md+='- '+tr('md_ask')+': '+pct(askU())+'%'+nl+'- '+tr('md_offer')+': '+pct(b.offer)+'%'+nl;
+  md+=nl+'## '+tr('md_board')+nl+nl;
+  if(!b.pk.length)md+=tr('noRoom',{v0:pct(b.v0)})+nl;
+  b.pk.forEach(function(x){md+='- '+tr('pkgName',{n:x.id})+': '+describeP(x.p)+(hide?'':' ('+tr('pkgRow',{t:'',c:pct(x.c),v:pct(x.v)}).replace(/^\.\s*/,'')+')')+nl;});
+  if(b.pick)md+=nl+'## '+tr('md_pick')+nl+nl+tr('pkgName',{n:b.pick.id})+nl;
+  md+=nl+'## '+tr('md_unk')+nl+nl+(S.pay===null?tr('unkPay',{pay:fe(60000)}):'')+tr('unkRest',{v:VM.VERSION,o:VM.OWNER,r:VM.REVIEWED})+nl;
+  return md;
+}
+
+function applyT(){
+  Array.prototype.forEach.call(document.querySelectorAll('[data-t]'),function(e){e.textContent=tr(e.getAttribute('data-t'));});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-t-ph]'),function(e){e.setAttribute('placeholder',tr(e.getAttribute('data-t-ph')));});
+  $('examples').setAttribute('aria-label',tr('exH'));
+  $('modelLine').textContent=tr('unkRest',{v:VM.VERSION,o:VM.OWNER,r:VM.REVIEWED});
+  document.title=tr('h1')+' | Raha Meeled';
+}
+function init(){
+  applyT();renderPrio();renderExamples();
+  $('listen').onclick=listen;
+  [1,2,3].forEach(function(i){$('pr'+i).addEventListener('change',function(){if(!S)return;var seen=[];S.pr=[1,2,3].map(function(j){return $('pr'+j).value;}).filter(function(x){if(seen.indexOf(x)>=0)return false;seen.push(x);return true;});
+    LEV.forEach(function(l){if(S.pr.length<3&&S.pr.indexOf(l)<0)S.pr.push(l);});S.prHeard=3;S.offered=false;MR.track('Reading Corrected',{field:'priority'},'tingi.reading.chip');renderAll();});});
+  var num=function(id){var v=$(id).value.trim().replace(/\s|\u00a0/g,'').replace(',','.');if(v==='')return null;var n=Number(v);return isFinite(n)&&n>=0?n:null;};
+  var bind=function(id,field,fn){$(id).addEventListener('input',function(){if(!S)return;fn(num(id));S.offered=false;MR.track('Reading Corrected',{field:field},'tingi.reading.chip');renderBoard();});};
+  bind('f-ask','ask',function(n){S.askKnown=n!==null;S.ask=n!==null?n:10;});
+  bind('f-offer','offer',function(n){S.offerKnown=n!==null;S.offer=n;});
+  bind('f-walk','walk',function(n){S.walk=n;});
+  bind('f-pay','pay',function(n){S.pay=n;});
+  $('offer').onclick=function(){if(!S)return;var b=pkgs();if(!b.pick)return;S.offered=true;MR.track('Package Offered',{result:'picked'},'tingi.board.offer-button');renderBoard();};
+  $('mdBtn').onclick=function(){
+    if(!S)return;var hide=$('mdHide').checked,blob=new Blob([cardMd(hide)],{type:'text/markdown'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='vaidle.md';document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(a.href);},1000);$('mdMsg').textContent=tr('mdMsg');
+    MR.track('Card Downloaded',{card:'tingi',amounts:hide?'hidden':'shown'},'tingi.file.md-button');
+  };
+  MR.onLang(function(){applyT();renderPrio();renderExamples();if(S)renderAll();});
+}
+window.DEBATE_LIGHT={read:readSentence,derive:derive,state:function(){return S;},pkgs:pkgs,VM:VM};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>

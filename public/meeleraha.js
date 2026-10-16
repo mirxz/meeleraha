@@ -114,14 +114,14 @@ MR.audit=function(){
 };
 
 /* ---------- ühine raam ---------- */
-var NAV=[['home','index.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['debate','debate.html','debate'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
+var NAV=[['home','index.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['tingi','tingi.html','tingi'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
 var FOOT=[['kell','kellakeeramine.html'],['privacy','privaatsus.html'],['contact','kontakt.html']];
 MR.page=document.body?document.body.getAttribute('data-mr-page'):null;
 MR.mount=function(){
   var nav=document.getElementById('mr-nav'),foot=document.getElementById('mr-foot'),ban=document.getElementById('mr-banner');
   if(nav){
     var h='<nav aria-label="'+esc(MR.t('nav.label'))+'"><a class="mr-brand" href="index.html">Raha Meeled</a><ul>';
-    NAV.forEach(function(n){h+='<li><a href="'+n[1]+'"'+(MR.page===n[2]?' aria-current="page"':'')+' data-mr-c="nav.primary.link" data-mr-e="Nav Item Clicked" data-mr-p-item="'+n[0]+'">'+esc(MR.t('nav.'+n[0]))+'</a></li>';});
+    NAV.forEach(function(n){h+='<li><a href="'+n[1]+'"'+(MR.page===n[2]||(document.body&&document.body.getAttribute('data-mr-nav')===n[0])?' aria-current="page"':'')+' data-mr-c="nav.primary.link" data-mr-e="Nav Item Clicked" data-mr-p-item="'+n[0]+'">'+esc(MR.t('nav.'+n[0]))+'</a></li>';});
     h+='</ul><div class="mr-lang"><label class="mr-sr" for="mr-langsel">'+esc(MR.t('nav.lang'))+'</label><select id="mr-langsel" data-mr-c="nav.lang.switch">';
     META.forEach(function(m){h+='<option value="'+m.code+'"'+(MR.lang===m.code?' selected':'')+'>'+esc(m.name)+'</option>';});
     h+='</select></div></nav>';nav.className='mr-nav';nav.innerHTML=h;

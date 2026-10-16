@@ -61,8 +61,14 @@ window.MR_TAX={
    "name_en": "Clock-change check-in",
    "space_en": "Life"
   },
-  "debate": {
-   "name": "Vaidlusmasin",
+  "playbook": {
+   "name": "Läbirääkimiste playbook",
+   "space": "Plaani",
+   "name_en": "Negotiation playbook",
+   "space_en": "Plan"
+  },
+  "tingi": {
+   "name": "Vaieldav masin",
    "space": "Plaani",
    "name_en": "Debatable machine",
    "space_en": "Plan"
@@ -89,7 +95,8 @@ window.MR_TAX={
    "kontakt",
    "privaatsus",
    "kell",
-   "debate"
+   "tingi",
+   "playbook"
   ],
   "entry": [
    "direct",
@@ -100,7 +107,7 @@ window.MR_TAX={
    "home",
    "haruta",
    "ots",
-   "debate",
+   "tingi",
    "ajatelg",
    "kast"
   ],
@@ -155,7 +162,8 @@ window.MR_TAX={
   ],
   "cards": [
    "md",
-   "debate"
+   "tingi",
+   "playbook"
   ],
   "amounts": [
    "shown",
@@ -365,6 +373,20 @@ window.MR_TAX={
    "best",
    "close",
    "far"
+  ],
+  "read_confidence": [
+   "high",
+   "mid",
+   "low"
+  ],
+  "reading_fields": [
+   "style",
+   "claim",
+   "priority",
+   "ask",
+   "offer",
+   "walk",
+   "pay"
   ]
  },
  "events": {
@@ -714,6 +736,25 @@ window.MR_TAX={
     "outcome": "enum:answer_outcomes"
    },
    "desc_en": "A surprise was answered."
+  },
+  "Sentence Read": {
+   "desc": "Lause loeti.",
+   "props": {
+    "confidence": "enum:read_confidence"
+   },
+   "desc_en": "A sentence was read."
+  },
+  "Reading Corrected": {
+   "desc": "Masina lugemist parandati.",
+   "props": {
+    "field": "enum:reading_fields"
+   },
+   "desc_en": "The machine’s reading was corrected."
+  },
+  "Playbook Opened": {
+   "desc": "Läbirääkimiste playbook avati.",
+   "props": {},
+   "desc_en": "The negotiation playbook was opened."
   }
  },
  "components": {
@@ -1004,131 +1045,180 @@ window.MR_TAX={
    "desc": "Mõõtmise lüliti.",
    "desc_en": "Measurement switch."
   },
-  "debate.style.pick": {
-   "page": "debate",
+  "playbook.style.pick": {
+   "page": "playbook",
    "section": "style",
    "name": "pick",
    "desc": "Valib vastaspoole stiili ja alustab harjutust.",
    "desc_en": "Chooses the counterpart style and starts the practice."
   },
-  "debate.inputs.sample-button": {
-   "page": "debate",
+  "playbook.inputs.sample-button": {
+   "page": "playbook",
    "section": "inputs",
    "name": "sample-button",
    "desc": "Laeb näidisandmed.",
    "desc_en": "Loads sample data."
   },
-  "debate.evidence.card": {
-   "page": "debate",
+  "playbook.evidence.card": {
+   "page": "playbook",
    "section": "evidence",
    "name": "card",
    "desc": "Tõendi kaart.",
    "desc_en": "An evidence card."
   },
-  "debate.offer.quick": {
-   "page": "debate",
+  "playbook.offer.quick": {
+   "page": "playbook",
    "section": "offer",
    "name": "quick",
    "desc": "Kinnitab pakkumise kohe.",
    "desc_en": "Accepts the offer at once."
   },
-  "debate.offer.sentence": {
-   "page": "debate",
+  "playbook.offer.sentence": {
+   "page": "playbook",
    "section": "offer",
    "name": "sentence",
    "desc": "Kinnitab pakkumise lausega.",
    "desc_en": "Accepts the offer with a sentence."
   },
-  "debate.thread.knot": {
-   "page": "debate",
+  "playbook.thread.knot": {
+   "page": "playbook",
    "section": "thread",
    "name": "knot",
    "desc": "Avab sõlme.",
    "desc_en": "Opens a knot."
   },
-  "debate.thread.next-button": {
-   "page": "debate",
+  "playbook.thread.next-button": {
+   "page": "playbook",
    "section": "thread",
    "name": "next-button",
    "desc": "Tirib järgmise lõnga.",
    "desc_en": "Pulls the next thread."
   },
-  "debate.claim.why": {
-   "page": "debate",
+  "playbook.claim.why": {
+   "page": "playbook",
    "section": "claim",
    "name": "why",
    "desc": "Avab väite aluse.",
    "desc_en": "Opens the basis of a claim."
   },
-  "debate.claim.challenge": {
-   "page": "debate",
+  "playbook.claim.challenge": {
+   "page": "playbook",
    "section": "claim",
    "name": "challenge",
    "desc": "Vaidlustab väite tõendiga.",
    "desc_en": "Challenges a claim with evidence."
   },
-  "debate.claim.accept": {
-   "page": "debate",
+  "playbook.claim.accept": {
+   "page": "playbook",
    "section": "claim",
    "name": "accept",
    "desc": "Võtab väite vastu.",
    "desc_en": "Accepts a claim."
   },
-  "debate.fire.panel": {
-   "page": "debate",
+  "playbook.fire.panel": {
+   "page": "playbook",
    "section": "fire",
    "name": "panel",
    "desc": "Sõltumatuse aja paneel.",
    "desc_en": "Time-to-independence panel."
   },
-  "debate.file.md-button": {
-   "page": "debate",
+  "playbook.file.md-button": {
+   "page": "playbook",
    "section": "file",
    "name": "md-button",
    "desc": "Laeb alla vestluskaardi.",
    "desc_en": "Downloads the conversation card."
   },
-  "debate.result.restart": {
-   "page": "debate",
+  "playbook.result.restart": {
+   "page": "playbook",
    "section": "result",
    "name": "restart",
    "desc": "Alustab uuesti.",
    "desc_en": "Starts again."
   },
-  "debate.table.cheap-button": {
-   "page": "debate",
+  "playbook.table.cheap-button": {
+   "page": "playbook",
    "section": "table",
    "name": "cheap-button",
    "desc": "Küsib, mis on juhile odav.",
    "desc_en": "Asks what is cheap for the manager."
   },
-  "debate.table.save-button": {
-   "page": "debate",
+  "playbook.table.save-button": {
+   "page": "playbook",
    "section": "table",
    "name": "save-button",
    "desc": "Salvestab paketi.",
    "desc_en": "Saves a package."
   },
-  "debate.table.offer-button": {
-   "page": "debate",
+  "playbook.table.offer-button": {
+   "page": "playbook",
    "section": "table",
    "name": "offer-button",
    "desc": "Esitab paketid juhile.",
    "desc_en": "Offers the packages to the manager."
   },
-  "debate.surprise.draw-button": {
-   "page": "debate",
+  "playbook.surprise.draw-button": {
+   "page": "playbook",
    "section": "surprise",
    "name": "draw-button",
    "desc": "Tõmbab üllatuse.",
    "desc_en": "Draws a surprise."
   },
-  "debate.surprise.answer-button": {
-   "page": "debate",
+  "playbook.surprise.answer-button": {
+   "page": "playbook",
    "section": "surprise",
    "name": "answer-button",
    "desc": "Vastab üllatusele.",
    "desc_en": "Answers a surprise."
+  },
+  "tingi.sentence.listen-button": {
+   "page": "tingi",
+   "section": "sentence",
+   "name": "listen-button",
+   "desc": "Loeb lause.",
+   "desc_en": "Reads the sentence."
+  },
+  "tingi.sentence.example": {
+   "page": "tingi",
+   "section": "sentence",
+   "name": "example",
+   "desc": "Laeb näitelause.",
+   "desc_en": "Loads an example sentence."
+  },
+  "tingi.reading.chip": {
+   "page": "tingi",
+   "section": "reading",
+   "name": "chip",
+   "desc": "Parandab masina lugemist.",
+   "desc_en": "Corrects the machine’s reading."
+  },
+  "tingi.board.limit-toggle": {
+   "page": "tingi",
+   "section": "board",
+   "name": "limit-toggle",
+   "desc": "Lülitab palgalae või eelarve kärbe.",
+   "desc_en": "Toggles the pay cap or budget cut."
+  },
+  "tingi.board.offer-button": {
+   "page": "tingi",
+   "section": "board",
+   "name": "offer-button",
+   "desc": "Esitab kolm paketti.",
+   "desc_en": "Offers the three packages."
+  },
+  "tingi.board.playbook-link": {
+   "page": "tingi",
+   "section": "board",
+   "name": "playbook-link",
+   "desc": "Avab playbooki.",
+   "desc_en": "Opens the playbook."
+  },
+  "tingi.file.md-button": {
+   "page": "tingi",
+   "section": "file",
+   "name": "md-button",
+   "desc": "Laeb alla vestluskaardi.",
+   "desc_en": "Downloads the conversation card."
   }
  }
 };
