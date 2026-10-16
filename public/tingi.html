@@ -101,7 +101,7 @@ main{padding-top:28px;padding-bottom:64px}
 <div class="card" id="deeper" hidden>
   <h2 data-t="deepH"></h2>
   <p data-t="deepP"></p>
-  <div class="row"><a class="btn" id="playbookLink" href="playbook.html" data-mr-c="tingi.board.playbook-link" data-mr-e="Playbook Opened" data-t="deepBtn"></a></div>
+  <div class="row"><a class="btn" id="gameboxLink" href="mangukast.html" data-mr-c="tingi.board.gamebox-link" data-mr-e="Gamebox Opened" data-t="deepBtn"></a></div>
 </div>
 
 <div class="card" id="fail" hidden>
@@ -114,7 +114,7 @@ main{padding-top:28px;padding-bottom:64px}
 
 <footer style="margin-top:36px">
   <p class="small" id="modelLine"></p>
-  <p class="small"><a href="playbook.html" data-t="deepBtn"></a> · <a href="ots.html" data-i18n="nav.ots"></a> · <a href="ajatelg.html" data-i18n="nav.ajatelg"></a> · <a href="kast.html" data-i18n="nav.kast"></a></p>
+  <p class="small"><a href="mangukast.html" data-t="deepBtn"></a> · <a href="ots.html" data-i18n="nav.ots"></a> · <a href="ajatelg.html" data-i18n="nav.ajatelg"></a> · <a href="kast.html" data-i18n="nav.kast"></a></p>
 </footer>
 </main>
 <div id="mr-foot"></div>
@@ -151,7 +151,7 @@ offer:'Esita kolm pakkumist',
 noRoom:'Ruumi ei leidnud: sinu prioriteetidega ei ületa ükski pakett ainult palka ({v0} punkti). See on ka tulemus: masin ei otsi ruumi, mida pole.',
 oneOnly:'Leidsin ainult ühe paketi, mis on vähemalt sama hea kui ainult palk. Kolme samaväärset ei ole.',
 picked:'Valisin paketi {n}. Neile maksab see {c}%, sulle on see väärt {v}. Ainult palk oli {v0}. Parim võimalik pakett oleks {vs}; sa jõudsid {p}%. Ruumi oli: +{g}% rohkem väärtust samas eelarves.',
-deepH:'Süvene', deepP:'Kui tahad sammhaaval treenida, ava läbirääkimiste playbook sinu lausega: sama olukord, viis väidet, Laud ja Üllatus.', deepBtn:'Ava playbook',
+deepH:'Süvene', deepP:'Kui tahad sammhaaval treenida, ava läbirääkimise mängukast sinu lausega: sama olukord, viis väidet, Laud ja Üllatus.', deepBtn:'Ava mängukast',
 fileH:'Võta kaasa', fileP:'Lae alla vestluskaart: mida masin kuulis, laud ja küsimused. See on vestlusalus, mitte nõu.', mdHide:'ilma summadeta', mdBtn:'Lae kaart alla (vaidle.md)', mdMsg:'Fail on alla laetud ja jääb sinu seadmesse.',
 md_title:'Vaieldava masina kaart', md_note:'Harjutus väljamõeldud juhiga. Mitte nõu, mitte ennustus.', md_heard:'Ma kuulsin', md_sentence:'Sinu lause', md_style:'Vastaspoole stiil', md_prio:'Prioriteedid', md_board:'Laud', md_pick:'Juhi valik', md_unk:'Mida ma ei tea', md_ask:'Tõus, mida soovid', md_offer:'Nende pakkumine', md_none:'(pole)'
 },
@@ -180,7 +180,7 @@ offer:'Offer the three packages',
 noRoom:'No room found: with your priorities no package beats salary only ({v0} points). That is a result too: the machine does not look for room that is not there.',
 oneOnly:'I found only one package that is at least as good as salary only. There are not three equal ones.',
 picked:'I picked package {n}. It costs them {c}%, it is worth {v} to you. Salary only was {v0}. The best possible package would be {vs}; you reached {p}%. There was room: +{g}% more value inside the same budget.',
-deepH:'Go deeper', deepP:'If you want to practise step by step, open the negotiation playbook with your sentence: the same situation, five claims, the Table and the Surprise.', deepBtn:'Open the playbook',
+deepH:'Go deeper', deepP:'If you want to practise step by step, open the negotiation game box with your sentence: the same situation, five claims, the Table and the Surprise.', deepBtn:'Open the game box',
 fileH:'Take it with you', fileP:'Download a conversation card: what the machine heard, the table and the questions. It is a conversation starter, not advice.', mdHide:'without amounts', mdBtn:'Download the card (vaidle.md)', mdMsg:'The file is downloaded and stays on your device.',
 md_title:'Debatable machine card', md_note:'Practice with a fictional manager. Not advice, not a prediction.', md_heard:'What I heard', md_sentence:'Your sentence', md_style:'The other side’s style', md_prio:'Priorities', md_board:'The table', md_pick:'The manager’s pick', md_unk:'What I do not know', md_ask:'The raise you want', md_offer:'Their offer', md_none:'(none)'
 }};
@@ -318,7 +318,7 @@ function renderBoard(){
   $('deeper').hidden=false;$('fail').hidden=!S.offered;
   var first=CLAIMS.filter(function(c){return S.claims[c].on;})[0];
   var hash='#s='+S.style+'&a='+encodeURIComponent(String(askU()))+(S.walk!==null?'&w='+encodeURIComponent(String(S.walk)):'')+'&p='+S.pr.join(',')+(first?'&k='+first:'');
-  $('playbookLink').setAttribute('href','playbook.html'+(MR.lang!=='et'?'?lang='+encodeURIComponent(MR.lang):'')+hash);
+  $('gameboxLink').setAttribute('href','mangukast.html'+(MR.lang!=='et'?'?lang='+encodeURIComponent(MR.lang):'')+hash);
 }
 function renderAll(){renderReading();renderBoard();}
 

@@ -5,7 +5,7 @@ import { launch, ROOT } from './helpers.mjs';
 
 const P = (f) => new URL(`../public/${f}`, import.meta.url).href;
 const read = (f) => readFile(`${ROOT}public/${f}`, 'utf8');
-const PAGES = [['index', 'index.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['playbook', 'playbook.html']];
+const PAGES = [['index', 'index.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['mangukast', 'mangukast.html']];
 const TAX = JSON.parse(await read('taxonomy.json'));
 const dict = async () => { const txt = await read('i18n.js'); return JSON.parse(txt.match(/^window\.MR_I18N=([\s\S]*?);\nwindow\.MR_LANGS=/)[1]); };
 

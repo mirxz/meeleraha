@@ -1,4 +1,4 @@
-/* Vaidle mudel: ühe lõnga tõde kahele lehele (tingi.html ja playbook.html).
+/* Vaidle mudel: ühe lõnga tõde kahele lehele (tingi.html ja mangukast.html).
    Kõik hinnad, kordajad ja tugevused on selle tööriista OLETUSED, mitte andmed.
    Omanik, versioon ja ülevaatuse kuupäev on lehtedel nähtaval; muudatus käib siin, mitte lehtede sees. */
 window.VM=(function(){

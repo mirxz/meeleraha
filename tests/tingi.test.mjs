@@ -134,16 +134,16 @@ test('tingi: palgalagi ja eelarve kärbe lülitavad lauda uuesti, sündmus tuleb
   await context.close();
 });
 
-// ---------- playbook ----------
-test('tingi: playbooki link kannab stiili, soovi, piiri, prioriteedid ja esimese väite, ning playbook avab need', async () => {
+// ---------- mängukast ----------
+test('tingi: mängukasti link kannab stiili, soovi, piiri, prioriteedid ja esimese väite, ning mängukast avab need', async () => {
   const { page, context } = await open({ capture: true });
   await listenWith(page, EN[1]); await page.fill('#f-walk', '5');
-  const href = await page.getAttribute('#playbookLink', 'href');
-  assert.match(href, /^playbook\.html\?lang=en#s=busy&a=10&w=5&p=salary,leave,learn&k=budget$/);
-  await page.evaluate(() => document.getElementById('playbookLink').addEventListener('click', (e) => e.preventDefault()));
-  await page.click('#playbookLink');
-  assert.ok((await sent(page)).some((e) => e.n === 'Playbook Opened'));
-  const pb = await open({ file: 'playbook.html', query: '?lang=en' + href.slice(href.indexOf('#')) });
+  const href = await page.getAttribute('#gameboxLink', 'href');
+  assert.match(href, /^mangukast\.html\?lang=en#s=busy&a=10&w=5&p=salary,leave,learn&k=budget$/);
+  await page.evaluate(() => document.getElementById('gameboxLink').addEventListener('click', (e) => e.preventDefault()));
+  await page.click('#gameboxLink');
+  assert.ok((await sent(page)).some((e) => e.n === 'Gamebox Opened'));
+  const pb = await open({ file: 'mangukast.html', query: '?lang=en' + href.slice(href.indexOf('#')) });
   assert.equal(await pb.page.getAttribute('[data-style="busy"]', 'aria-pressed'), 'true');
   assert.equal(await pb.page.inputValue('#ask'), '10'); assert.equal(await pb.page.inputValue('#walk'), '5');
   assert.deepEqual(await pb.page.evaluate(() => [pr1.value, pr2.value, pr3.value]), ['salary', 'leave', 'learn']);
@@ -152,7 +152,7 @@ test('tingi: playbooki link kannab stiili, soovi, piiri, prioriteedid ja esimese
   assert.equal(await pb.page.locator('#threadWrap').isVisible(), true);
   assert.deepEqual(pb.errors, []);
   await pb.context.close();
-  const bad = await open({ file: 'playbook.html', query: '?lang=en#s=hacker&a=999' });                   // tundmatu stiil: ei juhtu midagi
+  const bad = await open({ file: 'mangukast.html', query: '?lang=en#s=hacker&a=999' });                   // tundmatu stiil: ei juhtu midagi
   assert.equal(await bad.page.locator('#threadWrap').isVisible(), false);
   await bad.context.close();
   await context.close();
@@ -243,9 +243,9 @@ test('tingi: menüüst „Vaidle“ jõuab sellele lehele, see on aktiivne ja kl
 test('tingi: leht on registris, ei kasuta salvestust ega võrgupäringuid ja lugemine töötab ilma serverita', async () => {
   const html = await read('tingi.html'), model = await read('vaidle-mudel.js');
   assert.ok(TAX.pages.tingi && TAX.enums.pages.includes('tingi') && TAX.enums.nav_items.includes('tingi'));
-  for (const e of ['Sentence Read', 'Reading Corrected', 'Playbook Opened']) assert.ok(TAX.events[e], e);
-  for (const c of ['sentence.listen-button', 'sentence.example', 'reading.chip', 'board.limit-toggle', 'board.offer-button', 'board.playbook-link', 'file.md-button']) assert.ok(TAX.components[`tingi.${c}`], c);
+  for (const e of ['Sentence Read', 'Reading Corrected', 'Gamebox Opened']) assert.ok(TAX.events[e], e);
+  for (const c of ['sentence.listen-button', 'sentence.example', 'reading.chip', 'board.limit-toggle', 'board.offer-button', 'board.gamebox-link', 'file.md-button']) assert.ok(TAX.components[`tingi.${c}`], c);
   for (const f of [html, model]) { assert.ok(!/localStorage|sessionStorage|indexedDB|document\.cookie/.test(f), 'salvestus on keelatud'); assert.ok(!/fetch\(|XMLHttpRequest/.test(f), 'võrgupäringuid pole'); }
-  assert.ok(html.includes('<script src="vaidle-mudel.js"></script>') && (await read('playbook.html')).includes('<script src="vaidle-mudel.js"></script>'), 'mõlemad lehed kasutavad sama mudelifaili');
-  assert.ok(!/var KAP=\{/.test(html) && !/var KAP=\{/.test(await read('playbook.html')), 'kulukordajad ei tohi olla lehtedel');
+  assert.ok(html.includes('<script src="vaidle-mudel.js"></script>') && (await read('mangukast.html')).includes('<script src="vaidle-mudel.js"></script>'), 'mõlemad lehed kasutavad sama mudelifaili');
+  assert.ok(!/var KAP=\{/.test(html) && !/var KAP=\{/.test(await read('mangukast.html')), 'kulukordajad ei tohi olla lehtedel');
 });

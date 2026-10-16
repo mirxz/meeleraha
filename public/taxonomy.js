@@ -61,16 +61,16 @@ window.MR_TAX={
    "name_en": "Clock-change check-in",
    "space_en": "Life"
   },
-  "playbook": {
-   "name": "Läbirääkimiste playbook",
-   "space": "Plaani",
-   "name_en": "Negotiation playbook",
-   "space_en": "Plan"
-  },
   "tingi": {
    "name": "Vaieldav masin",
    "space": "Plaani",
    "name_en": "Debatable machine",
+   "space_en": "Plan"
+  },
+  "mangukast": {
+   "name": "Mängukast",
+   "space": "Plaani",
+   "name_en": "Game box",
    "space_en": "Plan"
   }
  },
@@ -96,7 +96,7 @@ window.MR_TAX={
    "privaatsus",
    "kell",
    "tingi",
-   "playbook"
+   "mangukast"
   ],
   "entry": [
    "direct",
@@ -163,7 +163,7 @@ window.MR_TAX={
   "cards": [
    "md",
    "tingi",
-   "playbook"
+   "mangukast"
   ],
   "amounts": [
    "shown",
@@ -277,6 +277,7 @@ window.MR_TAX={
   "tools": [
    "longa-ots",
    "vaidlusmasin",
+   "mangukast",
    "haruta",
    "kuulujutu-kontroll",
    "ajatelg",
@@ -751,10 +752,10 @@ window.MR_TAX={
    },
    "desc_en": "The machine’s reading was corrected."
   },
-  "Playbook Opened": {
-   "desc": "Läbirääkimiste playbook avati.",
+  "Gamebox Opened": {
+   "desc": "Mängukast avati.",
    "props": {},
-   "desc_en": "The negotiation playbook was opened."
+   "desc_en": "The game box was opened."
   }
  },
  "components": {
@@ -1045,127 +1046,127 @@ window.MR_TAX={
    "desc": "Mõõtmise lüliti.",
    "desc_en": "Measurement switch."
   },
-  "playbook.style.pick": {
-   "page": "playbook",
+  "mangukast.style.pick": {
+   "page": "mangukast",
    "section": "style",
    "name": "pick",
    "desc": "Valib vastaspoole stiili ja alustab harjutust.",
    "desc_en": "Chooses the counterpart style and starts the practice."
   },
-  "playbook.inputs.sample-button": {
-   "page": "playbook",
+  "mangukast.inputs.sample-button": {
+   "page": "mangukast",
    "section": "inputs",
    "name": "sample-button",
    "desc": "Laeb näidisandmed.",
    "desc_en": "Loads sample data."
   },
-  "playbook.evidence.card": {
-   "page": "playbook",
+  "mangukast.evidence.card": {
+   "page": "mangukast",
    "section": "evidence",
    "name": "card",
    "desc": "Tõendi kaart.",
    "desc_en": "An evidence card."
   },
-  "playbook.offer.quick": {
-   "page": "playbook",
+  "mangukast.offer.quick": {
+   "page": "mangukast",
    "section": "offer",
    "name": "quick",
    "desc": "Kinnitab pakkumise kohe.",
    "desc_en": "Accepts the offer at once."
   },
-  "playbook.offer.sentence": {
-   "page": "playbook",
+  "mangukast.offer.sentence": {
+   "page": "mangukast",
    "section": "offer",
    "name": "sentence",
    "desc": "Kinnitab pakkumise lausega.",
    "desc_en": "Accepts the offer with a sentence."
   },
-  "playbook.thread.knot": {
-   "page": "playbook",
+  "mangukast.thread.knot": {
+   "page": "mangukast",
    "section": "thread",
    "name": "knot",
    "desc": "Avab sõlme.",
    "desc_en": "Opens a knot."
   },
-  "playbook.thread.next-button": {
-   "page": "playbook",
+  "mangukast.thread.next-button": {
+   "page": "mangukast",
    "section": "thread",
    "name": "next-button",
    "desc": "Tirib järgmise lõnga.",
    "desc_en": "Pulls the next thread."
   },
-  "playbook.claim.why": {
-   "page": "playbook",
+  "mangukast.claim.why": {
+   "page": "mangukast",
    "section": "claim",
    "name": "why",
    "desc": "Avab väite aluse.",
    "desc_en": "Opens the basis of a claim."
   },
-  "playbook.claim.challenge": {
-   "page": "playbook",
+  "mangukast.claim.challenge": {
+   "page": "mangukast",
    "section": "claim",
    "name": "challenge",
    "desc": "Vaidlustab väite tõendiga.",
    "desc_en": "Challenges a claim with evidence."
   },
-  "playbook.claim.accept": {
-   "page": "playbook",
+  "mangukast.claim.accept": {
+   "page": "mangukast",
    "section": "claim",
    "name": "accept",
    "desc": "Võtab väite vastu.",
    "desc_en": "Accepts a claim."
   },
-  "playbook.fire.panel": {
-   "page": "playbook",
+  "mangukast.fire.panel": {
+   "page": "mangukast",
    "section": "fire",
    "name": "panel",
    "desc": "Sõltumatuse aja paneel.",
    "desc_en": "Time-to-independence panel."
   },
-  "playbook.file.md-button": {
-   "page": "playbook",
+  "mangukast.file.md-button": {
+   "page": "mangukast",
    "section": "file",
    "name": "md-button",
    "desc": "Laeb alla vestluskaardi.",
    "desc_en": "Downloads the conversation card."
   },
-  "playbook.result.restart": {
-   "page": "playbook",
+  "mangukast.result.restart": {
+   "page": "mangukast",
    "section": "result",
    "name": "restart",
    "desc": "Alustab uuesti.",
    "desc_en": "Starts again."
   },
-  "playbook.table.cheap-button": {
-   "page": "playbook",
+  "mangukast.table.cheap-button": {
+   "page": "mangukast",
    "section": "table",
    "name": "cheap-button",
    "desc": "Küsib, mis on juhile odav.",
    "desc_en": "Asks what is cheap for the manager."
   },
-  "playbook.table.save-button": {
-   "page": "playbook",
+  "mangukast.table.save-button": {
+   "page": "mangukast",
    "section": "table",
    "name": "save-button",
    "desc": "Salvestab paketi.",
    "desc_en": "Saves a package."
   },
-  "playbook.table.offer-button": {
-   "page": "playbook",
+  "mangukast.table.offer-button": {
+   "page": "mangukast",
    "section": "table",
    "name": "offer-button",
    "desc": "Esitab paketid juhile.",
    "desc_en": "Offers the packages to the manager."
   },
-  "playbook.surprise.draw-button": {
-   "page": "playbook",
+  "mangukast.surprise.draw-button": {
+   "page": "mangukast",
    "section": "surprise",
    "name": "draw-button",
    "desc": "Tõmbab üllatuse.",
    "desc_en": "Draws a surprise."
   },
-  "playbook.surprise.answer-button": {
-   "page": "playbook",
+  "mangukast.surprise.answer-button": {
+   "page": "mangukast",
    "section": "surprise",
    "name": "answer-button",
    "desc": "Vastab üllatusele.",
@@ -1206,12 +1207,12 @@ window.MR_TAX={
    "desc": "Esitab kolm paketti.",
    "desc_en": "Offers the three packages."
   },
-  "tingi.board.playbook-link": {
+  "tingi.board.gamebox-link": {
    "page": "tingi",
    "section": "board",
-   "name": "playbook-link",
-   "desc": "Avab playbooki.",
-   "desc_en": "Opens the playbook."
+   "name": "gamebox-link",
+   "desc": "Avab mängukasti.",
+   "desc_en": "Opens the game box."
   },
   "tingi.file.md-button": {
    "page": "tingi",
