@@ -60,6 +60,12 @@ window.MR_TAX={
    "space": "Elu",
    "name_en": "Clock-change check-in",
    "space_en": "Life"
+  },
+  "debate": {
+   "name": "Vaidlusmasin",
+   "space": "Plaani",
+   "name_en": "Debatable machine",
+   "space_en": "Plan"
   }
  },
  "enums": {
@@ -82,7 +88,8 @@ window.MR_TAX={
    "kast",
    "kontakt",
    "privaatsus",
-   "kell"
+   "kell",
+   "debate"
   ],
   "entry": [
    "direct",
@@ -93,6 +100,7 @@ window.MR_TAX={
    "home",
    "haruta",
    "ots",
+   "debate",
    "ajatelg",
    "kast"
   ],
@@ -146,7 +154,8 @@ window.MR_TAX={
    "8"
   ],
   "cards": [
-   "md"
+   "md",
+   "debate"
   ],
   "amounts": [
    "shown",
@@ -259,6 +268,7 @@ window.MR_TAX={
   ],
   "tools": [
    "longa-ots",
+   "vaidlusmasin",
    "haruta",
    "kuulujutu-kontroll",
    "ajatelg",
@@ -300,6 +310,61 @@ window.MR_TAX={
   "states": [
    "on",
    "off"
+  ],
+  "debate_styles": [
+   "firm",
+   "flex",
+   "busy"
+  ],
+  "evidence_ids": [
+   "job-ad",
+   "peer",
+   "survey",
+   "ai",
+   "results",
+   "offer"
+  ],
+  "claim_ids": [
+   "budget",
+   "band",
+   "market",
+   "performance",
+   "timing"
+  ],
+  "challenge_outcomes": [
+   "held",
+   "weakened",
+   "broken"
+  ],
+  "accept_paths": [
+   "quick",
+   "sentence"
+  ],
+  "fire_buckets": [
+   "none",
+   "lt1",
+   "1to3",
+   "3plus"
+  ],
+  "package_slots": [
+   "1",
+   "2",
+   "3"
+  ],
+  "offer_results": [
+   "picked",
+   "none"
+  ],
+  "surprise_ids": [
+   "cap",
+   "cut",
+   "gift",
+   "swap"
+  ],
+  "answer_outcomes": [
+   "best",
+   "close",
+   "far"
   ]
  },
  "events": {
@@ -560,6 +625,95 @@ window.MR_TAX={
    "desc": "Kellakeeramise kalender laaditi alla.",
    "props": {},
    "desc_en": "The clock-change calendar was downloaded."
+  },
+  "Debate Started": {
+   "desc": "Vaidluse harjutus algas.",
+   "props": {
+    "style": "enum:debate_styles"
+   },
+   "desc_en": "A debate practice started."
+  },
+  "Evidence Brought": {
+   "desc": "Tõend valiti lauale kaasa.",
+   "props": {
+    "evidence_id": "enum:evidence_ids"
+   },
+   "desc_en": "A piece of evidence was brought to the table."
+  },
+  "Why Opened": {
+   "desc": "Väite „Miks?“ avati.",
+   "props": {
+    "claim_id": "enum:claim_ids"
+   },
+   "desc_en": "A claim’s Why? was opened."
+  },
+  "Claim Challenged": {
+   "desc": "Väide vaidlustati tõendiga.",
+   "props": {
+    "claim_id": "enum:claim_ids",
+    "outcome": "enum:challenge_outcomes"
+   },
+   "desc_en": "A claim was challenged with evidence."
+  },
+  "Claim Accepted": {
+   "desc": "Väide võeti vastu.",
+   "props": {
+    "claim_id": "enum:claim_ids"
+   },
+   "desc_en": "A claim was accepted."
+  },
+  "Offer Accepted": {
+   "desc": "Pakkumine kinnitati.",
+   "props": {
+    "path": "enum:accept_paths"
+   },
+   "desc_en": "The offer was accepted."
+  },
+  "Independence Shift Viewed": {
+   "desc": "Majandusliku sõltumatuse nihe vaadati.",
+   "props": {
+    "bucket": "enum:fire_buckets"
+   },
+   "desc_en": "The financial-independence shift was viewed."
+  },
+  "Debate Restarted": {
+   "desc": "Harjutus algas uuesti.",
+   "props": {},
+   "desc_en": "Practice was restarted."
+  },
+  "Cheap Levers Asked": {
+   "desc": "Küsiti, mis on juhile odav.",
+   "props": {},
+   "desc_en": "Asked what is cheap for the manager."
+  },
+  "Package Saved": {
+   "desc": "Pakett salvestati.",
+   "props": {
+    "slot_id": "enum:package_slots"
+   },
+   "desc_en": "A package was saved."
+  },
+  "Package Offered": {
+   "desc": "Paketid esitati juhile.",
+   "props": {
+    "result": "enum:offer_results"
+   },
+   "desc_en": "Packages were offered to the manager."
+  },
+  "Surprise Drawn": {
+   "desc": "Üllatuskaart tõmmati.",
+   "props": {
+    "surprise_id": "enum:surprise_ids"
+   },
+   "desc_en": "A surprise card was drawn."
+  },
+  "Surprise Answered": {
+   "desc": "Üllatusele vastati.",
+   "props": {
+    "surprise_id": "enum:surprise_ids",
+    "outcome": "enum:answer_outcomes"
+   },
+   "desc_en": "A surprise was answered."
   }
  },
  "components": {
@@ -849,6 +1003,132 @@ window.MR_TAX={
    "name": "toggle",
    "desc": "Mõõtmise lüliti.",
    "desc_en": "Measurement switch."
+  },
+  "debate.style.pick": {
+   "page": "debate",
+   "section": "style",
+   "name": "pick",
+   "desc": "Valib vastaspoole stiili ja alustab harjutust.",
+   "desc_en": "Chooses the counterpart style and starts the practice."
+  },
+  "debate.inputs.sample-button": {
+   "page": "debate",
+   "section": "inputs",
+   "name": "sample-button",
+   "desc": "Laeb näidisandmed.",
+   "desc_en": "Loads sample data."
+  },
+  "debate.evidence.card": {
+   "page": "debate",
+   "section": "evidence",
+   "name": "card",
+   "desc": "Tõendi kaart.",
+   "desc_en": "An evidence card."
+  },
+  "debate.offer.quick": {
+   "page": "debate",
+   "section": "offer",
+   "name": "quick",
+   "desc": "Kinnitab pakkumise kohe.",
+   "desc_en": "Accepts the offer at once."
+  },
+  "debate.offer.sentence": {
+   "page": "debate",
+   "section": "offer",
+   "name": "sentence",
+   "desc": "Kinnitab pakkumise lausega.",
+   "desc_en": "Accepts the offer with a sentence."
+  },
+  "debate.thread.knot": {
+   "page": "debate",
+   "section": "thread",
+   "name": "knot",
+   "desc": "Avab sõlme.",
+   "desc_en": "Opens a knot."
+  },
+  "debate.thread.next-button": {
+   "page": "debate",
+   "section": "thread",
+   "name": "next-button",
+   "desc": "Tirib järgmise lõnga.",
+   "desc_en": "Pulls the next thread."
+  },
+  "debate.claim.why": {
+   "page": "debate",
+   "section": "claim",
+   "name": "why",
+   "desc": "Avab väite aluse.",
+   "desc_en": "Opens the basis of a claim."
+  },
+  "debate.claim.challenge": {
+   "page": "debate",
+   "section": "claim",
+   "name": "challenge",
+   "desc": "Vaidlustab väite tõendiga.",
+   "desc_en": "Challenges a claim with evidence."
+  },
+  "debate.claim.accept": {
+   "page": "debate",
+   "section": "claim",
+   "name": "accept",
+   "desc": "Võtab väite vastu.",
+   "desc_en": "Accepts a claim."
+  },
+  "debate.fire.panel": {
+   "page": "debate",
+   "section": "fire",
+   "name": "panel",
+   "desc": "Sõltumatuse aja paneel.",
+   "desc_en": "Time-to-independence panel."
+  },
+  "debate.file.md-button": {
+   "page": "debate",
+   "section": "file",
+   "name": "md-button",
+   "desc": "Laeb alla vestluskaardi.",
+   "desc_en": "Downloads the conversation card."
+  },
+  "debate.result.restart": {
+   "page": "debate",
+   "section": "result",
+   "name": "restart",
+   "desc": "Alustab uuesti.",
+   "desc_en": "Starts again."
+  },
+  "debate.table.cheap-button": {
+   "page": "debate",
+   "section": "table",
+   "name": "cheap-button",
+   "desc": "Küsib, mis on juhile odav.",
+   "desc_en": "Asks what is cheap for the manager."
+  },
+  "debate.table.save-button": {
+   "page": "debate",
+   "section": "table",
+   "name": "save-button",
+   "desc": "Salvestab paketi.",
+   "desc_en": "Saves a package."
+  },
+  "debate.table.offer-button": {
+   "page": "debate",
+   "section": "table",
+   "name": "offer-button",
+   "desc": "Esitab paketid juhile.",
+   "desc_en": "Offers the packages to the manager."
+  },
+  "debate.surprise.draw-button": {
+   "page": "debate",
+   "section": "surprise",
+   "name": "draw-button",
+   "desc": "Tõmbab üllatuse.",
+   "desc_en": "Draws a surprise."
+  },
+  "debate.surprise.answer-button": {
+   "page": "debate",
+   "section": "surprise",
+   "name": "answer-button",
+   "desc": "Vastab üllatusele.",
+   "desc_en": "Answers a surprise."
   }
  }
 };

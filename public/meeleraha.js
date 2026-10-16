@@ -114,7 +114,7 @@ MR.audit=function(){
 };
 
 /* ---------- ühine raam ---------- */
-var NAV=[['home','index.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
+var NAV=[['home','index.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['debate','debate.html','debate'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
 var FOOT=[['kell','kellakeeramine.html'],['privacy','privaatsus.html'],['contact','kontakt.html']];
 MR.page=document.body?document.body.getAttribute('data-mr-page'):null;
 MR.mount=function(){
@@ -129,7 +129,7 @@ MR.mount=function(){
   }
   if(ban){
     var info=META.filter(function(m){return m.code===MR.lang;})[0]||{status:'official'},draft=info.status==='draft',partial=document.body.getAttribute('data-mr-partial')==='1'&&MR.lang!=='et';
-    if(MR.lang==='et'||(!draft&&!partial)){ban.className='';ban.innerHTML='';}
+    if(MR.lang==='et'||document.body.getAttribute('data-mr-native')===MR.lang||(!draft&&!partial)){ban.className='';ban.innerHTML='';}
     else{ban.className='mr-banner';ban.innerHTML=(draft?esc(MR.t('lang.draft'))+' ':'')+(partial?esc(MR.t('lang.partial'))+' ':'')+'<a href="kontakt.html?reason=general">'+esc(MR.t('lang.fix'))+'</a>';MR.fixLinks(ban);}
   }
   if(foot){

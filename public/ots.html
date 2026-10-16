@@ -540,6 +540,7 @@ KNOTS.forEach(function(k){
    '<h3>Unista</h3><p class="dream" data-dream="'+k.id+'"></p>'+
    '<details><summary>Lõks ja valmisoleku märk</summary><h3>Lõks</h3><p>'+esc(k.lõks)+'</p><h3>Kuidas tead, et oled valmis</h3><p>'+esc(k.valmis)+'</p></details>'+
    '<h3>Allikas</h3><div class="src"><span class="chip '+(TRUST[k.trust]||'')+'">'+esc(k.trust)+'</span><span class="small">'+esc(k.src)+'</span></div>'+
+   (k.id===4?'<p class="small" id="palgalink"><a href="debate.html">Harjuta palgavestlust: Vaieldav masin</a></p>':'')+
    '<button class="btn knext" type="button" data-mr-c="ots.thread.next-button" data-mr-e="Next Thread Pulled">Tiri järgmine lõng</button></div>';
   host.appendChild(s);
 });

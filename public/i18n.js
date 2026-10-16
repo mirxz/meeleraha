@@ -5,6 +5,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Haruta",
   "nav.ots": "Lõnga ots",
+  "nav.debate": "Vaidle",
   "nav.ajatelg": "Ajatelg",
   "nav.kast": "Kast",
   "nav.lang": "Keel",
@@ -163,6 +164,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Untangle",
   "nav.ots": "Thread end",
+  "nav.debate": "Debate",
   "nav.ajatelg": "Timeline",
   "nav.kast": "Toolbox",
   "nav.lang": "Language",
@@ -321,6 +323,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Entwirren",
   "nav.ots": "Fadenende",
+  "nav.debate": "Debattieren",
   "nav.ajatelg": "Zeitachse",
   "nav.kast": "Werkzeugkasten",
   "nav.lang": "Sprache",
@@ -479,6 +482,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Desenredar",
   "nav.ots": "Cabo del hilo",
+  "nav.debate": "Debatir",
   "nav.ajatelg": "Línea de tiempo",
   "nav.kast": "Caja de herramientas",
   "nav.lang": "Idioma",
@@ -637,6 +641,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Démêler",
   "nav.ots": "Bout du fil",
+  "nav.debate": "Débattre",
   "nav.ajatelg": "Ligne du temps",
   "nav.kast": "Boîte à outils",
   "nav.lang": "Langue",
@@ -795,6 +800,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Ontwarren",
   "nav.ots": "Draadeinde",
+  "nav.debate": "Debatteren",
   "nav.ajatelg": "Tijdlijn",
   "nav.kast": "Gereedschapskist",
   "nav.lang": "Taal",
@@ -953,6 +959,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Reda ut",
   "nav.ots": "Trådänden",
+  "nav.debate": "Debattera",
   "nav.ajatelg": "Tidslinje",
   "nav.kast": "Verktygslåda",
   "nav.lang": "Språk",
@@ -1111,6 +1118,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Rod ud",
   "nav.ots": "Trådenden",
+  "nav.debate": "Debattere",
   "nav.ajatelg": "Tidslinje",
   "nav.kast": "Værktøjskasse",
   "nav.lang": "Sprog",
@@ -1269,6 +1277,7 @@ window.MR_I18N={
   "nav.home": "Meeleraha",
   "nav.haruta": "Nøste opp",
   "nav.ots": "Trådenden",
+  "nav.debate": "Debattere",
   "nav.ajatelg": "Tidslinje",
   "nav.kast": "Verktøykasse",
   "nav.lang": "Språk",
@@ -1422,4 +1431,4 @@ window.MR_I18N={
   "kell.next": "Neste: åpne Tidslinjegyngen eller Trådenden og ta med din egen fil."
  }
 };
-window.MR_LANGS=[{"code": "et", "name": "Eesti", "status": "official"}, {"code": "en", "name": "English", "status": "draft"}, {"code": "de", "name": "Deutsch", "status": "draft"}, {"code": "es", "name": "Español", "status": "draft"}, {"code": "fr", "name": "Français", "status": "draft"}, {"code": "nl", "name": "Nederlands", "status": "draft"}, {"code": "sv", "name": "Svenska", "status": "draft"}, {"code": "da", "name": "Dansk", "status": "draft"}, {"code": "nb", "name": "Norsk bokmål", "status": "draft"}];
+window.MR_LANGS=[{"code":"et","name":"Eesti","status":"official"},{"code":"en","name":"English","status":"draft"},{"code":"de","name":"Deutsch","status":"draft"},{"code":"es","name":"Español","status":"draft"},{"code":"fr","name":"Français","status":"draft"},{"code":"nl","name":"Nederlands","status":"draft"},{"code":"sv","name":"Svenska","status":"draft"},{"code":"da","name":"Dansk","status":"draft"},{"code":"nb","name":"Norsk bokmål","status":"draft"}];
