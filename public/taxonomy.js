@@ -72,6 +72,12 @@ window.MR_TAX={
    "space": "Plaani",
    "name_en": "Game box",
    "space_en": "Plan"
+  },
+  "api": {
+   "name": "Open Playbook API",
+   "space": "Plaani",
+   "name_en": "Open Playbook API",
+   "space_en": "Plan"
   }
  },
  "enums": {
@@ -96,7 +102,8 @@ window.MR_TAX={
    "privaatsus",
    "kell",
    "tingi",
-   "mangukast"
+   "mangukast",
+   "api"
   ],
   "entry": [
    "direct",
@@ -114,7 +121,8 @@ window.MR_TAX={
   "footer_items": [
    "kell",
    "privacy",
-   "contact"
+   "contact",
+   "api"
   ],
   "doors": [
    "feel",

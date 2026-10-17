@@ -6,7 +6,8 @@ One source of truth per kind of fact:
   - repository facts (events, components, catalog size): read from the repo at build time
   - everything else: the HAND sections below (rules, roles, stages, privacy roadmap, public log)
 
-Usage (from the repo root): python3 tools/open-playbook-api/build_reference.py --repo . --out public/api/index.html
+Usage (from the repo root): python3 tools/open-playbook-api/build_reference.py --repo . --out public/open-playbook-api.html
+The default layout is the Meeleraha skin (meeleraha-reference-layout.html: site tokens and the shared frame); --layout api-reference-layout.html gives the plain generic page.
 The page only draws the spec; to change the page, change this file and rebuild.
 """
 import argparse, json, re, subprocess, sys, os, datetime
@@ -16,6 +17,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--repo', required=True)
 ap.add_argument('--out', required=True)
 ap.add_argument('--date', default='2026-10-17')
+ap.add_argument('--layout', default='meeleraha-reference-layout.html')
 a = ap.parse_args()
 
 # ---------- 1. operations from the OpenAPI draft (their generator, unchanged) ----------
@@ -61,6 +63,7 @@ S.append({'id': 'public', 'group': 'Start', 'title': 'Building in public',
       ['Try it', '`meeleraha.ee/tingi` (front door) and `meeleraha.ee/mangukast` (game box)', 'Five people, ten minutes: write one sentence and tell us where you stopped.'],
       ['Review the assumptions', 'Model v%s: lever prices, cost multipliers, evidence strengths' % MV, 'Total Rewards practitioners and a lawyer: where is it naive, and what would you break first?'],
       ['Use the playbooks', 'This reference and the repository', 'HR teams, pension funds and employers: tell us which file you would want first.'],
+      ['Find this reference', 'The footer of every Meeleraha page: "For partners: Open Playbook API"', 'Tell us what is missing for your tool.'],
       ['Follow the log', 'The table below', 'Every release adds one row. A row without a flagged list is not a release.']]},
     {'type': 'table', 'columns': ['Date', 'Release', 'Tested', 'Flagged'], 'rows': [
       ['2026-10-17', 'This reference page. Model v%s with owner and review date shown on both pages. Mängukast listed in the toolbox.' % MV, 'About 200 test cases green, 14 files', 'Assumptions unreviewed. No lawyer yet. `/api/e` not live. Canonical addresses to check after deploy.'],
@@ -107,6 +110,29 @@ S.append({'id': 'ideas', 'group': 'Guidelines', 'title': 'Where the ideas come f
     ['Typed answers with probabilities', 'TypeSafe, System One: `docs.typesafe.ai/concepts/system-one`', 'The reading result has the same shape. A hosted model is not used at run time (see Privacy and data).'],
     ['Write the definitions once', 'Shreeraj Gujar, The Dashboard Is Dead. Long Live the Question: `medium.com/@shreerajgujar`', 'One readable model file for every page; owner, version and review date shown.'],
     ['Rules with proofs, a rollout ladder, a flagged list', 'The Mews property config guide of the Distribution team', 'The structure of this reference.']]}]})
+
+S.append({'id': 'principles', 'group': 'Guidelines', 'title': 'Principles: one protocol, many playbooks',
+  'lede': 'Every negotiation playbook shares one protocol; only the playbook changes: the levers, the parties and who has the last word.',
+  'blocks': [
+    {'type': 'table', 'columns': ['Part of the protocol', 'What it means', 'Built in', 'Status'], 'rows': [
+      ['Parties and roles', 'Who asks, who answers, who has the last word', '`mangukast.html`, this page', ALLOWED],
+      ['Levers, not one number', 'Several things can move, each with a price and an owner', '`vaidle-mudel.js`', LOOK],
+      ['Limits first', 'Each side writes its own limits before the conversation', '`mangukast.html` (limits before the table)', ALLOWED],
+      ['Several equal packages', 'The other side picks from options that are equal to the person', '`tingi.html`, `mangukast.html`', ALLOWED],
+      ['Honest statement', 'What I know, what I do not know, what I assume', '`tingi.html` (What I heard, What I do not know)', ALLOWED],
+      ['Source marks, owner, version', 'Every number says where it comes from and who owns it', '`vaidle-mudel.js`, trust marks on every knot', LOOK],
+      ['Reveal and receipt', 'Say how the person was nudged; each release writes a receipt', '`mangukast.html` (reveal); change control below', LOOK],
+      ['Data stays local, measured by a closed list', 'Nothing typed leaves the browser; only enumerated events are counted', 'Shared frame, `taxonomy.json`', ALLOWED]]},
+    {'type': 'table', 'columns': ['Field', 'Parties', 'Levers', 'Last word', 'What "equal" means here', 'Status'], 'rows': [
+      ['Pay', 'Employee, employer', 'Pay, leave, learning, remote days, title', 'The employer; the employee may walk away', 'Same table and same information', LOOK],
+      ['Supplier contract (the Pactum pattern)', 'Buyer, supplier', 'Price, payment terms, delivery', 'A person outside the buyer\'s limits', 'Limits are fixed before the conversation', CLOSED],
+      ['A couple\'s money', 'Two adults', 'Costs, saving, time', 'Both', 'Each side has the same voice and the same view', CLOSED],
+      ['Parent and child', 'Parent, child', 'Screen time, drawing, a toy bought with saved money', 'The parent, and the playbook says so', 'The child writes some conditions and sees which were whose', CLOSED]]},
+    {'type': 'note', 'text': '**Only the pay playbook exists.** The other three are candidates; the parent and child one is a design sketch from 2026-10-17, not built.'},
+    {'type': 'note', 'text': '**What "equal" means:** the tool does not equalise power. It equalises visibility and moves: both sides see the same table, limits are set first and the assumptions are shown. Where one side keeps the last word, as a parent does, the playbook says so instead of pretending.'},
+    {'type': 'note', 'text': '**What "secure" means:** today it means local first: nothing typed leaves the browser, and measurement is a closed list. Secure comparison between two parties is not built. The idea: each side writes its limits on its own device and learns only whether room exists and which package fits, without the other side\'s limit being shown. That would use secure multi-party computation (general knowledge, not researched here); it is open question 5 in "Not built yet".'},
+    {'type': 'note', 'text': '**Where it does not fit:** single-number disputes, emergencies, coercion or abuse, and court disputes. A stronger side can misuse a tool like this, which is why the reveal is mandatory. Claim only what has been checked.'},
+    {'type': 'note', 'text': '**In one line:** Haggle as equals. Securely. Read it together with the two notes above: equal means visible, and secure means local today.'}]})
 
 S.append({'id': 'statuses', 'group': 'Usage', 'title': 'Statuses',
   'lede': 'Every status is a shape and a word, never colour alone.',
@@ -201,7 +227,7 @@ S.append({'id': 'privacy', 'group': 'Guardrails', 'title': 'Privacy and data',
     ['Every page shows what it sends; measurement can be switched off', 'Footer panel; Do Not Track and Global Privacy Control apply automatically', ALLOWED],
     ['Data leaves only when the person writes a message or orders something', 'Contact page uses the mail client; no form posts to a server', ALLOWED],
     ['Legal assessment of the measurement', 'Not done; to be reviewed by a lawyer before public launch', MANUAL]]},
-    {'type': 'note', 'text': '**Last checked 2026-10-17:** all requests at page load go to meeleraha.ee itself (CSS and JS); the only outgoing request is `POST /api/e`, which answered 404, so the server side of measurement is not live. **Not checked:** what is sent after a sentence is entered.'}]})
+    {'type': 'note', 'text': '**Last checked 2026-10-17:** a research note recorded that the only outgoing request is `POST /api/e`, which answered 404, so the server side of measurement is not live. **Found in the page source the same day:** every Meeleraha page loads its fonts from Google (`fonts.googleapis.com`), which is a request to a third party at page load; the note did not mention it. To be rechecked in a browser. Self-hosting the fonts or using system fonts would remove it. **Not checked:** what is sent after a sentence is entered.'}]})
 
 S.append({'id': 'collect', 'group': 'Guardrails', 'title': 'What may be collected',
   'lede': 'Only fields whose possible values are known in advance may ever be shared: choices, ranges and outcomes.',
@@ -299,8 +325,9 @@ S.append({'id': 'notbuilt', 'group': 'Reference', 'title': 'Not built yet',
     ['Model texts in the seven languages beyond Estonian and English', 'Stage 2', CLOSED],
     ['A legal assessment of the measurement, and a decision whether `/api/e` goes live and with which events', 'Before any collection', MANUAL],
     ['A check of network requests after a sentence is entered, to confirm that nothing leaves in full use', 'Before any collection', MANUAL],
-    ['Answers from the Sharemind team: does the client library run in a browser, how many parties and which trust model, who hosts the nodes, and on what terms may a free educational tool use the SDK and the emulator', 'Before option D', CLOSED],
+    ['Answers from the Sharemind team: (1) does the client library run in a browser, (2) how many parties and which trust model, (3) who hosts the nodes, (4) on what terms may a free educational tool use the SDK and the emulator, (5) can two browsers compare limits without a trusted server', 'Before option D and before any two-party comparison', CLOSED],
     ['A calibration set of invented sentences to test the local reading rules', 'Stage 3', CLOSED],
+    ['Fonts self-hosted or replaced by system fonts, so that no page requests anything from a third party at load', 'Before any collection', CLOSED],
     ['A partner pilot agreement', 'Stage 4', CLOSED]]}]})
 
 S.append({'id': 'where', 'group': 'Reference', 'title': 'Where things live',
@@ -312,7 +339,7 @@ S.append({'id': 'where', 'group': 'Reference', 'title': 'Where things live',
     ['`public/ots.html`, `public/haruta.html`, `public/ajatelg.html`', 'Thread of knots, pension rules, life timeline'],
     ['`public/kast.html`', 'The toolbox catalog (JSON block)'],
     ['`public/taxonomy.json`', 'Events, components and enumerations'],
-    ['`public/api/index.html`', 'This page, built from the OpenAPI draft, the allowlist and the hand sections'],
+    ['`public/open-playbook-api.html`', 'This page, built from the OpenAPI draft, the allowlist and the hand sections (`tools/open-playbook-api/`)'],
     ['`tests/`', 'The test suite: about 200 cases in %d files' % NTEST_FILES],
     ['`README.md`', 'How the pieces fit together']]}]})
 
@@ -328,7 +355,7 @@ S.append({'id': 'sources', 'group': 'Reference', 'title': 'Sources',
     ['Meeleraha privacy page and the front door, read in a browser', 'What the site promises and sends today']]}]})
 
 # ---------- 4. inject into the layout ----------
-layout = open(os.path.join(HERE, 'api-reference-layout.html'), encoding='utf-8').read()
+layout = open(os.path.join(HERE, a.layout), encoding='utf-8').read()
 spec = {'brand': 'MEELERAHA', 'title': 'Open Playbook API',
         'intro': 'What the Meeleraha playbooks expose, who owns each number, what is open today, and what is built in public. Read-only, versioned, nothing about a person.',
         'badge': 'Draft 0.1',
@@ -336,8 +363,5 @@ spec = {'brand': 'MEELERAHA', 'title': 'Open Playbook API',
         'sections': S}
 html = re.sub(r'(<script type="application/json" id="spec">).*?(</script>)',
               lambda m: m.group(1) + '\n' + json.dumps(spec, ensure_ascii=False).replace('</', '<\\/') + '\n' + m.group(2), layout, count=1, flags=re.S)
-# page identity for the live site (the layout stays untouched apart from head metadata and the way back)
-html = html.replace('<title>API reference layout</title>', '<title>Open Playbook API | Raha Meeled</title>\n<meta name="description" content="The open playbooks behind Meeleraha: what they expose, who owns each number, what is open today and what is built in public. Read-only, versioned, nothing about a person.">\n<link rel="canonical" href="https://meeleraha.ee/api/">')
-html = html.replace('<span class="logo" id="logo"></span>', '<a class="logo" id="logo" href="../index.html" style="text-decoration:none;color:inherit"></a>')
 open(a.out, 'w', encoding='utf-8').write(html)
 print('wrote', a.out, len(S), 'sections;', EV, 'events,', CO, 'components,', CAT, 'catalog entries')

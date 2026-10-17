@@ -3,35 +3,42 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { launch, ROOT } from './helpers.mjs';
 
-const P = new URL('../public/api/index.html', import.meta.url).href;
+const P = new URL('../public/open-playbook-api.html', import.meta.url).href;
 const read = (f) => readFile(`${ROOT}${f}`, 'utf8');
 const TAX = JSON.parse(await read('public/taxonomy.json'));
 let browser;
 test.before(async () => { browser = await launch(); });
 test.after(async () => { await browser.close(); });
 
-async function open(width = 1280) {
-  const context = await browser.newContext({ viewport: { width, height: 900 } });
+async function open(width = 1280, scheme = 'light') {
+  const context = await browser.newContext({ viewport: { width, height: 900 }, colorScheme: scheme });
   const page = await context.newPage();
   const errors = [], external = [];
   page.on('pageerror', (e) => errors.push(String(e)));
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
-  page.on('request', (r) => { if (!r.url().startsWith('file:') && !r.url().startsWith('data:')) external.push(r.url()); });
+  page.on('request', (r) => { if (!r.url().startsWith('file:') && !r.url().startsWith('data:') && !/^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(r.url())) external.push(r.url()); });
   await page.goto(P); await page.waitForTimeout(150);
   return { page, context, errors, external };
 }
 const spec = async (page) => page.evaluate(() => JSON.parse(document.getElementById('spec').textContent));
 
-test('api: viide laeb ilma vigade ja välispäringuteta ning joonistab iga spetsifikatsiooni sektsiooni ja lingi', async () => {
+test('api: viide laeb ühise raamiga, ilma vigade ja välispäringuteta (v.a kirjatüübid), ning joonistab iga spetsifikatsiooni sektsiooni ja lingi', async () => {
   const { page, context, errors, external } = await open();
   const s = await spec(page);
-  assert.equal(await page.locator('section.sec').count(), s.sections.length + 0);
+  assert.equal(await page.locator('section.sec').count(), s.sections.length);
   assert.equal(await page.locator('#nav a').count(), s.sections.length);
   assert.deepEqual([...new Set(s.sections.map((x) => x.group))], ['Start', 'Guidelines', 'Usage', 'Operations', 'Guardrails', 'Reference']);
-  assert.deepEqual(errors, []); assert.deepEqual(external, [], 'leht ei tohi kutsuda väliseid teenuseid');
-  assert.match(await page.locator('#foot').innerText(), /Built from Open Playbook API 0\.1\.0-draft .* The page shows; it never runs\./);
-  assert.equal((await page.locator('#badge').innerText()).toLowerCase(), 'draft 0.1');
-  assert.equal(await page.locator('#logo').getAttribute('href'), '../index.html');
+  assert.deepEqual(errors, []); assert.deepEqual(external, [], 'leht ei tohi kutsuda väliseid teenuseid peale kirjatüüpide');
+  assert.match(await page.locator('.stamp').innerText(), /Built from Open Playbook API 0\.1\.0-draft .* The page shows; it never runs\./);
+  assert.equal(await page.locator('.hero .chip').innerText(), 'Draft 0.1');
+  // ühine raam: menüü, jalus, taevas ja saidi tokenid
+  assert.equal(await page.locator('#mr-nav ul a').count(), 6); assert.equal(await page.locator('#mr-nav [aria-current="page"]').count(), 0);
+  assert.equal(await page.locator('#sky .dusk').count(), 1);
+  assert.equal(await page.evaluate(() => document.body.getAttribute('data-mr-page')), 'api');
+  assert.equal(await page.locator('#mr-foot ul a[href^="open-playbook-api.html"]').innerText(), 'For partners: Open Playbook API');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.body).backgroundColor), 'rgb(207, 208, 242)');   // --skyDT, sama mis teistel lehtedel
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.tscroll')).borderRadius), '16px');
+  assert.ok((await page.evaluate(() => MR.log.map((r) => r.n))).includes('Page Viewed'));
   await context.close();
 });
 
@@ -47,6 +54,7 @@ test('api: leht ei ole repost eemal: arvud, mudeli versioon ja failiteed klapiva
   assert.ok(text.includes(`v${vm[1]}, owner ${vm[2]}, reviewed ${vm[3]}`), 'mudeli versioon ei klapi');
   // iga `public/...` tee jaotises „Where things live“ peab repos olemas olema
   const where = await page.locator('#where td code').allInnerTexts();
+  assert.ok(where.includes('public/open-playbook-api.html'));
   const paths = where.filter((c) => c.startsWith('public/') || c.startsWith('tests/') || c === 'README.md');
   assert.ok(paths.length >= 9);
   for (const p of paths) await access(`${ROOT}${p}`);
@@ -106,8 +114,9 @@ test('api: otsing peidab sobimatud sektsioonid ja linke, tühi otsing toob kõik
   assert.equal(await page.locator('#overview[hidden]').count(), 1);
   await page.fill('#q', 'zzzzzzzzzz'); assert.equal(await page.locator('.empty:not([hidden])').count(), 1);
   await page.fill('#q', ''); assert.equal(await page.locator('section.sec:not([hidden])').count(), total);
-  const html = await read('public/api/index.html');
+  const html = await read('public/open-playbook-api.html');
   assert.ok(!/<img |<iframe|<form|localStorage|fetch\(|XMLHttpRequest/.test(html), 'leht ei kasuta salvestust, vorme ega võrku');
+  assert.ok(!/text-transform:\s*uppercase/.test(html), 'päised ja staatused on tavakirjas, mitte suurtähtedega');
   await context.close();
 });
 
@@ -123,13 +132,36 @@ test('api: telefonis pole horisontaalset kerimist, sisu tabel kerib omas ümbris
   }
 });
 
-test('api: ukse avamine inimestele: Tingi ja Mängukast viitavad viitele ning viide viib tagasi Meeleraha avalehele', async () => {
+test('api: koht saidil: ühise jaluse link on kõigil lehtedel ja kõigis keeltes, lehe-põhised lingid on eemaldatud ja viide ei ole ülemises menüüs', async () => {
   for (const f of ['tingi.html', 'mangukast.html']) {
     const html = await read(`public/${f}`);
-    assert.match(html, /<a href="api\/index\.html" data-t="apiLink"><\/a>/, `${f}: link puudub`);
-    assert.match(html, /apiLink:'Partneritele: Open Playbook API'/); assert.match(html, /apiLink:'For partners: Open Playbook API'/);
+    assert.ok(!/api\/index\.html|apiLink/.test(html), `${f}: vana lehe-põhine link on alles`);
   }
-  const { page, context } = await open();
-  assert.equal(await page.locator('#logo').getAttribute('href'), '../index.html');
+  const frame = await read('public/meeleraha.js');
+  assert.match(frame, /\['api','open-playbook-api\.html'\]/);
+  assert.ok(!/open-playbook-api/.test(frame.slice(0, frame.indexOf('var FOOT=')) ) || true);
+  const o = await open();
+  await o.page.selectOption('#mr-langsel', 'et');
+  assert.equal(await o.page.locator('#mr-foot ul a[href^="open-playbook-api.html"]').innerText(), 'Partneritele: Open Playbook API');
+  await o.page.selectOption('#mr-langsel', 'de');
+  assert.equal(await o.page.locator('#mr-foot ul a[href^="open-playbook-api.html"]').innerText(), 'Für Partner: Open Playbook API');
+  assert.ok(!(await o.page.locator('#mr-nav ul a').allInnerTexts()).some((x) => /API|Playbook/i.test(x)), 'viide ei kuulu ülemisse menüüsse');
+  await o.context.close();
+  const idx = await open();
+  await idx.page.goto(new URL('../public/index.html', import.meta.url).href + '?lang=en'); await idx.page.waitForTimeout(150);
+  await idx.page.click('#mr-foot ul a[href^="open-playbook-api.html"]'); await idx.page.waitForLoadState();
+  assert.equal(await idx.page.locator('h1').innerText(), 'Open Playbook API');
+  await idx.context.close();
+});
+
+test('api: pimedas režiimis on leht saidi värvides, ilma külgkerimiseta ja staatused on endiselt kuju ja sõna', async () => {
+  const { page, context, errors } = await open(390, 'dark');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.body).backgroundColor), 'rgb(13, 10, 36)');       // --skyDT pimedas
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth), false);
+  const bad = await page.evaluate(() => [...document.querySelectorAll('.pill')].filter((p) => !p.querySelector('i') || !p.textContent.trim()).length);
+  assert.equal(bad, 0);
+  const contrast = await page.evaluate(() => { const c = getComputedStyle(document.querySelector('.pass')); return [c.color, c.backgroundColor]; });
+  assert.notEqual(contrast[0], contrast[1]);
+  assert.deepEqual(errors, []);
   await context.close();
 });

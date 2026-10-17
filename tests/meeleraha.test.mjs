@@ -5,7 +5,7 @@ import { launch, ROOT } from './helpers.mjs';
 
 const P = (f) => new URL(`../public/${f}`, import.meta.url).href;
 const read = (f) => readFile(`${ROOT}public/${f}`, 'utf8');
-const PAGES = [['index', 'index.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['mangukast', 'mangukast.html']];
+const PAGES = [['index', 'index.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['mangukast', 'mangukast.html'], ['api', 'open-playbook-api.html']];
 const TAX = JSON.parse(await read('taxonomy.json'));
 const dict = async () => { const txt = await read('i18n.js'); return JSON.parse(txt.match(/^window\.MR_I18N=([\s\S]*?);\nwindow\.MR_LANGS=/)[1]); };
 
@@ -30,14 +30,14 @@ async function open(file, { query = '', capture = false, gpc = false, width = 39
 const sent = async (page) => { await page.evaluate(() => MR.flush()); await page.waitForTimeout(80); return (await page.evaluate(() => window.__sent)).flatMap((b) => b.events); };
 
 // ---------- raam ----------
-test('ühine raam: kõigil kümnel lehel on nav, jalus, õige aktiivne leht ja vigadeta registri audit', async () => {
+test('ühine raam: kõigil üheteistkümnel lehel on nav, jalus, õige aktiivne leht ja vigadeta registri audit', async () => {
   for (const [id, file] of PAGES) {
     const { page, context, errors } = await open(file);
     assert.equal(await page.locator('#mr-nav ul a').count(), 6, `${id}: nav`);
-    assert.equal(await page.locator('#mr-foot ul a').count(), 3, `${id}: jalus`);
+    assert.equal(await page.locator('#mr-foot ul a').count(), 4, `${id}: jalus`);
     assert.ok((await page.locator('#mr-foot #mr-logbtn').count()) === 1, `${id}: log`);
     const current = await page.locator('#mr-nav [aria-current="page"]').count();
-    assert.equal(current, ['kontakt', 'privaatsus', 'kell'].includes(id) ? 0 : 1, `${id}: aktiivne`);
+    assert.equal(current, ['kontakt', 'privaatsus', 'kell', 'api'].includes(id) ? 0 : 1, `${id}: aktiivne`);
     assert.deepEqual(await page.evaluate(() => MR.audit()), [], `${id}: audit`);
     assert.equal(await page.evaluate(() => MR.rejected.length), 0, `${id}: tagasi lükatud sündmused`);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth), false, `${id}: horisontaalne kerimine`);
