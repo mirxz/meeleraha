@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Open Playbook API",
+    "version": "0.1.0-draft",
+    "description": "Read-only, versioned access to the Meeleraha playbooks. Draft contract: nothing here is served yet."
+  },
+  "paths": {
+    "/api/v1/model.json": {"get": {"tags": ["Model"], "summary": "The negotiation model: tables, prices, multipliers, version, owner and review date."}},
+    "/api/v1/model/changelog.json": {"get": {"tags": ["Model"], "summary": "Receipts for every model version: what changed, why, who reviewed, what was flagged."}},
+    "/api/v1/playbooks/negotiation.json": {"get": {"tags": ["Playbooks"], "summary": "The negotiation playbook: 5 claims, 3 styles, 8 levers, the surprise deck."}},
+    "/api/v1/playbooks/thread.json": {"get": {"tags": ["Playbooks"], "summary": "The thread of knots: 8 knots, 6 situations, rings and trust marks."}},
+    "/api/v1/playbooks/pension-rules.json": {"get": {"tags": ["Playbooks"], "summary": "The pension rules: 26 nodes, 18 rumors, trust marks and check dates."}},
+    "/api/v1/playbooks/timeline-format.json": {"get": {"tags": ["Playbooks"], "summary": "The life timeline file format, version 2."}},
+    "/api/v1/catalog.json": {"get": {"tags": ["Catalog and measurement"], "summary": "The toolbox catalog: 16 entries in 9 languages."}},
+    "/api/v1/taxonomy.json": {"get": {"tags": ["Catalog and measurement"], "summary": "Events, components and enumerations. Live today at /taxonomy.json."}},
+    "/api/v1/read": {"post": {"tags": ["Reading"], "summary": "One sentence in, typed answers with probabilities out. Opt-in, after a click, no logging."}}
+  }
+}

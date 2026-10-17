@@ -102,3 +102,14 @@ Kaks lehte, üks mudel. Mõlemad töötavad täielikult brauseris (ei serverit, 
 - **Päritolu ja luba:** küsimus „my AI vs your AI“ pärineb Kaie Peetre LinkedIni postitusest; enne avalikku käivitust küsi luba ja krediteeri. Mõte on esmalt visandatud 2018. aastal (debatable machine) ja jõudis 2021. aasta magistritööni „fun.damental.life“.
 - **Veel tegemata:** väljakutse sõbrale, vaikuse nupp, kahe masina vaidlus, ainult küsimustega režiim, füüsiline pakk.
 - **Enne avalikku käivitust:** juriidiline ülevaatus (haridus, mitte nõu), emakeelne ülevaatus eesti keelele, mõõtmise õiguslik hinnang, hoobade hindade ülevaatus praktikutega ja kontroll, mida tööandja leping lubab.
+
+## Open Playbook API viide ja „ehitame avalikult“ (`public/api/`)
+
+Korporatiivse selge kujuga viide, mis tuleb saidile aadressil `meeleraha.ee/api/`. Leht ei ole käsitsi kirjutatud: ta joonistab JSON-spetsifikatsiooni (`api-reference-layout.html` kujundus, ainult spec muutub).
+
+- **Allikad:** operatsioonid tulevad `open-playbook-api.openapi.json` ja `allowlist.json` failist (`openapi_to_spec.py` kaudu); arvud (sündmused, komponendid, kataloogi kirjed, testifailid, mudeli versioon) loetakse ehitamisel repost; ülejäänud on `build_reference.py` käsitsi sektsioonid. Kõik mustandi lõpp-punktid on **Closed**: HTTP-teenust ei ole.
+- **Ehitamine:** `python3 tools/open-playbook-api/build_reference.py --repo . --out public/api/index.html`. Ehita uuesti iga väljalaske, lubatud nimekirja, reeglite või mudeli muutuse järel; `tests/api.test.mjs` kukub, kui leht on repost maha jäänud.
+- **Avalik logi:** sektsioon „Building in public“ on väljalasete kviitungid (mis ehitati, mis testiti, mis märgiti). Iga väljalase lisab ühe rea; rida ilma märgitud nimekirjata ei ole väljalase.
+- **Uks inimestele:** Tingi ja Mängukast viitavad lehele („Partneritele: Open Playbook API“).
+- **Privaatsuse teekaart:** rühm „Guardrails“ võtab kokku, mida täna lubatakse ja mida võiks muuta ning mis tingimustel (valikud A–D, reeglite avatud ümberkirjutamine, sõltumatus). Selle järgi muutus 3. etapp: majutatud mudelit käitusajal ei kasutata, lause ei lahku brauserist.
+- **Kontrollida pärast deploy'd:** kanoonilised aadressid (`/tingi`, `/mangukast`, `/api/`), ja et `/api/` serveerib `index.html`.

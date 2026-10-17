@@ -1,0 +1,11 @@
+{
+  "api/v1/model.json": "off",
+  "api/v1/model/changelog.json": "off",
+  "api/v1/playbooks/negotiation.json": "off",
+  "api/v1/playbooks/thread.json": "off",
+  "api/v1/playbooks/pension-rules.json": "off",
+  "api/v1/playbooks/timeline-format.json": "off",
+  "api/v1/catalog.json": "off",
+  "api/v1/taxonomy.json": "off",
+  "api/v1/read": "off"
+}
