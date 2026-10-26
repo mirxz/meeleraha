@@ -23,11 +23,13 @@
 <meta name="twitter:description" content="Raha ei ole ainult number. Ta laulab koos tunnete, kunsti ja tarkusega.">
 <meta name="twitter:image" content="https://meeleraha.ee/og-lugu.jpg">
 <link rel="stylesheet" href="lugu.css">
-<noscript><style>.lugu .vh { position: static; width: auto; height: auto; overflow: visible; max-width: 40rem; margin: 2rem auto; }</style></noscript>
+<noscript><style>body.lugu { overflow: auto; height: auto; } .koos { margin-top: 0 !important; } .lugu .vh { position: static; width: auto; height: auto; overflow: visible; max-width: 40rem; margin: 2rem auto; }</style></noscript>
 <style>
 /* Avaleht: lugu rullub lahti ise. Tekst ilmub lugemise kiirusel, vikerkaar täidab end edenemisribana ja täpp liigub mööda seda. */
-body.lugu { overflow: hidden; height: 100%; }
+body.lugu { overflow: hidden; height: 100%; padding-inline: 0; }
 html { height: 100%; }
+body.lugu.lõpp { overflow-x: hidden; overflow-y: auto; height: auto; }
+html.lõpp { height: auto; }
 #lava { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 #shift { transition: transform 1.4s cubic-bezier(.4, 0, .2, 1); }
 #lava .band { fill: none; stroke-linecap: round; }
@@ -54,20 +56,12 @@ html { height: 100%; }
   <h1>Raha ei ole ainult number. Ta laulab koos tunnete, kunsti ja tarkusega.</h1>
   <p>Nagu iga lapse hääl vikerkaare all kooris laulmas.</p>
   <p>Kunagi laulsid eestlased koos ja see andis neile jõudu.</p>
-  <p>Nad ei laulnud ainult laule. Nad õppisid üksteise häält kuulama.</p>
+  <p>Nad ei laulnud ainult laule. Nad õppisid üksteise häält kuulama ja igaüks leidis oma koha.</p>
   <p>Nüüd on raha meie ühine keel, aga seda ei õpetata koos.</p>
   <p>Meie unistus: laps kuuleb nelja häält ühes laulus.</p>
+  <p>Esimesed mängud on juba olemas. Need on tasuta ja jäävad sinu seadmesse.</p>
   <p>Seda, mis tuleb, unistame koos. Me oleme alguses.</p>
   <h2>Mis värvi on sinu hääl, kui räägid rahast?</h2>
-  <nav aria-label="Edasi">
-    <ul>
-      <li><a href="laps.html">Lapsele ja lapsevanemale</a></li>
-      <li><a href="kast.html">Mängukast</a></li>
-      <li><a href="tingi.html">Tingi</a></li>
-      <li><a href="keskus.html">Maailmaavastuskeskus</a></li>
-      <li><a href="avatud.html">Avatud</a></li>
-    </ul>
-  </nav>
 </article>
 
 <div class="kuma" id="kuma" aria-hidden="true"></div>
@@ -84,13 +78,81 @@ html { height: 100%; }
 <div class="vastus" id="vastus">
   <div data-vastus data-teema="vastus" data-placeholder="Vasta Mirkole…"></div>
   <nav class="uksed" aria-label="Edasi">
-    <a class="uks" href="laps.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Lapsele</a>
-    <a class="uks" href="kast.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Mängukast</a>
-    <a class="uks" href="tingi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Tingi</a>
-    <a class="uks" href="keskus.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Keskus</a>
-    <a class="uks" href="avatud.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Avatud</a>
+    <a class="uks edasi" href="#koos">Tule kaasa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
   </nav>
 </div>
+
+<main class="koos" id="koos">
+<div class="koos-sisu">
+  <h2 class="koos-pealkiri">Tule kaasa</h2>
+  <div class="kaardid">
+    <article class="kaart">
+      <h3>Kui sul on lapsi, kes õpivad</h3>
+      <p>Kool, lasteaed, muuseum, teadlane, ministeerium. Otsime kohta, kus lapsed saaksid esimest korda koos raha kuulata. Üks vestlus, mitte leping.</p>
+      <p class="kys">Küsi oma lastelt: millist häält nad kõige vähem kuulevad?</p>
+      <a class="uks" href="#kirjuta">Kirjuta meile<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="kaart">
+      <h3>Kui sa tahad aidata enne, kui kõik on paigas</h3>
+      <p>Eelarvet veel ei ole ja me ei mõtle numbreid välja. Kirjuta, ja me räägime ausalt, mida me ei tea.</p>
+      <p class="kys">Küsi endalt: mis peaks olema olemas, enne kui sa usud?</p>
+      <a class="uks" href="#kirjuta">Kirjuta meile<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="kaart">
+      <h3>Kui sa oled lihtsalt inimene, kes seda loeb</h3>
+      <p>Annetada veel ei saa. Saab anda lubaduse ja küsida sama ühelt inimeselt.</p>
+      <p class="kys">Mis värvi on sinu hääl, kui räägid rahast?</p>
+      <a class="uks" href="#lubadus">Anna lubadus<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+    <article class="kaart">
+      <h3>Kui sa oled laps</h3>
+      <p>Mine mängi. Sinu vastus jääb sinu seadmesse.</p>
+      <p class="kys">Küsi ema või isa käest: mis värvi on nende hääl, kui nad rahast räägivad?</p>
+      <a class="uks" href="laps.html">Lapsele<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="uks" href="kast.html">Mängukast<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+  </div>
+
+  <section class="olemas" aria-labelledby="h-olemas">
+    <h2 id="h-olemas">Mis juba olemas on</h2>
+    <p class="sissejuhatus">Neli häält, iga häälega mängud ja lehed. Kõik on tasuta ja jääb sinu seadmesse.</p>
+    <div class="hääled-uksed">
+      <section class="hääl" style="--c: var(--raha)"><h3>raha</h3><ul>
+        <li><a class="uks" href="ots.html">Lõnga ots<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Üks lõng seitsme sõlmega, sinu enda numbritega.</span></li>
+        <li><a class="uks" href="ajatelg.html">Ajatelg<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Eluklotsid ajateljel, rahu minevikuga.</span></li>
+        <li><a class="uks" href="tingi.html">Tingi<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Harjuta läbirääkimist: üks lause, üks laud.</span></li>
+      </ul></section>
+      <section class="hääl" style="--c: var(--kunst)"><h3>kunst</h3><ul>
+        <li><span class="t">Seda unistame koos.</span></li>
+      </ul></section>
+      <section class="hääl" style="--c: var(--tunded)"><h3>tunded</h3><ul>
+        <li><a class="uks" href="tunne.html">Tunne<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Hinga, räägi tulevase minaga.</span></li>
+        <li><a class="uks" href="haruta.html">Haruta<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Pensionireeglid sõlmedena ja kuulujutu kontroll.</span></li>
+      </ul></section>
+      <section class="hääl" style="--c: var(--tarkus)"><h3>tarkus</h3><ul>
+        <li><a class="uks" href="keskus.html">Keskus<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Meie unistus ühe lehena.</span></li>
+        <li><a class="uks" href="avatud.html">Avatud<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="t">Privaatsus, avatud mänguraamat, ehitame avalikult.</span></li>
+      </ul></section>
+    </div>
+  </section>
+
+  <section class="lubadus" id="lubadus" aria-labelledby="h-lubadus">
+    <h2 id="h-lubadus">Mis on sinu lubadus?</h2>
+    <p>Igaüks saab anda lubaduse oma võimaluste järgi, ka nulli. See on lubadus, mitte makse: raha ei liigu kuskile. <span class="tbc">TBC: annetuskanal ja juriidiline keha</span></p>
+    <div data-lubadus></div>
+    <noscript><p>Lubaduse andmiseks vajab leht JavaScripti. Kasuta <a href="kontakt.html">kontaktilehte</a>.</p></noscript>
+  </section>
+
+  <section class="kirjuta" id="kirjuta" aria-labelledby="h-kirjuta">
+    <h2 id="h-kirjuta">Kirjuta meile</h2>
+    <p>Ütle, kes sa oled ja mida sina siin näed. Tekst või hääl.</p>
+    <div data-vastus data-teema="kaasa" data-placeholder="Kirjuta meile…"></div>
+    <noscript><p>Kirjutamiseks vajab leht JavaScripti. Kasuta <a href="kontakt.html">kontaktilehte</a>.</p></noscript>
+  </section>
+
+  <p class="koos-jalus rida"><button class="uuesti" type="button" id="ules">üles</button> <span>ilm: <a href="https://api.met.no" target="_blank" rel="noopener">MET Norway</a>, CC BY 4.0</span> <a href="privaatsus.html">privaatsus</a> <a href="kontakt.html">kontakt</a></p>
+</div>
+</main>
 
 <div class="alumine rida" id="alumine">
   <span id="taevarida">taevas</span>
@@ -100,6 +162,7 @@ html { height: 100%; }
 
 <script src="taevas.js"></script>
 <script src="vastus.js"></script>
+<script src="koos.js"></script>
 <script>
 (function () {
   'use strict';
@@ -111,15 +174,23 @@ html { height: 100%; }
   var PARTS = [
     { dwell: 5200, whole: true, blocks: [{ cls: 'hero', text: 'Raha ei ole ainult number. Ta laulab koos tunnete, kunsti ja tarkusega.', acc: 5 }, { cls: 'tell', text: 'Nagu iga lapse hääl vikerkaare all kooris laulmas.' }] },
     { dwell: 2200, blocks: [{ cls: 'tell', text: 'Kunagi laulsid eestlased koos ja see andis neile jõudu.' }] },
-    { dwell: 2200, blocks: [{ cls: 'tell', text: 'Nad ei laulnud ainult laule. Nad õppisid üksteise häält kuulama.' }] },
+    { dwell: 2200, blocks: [{ cls: 'tell', text: 'Nad ei laulnud ainult laule. Nad õppisid üksteise häält kuulama ja igaüks leidis oma koha.' }] },
     { dwell: 2200, blocks: [{ cls: 'tell', text: 'Nüüd on raha meie ühine keel, aga seda ei õpetata koos.' }] },
     { dwell: 2400, blocks: [{ cls: 'said', text: 'Meie unistus: laps kuuleb nelja häält ühes laulus.' }] },
+    { dwell: 2400, blocks: [{ cls: 'tell', text: 'Esimesed mängud on juba olemas. Need on tasuta ja jäävad sinu seadmesse.' }] },
     { dwell: 2400, blocks: [{ cls: 'tell', text: 'Seda, mis tuleb, unistame koos. Me oleme alguses.' }] },
     { dwell: 0, last: true, blocks: [{ cls: 'said', text: 'Mis värvi on sinu hääl, kui räägid rahast?' }] }
   ];
   var G = {}, bandPath = null, curIdx = -1, spans = [], T = 0, startAt = performance.now(), offset = 0;
   var vastus = $('vastus'), tekst = $('tekst'), shiftG = $('shift'), kuma = $('kuma'), lastF = -1;
   var m0 = /(?:^|-)t(\d+)(?:-|$)/.exec(location.hash.slice(1)); if (m0) offset = +m0[1] * 1000;
+  var wantKoos = /(?:^|-)koos(?:-|$)/.test(location.hash.slice(1)), unlocked = false; if (wantKoos) offset = 1e9;
+  var root = document.documentElement, koosEl = $('koos');
+  function unlock() {
+    unlocked = true; document.body.classList.add('lõpp'); root.classList.add('lõpp');
+    if (wantKoos) { wantKoos = false; koosEl.scrollIntoView(); }
+  }
+  function lock() { unlocked = false; document.body.classList.remove('lõpp'); root.classList.remove('lõpp'); window.scrollTo(0, 0); }
 
   var tl = 0;
   PARTS.forEach(function (p) {
@@ -198,6 +269,7 @@ html { height: 100%; }
     spans.forEach(function (s) { if (lt >= s._t || reduce) s.classList.add('on'); else s.classList.remove('on'); });
     if (PARTS[i].last && lt >= PARTS[i].reveal - 200) {
       vastus.style.visibility = 'visible'; vastus.style.transition = 'opacity .8s'; vastus.style.opacity = 1;
+      if (!unlocked) unlock();
     }
     if (f !== lastF) {
       Array.prototype.forEach.call($('over').children, function (p) { p.setAttribute('stroke-dashoffset', 1 - f); });
@@ -207,8 +279,9 @@ html { height: 100%; }
     }
     requestAnimationFrame(tick);
   }
+  $('ules').addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
   $('uuesti').addEventListener('click', function () {
-    startAt = performance.now(); offset = 0; curIdx = -1; lastF = -1; vastus.style.opacity = 0; vastus.style.visibility = 'hidden'; vastus.classList.remove('on');
+    lock(); startAt = performance.now(); offset = 0; curIdx = -1; lastF = -1; vastus.style.opacity = 0; vastus.style.visibility = 'hidden'; vastus.classList.remove('on');
   });
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { geom(); bands(); lastF = -1; if (curIdx >= 0) place(); }, 150); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (curIdx >= 0) place(); });

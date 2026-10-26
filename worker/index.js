@@ -6,7 +6,7 @@ const LAT = 59.4586, LON = 24.6773; // Kopli Kase park: koht on serveris fikseer
 const MET = 'https://api.met.no/weatherapi/locationforecast/2.0/compact';
 const UA = SAIT + '/1.0 https://' + SAIT;
 const MAX_WAV = 3_200_000, MAX_HELI = 3 * 1024 * 1024, MAX_TEKST = 5000;
-const TEEMAD = ['vastus', 'kaasa'];
+const TEEMAD = ['vastus', 'kaasa', 'lubadus'];
 const KEELED = ['et', 'en'];
 
 const json = (obj, status = 200, extra = {}) =>
@@ -124,7 +124,7 @@ async function saada(request, env) {
   const msg = {
     from: { email: 'veeb@' + SAIT, name: SAIT },
     to: env.KIRI_SAAJA,
-    subject: 'Meeleraha: ' + (teema === 'kaasa' ? 'tule kaasa' : 'vastus küsimusele'),
+    subject: 'Meeleraha: ' + (teema === 'kaasa' ? 'tule kaasa' : teema === 'lubadus' ? 'lubadus' : 'vastus küsimusele'),
     text: rida
   };
   if (onHeli) {

@@ -129,3 +129,49 @@ body.lugu {
 
 @media (max-width: 520px) { body.lugu { font-size: 1.1rem; } .hääled { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .pilved { animation: none; } }
+
+/* avalehe tervik: kutse, lubaduse liugur, olemasolev sisu neljas hääles. Algab pärast lugu, kattub sealt edasi tagalava ja täidetud vikerkaarega. */
+.koos { position: relative; z-index: 5; margin-top: 100vh; margin-top: 100dvh; background: var(--sky-horizon); color: var(--ink); }
+.koos-sisu { max-width: 56rem; margin: 0 auto; padding: 3rem max(16px, env(safe-area-inset-right, 0px)) 4rem max(16px, env(safe-area-inset-left, 0px)); }
+.koos h2 { font: 800 clamp(1.5rem, 4vw, 2.1rem)/1.15 var(--f-display); font-stretch: 72%; margin: 3rem 0 .6rem; text-wrap: balance; }
+.koos h2.koos-pealkiri { margin-top: 0; font-size: clamp(2rem, 6vw, 3.2rem); font-stretch: 68%; font-weight: 900; }
+.koos h3 { font: 800 1.15rem/1.2 var(--f-display); font-stretch: 78%; margin: 0 0 .5rem; }
+.koos p { margin: 0 0 1rem; }
+.koos a { color: var(--accent); }
+.koos .uks { color: var(--ink); }
+.kaardid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .9rem; margin-top: 1.4rem; }
+.kaart { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; align-items: flex-start; gap: .1rem; font-size: 1.05rem; line-height: 1.5; }
+.kaart .kys { font: italic 400 1.05rem/1.45 var(--f-body); color: var(--accent); margin-top: auto; padding-top: .2rem; }
+.kaart .uks { margin-top: .5rem; }
+.sissejuhatus { color: var(--muted); }
+.hääled-uksed { display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr)); gap: 1rem 1.2rem; margin-top: 1.2rem; }
+.hääl h3 { display: flex; align-items: center; gap: .5rem; font-size: 1.3rem; }
+.hääl h3::before { content: ""; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--c); flex: none; }
+.hääl ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.hääl .t { display: block; font-size: .95rem; line-height: 1.4; color: var(--muted); margin-top: .25rem; }
+.liugur { max-width: 34rem; }
+.summa { font: 900 clamp(2.4rem, 9vw, 4.4rem)/1 var(--f-display); font-stretch: 68%; letter-spacing: -.01em; margin: 1rem 0 .4rem; font-variant-numeric: tabular-nums; }
+.summa .eur { color: var(--accent); }
+.liugur input[type=range] { width: 100%; height: 2rem; margin: .2rem 0; accent-color: var(--accent); background: transparent; cursor: pointer; }
+.skaala { display: flex; justify-content: space-between; }
+.sone { margin: .9rem 0 .8rem; min-height: 1.6em; }
+.liugur .nimi { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: .65rem .9rem; font: 1rem var(--f-body); color: var(--ink); }
+.liugur .nimi::placeholder { color: var(--muted); }
+.lrida { display: flex; align-items: center; gap: .9rem; margin-top: .8rem; flex-wrap: wrap; }
+.luban { font: 800 1.05rem var(--f-display); font-stretch: 80%; color: var(--on-accent); background: var(--accent); border: 0; border-radius: 99px; padding: .55rem 1.4rem; cursor: pointer; }
+.luban:hover { filter: brightness(1.08); }
+.kirjuta .composer { max-width: 36rem; }
+.koos-jalus { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center; margin-top: 3rem; }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body.lugu { overflow: visible !important; height: auto !important; background: #fff; color: #000; font-size: 10pt; line-height: 1.35; }
+  #taevas, #loor, .pilved, #vihm, .kuma, #lava, .tekst, .vastus, .alumine, .koos-jalus, .lubadus, .kirjuta, .kaart .uks, .hääl .uks svg { display: none !important; }
+  .lugu .vh { position: static; width: auto; height: auto; overflow: visible; }
+  .lugu .vh h1 { font: 900 20pt/1.1 var(--f-display); margin: 0 0 4pt; } .lugu .vh h2 { display: none; } .lugu .vh p { margin: 0 0 3pt; }
+  .koos { margin-top: 8pt !important; background: none !important; }
+  .koos-sisu { padding: 0; max-width: none; }
+  .koos h2 { margin: 8pt 0 3pt; font-size: 13pt; } .koos h2.koos-pealkiri { font-size: 13pt; }
+  .kaardid { grid-template-columns: 1fr 1fr; gap: 5pt; margin-top: 4pt; } .kaart { padding: 5pt 7pt; font-size: 9pt; background: none; break-inside: avoid; }
+  .koos p { margin: 0 0 3pt; } .hääled-uksed { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 4pt; } .hääl .t { font-size: 8pt; } .hääl ul { gap: 4pt; }
+  .koos a { color: #000; text-decoration: none; }
+}

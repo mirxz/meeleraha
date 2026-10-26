@@ -47,7 +47,9 @@ Mida kontrollitakse: leht laeb ilma vigadeta ja ilma horisontaalse kerimiseta, k
 
 ## Lehed
 
-- `public/index.html`: lugu (esileht). Päris taevas ja ilm, tekst tekib lugemise kiirusel, vikerkaar täitub nagu edenemisriba, lõpus küsimus ja vastusekast, uksed edasi.
+- `public/index.html`: avaleht tervikuna. Päris taevas ja ilm, tekst tekib lugemise kiirusel, vikerkaar täitub nagu edenemisriba, lõpus küsimus ja vastusekast. Kui lugu on läbi, avaneb kerimine ja alla tuleb `#koos`: kutse neljale lugejale (partner, toetaja, iga inimene, laps), kogu olemasolev sisu neljas hääles (raha, kunst, tunded, tarkus), lubaduse liugur ja kirjuta-kast. Prindis mahub ühele A4-le.
+- `public/koos.js`: lubaduse liugur (0, 1, 12, 123 ... 123 456 789 eurot; lubadus, mitte makse; teema `lubadus`).
+- `public/koos.html`: aadress `/koos` suunab avalehe kutsele (`/#koos`). Lingi, mille saadad pärast vestlust. Avaleht ise toetab ka demohashi `#koos`.
 - `public/tunne.html`: endine esileht, manifest (hingamine, hääl, kõne, kattuvus, kingitus). Lehe tunnus `index` jääb.
 - `public/laps.html`, `keskus.html`, `avatud.html`: mustandid (laps ja lapsevanem, keskus, avatud ja privaatsus). Ainult eesti keeles, ilma mõõtmiseta. TBC: tõlked ja sisu kinnitus.
 - `public/haruta.html`: Haruta lõngakera (pensionireeglid sõlmede ja kuulujuttudena, tirimine, hääl).
@@ -56,7 +58,7 @@ Mida kontrollitakse: leht laeb ilma vigadeta ja ilma horisontaalse kerimiseta, k
 
 ## Meeleraha tervik: infoarhitektuur
 
-Esileht `index.html` on lugu; selle uksed viivad `laps.html`, `kast.html`, `tingi.html`, `keskus.html` ja `avatud.html` juurde. Vana sisu on `tunne.html` (menüüs Tunne). Viis ust samasse majja (peamenüü) ja kolm abilehte (jalus):
+Esileht `index.html` on lugu ja selle all kutse; uksed viivad `laps.html`, `kast.html`, `tingi.html`, `ots.html`, `ajatelg.html`, `tunne.html`, `haruta.html`, `keskus.html` ja `avatud.html` juurde. Vana sisu on `tunne.html` (menüüs Tunne). Viis ust samasse majja (peamenüü) ja kolm abilehte (jalus):
 
 | Ruum | Leht | Mida teeb |
 |---|---|---|
@@ -124,7 +126,7 @@ Ainult `/ilm`, `/kirjuta` ja `/saada` lähevad Workerisse (`run_worker_first`), 
 
 - `/ilm`: MET Norway ilm Kopli Kase pargi kohta (koht on serveris fikseeritud), vahemälu 10-60 min. Taevas (`taevas.js`) arvutab päikese kõrguse ise.
 - `/kirjuta`: lause kaupa kõne tekstiks (Workers AI, Whisper). Ainult sama saidi päringud, WAV kuni ~3 MB, piiratud `PIIR_KIRJUTA` abil.
-- `/saada`: vastus või „tule kaasa“ kiri Mirkole (Cloudflare Email Service). Saaja on Workeri muutuja `KIRI_SAAJA` (dashboard, mitte repo). Piiratud `PIIR` abil. Kui saatmine pole seadistatud, vastab 503 ja leht suunab kontaktilehele.
+- `/saada`: vastus, „tule kaasa“ kiri või lubadus (teemad `vastus`, `kaasa`, `lubadus`) Mirkole (Cloudflare Email Service). Saaja on Workeri muutuja `KIRI_SAAJA` (dashboard, mitte repo). Piiratud `PIIR` abil. Kui saatmine pole seadistatud, vastab 503 ja leht suunab kontaktilehele.
 - IP-d ei salvestata, see on ainult piirangu võti korraks. Heli salvestatakse vaid siis, kui lugeja selle kirjaga kaasa saadab.
 - TBC enne deploy'd: Email Service ja saatja domeen seadistamata; `KIRI_SAAJA` määramata; ratelimit `namespace_id` (7301, 7302) peab olema konto piires unikaalne; `privaatsus.html` tekst uute voogude kohta; vanad lehed kasutavad veel Google Fonts'i, uued kasutavad omaenda fonte (`public/fonts`, OFL).
 - Testid: `tests/lugu.test.mjs` (leht) ja `tests/lugu-worker.test.mjs` (Worker, võlts-sidumistega).

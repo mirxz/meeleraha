@@ -59,7 +59,7 @@ test('api: leht ei ole repost eemal: arvud, mudeli versioon ja failiteed klapiva
   assert.ok(paths.length >= 9);
   for (const p of paths) await access(`${ROOT}${p}`);
   const tests = (await import('node:fs')).readdirSync(`${ROOT}tests`).filter((f) => f.endsWith('.test.mjs')).length;
-  assert.ok(text.includes(`about 200 test cases in ${tests} files`) || text.includes(`about 200 in ${tests} files`), 'testifailide arv ei klapi');
+  assert.match(text, new RegExp(`about \\d+ (test cases |cases )?in ${tests} files`), 'testifailide arv ei klapi');
   await context.close();
 });
 

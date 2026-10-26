@@ -53,6 +53,14 @@ test('/saada: kiri läheb saajale, heli manusena, lõksuväli vaikib', async () 
   assert.equal(bot.status, 200); assert.equal(sent.length, 1);
 });
 
+test('/saada: lubadus saab oma teema ja teemaga kiri läheb õigel teemal', async () => {
+  const sent = [];
+  const env = { POST: { send: async (m) => sent.push(m) }, KIRI_SAAJA: 'a@example.test' };
+  assert.equal((await saada(form({ tekst: 'Lubadus: 123 eurot', keel: 'et', teema: 'lubadus' }), env)).status, 200);
+  assert.match(sent[0].subject, /lubadus/);
+  assert.match(sent[0].text, /Teema: lubadus/);
+});
+
 test('/saada: tühi, liiga pikk, vale päritolu, seadistamata, saatmise viga', async () => {
   const env = { POST: { send: async () => {} }, KIRI_SAAJA: 'a@example.test' };
   assert.equal((await saada(form({ tekst: '  ' }), env)).status, 400);
