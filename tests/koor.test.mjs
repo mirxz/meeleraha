@@ -15,7 +15,7 @@ function db() {
     run: async () => { st.run(...a); return {}; }, first: async () => st.get(...a) || null, all: async () => ({ results: st.all(...a) }) });
     return { ...m([]), bind: (...a) => m(a) }; } };
 }
-const tt = (over = {}) => ({ answers: { varv: { choice: 'sinine' }, haal: { choice: 'raha' }, sona: { choice: 'kartlik' }, isiklik: { probability: 0.1 }, ...over } });
+const tt = (over = {}) => ({ answers: { varv: { choice: 'sinine' }, haal: { choice: 'raha' }, sona: { choice: 'kartlik' }, isiklik: { type: 'noul', noul: 0.05 }, ...over } });
 const fakeF = (body, ok = true) => async () => ({ ok, status: ok ? 200 : 500, json: async () => body });
 const mails = [];
 const env = (extra = {}) => ({ DB: db(), SYSTEM_ONE_VOTI: 'x', KOOR_SALADUS: 'a'.repeat(48), KIRI_SAAJA: 'm@x.ee', POST: { send: async (m) => { mails.push(m); } }, ASSETS: { fetch: async () => new Response('a') }, ...extra });
@@ -29,7 +29,9 @@ test('loeHaal: pakub värvi ja sõna, sõna peab olema tekstis', async () => {
   await assert.rejects(loeHaal({ SYSTEM_ONE_VOTI: 'x' }, 'kartlik', 'et', fakeF(tt({ varv: { choice: 'lilla' } }))), /vastus ei sobi/);
   await assert.rejects(loeHaal({}, 'kartlik', 'et', fakeF(tt())), { kood: 503 });
   await assert.rejects(loeHaal({ SYSTEM_ONE_VOTI: 'x' }, 'kartlik', 'et', fakeF({}, false)), { kood: 502 });
-  assert.equal(( await loeHaal({ SYSTEM_ONE_VOTI: 'x' }, 'kartlik', 'et', fakeF(tt({ isiklik: { probability: 0.9 } })))).isiklik, true);
+  const p = await loeHaal({ SYSTEM_ONE_VOTI: 'x' }, 'kartlik', 'et', fakeF(tt({ isiklik: { noul: 0.35 } })));
+  assert.deepEqual([p.isiklik, p.sona], [true, null], 'lävi 0,3 ja sõna ei lähe edasi');
+  assert.equal(( await loeHaal({ SYSTEM_ONE_VOTI: 'x' }, 'kartlik', 'et', fakeF(tt({ isiklik: { noul: 0.9 } })))).isiklik, true);
 });
 
 test('loeHaal: ei_utle annab sõna ilma värvita ning tühisõnu ja "raha" sõnaks ei pakuta', async () => {

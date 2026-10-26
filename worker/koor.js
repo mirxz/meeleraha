@@ -11,6 +11,7 @@ export const VARVID = {
 };
 const SYSTEM_ONE = 'https://api.typesafe.ai/v1/systemone';
 const MAX_TEKST = 2000;
+export const ISIKLIK_LAVI = 0.3;
 const SONA_RE = /^[\p{L}-]{3,24}$/u;
 
 // Sõna ei tohi olla tühisõna ega "raha" vorm: koori sõna peab kandma tunnet või pilti.
@@ -34,7 +35,7 @@ export async function loeHaal(env, tekst, keel, f = fetch) {
       varv: { type: 'choice', instructions: 'Millise värvi tunde või pildi kirjutaja oma tekstis esile toob? Vali kõige sobivam värv.', criteria: varvikirjeldus },
       haal: { type: 'choice', instructions: 'Millest tekst kõige rohkem räägib?', criteria: { raha: 'Raha, hinnad, töö, sissetulek, kulutamine, kokkuhoid.', kunst: 'Kunst, loovus, mäng, muusika, joonistamine, ilu.', tunded: 'Tunded, hirmud, rõõm, suhted, enesetunne.', tarkus: 'Õppimine, oskused, teadmised, mõistmine, nõuanded.', muu: 'Midagi muud.' } },
       sona: { type: 'choice', instructions: 'Vali kirjutaja enda sõna, mis kõige paremini kannab tunnet või pilti. Eelista nimisõna või omadussõna, mitte tegusõna. Ainult üks sõna tekstist.', criteria: Object.fromEntries(kandidaadid.map((s) => [s, 'Sõna "' + s + '" tekstist.'])) },
-      isiklik: { type: 'noul', instructions: 'Kas tekstis on nimi, e-posti aadress, telefon, aadress või muu isikut tuvastav info?' }
+      isiklik: { type: 'noul', instructions: 'Kas tekstis on isikut tuvastavat infot?', criteria: { true: 'Tekstis on inimese nimi (ka ees- või perenimi, ka lapse või pereliikme nimi), e-posti aadress, telefoninumber, aadress, kool, lasteaed või muu, mis inimese ära tunneb.', false: 'Tekstis ei ole ühtegi nime ega kontakti.' } }
     }
   };
   let r;
@@ -44,9 +45,10 @@ export async function loeHaal(env, tekst, keel, f = fetch) {
   let a;
   try { a = (await r.json()).answers; } catch { throw Object.assign(new Error('vastus'), { kood: 502 }); }
   const varv = a && a.varv && a.varv.choice, sona = a && a.sona && a.sona.choice, haal = a && a.haal && a.haal.choice;
-  const isiklik = !!(a && a.isiklik && Number(a.isiklik.probability ?? a.isiklik.value ?? 0) >= 0.5);
+  // Isikuandmetel on vale "ei" kallim kui vale "jah": lävi on madal (dokumentatsioon soovitab 0,3 kui "ei" piiri).
+  const isiklik = !!(a && a.isiklik && Number(a.isiklik.noul ?? 0) >= ISIKLIK_LAVI);
   if (!kandidaadid.includes(sona) || (varv !== 'ei_utle' && !VARVID[varv])) throw Object.assign(new Error('vastus ei sobi: ' + JSON.stringify(a).slice(0, 300)), { kood: 502 });
-  return { varv: VARVID[varv] ? varv : null, hex: VARVID[varv] || null, haal: HAALED.includes(haal) ? haal : 'muu', sona, isiklik, keel };
+  return { varv: VARVID[varv] ? varv : null, hex: VARVID[varv] || null, haal: HAALED.includes(haal) ? haal : 'muu', sona: isiklik ? null : sona, isiklik, keel };
 }
 
 // Kontrollib pakkumise, mille brauser /saada kaasa saatis (värvi hex peab olema nimekirjas, sõna üks sõna).
