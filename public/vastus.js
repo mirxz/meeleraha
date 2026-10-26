@@ -11,6 +11,9 @@
     ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
   };
   var LANGS = [['et', 'eesti'], ['en', 'english']];
+  // Peab ühtima worker/koor.js nimekirjaga (test kontrollib).
+  var VARVID = [['punane', '#d64545'], ['oranž', '#e8833a'], ['kollane', '#f0c43c'], ['roheline', '#4fa66a'], ['türkiis', '#3fb0ac'], ['sinine', '#3f78d1'], ['indigo', '#5a4fcf'], ['violetne', '#8c5bc9'], ['roosa', '#e07aa6'], ['pruun', '#8a5a3c'], ['hall', '#8c929b'], ['valge', '#f1efe8'], ['must', '#26262b'], ['kuldne', '#d4a93a'], ['hõbedane', '#b9c0c9'], ['helesinine', '#8ec5ee']];
+  var HAALED = [['raha', 'raha'], ['kunst', 'kunst'], ['tunded', 'tunded'], ['tarkus', 'tarkus'], ['muu', 'muu']];
 
   function wav16(chunks, rate) {
     var len = 0; chunks.forEach(function (c) { len += c.length; });
@@ -47,6 +50,9 @@
       '<div class="cbar"><button type="button" class="pill" data-k="keel"></button><span class="sp"></span>' +
       '<button type="button" class="ibtn" data-k="mic">' + ICON.mic + '</button>' +
       '<button type="button" class="ibtn send" data-k="saada" aria-label="Saada">' + ICON.up + '</button></div></div>' +
+      (teema === 'vastus' ? '<label class="koorivalik rida"><input type="checkbox" data-k="koorivalik"> Mu värvi ja sõna võib koori panna, ilma nimeta</label>' +
+      '<div class="koorilaiend rida" data-k="koorilaiend" hidden>Sellisel juhul saadetakse sinu tekst selleks korraks tehisintellekti teenusele (TypeSafe), mis pakub värvi ja ühe sõna. Sa kinnitad pakkumise ise ja Mirko kinnitab selle veel kord. Koori jäävad ainult värv, hääl ja üks sõna. Tekst, nimi ja IP ei jää kuhugi. Hääl tuhmub 100 päevaga.</div>' +
+      '<div class="koorikinnitus" data-k="koorikinnitus" hidden></div>' : '') +
       '<div class="olek rida" data-k="olek" role="status" aria-live="polite"></div>' +
       '<div class="selgitus rida">Kiri ja häälsõnum lähevad Mirkole. Häälsõnum tehakse tekstiks Cloudflare\'i serveris ja saadetakse kirja manusena. Sinu IP-d ei salvestata. Mustand jääb sinu brauserisse, kuni saadad.</div>';
     var $ = function (k) { return host.querySelector('[data-k="' + k + '"]'); };
@@ -60,7 +66,7 @@
     try { var d = localStorage.getItem(key); if (d) ta.value = d; } catch (e) {}
     upd();
     status('Kirjuta või räägi.');
-    ta.addEventListener('input', function () { upd(); try { localStorage.setItem(key, ta.value); } catch (e) {} });
+    ta.addEventListener('input', function () { if (pick) { pick = null; if (kin) { kin.hidden = true; kin.innerHTML = ''; } } upd(); try { localStorage.setItem(key, ta.value); } catch (e) {} });
     keel.addEventListener('click', function () { if (rec) return; li = (li + 1) % LANGS.length; setLang(); });
 
     // --- salvestus ---
@@ -132,25 +138,79 @@
     }
     mic.addEventListener('click', function () { if (rec) stopRec(); else startRec(); });
 
+    // --- koor ---
+    var vk = $('koorivalik'), laiend = $('koorilaiend'), kin = $('koorikinnitus'), pick = null;
+    function koorOn() { return !!(vk && vk.checked); }
+    if (vk) vk.addEventListener('change', function () { laiend.hidden = !vk.checked; if (!vk.checked) { pick = null; kin.hidden = true; kin.innerHTML = ''; } });
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function sonaOk(w) { return /^[\p{L}-]{3,24}$/u.test(w); }
+    // Pakkumine: "Sinu hääl: sinine. Sõna: kartlik. Sobib?"
+    function naitaPakkumist(p) {
+      pick = p;
+      kin.hidden = false;
+      kin.innerHTML = '<span class="varv" style="background:' + p.hex + '" aria-hidden="true"></span> Sinu hääl: <b>' + esc(p.nimi) + '</b>. Sõna: <b>' + esc(p.sona) + '</b>. Sobib? ' +
+        '<button type="button" class="pill" data-k="sobib">Sobib</button> <button type="button" class="pill" data-k="muuda">Muuda</button> <button type="button" class="pill" data-k="ilma">Ilma koorita</button>';
+      kin.querySelector('[data-k="sobib"]').addEventListener('click', function () { kin.hidden = true; doSend(true); });
+      kin.querySelector('[data-k="muuda"]').addEventListener('click', function () { naitaValikut(p); });
+      kin.querySelector('[data-k="ilma"]').addEventListener('click', function () { vk.checked = false; laiend.hidden = true; pick = null; kin.hidden = true; kin.innerHTML = ''; status('Hästi, koori ei lähe midagi. Vajuta saatmisnoolt.'); });
+    }
+    // Varuvalik (ka siis, kui pakkumist ei tulnud): vali ise värv, hääl ja üks sõna.
+    function naitaValikut(eel, teade) {
+      var p = eel || { hex: '', nimi: '', haal: 'muu', sona: '' };
+      kin.hidden = false;
+      kin.innerHTML = (teade ? '<div>' + esc(teade) + '</div>' : '') + '<div class="varvid" role="group" aria-label="Vali värv">' + VARVID.map(function (v) {
+        return '<button type="button" class="ring" data-hex="' + v[1] + '" data-nimi="' + v[0] + '" aria-label="' + v[0] + '" aria-pressed="' + (v[1] === p.hex) + '" style="--c:' + v[1] + '"></button>';
+      }).join('') + '</div>' +
+        '<div class="valikurida"><label>Hääl <select data-k="haal">' + HAALED.map(function (h) { return '<option value="' + h[0] + '"' + (h[0] === p.haal ? ' selected' : '') + '>' + h[1] + '</option>'; }).join('') + '</select></label> ' +
+        '<label>Üks sõna <input data-k="sona" maxlength="24" autocomplete="off" value="' + esc(p.sona) + '"></label> ' +
+        '<button type="button" class="pill" data-k="valmis">Valmis</button></div>';
+      var cur = { hex: p.hex, nimi: p.nimi };
+      Array.prototype.forEach.call(kin.querySelectorAll('.ring'), function (b) {
+        b.addEventListener('click', function () { cur = { hex: b.getAttribute('data-hex'), nimi: b.getAttribute('data-nimi') }; Array.prototype.forEach.call(kin.querySelectorAll('.ring'), function (x) { x.setAttribute('aria-pressed', String(x === b)); }); });
+      });
+      kin.querySelector('[data-k="valmis"]').addEventListener('click', function () {
+        var w = kin.querySelector('[data-k="sona"]').value.trim().toLowerCase();
+        if (!cur.hex) { status('Vali värv.'); return; }
+        if (!sonaOk(w)) { status('Sõna peab olema üks sõna, 3 kuni 24 tähte, ilma numbrite ja märkideta. Nime ära pane.'); return; }
+        naitaPakkumist({ hex: cur.hex, nimi: cur.nimi, haal: kin.querySelector('[data-k="haal"]').value, sona: w });
+        status('Kui sobib, vajuta "Sobib".');
+      });
+    }
+    function kysiPakkumist() {
+      status('Küsin värvi ja sõna…'); sentBusy = true;
+      fetch('/kuula', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tekst: ta.value.trim(), keel: LANGS[li][0] }) })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          sentBusy = false;
+          if (j && !j.isiklik && !j.hex && j.sona) { naitaValikut({ hex: '', nimi: '', haal: j.haal, sona: j.sona }, 'Värvi ei osanud tekstist öelda. Vali ise.'); status('Kirja ei ole veel saadetud.'); }
+          else if (j && !j.isiklik && j.hex && j.sona) { naitaPakkumist({ hex: j.hex, nimi: j.varv, haal: j.haal, sona: j.sona }); status('Vaata pakkumine üle. Kirja ei ole veel saadetud.'); }
+          else if (j && j.isiklik) { naitaValikut({ hex: j.hex, nimi: j.varv, haal: j.haal, sona: '' }, 'Tekstis võib olla nimi või kontakt. Koori nime ei panda, vali sõna ise.'); status('Kirja ei ole veel saadetud.'); }
+          else { naitaValikut(null, 'Värvi ei saanud pakkuda. Vali ise.'); status('Kirja ei ole veel saadetud.'); }
+        }).catch(function () { sentBusy = false; naitaValikut(null, 'Värvi ei saanud pakkuda. Vali ise.'); status('Kirja ei ole veel saadetud.'); });
+    }
+
     // --- saatmine ---
-    function doSend() {
+    function doSend(kinnitatud) {
       if (sentBusy || rec) return;
       var txt = ta.value.trim();
       if (!txt && !audio) { status('Kirjuta enne midagi või salvesta häälsõnum. Piisab ka ühest värvist.'); return; }
+      if (koorOn() && txt && kinnitatud !== true) { if (pick) naitaPakkumist(pick); else kysiPakkumist(); return; }
+      var kooriga = kinnitatud === true && koorOn() && !!pick;
       sentBusy = true; send.classList.remove('on'); status('Saadan…');
       var fd = new FormData(); fd.append('tekst', txt); fd.append('keel', LANGS[li][0]); fd.append('teema', teema); fd.append('veeb', '');
+      if (kinnitatud === true && koorOn() && pick) { fd.append('koor', '1'); fd.append('koor_hex', pick.hex); fd.append('koor_haal', pick.haal); fd.append('koor_sona', pick.sona); }
       if (audio) fd.append('heli', audio.blob, 'heli.' + ext(audio.mime));
       fetch('/saada', { method: 'POST', body: fd }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (x) {
           sentBusy = false;
           if (x.ok) {
-            ta.value = ''; audio = null; try { localStorage.removeItem(key); } catch (e) {}
-            send.innerHTML = ICON.ok; send.classList.add('on'); status('Aitäh! Kiri jõudis Mirkoni.');
+            ta.value = ''; audio = null; pick = null; if (kin) { kin.hidden = true; kin.innerHTML = ''; } if (vk) { vk.checked = false; laiend.hidden = true; } try { localStorage.removeItem(key); } catch (e) {}
+            send.innerHTML = ICON.ok; send.classList.add('on'); status(kooriga ? 'Aitäh! Kiri jõudis Mirkoni. Hääl jõuab koori, kui Mirko selle kinnitab.' : 'Aitäh! Kiri jõudis Mirkoni.');
             setTimeout(function () { send.innerHTML = ICON.up; upd(); }, 4000);
           } else { upd(); status((x.j && x.j.viga) ? x.j.viga : 'Saatmine ei õnnestunud. Proovi uuesti või kasuta kontaktilehte.'); }
         }).catch(function () { sentBusy = false; upd(); status('Saatmine ei õnnestunud. Proovi uuesti või kasuta kontaktilehte.'); });
     }
-    send.addEventListener('click', doSend);
+    send.addEventListener('click', function () { doSend(); });
     ta.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); doSend(); } });
   }
   function boot() { Array.prototype.forEach.call(document.querySelectorAll('[data-vastus]'), mount); }

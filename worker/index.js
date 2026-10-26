@@ -1,5 +1,8 @@
-// Meeleraha Worker: /ilm (MET Norway proksi), /kirjuta (hääl tekstiks, Workers AI), /saada (kiri Mirkole).
+// Meeleraha Worker: /ilm (MET Norway proksi), /kirjuta (hääl tekstiks, Workers AI), /saada (kiri Mirkole),
+// /kuula (System One pakub koorile värvi ja sõna), /koor (kinnitatud hääled), /koor/kinnita (Mirko kinnitab linkidega).
 // Kõik muu läheb staatilistele failidele (ASSETS). IP-d ei salvestata: ainult piirangu võtmena, korraks.
+
+import { loeHaal, kontrolliHaal, lingid, kehtivAllkiri, lisaOotele, paneKoori, kustuta, aurusta, koor } from './koor.js';
 
 const SAIT = 'meeleraha.ee';
 const LAT = 59.4586, LON = 24.6773; // Kopli Kase park: koht on serveris fikseeritud, lugeja asukohta ei küsita
@@ -112,8 +115,19 @@ async function saada(request, env) {
   if (onHeli && (heli.size > MAX_HELI || !/^audio\//.test(heli.type || ''))) return json({ viga: 'Häälsõnum ei sobi (kuni 3 MB, heli).' }, 413);
   if (!env.POST || !env.KIRI_SAAJA) return json({ viga: 'Saatmine ei ole veel seadistatud. Kasuta kontaktilehte.' }, 503);
 
+  // Koor: ainult kui vastaja märkis nõusoleku ja andmebaas on olemas
+  const pakkumine = String(fd.get('koor') || '') === '1' && env.DB && env.KOOR_SALADUS ? kontrolliHaal(fd) : null;
+  let koorRida = [];
+  if (pakkumine) {
+    try {
+      const id = await lisaOotele(env, pakkumine, keel);
+      const l = await lingid(env, new URL(request.url).origin, id);
+      koorRida = ['', 'Koori pakkumine: ' + pakkumine.hex + ', hääl ' + pakkumine.haal + ', sõna "' + pakkumine.sona + '"', 'Pane koori: ' + l.koor, 'Kustuta: ' + l.kustuta];
+    } catch { koorRida = []; }
+  }
   const rida = [
     tekst || '(ainult häälsõnum)',
+    ...koorRida,
     '',
     '---',
     'Aeg (Tallinn): ' + tallinnaAeg(),
@@ -135,9 +149,49 @@ async function saada(request, env) {
   return json({ ok: true });
 }
 
+// ---------- koor ----------
+async function kuula(request, env) {
+  if (request.method !== 'POST') return json({ viga: 'Meetod ei sobi.' }, 405);
+  if (!omaOrigin(request)) return json({ viga: 'Päring ei tule sellelt lehelt.' }, 403);
+  if (await piiratud(env.PIIR_KIRJUTA, request)) return json({ viga: 'Liiga palju päringuid. Proovi hetke pärast.' }, 429);
+  let b;
+  try { b = await request.json(); } catch { return json({ viga: 'Päring ei sobi.' }, 400); }
+  const keel = KEELED.includes(b && b.keel) ? b.keel : 'et';
+  try { return json(await loeHaal(env, b && b.tekst, keel)); }
+  catch (e) { return json({ viga: 'Värvi ei saanud pakkuda. Vali ise.', pohjus: String(e.message).slice(0, 400) }, e.kood || 502); } // põhjus: TypeSafe'i veateade, ei sisalda saladusi ega vastaja teksti
+}
+
+async function koori(request, env) {
+  if (request.method !== 'GET') return json({ viga: 'Meetod ei sobi.' }, 405);
+  if (!env.DB) return json({ haaled: [] }, 200, { 'Cache-Control': 'public, max-age=300' });
+  return json({ haaled: await koor(env) }, 200, { 'Cache-Control': 'public, max-age=300' });
+}
+
+const leht = (tekst, nupp) => new Response('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Koor</title><body style="font:18px/1.5 system-ui;max-width:30rem;margin:4rem auto;padding:0 1rem"><p>' + tekst + '</p>' + (nupp || ''), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
+const TOIMINGUD = { koor: 'Pane see hääl koori', kustuta: 'Kustuta see hääl' };
+
+// GET näitab nuppu (e-posti linkide eelvaade ei muuda midagi), POST teeb töö.
+async function kinnita(request, env) {
+  const u = new URL(request.url);
+  let id = u.searchParams.get('id'), t = u.searchParams.get('t'), s = u.searchParams.get('s');
+  if (request.method === 'POST') { try { const fd = await request.formData(); id = fd.get('id'); t = fd.get('t'); s = fd.get('s'); } catch { return leht('Päring ei sobi.'); } }
+  if (!env.DB || !TOIMINGUD[t] || !/^[0-9a-f]{32}$/.test(id || '') || !(await kehtivAllkiri(env, id, t, s))) return leht('Link ei kehti.');
+  if (request.method === 'GET') {
+    return leht(TOIMINGUD[t] + '?', '<form method="post"><input type="hidden" name="id" value="' + id + '"><input type="hidden" name="t" value="' + t + '"><input type="hidden" name="s" value="' + s + '"><button style="font:inherit;padding:.5rem 1rem">' + TOIMINGUD[t] + '</button></form>');
+  }
+  if (request.method !== 'POST') return leht('Meetod ei sobi.');
+  if (t === 'kustuta') { await kustuta(env, id); return leht('Kustutatud.'); }
+  const v = await paneKoori(env, id);
+  return leht(v === 'koori' ? 'Pandud koori.' : v === 'juba' ? 'See hääl on juba koori kinnitatud.' : 'Seda häält enam pole.');
+}
+
 export default {
+  async scheduled(event, env, ctx) { if (env.DB) ctx.waitUntil(aurusta(env)); },
   async fetch(request, env, ctx) {
     const { pathname } = new URL(request.url);
+    if (pathname === '/kuula') return kuula(request, env);
+    if (pathname === '/koor') return koori(request, env);
+    if (pathname === '/koor/kinnita') return kinnita(request, env);
     if (pathname === '/ilm') return ilm(request, ctx);
     if (pathname === '/kirjuta') return kirjuta(request, env);
     if (pathname === '/saada') return saada(request, env);

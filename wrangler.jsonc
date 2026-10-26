@@ -5,8 +5,10 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
-    "run_worker_first": ["/ilm", "/kirjuta", "/saada"]
+    "run_worker_first": ["/ilm", "/kirjuta", "/saada", "/kuula", "/koor", "/koor/*"]
   },
+  // Dashboardis seatud muutujad (KIRI_SAAJA) jäävad deploy'l alles.
+  "keep_vars": true,
   "workers_dev": true,
   "preview_urls": false,
   "routes": [
@@ -17,6 +19,10 @@
   "ai": { "binding": "AI" },
   // Kiri Mirkole (/saada): Cloudflare Email Service. Saaja aadress on Workeri muutuja KIRI_SAAJA
   // (Cloudflare'i dashboard: Settings > Variables), mitte selles failis. TBC: Email Service ja saatja domeen seadistamata.
+  // Koor (/pesa): hääled. Andmebaas on EU jurisdiktsioonis. Aurustumine: iga päev kell 03:17 UTC.
+  "d1_databases": [{ "binding": "DB", "database_name": "meeleraha-koor", "database_id": "54205eea-1b1f-4957-aa8d-c68cf39794a6", "migrations_dir": "migrations" }],
+  "triggers": { "crons": ["17 3 * * *"] },
+  // Saladused (dashboardis, mitte repos): SYSTEM_ONE_VOTI, KOOR_SALADUS.
   "send_email": [{ "name": "POST" }],
   // Piirangud. TBC: namespace_id peab olema konto piires unikaalne, kontrolli enne deploy'd.
   "ratelimits": [

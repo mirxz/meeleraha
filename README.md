@@ -130,3 +130,10 @@ Ainult `/ilm`, `/kirjuta` ja `/saada` lähevad Workerisse (`run_worker_first`), 
 - IP-d ei salvestata, see on ainult piirangu võti korraks. Heli salvestatakse vaid siis, kui lugeja selle kirjaga kaasa saadab.
 - TBC enne deploy'd: Email Service ja saatja domeen seadistamata; `KIRI_SAAJA` määramata; ratelimit `namespace_id` (7301, 7302) peab olema konto piires unikaalne; `privaatsus.html` tekst uute voogude kohta; vanad lehed kasutavad veel Google Fonts'i, uued kasutavad omaenda fonte (`public/fonts`, OFL).
 - Testid: `tests/lugu.test.mjs` (leht) ja `tests/lugu-worker.test.mjs` (Worker, võlts-sidumistega).
+
+## Koor (`worker/koor.js`, `migrations/0001_koor.sql`)
+Vastaja võib märkida "Mu värvi ja sõna võib koori panna, ilma nimeta". Alles siis läheb tekst Workeri `/kuula` kaudu TypeSafe'i System One mudelile (`jev-latest`), mis pakub värvi, hääle ja ühe sõna. Vastaja kinnitab, `/saada` salvestab D1 tabelisse `haaled` rea olekuga `ootab` ja saadab Mirkole kirja kahe allkirjastatud lingiga (HMAC, `KOOR_SALADUS`). Link avab nupuga lehe (GET ei muuda midagi), POST paneb koori või kustutab. `GET /koor` annab ainult kinnitatud read (hex, hääl, sõna, päev, kordus, tugevus). Sama sõna uuesti tõstab olemasolevat rida; 100 päeva ilma kordamiseta kustub rida (cron 03:17 UTC). Andmebaasis ei ole nime, IP-d, kellaaega ega vastuse teksti.
+- Saladused Cloudflare'i dashboardis (mitte repos): `SYSTEM_ONE_VOTI`, `KOOR_SALADUS`. Muutuja: `KIRI_SAAJA`.
+- Skeem: `npx wrangler d1 execute meeleraha-koor --remote --file=migrations/0001_koor.sql`
+- Kui võtit pole või TypeSafe ei vasta, näitab vastusekast varuvalikut (16 värvi, hääl, oma sõna).
+- Testid: `tests/koor.test.mjs` (võlts-D1 ja võlts-TypeSafe), `tests/koor-ui.test.mjs`. TBC: TypeSafe'i säilitusaeg, privaatsuslehe lõik (9 keelt).
