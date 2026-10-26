@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { ROOT } from './helpers.mjs';
 
-const html = await readFile(`${ROOT}public/index.html`, 'utf8');
+const html = await readFile(`${ROOT}public/tunne.html`, 'utf8');
 const clips = JSON.parse(await readFile(`${ROOT}scripts/clips.json`, 'utf8'));
 
 function ids() {

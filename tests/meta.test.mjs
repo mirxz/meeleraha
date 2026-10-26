@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { ROOT } from './helpers.mjs';
 
-const html = await readFile(`${ROOT}public/index.html`, 'utf8');
+const html = await readFile(`${ROOT}public/tunne.html`, 'utf8');
 const meta = (key) => {
   const m = html.match(new RegExp(`<meta (?:property|name)="${key}" content="([^"]*)"`));
   return m ? m[1] : null;

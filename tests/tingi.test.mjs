@@ -227,7 +227,7 @@ test('tingi: kõigil seisudel pole horisontaalset kerimist, väljadel on sildid,
 });
 
 test('tingi: menüüst „Vaidle“ jõuab sellele lehele, see on aktiivne ja klaviatuuriga läbitav; ots.html liigub siia', async () => {
-  const o = await open({ file: 'index.html', query: '' });
+  const o = await open({ file: 'tunne.html', query: '' });
   await o.page.click('#mr-nav a[href^="tingi.html"]'); await o.page.waitForLoadState();
   assert.match(await o.page.locator('h1').innerText(), /Vaieldav masin/);
   assert.equal(await o.page.locator('#mr-nav [aria-current="page"]').innerText(), 'Tingi');

@@ -16,11 +16,11 @@ Kui tahad siia midagi häkatonilt tuua, küsi enne kirjalik luba.
 
 ## Käivitamine
 
-Staatiline leht. Ava `public/index.html` brauseris või käivita:
+Staatilised lehed ja väike Worker. Ava `public/index.html` brauseris (/ilm, /kirjuta ja /saada töötavad ainult Workeriga) või käivita:
 
     npx wrangler dev
 
-Avaldamine: Cloudflare Workers, Worker nimega `unistused`, staatilised failid kaustast `public`. Käsk: `npx wrangler deploy`.
+Avaldamine: Cloudflare Workers, Worker nimega `meeleraha` (vt `wrangler.jsonc`), staatilised failid kaustast `public`, skript `worker/index.js`. Käsk: `npx wrangler deploy`.
 
 ## Eeldused ja piirid
 
@@ -47,18 +47,20 @@ Mida kontrollitakse: leht laeb ilma vigadeta ja ilma horisontaalse kerimiseta, k
 
 ## Lehed
 
-- `public/index.html`: manifest (hingamine, hääl, kõne, kattuvus, kingitus).
+- `public/index.html`: lugu (esileht). Päris taevas ja ilm, tekst tekib lugemise kiirusel, vikerkaar täitub nagu edenemisriba, lõpus küsimus ja vastusekast, uksed edasi.
+- `public/tunne.html`: endine esileht, manifest (hingamine, hääl, kõne, kattuvus, kingitus). Lehe tunnus `index` jääb.
+- `public/laps.html`, `keskus.html`, `avatud.html`: mustandid (laps ja lapsevanem, keskus, avatud ja privaatsus). Ainult eesti keeles, ilma mõõtmiseta. TBC: tõlked ja sisu kinnitus.
 - `public/haruta.html`: Haruta lõngakera (pensionireeglid sõlmede ja kuulujuttudena, tirimine, hääl).
 - `public/ajatelg.html`: Ajatelgekiik (eluklotsid ajateljel, rahu minevikuga; fail ainult sinu seadmes).
 - `public/ots.html`: Lõnga ots (üks lõng seitsme sõlmega sinu enda numbritega; arvutused sinu seadmes, midagi ei salvestata).
 
 ## Meeleraha tervik: infoarhitektuur
 
-Viis ust samasse majja (peamenüü) ja kolm abilehte (jalus):
+Esileht `index.html` on lugu; selle uksed viivad `laps.html`, `kast.html`, `tingi.html`, `keskus.html` ja `avatud.html` juurde. Vana sisu on `tunne.html` (menüüs Tunne). Viis ust samasse majja (peamenüü) ja kolm abilehte (jalus):
 
 | Ruum | Leht | Mida teeb |
 |---|---|---|
-| Tunne | `index.html` | Manifest: hinga, räägi tulevase minaga, kata, kingi. Alguses Meeleraha kaart. |
+| Tunne | `tunne.html` | Manifest: hinga, räägi tulevase minaga, kata, kingi. Alguses Meeleraha kaart. |
 | Haruta | `haruta.html` | Pensionireeglid sõlmedena ja kuulujutu kontroll, seaduse paragrahvini. |
 | Plaani | `ots.html` | Olukord, sinu numbrid, kaheksa sõlme, unistus lõnga otsas, `lõngaots.md`. |
 | Elu | `ajatelg.html` | Eluklotsid ajateljel, rahu minevikuga, Elukaar: rahavood, bilanss, edasi ja tagurpidi. |
@@ -115,3 +117,14 @@ Korporatiivse selge kujuga viide, mis on saidi osa aadressil `meeleraha.ee/open-
 - **Privaatsuse teekaart:** rühm „Guardrails“ võtab kokku, mida täna lubatakse ja mida võiks muuta ning mis tingimustel. 3. etapp: majutatud mudelit käitusajal ei kasutata, lause ei lahku brauserist.
 - **Leid:** kõik Meeleraha lehed laevad kirjatüübid Google'ist (`fonts.googleapis.com`), mis on päring kolmandale osapoolele lehe laadimisel. Uuringumärge väitis, et kõik päringud lähevad meeleraha.ee-le. Kontrolli brauseris; isehostimine või süsteemikirjatüübid kaotaksid selle (viide märgib seda kui ehitamata).
 - **Kontrollida pärast deploy'd:** kanoonilised aadressid (`/tingi`, `/mangukast`, `/open-playbook-api`) ja et jaluse link avab lehe.
+
+## Lugu ja Worker (`worker/index.js`)
+
+Ainult `/ilm`, `/kirjuta` ja `/saada` lähevad Workerisse (`run_worker_first`), kõik muu staatilistele failidele.
+
+- `/ilm`: MET Norway ilm Kopli Kase pargi kohta (koht on serveris fikseeritud), vahemälu 10-60 min. Taevas (`taevas.js`) arvutab päikese kõrguse ise.
+- `/kirjuta`: lause kaupa kõne tekstiks (Workers AI, Whisper). Ainult sama saidi päringud, WAV kuni ~3 MB, piiratud `PIIR_KIRJUTA` abil.
+- `/saada`: vastus või „tule kaasa“ kiri Mirkole (Cloudflare Email Service). Saaja on Workeri muutuja `KIRI_SAAJA` (dashboard, mitte repo). Piiratud `PIIR` abil. Kui saatmine pole seadistatud, vastab 503 ja leht suunab kontaktilehele.
+- IP-d ei salvestata, see on ainult piirangu võti korraks. Heli salvestatakse vaid siis, kui lugeja selle kirjaga kaasa saadab.
+- TBC enne deploy'd: Email Service ja saatja domeen seadistamata; `KIRI_SAAJA` määramata; ratelimit `namespace_id` (7301, 7302) peab olema konto piires unikaalne; `privaatsus.html` tekst uute voogude kohta; vanad lehed kasutavad veel Google Fonts'i, uued kasutavad omaenda fonte (`public/fonts`, OFL).
+- Testid: `tests/lugu.test.mjs` (leht) ja `tests/lugu-worker.test.mjs` (Worker, võlts-sidumistega).

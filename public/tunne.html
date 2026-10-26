@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="et">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raha Meeled</title>
+<meta name="description" content="Raha, mida kuuled, vaatad ja hingad. Mängulise rahatarkuse manifest: kohtu oma tulevase minaga.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="canonical" href="https://meeleraha.ee/tunne.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0a24'/%3E%3Ccircle cx='32' cy='38' r='16' fill='%23ffb347'/%3E%3Crect y='42' width='64' height='22' fill='%236f8fe0'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Raha Meeled">
+<meta property="og:title" content="Raha Meeled">
+<meta property="og:description" content="Raha, mida kuuled, vaatad ja hingad. Mängulise rahatarkuse manifest: kohtu oma tulevase minaga.">
+<meta property="og:url" content="https://meeleraha.ee/tunne.html">
+<meta property="og:locale" content="et_EE">
+<meta property="og:image" content="https://meeleraha.ee/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Õhtutaevas, päike ja neli lainet. Tekst: Raha, mida kuuled, vaatad ja hingad.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Raha Meeled">
+<meta name="twitter:description" content="Raha, mida kuuled, vaatad ja hingad.">
+<meta name="twitter:image" content="https://meeleraha.ee/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="mr.css">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#241f3a;--ink2:#554f70;--card:rgba(255,255,255,.86);--line:rgba(36,31,58,.18);
+  --sun:#f0a22e;--link:#4a3fc4;--onlink:#ffffff;
+  --base:#3d62c9;--loan:#c8453f;--fun:#e0a21f;--sav:#2f9a72;--pro:#7a4fd0;
+  --skyDT:#cfd0f2;--skyDH:#ffd1a8;--skyAT:#dce9ff;--skyAH:#ffeab8;
+  --segink:#ffffff;--segfun:#241f3a;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.86);--line:rgba(241,236,255,.2);
+    --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+    --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+    --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+    --segink:#14102a;--segfun:#14102a;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f1ecff;--ink2:#b7aed2;--card:rgba(26,20,58,.86);--line:rgba(241,236,255,.2);
+  --sun:#ffb347;--link:#b3a8ff;--onlink:#1a1440;
+  --base:#7b99ee;--loan:#f08577;--fun:#f4c25b;--sav:#62d4a6;--pro:#b79cff;
+  --skyDT:#0d0a24;--skyDH:#4a2a55;--skyAT:#141a45;--skyAH:#a95a63;
+  --segink:#14102a;--segfun:#14102a;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--skyDT);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+#sky{position:fixed;inset:0;z-index:-1;overflow:hidden}
+#sky .l{position:absolute;inset:0}
+#sky .dusk{background:linear-gradient(to bottom,var(--skyDT) 0%,var(--skyDH) 100%)}
+#sky .dawn{background:linear-gradient(to bottom,var(--skyAT) 0%,var(--skyAH) 100%);opacity:0}
+#sun{position:absolute;width:30vmin;height:30vmin;border-radius:50%;background:var(--sun);left:0;bottom:12vh;transform:translate(10vw,40%)}
+#sky .gr{position:absolute;left:0;right:0;bottom:0;height:14vh;background:var(--skyDT);opacity:.55}
+main{width:min(560px,100% - 40px);margin:0 auto;padding-bottom:64px}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:48px 0 24px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(36px,10vw,56px);line-height:1.04;letter-spacing:-0.01em;margin:0 0 20px;font-variation-settings:"opsz" 144}
+h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15;margin:0 0 8px;font-variation-settings:"opsz" 72}
+p{margin:0 0 12px}
+.lead{font-family:var(--serif);font-size:19px;line-height:1.5;max-width:30em}
+.sub{color:var(--ink2);max-width:32em}
+section{padding:56px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.btn{font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer}
+.btn:hover{border-color:var(--ink2)}
+.btn[aria-pressed="true"],.btn.on{background:var(--link);color:var(--onlink);border-color:var(--link)}
+.btn.go{background:var(--link);color:var(--onlink);border-color:var(--link);text-decoration:none;display:inline-flex;align-items:center}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.lab{font-size:14px;color:var(--ink2);margin:14px 0 4px}
+.small{font-size:13px;color:var(--ink2);line-height:1.5}
+.seg{display:flex;height:40px;border-radius:10px;overflow:hidden}
+.seg>div{display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--segink);white-space:nowrap;overflow:hidden;border-right:2px solid var(--card)}
+.big{font-family:var(--serif);font-size:34px;font-weight:500;line-height:1}
+.m{height:6px;background:var(--line);border-radius:3px;margin:4px 0 10px}
+.m>div{height:6px;background:var(--link);border-radius:3px}
+.call{font-family:var(--serif);font-size:17px;line-height:1.6}
+input[type=range]{width:100%;accent-color:var(--link)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-top:8px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+.manifesto{font-family:var(--serif);font-size:22px;line-height:1.5;margin:0 0 10px}
+ul.rev{padding-left:18px;margin:8px 0}
+ul.rev li{margin-bottom:8px}
+footer{padding:40px 0 0;color:var(--ink2);font-size:14px}
+@media (prefers-reduced-motion: no-preference){
+  .hero h1{animation:rise 1.1s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body data-mr-page="index" data-mr-partial="1">
+<div id="sky" aria-hidden="true"><div class="l dusk"></div><div class="l dawn" id="dawn"></div><div id="sun"></div><div class="gr"></div></div>
+<a class="mr-skip" href="#main" data-i18n="skip">Mine sisu juurde</a>
+<div id="mr-nav"></div>
+<div id="mr-banner"></div>
+<main id="main">
+<header class="hero">
+  <h1 data-i18n="index.h1">Raha, mida kuuled, vaatad ja hingad.</h1>
+  <p class="lead" data-i18n="index.lead">Mängulise rahatarkuse manifest. Sa ei loe numbreid, sa kohtud oma tulevase minaga.</p>
+  <p class="sub" data-i18n="index.sub">Iga õhtu on otsus, mis hommikul sulle vastu tuleb. Lehe taevas muutub sinuga: õhtust koiduni.</p>
+  <p class="row"><a class="btn go" href="#hinga" data-mr-c="index.hero.cta" data-i18n="index.cta">Alusta hingamisest</a> <a class="btn" href="haruta.html">Haruta pensioni lõngakera</a></p>
+</header>
+
+<section id="kaart">
+  <h2 data-i18n="hub.h2">Meeleraha kaart</h2>
+  <p class="sub" data-i18n="hub.p">Viis ust samasse majja. Alusta sealt, kus oled.</p>
+  <div id="doors" class="row" style="flex-direction:column;gap:8px">
+    <a class="btn" href="#hinga" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="feel"><b data-i18n="hub.feel.t">Tunne</b>&nbsp;<span class="small" data-i18n="hub.feel.d">Hinga, räägi tulevase minaga, kingi ja kata.</span></a>
+    <a class="btn" href="haruta.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="haruta"><b data-i18n="hub.haruta.t">Haruta</b>&nbsp;<span class="small" data-i18n="hub.haruta.d">Pensionireeglid ja kuulujutud seaduse järgi.</span></a>
+    <a class="btn" href="ots.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="plan"><b data-i18n="hub.plan.t">Plaani</b>&nbsp;<span class="small" data-i18n="hub.plan.d">Sinu numbrid ja unistus, üks lõng korraga.</span></a>
+    <a class="btn" href="ajatelg.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="timeline"><b data-i18n="hub.timeline.t">Ajatelg</b>&nbsp;<span class="small" data-i18n="hub.timeline.d">Elatud ja ees olev elu, rahavood ja bilanss.</span></a>
+    <a class="btn" href="kast.html" data-mr-c="index.hub.door" data-mr-e="Door Clicked" data-mr-p-door="kast"><b data-i18n="hub.kast.t">Kast</b>&nbsp;<span class="small" data-i18n="hub.kast.d">Tööriistad, allalaadimised ja mängud.</span></a>
+  </div>
+</section>
+
+<section id="hinga">
+  <h2>Hinga</h2>
+  <p class="sub">Sinu raha on vool. Hinga mikrofoni juures kuuldavalt: pott kasvab. Või vali „Hääl“ ja hummi: kõrgem toon on suurem palk. Ilma mikrofonita hoia nuppu „Hoia ja hinga sisse“ all. Puuduta riba, et sellele keskenduda, ja lülita heli sisse, et oma aastat kuulda.</p>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px">
+      <div id="inc" class="big" style="font-size:26px"></div>
+      <div id="fi" class="small"></div>
+    </div>
+    <svg id="sv" width="100%" viewBox="0 0 380 250" role="img" aria-label="Rahavool ajas: baaskulud, laenud, fun money ja säästud tänasest FIRE-ni" style="touch-action:none;display:block"></svg>
+    <div id="cap" class="small" style="min-height:22px;margin:4px 0 8px">Puuduta või liiguta riba peal: sellele keskendumine kasvatab seda.</div>
+    <div class="row">
+      <button id="mic" class="btn" type="button" aria-pressed="false">Hinga mikrofoniga</button>
+      <button id="br" class="btn" type="button" style="touch-action:none;user-select:none;-webkit-user-select:none">Hoia ja hinga sisse</button>
+      <button id="snd" class="btn" type="button" aria-pressed="false">Kuula oma aastat</button>
+    </div>
+    <div class="row" role="group" aria-label="Mikrofoni režiim" style="margin:0 0 6px"><button id="micModeB" class="btn" type="button" aria-pressed="true">Hingamine</button><button id="micModeV" class="btn" type="button" aria-pressed="false">Hääl</button></div>
+    <div id="micMsg" class="small" style="min-height:20px">Mikrofon töötab ainult sinu seadmes. Heli ei salvestata ega saadeta kuhugi.</div>
+    <div id="micM" class="m" hidden><div id="micL" style="width:0%"></div></div>
+    <div id="micHz" class="small" style="min-height:20px"></div>
+    <div class="leg"><span><i style="background:var(--base)"></i>Baas</span><span><i style="background:var(--loan)"></i>Laen</span><span><i style="background:var(--fun)"></i>Fun</span><span><i style="background:var(--sav)"></i>Säästud</span><span><i style="background:var(--pro)"></i>Kapital</span></div>
+  </div>
+</section>
+
+<section id="unista">
+  <h2>Unista</h2>
+  <p class="sub">Tulevane mina helistab. Ta küsib, mida tahaksid pensionil teha. Ta ei küsi kunagi koode, PIN-i, ID-kaarti ega ülekandeid.</p>
+  <div class="lab">Mida tahaksid pensionil teha?</div>
+  <div class="row" id="gA" role="group" aria-label="Tegevused pensionil"></div>
+  <div class="lab">Kellega?</div>
+  <div class="row" id="gW" role="group" aria-label="Seltskond"></div>
+  <div class="lab">Kus?</div>
+  <div class="row" id="gP" role="group" aria-label="Koht"></div>
+  <div class="card">
+    <div class="small" style="margin-bottom:6px">Kõne tulevaselt minalt (näidis)</div>
+    <div id="call" class="call"></div>
+    <div class="row"><button id="say" class="btn" type="button" data-mr-c="index.dream.say-button" data-mr-e="Call Played">Loe ette</button></div>
+    <div id="sayMsg" class="small"></div>
+  </div>
+</section>
+
+<section id="kata">
+  <h2>Kata</h2>
+  <p class="sub">Tõmba tulevase mina pott tänase peale. Mida rohkem kulutused kattuvad, seda rohkem on tema sinuga sama.</p>
+  <div id="ov" class="card" style="position:relative;height:176px;touch-action:none">
+    <div class="small" style="position:absolute;left:16px;top:8px">Tulevane mina, tõmba alla</div>
+    <div id="ovF" role="slider" tabindex="0" aria-label="Tulevase mina pott, tõmba tänase poti peale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="position:absolute;left:16px;right:16px;top:28px;height:44px;touch-action:none;cursor:grab"></div>
+    <div id="ovT" style="position:absolute;left:16px;right:16px;top:104px;height:44px"></div>
+    <div class="small" style="position:absolute;left:16px;top:152px">Täna</div>
+  </div>
+  <div id="ovRes" class="card"></div>
+</section>
+
+<section id="kingi">
+  <h2>Kingi</h2>
+  <p class="sub">Võta osa fun moneyst ja kingi see tulevasele minale. Või anna see meeldivale asjale: see annab täna hea tunde.</p>
+  <div class="row">
+    <button id="k1" class="btn" type="button" data-mr-c="index.gift.mode-button" data-mr-e="Gift Mode Selected" data-mr-p-mode="fut">Tulevasele minale</button>
+    <button id="k2" class="btn" type="button" data-mr-c="index.gift.mode-button" data-mr-e="Gift Mode Selected" data-mr-p-mode="don">Meeldivale asjale</button>
+  </div>
+  <label class="small" for="gf">Fun moneyst kuus: <span id="gfo" style="font-weight:600;color:var(--ink)">0 €</span></label>
+  <input type="range" id="gf" min="0" max="300" step="25" value="0">
+  <div id="fireOut" class="card"></div>
+</section>
+
+<section id="aasta">
+  <h2>Võta kaasa</h2>
+  <p class="sub">Sinu valikud ühel kaardil. Peida summad, kui tahad jagada ainult protsente.</p>
+  <div id="share" class="card"></div>
+  <div class="row">
+    <button id="hide" class="btn" type="button" aria-pressed="false">Peida summad</button>
+    <button id="copy" class="btn" type="button" data-mr-c="index.share.copy-button" data-mr-e="Share Card Changed" data-mr-p-action="copy">Kopeeri tekst</button>
+  </div>
+  <div id="copyMsg" class="small"></div>
+</section>
+
+<section id="haruta">
+  <h2>Haruta</h2>
+  <p class="sub">Pensionireeglid on sassis lõngakera. Haruta see lahti: kontrolli kuulujuttu ja vaata, mis seadus tegelikult ütleb.</p>
+  <p class="row"><a class="btn go" href="haruta.html">Haruta lõngakera</a> <a class="btn" href="ots.html">Leia lõnga ots</a> <a class="btn" href="ajatelg.html">Ajatelgekiik</a></p>
+</section>
+
+<section id="tode">
+  <h2>Mida see leht sinuga tegi</h2>
+  <ul class="rev">
+    <li>Kingi raam on nügimine: sama raha, kaks lugu. Uuringutes on raami mõju olnud väike ja kordustes veel väiksem.</li>
+    <li>Kattuv kiht on mängulise disaini metafoor, mitte teaduslik mõõt. Tulevase mina järjepidevust ei mõõdeta ühe numbriga.</li>
+    <li>Hingamise juhtimine kasutab mikrofoni ainult sinu nõusolekul ja ainult sinu seadmes. Heli ei salvestata ega saadeta kuhugi. Kaamerat leht ei kasuta.</li>
+    <li>Kõne tekst on näidis. Lugemine toimub sinu brauseris.</li>
+    <li>Hääl on sünteetiline, mitte päris inimese oma. Lugemine toimub sinu brauseris ja midagi ei salvestata.</li>
+    <li>Lõngakera on metafoor. Iga sõlm tuleb seaduse tekstist ja näitab usaldusmärki; vastused on haridus, mitte nõu.</li>
+    <li>Ajatelgekiik on peegel, mitte prognoos. Ajahorisont on sinu valik ja „tee rahu“ on mänguline harjutus, mitte teraapia.</li>
+    <li>„Lõnga ots“ on lihtsustus: kaheksa sõlme jätavad enamiku valikuid välja ja järjekord on rusikareegel, mitte sinu tee. Arvud tulevad ainult sinu sisestatud numbritest ja jäävad sinu seadmesse.</li>
+    <li>Kuulujutu kontroll annab lühikese vastuse ja viite paragrahvile. Täielik tekst on sõlmes ja seaduses.</li>
+    <li>Numbrid on näide (sissetulek 2 500 €, reaaltootlus 4%, väljavõtmismäär 4%) ja kõik on simulatsioon, mitte prognoos ega nõu.</li>
+  </ul>
+</section>
+
+<footer>
+  <p class="manifesto">Me ei õpi raha lugedes, vaid kuulates.</p>
+  <p class="manifesto">Me ei valmista tulevikku ette, me kutsume ta külla.</p>
+  <p class="manifesto">Õhtul teeme otsuse, mis hommikul meile vastu tuleb.</p>
+  <div id="tanud" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line)">
+    <p class="manifesto" style="font-size:19px">Tänan Lindat, Jüri Ruutu ja Mai Leed: nad taluvad mind, kui unistan, ja aksepteerivad mind ka siis, kui unistan valjusti.</p>
+    <p class="manifesto" style="font-size:19px">Nende kõrval on õhtu lahke ja hommik lähedal.</p>
+    <p class="manifesto" style="font-size:19px">Unistame edasi koos, ühe mõtte, ühe hingetõmbe, ühe päeva võrra.</p>
+  </div>
+  <p class="small" style="margin-top:20px">Raha Meeled. Disain ja unistused: Mirko.</p>
+</footer>
+</main>
+<div id="mr-foot"></div>
+
+<script>
+(function(){
+var BASE=1125,LOAN=375,FUN=375,LY=8,AGE0=35,SPAN=45,INC=2500;
+var ACTS=[['Reisida',300,'Eelmisel kuul olime reisil ja ma meenutan seda õhtut veel täna.'],['Lastelastega',150,'Pärastlõunal tulevad lapselapsed. Mul on aega mängida, mitte kiirustada.'],['Aed ja maakodu',200,'Aias valmivad tomatid. Maakodu lõhn on täpselt selline, nagu lootsid.'],['Õppimine ja kultuur',125,'Õhtul käin kursusel. Kunagi ei olnud selleks aega.']];
+var WHO=[['Üksi','Hommikud on minu omad.'],['Partneriga','Me joome koos hommikukohvi.'],['Lastega','Lapsed on lähedal, nii nagu sa soovisid.'],['Sõpradega','Sõbrad tulevad külla ja laud on pikk.']];
+var WHERE=[['Mere ääres','Aken vaatab merele ja hommikul on vesi vaikne.'],['Maal','Elan maal. Õhtul on vaikus, mida linnas polnud.'],['Linnas','Elan linnas, kõik on käe-jala juures.'],['Reisil','Olen sageli teel ja kodu on sõbralik tuba.']];
+var sel=[false,false,false,false],who=-1,where=-1,g=0,mode='fut',hideAmt=false;
+
+function fe(n){return Math.round(n).toLocaleString('en-US').replace(/,/g,'\u00a0')+'\u00a0€';}
+function mt(m){return m===null?'üle 45 a':Math.floor(m/12)+' a '+(m%12)+' k';}
+function chosen(){var cs=0,n=0;for(var i=0;i<4;i++){if(sel[i]){cs+=ACTS[i][1];n++;}}return {cs:cs,n:n};}
+function monthsFor(inc,cs,gg,md){var futF=cs>0?cs:FUN;var tg=(BASE+futF)*12/0.04,rm=Math.pow(1.04,1/12)-1,A=20000,m=0,s0=inc-BASE-LOAN-FUN+(md==='fut'?gg:0);while(A<tg&&m<540){A=A*(1+rm)+s0+((m/12>=LY)?LOAN:0);m++;}return A>=tg?m:null;}
+function sm(t,a,b){var u=Math.max(0,Math.min(1,(t-a)/(b-a)));return u*u*(3-2*u);}
+
+/* sky */
+var dawn=document.getElementById('dawn'),sun=document.getElementById('sun'),tick=false;
+function sky(){tick=false;var h=document.documentElement,max=Math.max(1,h.scrollHeight-window.innerHeight),p=Math.max(0,Math.min(1,window.scrollY/max));dawn.style.opacity=p;var w=window.innerWidth,sw=sun.offsetWidth;sun.style.transform='translate('+(w*0.08+(w*0.84-sw)*p)+'px,'+(40-75*p)+'%)';}
+window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(sky);}},{passive:true});
+window.addEventListener('resize',sky);sky();
+
+/* flow */
+var N=80,X0=20,XW=340,Y0=212,K=0.04,NAMES=['Baaskulud','Laenud','Fun money','Säästud'],COL=['var(--base)','var(--loan)','var(--fun)','var(--sav)'];
+var breath=0,target=0,holdT=0,micT=0,phase=0,focus=-1,foc=[0,0,0,0],Bd=[],ac=null,gains=[],oscs=[];
+var sv=document.getElementById('sv'),cap=document.getElementById('cap');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function frame(){
+  target=Math.max(holdT,micT);breath+=(target-breath)*0.05;if(!reduce)phase+=0.02;
+  var inc=INC+breath*2000,m=monthsFor(inc,0,0,'fut'),fT=m===null?1:Math.min(1,m/12/SPAN),lT=LY/SPAN,i,j;
+  for(j=0;j<4;j++)foc[j]+=((focus===j?1:0)-foc[j])*0.15;
+  var b=[[],[],[],[],[]];
+  for(i=0;i<=N;i++){
+    var t=i/N,w=7*Math.sin(2*Math.PI*1.5*t-phase)+3*Math.sin(2*Math.PI*3.2*t+phase*1.4);
+    var af=m===null?1:1-sm(t,fT-0.02,fT+0.02),la=1-sm(t,lT-0.01,lT+0.01);
+    var th=[BASE*K,LOAN*K*la,FUN*K,Math.max(0,(inc-BASE-LOAN-FUN)+(t>lT?LOAN:0))*K*af];
+    var c=0;b[0].push(Y0-w);
+    for(j=0;j<4;j++){c+=th[j]*(1+0.35*foc[j]);b[j+1].push(Y0-c-w);}
+  }
+  Bd=b;var h='';
+  for(j=0;j<4;j++){var d='';for(i=0;i<=N;i++){d+=(i?'L':'M')+(X0+i/N*XW).toFixed(1)+' '+b[j+1][i].toFixed(1)+' ';}for(i=N;i>=0;i--){d+='L'+(X0+i/N*XW).toFixed(1)+' '+b[j][i].toFixed(1)+' ';}h+='<path d="'+d+'Z" style="fill:'+COL[j]+';fill-opacity:0.9"></path>';}
+  var fx=X0+fT*XW;
+  h+='<rect x="'+X0+'" y="228" width="'+(fx-X0)+'" height="8" rx="2" style="fill:var(--base)"></rect><rect x="'+fx+'" y="228" width="'+Math.max(0,X0+XW-fx)+'" height="8" rx="2" style="fill:var(--pro)"></rect>';
+  h+='<text x="'+X0+'" y="248" font-size="11" style="fill:var(--ink2)" font-family="Instrument Sans,sans-serif">täna</text><text x="'+(X0+XW)+'" y="248" font-size="11" text-anchor="end" style="fill:var(--ink2)" font-family="Instrument Sans,sans-serif">'+(AGE0+SPAN)+' a</text>';
+  if(m!==null){h+='<line x1="'+fx+'" y1="22" x2="'+fx+'" y2="226" style="stroke:var(--ink2)" stroke-dasharray="3 3"></line><text x="'+Math.min(fx,X0+XW-4)+'" y="14" font-size="11" text-anchor="'+(fx>300?'end':'middle')+'" style="fill:var(--ink2)" font-family="Instrument Sans,sans-serif">FIRE</text>';}
+  sv.innerHTML=h;
+  document.getElementById('inc').textContent='Palk '+fe(inc);
+  document.getElementById('fi').textContent='FIRE-ni: '+mt(m);
+  if(ac){var tt=[BASE*K,LOAN*K,FUN*K,(inc-BASE-LOAN-FUN)*K];for(j=0;j<4;j++){var gn=0.012+(Math.max(0,tt[j])/100)*0.05+foc[j]*0.04;gains[j].gain.setTargetAtTime(Math.min(0.12,gn),ac.currentTime,0.1);}}
+  requestAnimationFrame(frame);
+}
+function hit(e){var r=sv.getBoundingClientRect(),s=r.width/380,x=(e.clientX-r.left)/s,y=(e.clientY-r.top)/s,i=Math.round((x-X0)/XW*N);focus=-1;if(i<0||i>N||!Bd.length){return;}
+  for(var j=0;j<4;j++){if(y<=Bd[j][i]&&y>=Bd[j+1][i]){focus=j;break;}}
+  if(focus<0){cap.textContent='Puuduta või liiguta riba peal: sellele keskendumine kasvatab seda.';return;}
+  var t=i/N,inc=INC+breath*2000,la=t>LY/SPAN,v=[BASE,la?0:LOAN,FUN,inc-BASE-LOAN-FUN+(la?LOAN:0)][focus];
+  cap.textContent=NAMES[focus]+' selles punktis: '+fe(v)+' kuus.';}
+sv.addEventListener('pointermove',hit);sv.addEventListener('pointerdown',hit);sv.addEventListener('pointerleave',function(){focus=-1;});
+var br=document.getElementById('br');
+br.addEventListener('pointerdown',function(e){e.preventDefault();holdT=1;try{br.setPointerCapture(e.pointerId);}catch(x){}});
+['pointerup','pointercancel'].forEach(function(n){br.addEventListener(n,function(){holdT=0;});});
+br.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){holdT=1;e.preventDefault();}});
+br.addEventListener('keyup',function(){holdT=0;});
+document.getElementById('snd').onclick=function(){var bt=this;try{
+  if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();var f=[110,165,330,440];for(var j=0;j<4;j++){var o=ac.createOscillator(),gg=ac.createGain();o.type=j===3?'sine':'triangle';o.frequency.value=f[j];gg.gain.value=0;o.connect(gg);gg.connect(ac.destination);o.start();oscs.push(o);gains.push(gg);}bt.setAttribute('aria-pressed','true');}
+  else{for(var k=0;k<oscs.length;k++){oscs[k].stop();}ac.close();ac=null;gains=[];oscs=[];bt.setAttribute('aria-pressed','false');}
+}catch(err){cap.textContent='Heli ei käivitunud selles brauseris.';}};
+frame();
+
+/* mic */
+var mic={on:false,mode:'breath',ctx:null,stream:null,an:null,buf:null,fb:null,sum:0,n:0,floor:0,peak:0.02,lvl:0,t0:0,raf:0,sr:48000,hz:0,vo:0,fr:0,shown:''};
+var micBtn=document.getElementById('mic'),micMsg=document.getElementById('micMsg'),micM=document.getElementById('micM'),micL=document.getElementById('micL'),micHz=document.getElementById('micHz'),mB=document.getElementById('micModeB'),mV=document.getElementById('micModeV');
+var MODEMSG={breath:'Hinga kuuldavalt sisse ja välja. Pott kasvab, kui hingamist kuuleb, ja vajub vaikuses.',voice:'Hummi või räägi ühtlase tooniga. Kõrgem hääl on suurem palk, madalam väiksem.'};
+function micStop(msg){mic.on=false;cancelAnimationFrame(mic.raf);if(mic.stream){mic.stream.getTracks().forEach(function(t){t.stop();});}if(mic.ctx){try{mic.ctx.close();}catch(e){}}mic.ctx=null;mic.stream=null;micT=0;mic.lvl=0;mic.hz=0;mic.vo=0;micHz.textContent='';micBtn.setAttribute('aria-pressed','false');micBtn.textContent='Hinga mikrofoniga';micM.hidden=true;if(msg)micMsg.textContent=msg;}
+function pitch(){
+  var N=1024,sr=mic.sr,minL=Math.floor(sr/500),maxL=Math.floor(sr/70),x=mic.fb,e0=0,i,l;
+  for(i=0;i<N;i++)e0+=x[i]*x[i];
+  if(e0<1e-6)return 0;
+  var best=0,bl=0,nac=[];
+  for(l=minL;l<=maxL;l++){var r=0,en=0;for(i=0;i<N;i++){var y=x[i+l];r+=x[i]*y;en+=y*y;}var c=en>0?r/Math.sqrt(e0*en):0;nac[l]=c;if(c>best){best=c;bl=l;}}
+  if(best<0.6)return 0;
+  for(l=minL+1;l<maxL;l++){if(nac[l]>=0.88*best&&nac[l]>nac[l-1]&&nac[l]>=nac[l+1]){bl=l;break;}}
+  return sr/bl;
+}
+function micLoop(){
+  if(!mic.on)return;
+  mic.an.getByteTimeDomainData(mic.buf);
+  var s=0,i,n=mic.buf.length;
+  for(i=0;i<n;i++){mic.fb[i]=(mic.buf[i]-128)/128;}
+  for(i=0;i<1024;i++){s+=mic.fb[i]*mic.fb[i];}
+  var rms=Math.sqrt(s/1024),now=performance.now();
+  if(now-mic.t0<2000){mic.sum+=rms;mic.n++;mic.floor=(mic.sum/mic.n)*1.4+0.004;}
+  else{
+    if(micMsg.getAttribute('data-cal')!=='1'){micMsg.setAttribute('data-cal','1');micMsg.textContent=MODEMSG[mic.mode];}
+    var d=Math.max(0,rms-mic.floor);
+    if(mic.mode==='breath'){
+      mic.peak=Math.max(d,mic.peak*0.9985,0.012);
+      var l=Math.min(1,d/(mic.peak*0.7));mic.lvl+=(l-mic.lvl)*(l>mic.lvl?0.35:0.06);
+      if(micHz.textContent)micHz.textContent='';
+    }else{
+      mic.fr++;
+      if(mic.fr%2===0){var f=d>0.006?pitch():0;if(f>0){mic.hz=f;mic.vo=8;}else if(mic.vo>0){mic.vo--;}}
+      var t=(mic.vo>0&&mic.hz>0)?Math.max(0,Math.min(1,Math.log(mic.hz/90)/Math.log(4))):0;
+      mic.lvl+=(t-mic.lvl)*(t>0?0.15:0.04);
+      var txt=mic.vo>0?Math.round(mic.hz)+' Hz':'';
+      if(txt!==mic.shown){mic.shown=txt;micHz.textContent=txt;}
+    }
+    micT=mic.lvl;micL.style.width=Math.round(mic.lvl*100)+'%';
+  }
+  mic.raf=requestAnimationFrame(micLoop);
+}
+function setMode(m){mic.mode=m;mB.setAttribute('aria-pressed',m==='breath'?'true':'false');mV.setAttribute('aria-pressed',m==='voice'?'true':'false');mic.lvl=0;mic.vo=0;micHz.textContent='';mic.shown='';if(mic.on&&micMsg.getAttribute('data-cal')==='1')micMsg.textContent=MODEMSG[m];}
+mB.onclick=function(){setMode('breath');};mV.onclick=function(){setMode('voice');};
+micBtn.onclick=function(){
+  if(mic.on){micStop('Mikrofon on välja lülitatud.');return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){micMsg.textContent='Sinu brauser ei luba mikrofoni kasutada. Kasuta nuppu „Hoia ja hinga sisse“.';return;}
+  micMsg.textContent='Palun luba mikrofon.';
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(st){
+    var AC=window.AudioContext||window.webkitAudioContext;mic.ctx=new AC();if(mic.ctx.resume)mic.ctx.resume();
+    mic.sr=mic.ctx.sampleRate;mic.stream=st;var src=mic.ctx.createMediaStreamSource(st);mic.an=mic.ctx.createAnalyser();mic.an.fftSize=2048;src.connect(mic.an);
+    mic.buf=new Uint8Array(mic.an.fftSize);mic.fb=new Float32Array(mic.an.fftSize);mic.sum=0;mic.n=0;mic.floor=0.01;mic.peak=0.02;mic.lvl=0;mic.hz=0;mic.vo=0;mic.t0=performance.now();mic.on=true;if(window.MR)MR.track('Breath Started',{mode:mic.mode==='voice'?'voice':'breath'},'index.breath.mic-button');
+    micMsg.removeAttribute('data-cal');micMsg.textContent='Kalibreerin 2 sekundit: ole vaikselt.';micM.hidden=false;
+    micBtn.setAttribute('aria-pressed','true');micBtn.textContent='Lülita mikrofon välja';micLoop();
+  },function(err){
+    var n=err&&err.name;
+    micStop(n==='NotAllowedError'?'Mikrofon on keelatud. Luba see brauseri seadetes või kasuta nuppu „Hoia ja hinga sisse“.':n==='NotFoundError'?'Mikrofoni ei leitud. Kasuta nuppu „Hoia ja hinga sisse“.':'Mikrofon ei käivitunud. Kasuta nuppu „Hoia ja hinga sisse“.');
+  });
+};
+document.addEventListener('visibilitychange',function(){if(document.hidden&&mic.on)micStop('Mikrofon lülitus välja, sest leht läks taustale.');});
+
+/* chips */
+function chips(id,list,multi,onpick){var el=document.getElementById(id);list.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.className='btn';b.setAttribute('aria-pressed','false');b.textContent=it[0];if(id==='gA'){b.setAttribute('data-mr-c','index.dream.activity-chip');b.setAttribute('data-mr-e','Activity Selected');b.setAttribute('data-mr-p-activity-id',['reisida','lastelastega','aed','oppimine'][i]);}b.onclick=function(){onpick(i);sync();};el.appendChild(b);});}
+chips('gA',ACTS,true,function(i){sel[i]=!sel[i];});
+chips('gW',WHO,false,function(i){who=who===i?-1:i;});
+chips('gP',WHERE,false,function(i){where=where===i?-1:i;});
+function setPress(id,fn){var ch=document.getElementById(id).children;for(var i=0;i<ch.length;i++){ch[i].setAttribute('aria-pressed',fn(i)?'true':'false');}}
+
+function callLines(){
+  var c=chosen(),m0=monthsFor(INC,c.cs,0,'fut'),m=monthsFor(INC,c.cs,g,mode),L=[];
+  if(c.n===0&&who<0&&where<0){return ['Ma kuulen sind, aga ma ei kuule, mida ma teen. Vali, mida tahaksid pensionil teha.'];}
+  L.push('Tere, siin mina pensionil.');
+  if(where>=0)L.push(WHERE[where][1]);
+  if(who>=0)L.push(WHO[who][1]);
+  for(var i=0;i<4;i++){if(sel[i])L.push(ACTS[i][2]);}
+  if(g>0&&mode==='fut'){L.push('Aitäh kingi eest: '+fe(g)+' kuus.'+((m0!==null&&m!==null&&m0>m)?' See tähendab, et sain '+mt(m0-m)+' varem vabaks.':''));}
+  if(g>0&&mode==='don'){L.push('Mäletan, kuhu sa '+fe(g)+' kuus annetasid. Pensionit see ei kasvatanud, aga mäletan seda soojusega.');}
+  return L;}
+
+/* overlap */
+var fy=12,ovF=document.getElementById('ovF'),ovT=document.getElementById('ovT'),ovRes=document.getElementById('ovRes');
+function segs(parts){var tot=0,h='';parts.forEach(function(p){tot+=p.v;});parts.forEach(function(p){var w=p.v/tot*100;if(w<=0)return;h+='<div style="width:'+w+'%;background:'+p.bg+(p.fg?';color:'+p.fg:'')+(p.dash?';border:1px dashed var(--ink2);color:var(--ink2);background:transparent':'')+'">'+(w>=16?p.t:'')+'</div>';});return '<div class="seg">'+h+'</div>';}
+function overlap(){var c=chosen();if(c.n===0)return null;var nowS=BASE+LOAN+FUN,futS=BASE+c.cs;var ob=Math.min(BASE/nowS,BASE/futS),of=Math.min(FUN/nowS,c.cs/futS);return {ob:ob,of:of,ov:ob+of};}
+function renderOv(){
+  var c=chosen();
+  ovT.innerHTML=segs([{v:BASE,bg:'var(--base)',t:'Baas'},{v:LOAN,bg:'var(--loan)',t:'Laen'},{v:FUN,bg:'var(--fun)',fg:'var(--segfun)',t:'Fun'}]);
+  var fut=c.n>0?segs([{v:BASE,bg:'var(--base)',t:'Baas'},{v:c.cs,bg:'var(--pro)',t:'Elu sisu'}]):segs([{v:1,bg:'',t:'Udu',dash:true}]);
+  ovF.innerHTML=fut;ovF.style.top=fy+'px';ovF.style.opacity=fy>=96?0.82:0.95;
+  ovF.setAttribute('aria-valuenow',Math.round((fy-12)/84*100));
+  var o=overlap();
+  if(c.n===0){ovRes.innerHTML='<p style="margin:0">Vali enne Unista-osas, mida tahaksid pensionil teha. Ilma selleta on tulevane pott udu.</p>';return;}
+  if(fy<96){ovRes.innerHTML='<p style="margin:0">Tõmba tulevase mina pott alla tänase peale.</p>';return;}
+  var pct=Math.round(o.ov*100);
+  ovRes.innerHTML='<div class="big">'+pct+'%</div><p class="small" style="margin:4px 0 10px">kulude jaotusest on mõlemas sama. Laenud jäävad siia, pensionil neid pole.</p>'+segs([{v:o.ob,bg:'var(--base)',t:'Baas'},{v:o.of,bg:'var(--pro)',t:'Elu sisu'},{v:1-o.ov,bg:'',t:'Ei kattu',dash:true}]);
+}
+var drag=null;
+ovF.addEventListener('pointerdown',function(e){e.preventDefault();drag={y:e.clientY,t:fy};try{ovF.setPointerCapture(e.pointerId);}catch(x){}ovF.style.cursor='grabbing';});
+ovF.addEventListener('pointermove',function(e){if(!drag)return;fy=Math.max(12,Math.min(96,drag.t+(e.clientY-drag.y)));if(fy>=88)fy=96;renderOv();share();});
+['pointerup','pointercancel'].forEach(function(n){ovF.addEventListener(n,function(){drag=null;ovF.style.cursor='grab';});});
+ovF.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){fy=Math.min(96,fy+14);if(fy>=88)fy=96;renderOv();share();e.preventDefault();}if(e.key==='ArrowUp'){fy=Math.max(12,fy-14);renderOv();share();e.preventDefault();}});
+
+/* gift */
+document.getElementById('k1').onclick=function(){mode='fut';sync();};
+document.getElementById('k2').onclick=function(){mode='don';sync();};
+document.getElementById('gf').oninput=function(){g=parseInt(this.value,10);sync();};
+function renderGift(){
+  var c=chosen(),m0=monthsFor(INC,c.cs,0,'fut'),m=monthsFor(INC,c.cs,g,mode);
+  document.getElementById('gfo').textContent=fe(g);
+  var h='<div class="big">'+mt(m)+'</div><p class="small" style="margin:4px 0 6px">FIRE-ni jäänud aega. Pensionil kulub kuus '+fe(BASE+(c.n>0?c.cs:FUN))+(c.n>0?'':' (arvestame praegust funi, kuni valid)')+'.</p>';
+  if(g>0&&mode==='fut'&&m!==null&&m0!==null&&m0>m)h+='<p style="margin:0">Kink toob sind <strong>'+mt(m0-m)+'</strong> varem.</p>';
+  if(g>0&&mode==='don')h+='<p style="margin:0">Annetus ei vii sind FIRE-le lähemale, aga annab täna hea tunde.</p>';
+  if(g===0)h+='<p style="margin:0">Liiguta liugurit, et näha kinki.</p>';
+  document.getElementById('fireOut').innerHTML=h;
+}
+
+/* share card */
+function shareText(){
+  var c=chosen(),o=overlap(),m=monthsFor(INC,c.cs,g,mode),acts=[];for(var i=0;i<4;i++){if(sel[i])acts.push(ACTS[i][0].toLowerCase());}
+  var L=['Raha Meeled: minu valikud'];
+  L.push('Pensionil: '+(acts.length?acts.join(', '):'veel udu'));
+  if(who>=0)L.push('Kellega: '+WHO[who][0].toLowerCase());
+  if(where>=0)L.push('Kus: '+WHERE[where][0].toLowerCase());
+  L.push('Kattuvus tulevase minaga: '+(o&&fy>=96?Math.round(o.ov*100)+'%':'–'));
+  if(g>0)L.push((mode==='fut'?'Kingin tulevasele minale: ':'Annetan meeldivale asjale: ')+(hideAmt?Math.round(g/FUN*100)+'% fun moneyst':fe(g)+' kuus'));
+  L.push('FIRE-ni: '+mt(m));
+  L.push('Simulatsioon, mitte nõu.');
+  return L;}
+function share(){var L=shareText(),h='<div class="big" style="font-size:26px;margin-bottom:10px">'+L[0]+'</div>';for(var i=1;i<L.length;i++){h+='<p style="margin:0 0 6px">'+L[i]+'</p>';}document.getElementById('share').innerHTML=h;}
+document.getElementById('hide').onclick=function(){hideAmt=!hideAmt;if(window.MR)MR.track('Share Card Changed',{action:hideAmt?'hide':'show'},'index.share.hide-button');this.setAttribute('aria-pressed',hideAmt?'true':'false');this.textContent=hideAmt?'Näita summasid':'Peida summad';share();};
+document.getElementById('copy').onclick=function(){var t=shareText().join('\n'),msg=document.getElementById('copyMsg');try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Tekst kopeeritud.';},function(){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';});}catch(e){msg.textContent='Kopeerimine ei õnnestunud. Vali tekst käsitsi.';}};
+
+/* speech */
+var player=null,queue=[];
+function callClips(){var c=chosen();if(c.n===0&&who<0&&where<0)return ['x0'];var ids=['g0'];if(where>=0)ids.push('p'+where);if(who>=0)ids.push('w'+who);for(var i=0;i<4;i++){if(sel[i])ids.push('a'+i);}if(g>0&&mode==='fut')ids.push('kf'+g);if(g>0&&mode==='don')ids.push('kd'+g);return ids;}
+function sayReset(){player=null;queue=[];document.getElementById('say').textContent='Loe ette';}
+function playNext(msg){
+  if(!queue.length){sayReset();return;}
+  var id=queue.shift();player=new Audio('audio/'+id+'.wav');
+  player.onended=function(){playNext(msg);};
+  player.onerror=function(){sayReset();msg.textContent='Heli ei laadinud. Tekst on ekraanil.';};
+  var pr=player.play();if(pr&&pr.catch)pr.catch(function(e){sayReset();msg.textContent=(e&&e.name==='NotAllowedError')?'Brauser ei lubanud heli esitada. Puuduta nuppu uuesti.':'Heli ei laadinud. Tekst on ekraanil.';});
+}
+document.getElementById('say').onclick=function(){var msg=document.getElementById('sayMsg');msg.textContent='';
+  if(player){if(player.pause)player.pause();sayReset();return;}
+  queue=callClips();this.textContent='Peata';playNext(msg);};
+
+function sync(){
+  setPress('gA',function(i){return sel[i];});setPress('gW',function(i){return who===i;});setPress('gP',function(i){return where===i;});
+  document.getElementById('k1').setAttribute('aria-pressed',mode==='fut'?'true':'false');document.getElementById('k2').setAttribute('aria-pressed',mode==='don'?'true':'false');
+  var L=callLines();document.getElementById('call').innerHTML=L.map(function(t){return '<p style="margin:0 0 6px">'+t+'</p>';}).join('');
+  renderOv();renderGift();share();
+}
+sync();
+})();
+</script>
+<script src="taxonomy.js"></script>
+<script src="i18n.js"></script>
+<script src="meeleraha.js"></script>
+</body>
+</html>

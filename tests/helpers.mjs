@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import { fileURLToPath } from 'node:url';
 
-export const PAGE_URL = new URL('../public/index.html', import.meta.url).href;
+export const PAGE_URL = new URL('../public/tunne.html', import.meta.url).href;
 export const ROOT = fileURLToPath(new URL('../', import.meta.url));
 
 export async function launch(extraArgs = []) {

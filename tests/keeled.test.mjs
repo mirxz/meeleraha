@@ -71,7 +71,7 @@ test('keeled: kataloogis on igal asjal nimi ja kirjeldus kõigis keeltes', () =>
 // ---------- lehed igas keeles ----------
 test('keeled: iga keel avab kõik täielikult tõlgitud lehed vigadeta, õige html-keele, nav-sildi ja mustandi märkega', async () => {
   for (const lang of CODES) {
-    for (const f of ['kast.html', 'kontakt.html', 'privaatsus.html', 'kellakeeramine.html', 'index.html']) {
+    for (const f of ['kast.html', 'kontakt.html', 'privaatsus.html', 'kellakeeramine.html', 'tunne.html']) {
       const { page, context, errors } = await open(f, lang);
       assert.equal(await page.locator('html').getAttribute('lang'), lang === 'et' ? 'et' : lang, `${lang} ${f}`);
       assert.equal(await page.inputValue('#mr-langsel'), lang);

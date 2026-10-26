@@ -5,7 +5,7 @@ import { launch, ROOT } from './helpers.mjs';
 
 const P = (f) => new URL(`../public/${f}`, import.meta.url).href;
 const read = (f) => readFile(`${ROOT}public/${f}`, 'utf8');
-const PAGES = [['index', 'index.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['mangukast', 'mangukast.html'], ['api', 'open-playbook-api.html']];
+const PAGES = [['index', 'tunne.html'], ['haruta', 'haruta.html'], ['ots', 'ots.html'], ['ajatelg', 'ajatelg.html'], ['kast', 'kast.html'], ['kontakt', 'kontakt.html'], ['privaatsus', 'privaatsus.html'], ['kell', 'kellakeeramine.html'], ['tingi', 'tingi.html'], ['mangukast', 'mangukast.html'], ['api', 'open-playbook-api.html']];
 const TAX = JSON.parse(await read('taxonomy.json'));
 const dict = async () => { const txt = await read('i18n.js'); return JSON.parse(txt.match(/^window\.MR_I18N=([\s\S]*?);\nwindow\.MR_LANGS=/)[1]); };
 
@@ -47,9 +47,9 @@ test('ühine raam: kõigil üheteistkümnel lehel on nav, jalus, õige aktiivne 
 });
 
 test('infoarhitektuur: nav viitab lehtedele, mis olemas on, ja kaart on manifestis', async () => {
-  const { page, context } = await open('index.html');
+  const { page, context } = await open('tunne.html');
   const hrefs = await page.locator('#mr-nav ul a').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
-  assert.deepEqual(hrefs, ['index.html', 'haruta.html', 'ots.html', 'tingi.html', 'ajatelg.html', 'kast.html']);
+  assert.deepEqual(hrefs, ['tunne.html', 'haruta.html', 'ots.html', 'tingi.html', 'ajatelg.html', 'kast.html']);
   for (const h of hrefs) await readFile(`${ROOT}public/${h}`);
   assert.equal(await page.locator('#kaart a[data-mr-c="index.hub.door"]').count(), 5);
   await context.close();
@@ -57,7 +57,7 @@ test('infoarhitektuur: nav viitab lehtedele, mis olemas on, ja kaart on manifest
 
 // ---------- keel ----------
 test('keel: keelevalija tõlgib liidese, hoiab keele linkides ja naaseb eesti keelele', async () => {
-  const { page, context } = await open('index.html');
+  const { page, context } = await open('tunne.html');
   assert.equal(await page.locator('html').getAttribute('lang'), 'et');
   assert.equal(await page.locator('#mr-langsel option').count(), 9);
   await page.selectOption('#mr-langsel', 'en');
@@ -154,7 +154,7 @@ test('mõõtmine: sisestatud numbrid ja tekst ei jõua kunagi sündmuste hulka',
 });
 
 test('mõõtmine: vigased sündmused, tundmatud omadused ja vabatekst lükatakse tagasi', async () => {
-  const { page, context } = await open('index.html');
+  const { page, context } = await open('tunne.html');
   const r = await page.evaluate(() => [
     MR.track('Door Clicked', { door: 'x' }, 'index.hub.door'),
     MR.track('Door Clicked', { door: 'kast', extra: '1' }, 'index.hub.door'),

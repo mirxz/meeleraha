@@ -264,8 +264,8 @@ test('paljastus ja lingid: peegel mitte prognoos, rahu ei ole teraapia, lingid o
   const links = [...html.matchAll(/\['[^']+','(haruta\.html#[a-z0-9-]+|ots\.html)'\]/g)].map((m) => m[1]);
   assert.ok(links.length >= 6);
   for (const l of links) if (l.startsWith('haruta.html#')) assert.ok(NODE_IDS.has(l.split('#')[1]), `puuduv sõlm: ${l}`);
-  assert.ok(html.includes('href="index.html"') && html.includes('href="ots.html"') && html.includes('href="haruta.html"'));
-  for (const f of ['index.html', 'ots.html', 'haruta.html']) assert.ok((await readFile(`${ROOT}public/${f}`, 'utf8')).includes('href="ajatelg.html"'), `${f} viitab Ajatelgekiigele`);
+  assert.ok(html.includes('href="tunne.html"') && html.includes('href="ots.html"') && html.includes('href="haruta.html"'));
+  for (const f of ['tunne.html', 'ots.html', 'haruta.html']) assert.ok((await readFile(`${ROOT}public/${f}`, 'utf8')).includes('href="ajatelg.html"'), `${f} viitab Ajatelgekiigele`);
 });
 
 // ---------- Elukaar: rahavood, bilanss, edasi ja tagurpidi ----------

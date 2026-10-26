@@ -66,7 +66,7 @@ test('kuulujutud viitavad olemasolevatele sõlmedele ja neil on otsus', () => {
 });
 
 test('pealeht viitab Haruta lõngakera lehele', async () => {
-  const idx = await readFile(`${ROOT}public/index.html`, 'utf8');
+  const idx = await readFile(`${ROOT}public/tunne.html`, 'utf8');
   assert.ok(idx.includes('href="haruta.html"'));
 });
 
@@ -389,7 +389,7 @@ test('kõne: aadressi vahetamine peatab kõne', async () => {
 
 // ---------- lingid manifesti ja lõngakera vahel ----------
 test('manifesti leht viitab lõngakerale (nupp alguses ja eraldi osa)', async () => {
-  const idx = await readFile(`${ROOT}public/index.html`, 'utf8');
+  const idx = await readFile(`${ROOT}public/tunne.html`, 'utf8');
   assert.ok((idx.match(/href="haruta\.html"/g) || []).length >= 2, 'peab olema vähemalt kaks linki');
   assert.ok(idx.includes('<section id="haruta">'));
   assert.ok(idx.includes('Lõngakera on metafoor'));
@@ -397,7 +397,7 @@ test('manifesti leht viitab lõngakerale (nupp alguses ja eraldi osa)', async ()
 });
 
 test('lõngakera leht viitab manifestile (üleval ja all)', () => {
-  assert.ok((html.match(/href="index\.html"/g) || []).length >= 2, 'peab olema vähemalt kaks linki');
+  assert.ok((html.match(/href="tunne\.html"/g) || []).length >= 2, 'peab olema vähemalt kaks linki');
 });
 
 // ---------- sildid ----------

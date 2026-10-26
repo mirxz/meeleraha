@@ -114,7 +114,7 @@ MR.audit=function(){
 };
 
 /* ---------- ühine raam ---------- */
-var NAV=[['home','index.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['tingi','tingi.html','tingi'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
+var NAV=[['home','tunne.html','index'],['haruta','haruta.html','haruta'],['ots','ots.html','ots'],['tingi','tingi.html','tingi'],['ajatelg','ajatelg.html','ajatelg'],['kast','kast.html','kast']];
 var FOOT=[['kell','kellakeeramine.html'],['privacy','privaatsus.html'],['contact','kontakt.html'],['api','open-playbook-api.html']];
 MR.page=document.body?document.body.getAttribute('data-mr-page'):null;
 MR.mount=function(){

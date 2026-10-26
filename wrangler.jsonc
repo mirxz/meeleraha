@@ -1,11 +1,26 @@
 {
   "name": "meeleraha",
-  "compatibility_date": "2026-10-12",
-  "assets": { "directory": "./public" },
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/ilm", "/kirjuta", "/saada"]
+  },
   "workers_dev": true,
   "preview_urls": false,
   "routes": [
     { "pattern": "meeleraha.ee", "custom_domain": true },
     { "pattern": "www.meeleraha.ee", "custom_domain": true }
+  ],
+  // Hääl tekstiks (/kirjuta): Workers AI, Whisper.
+  "ai": { "binding": "AI" },
+  // Kiri Mirkole (/saada): Cloudflare Email Service. Saaja aadress on Workeri muutuja KIRI_SAAJA
+  // (Cloudflare'i dashboard: Settings > Variables), mitte selles failis. TBC: Email Service ja saatja domeen seadistamata.
+  "send_email": [{ "name": "POST" }],
+  // Piirangud. TBC: namespace_id peab olema konto piires unikaalne, kontrolli enne deploy'd.
+  "ratelimits": [
+    { "name": "PIIR", "namespace_id": "7301", "simple": { "limit": 6, "period": 60 } },
+    { "name": "PIIR_KIRJUTA", "namespace_id": "7302", "simple": { "limit": 60, "period": 60 } }
   ]
 }

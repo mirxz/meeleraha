@@ -148,7 +148,7 @@ test('api: koht saidil: ühise jaluse link on kõigil lehtedel ja kõigis keelte
   assert.ok(!(await o.page.locator('#mr-nav ul a').allInnerTexts()).some((x) => /API|Playbook/i.test(x)), 'viide ei kuulu ülemisse menüüsse');
   await o.context.close();
   const idx = await open();
-  await idx.page.goto(new URL('../public/index.html', import.meta.url).href + '?lang=en'); await idx.page.waitForTimeout(150);
+  await idx.page.goto(new URL('../public/tunne.html', import.meta.url).href + '?lang=en'); await idx.page.waitForTimeout(150);
   await idx.page.click('#mr-foot ul a[href^="open-playbook-api.html"]'); await idx.page.waitForLoadState();
   assert.equal(await idx.page.locator('h1').innerText(), 'Open Playbook API');
   await idx.context.close();

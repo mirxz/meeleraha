@@ -122,8 +122,8 @@ test('lõngakera lingid osutavad olemasolevatele sõlmedele ja lehed viitavad te
   const links = [...html.matchAll(/lk\('([a-z0-9-]+)'/g)].map((m) => m[1]);
   assert.ok(links.length >= 4);
   for (const id of links) assert.ok(NODE_IDS.has(id), `puuduv sõlm: ${id}`);
-  assert.ok(html.includes('href="index.html"') && html.includes('href="haruta.html"'));
-  const idx = await readFile(`${ROOT}public/index.html`, 'utf8');
+  assert.ok(html.includes('href="tunne.html"') && html.includes('href="haruta.html"'));
+  const idx = await readFile(`${ROOT}public/tunne.html`, 'utf8');
   assert.ok(idx.includes('href="ots.html"'), 'manifest viitab Lõnga otsale');
   assert.ok(haruta.includes('href="ots.html"'), 'lõngakera viitab Lõnga otsale');
 });
@@ -198,8 +198,8 @@ test('unistus ja fun money: midagi ei salvestata, tulevane mina on viidatud mani
   const { page, context } = await open();
   await page.click('#sample');
   assert.equal(await page.evaluate(() => localStorage.length + sessionStorage.length), 0);
-  assert.ok(html.includes('index.html#unista'));
-  const idx = await readFile(`${ROOT}public/index.html`, 'utf8');
+  assert.ok(html.includes('tunne.html#unista'));
+  const idx = await readFile(`${ROOT}public/tunne.html`, 'utf8');
   assert.ok(idx.includes('id="unista"'), 'manifestis peab olema Unista osa');
   assert.ok(!html.toLowerCase().includes('seitse'), 'leht peab ütlema kaheksa, mitte seitse');
   await context.close();
